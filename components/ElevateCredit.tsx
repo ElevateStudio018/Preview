@@ -4,7 +4,7 @@ import { withBasePath } from "@/lib/site/images.ts";
 // text colour on any footer.
 const MARK = "/elevate-mark.png";
 
-/** The web agency's credit under the footer: its mark and name, linking to its site. */
+/** The web agency's credit under the footer: its mark and name, the whole of it one link to its site. */
 export function ElevateCredit() {
   const mask = `url(${withBasePath(MARK)}) center / contain no-repeat`;
   return (
@@ -13,12 +13,10 @@ export function ElevateCredit() {
         href="https://elevatestudio.nu"
         target="_blank"
         rel="noopener"
-        className="group inline-flex items-center gap-2 py-2 text-[13px] text-footer-text/55 transition-colors duration-200 hover:text-footer-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-footer-text lg:text-[14px]"
+        className="inline-flex items-center gap-2 py-2 text-[13px] text-footer-text/55 transition-colors duration-200 hover:text-footer-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-footer-text lg:text-[14px]"
       >
         <span aria-hidden="true" className="block h-4 w-4 shrink-0 bg-current" style={{ mask, WebkitMask: mask }} />
-        <span>
-          Byggd av <span className="underline-offset-4 group-hover:underline">Elevate Studio</span>
-        </span>
+        Byggd av Elevate Studio
       </a>
     </p>
   );
