@@ -31,10 +31,10 @@ export const block = {
 };
 
 function html(mail: Mail): string {
-  return `<!doctype html><html lang="sv"><body style="margin:0;background:#E6E9EE;font-family:Figtree,Arial,sans-serif">
+  return `<!doctype html><html lang="sv"><body style="margin:0;background:#F4EFE7;font-family:Figtree,Arial,sans-serif">
 <table role="presentation" style="width:100%;border-collapse:collapse"><tr><td style="padding:24px 12px">
-<table role="presentation" style="max-width:560px;margin:0 auto;border-collapse:collapse;background:#F4F6F9">
-<tr><td style="background:#14284B;padding:18px 28px;color:#ffffff;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Stenvaller · Adminpanel</td></tr>
+<table role="presentation" style="max-width:560px;margin:0 auto;border-collapse:collapse;background:#FBF8F2">
+<tr><td style="background:#1F3A2E;padding:18px 28px;color:#ffffff;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Cabinord · Adminpanel</td></tr>
 <tr><td style="padding:28px">${mail.blocks.join("")}</td></tr>
 </table></td></tr></table></body></html>`;
 }
@@ -69,7 +69,7 @@ export async function sendMail(mail: Mail): Promise<boolean> {
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: env("EMAIL_FROM", "Stenvaller <onboarding@resend.dev>"),
+        from: env("EMAIL_FROM", "Cabinord <onboarding@resend.dev>"),
         to: Array.isArray(mail.to) ? mail.to : [mail.to],
         subject: mail.subject,
         html: html(mail),

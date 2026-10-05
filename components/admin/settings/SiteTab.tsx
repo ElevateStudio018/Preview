@@ -24,7 +24,7 @@ export function SiteTab() {
         <div role="radiogroup" aria-label="Vilken logga" className="grid gap-3 sm:grid-cols-2">
           {(
             [
-              ["wordmark", "Den tecknade loggan", "Stenvaller i text med ett enkelt märke, tills en riktig logga laddas upp."],
+              ["wordmark", "Den tecknade loggan", "Cabinord i text med ett enkelt märke, tills en riktig logga laddas upp."],
               ["image", "Egen bild", "En logga du laddar upp, t.ex. en PNG med genomskinlig bakgrund."],
             ] as const
           ).map(([kind, label, hint]) => (

@@ -10,7 +10,7 @@ export function HeroSection({ section, ctx }: SectionProps<"hero">) {
   const { phone } = ctx.site.company;
 
   return (
-    // The photo fills the first screen on every device under an even dark filter. The white text sits near the
+    // The photo fills the first screen on every device under a dark gradient. The white text sits near the
     // bottom on phones and tablets, and just below the middle on the left on desktop.
     <section
       id={section.anchor || undefined}
@@ -24,7 +24,8 @@ export function HeroSection({ section, ctx }: SectionProps<"hero">) {
         style={focusStyle(section.image)}
         className="absolute inset-0 -z-10 h-full w-full object-cover object-[74%_center] lg:object-[75%_55%]"
       />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/45" />
+      {/* Darker towards the bottom left, where the text sits, so the photo stays bright at the top. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-tr from-black/75 via-black/40 to-black/10" />
 
       <div className="mx-auto mt-auto w-full max-w-content px-4 pb-12 sm:px-6 sm:pb-16 lg:my-auto lg:px-8 lg:pb-0 lg:pt-[8svh]">
         {/* Eyebrow, heading and button rise into place one after another as the page loads. */}

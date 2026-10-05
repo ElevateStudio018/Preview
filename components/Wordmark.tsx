@@ -8,12 +8,9 @@ export interface LogoContent {
   name: string;
 }
 
-// The client's logo (STEAB, Stenvaller Entreprenad AB), traced from their artwork into a transparent PNG and used as a
-// mask, so it is drawn in the current text colour: black on the white header, white on the black footer and menu. An
-// uploaded logo replaces it at the same height.
-const LOGO_SRC = "/logo-steab.png";
-const LOGO_RATIO = 1636 / 784;
-
+// Cabinord's wordmark until the client's own logo is uploaded: a gable roof over the name, drawn in the current text
+// colour so it is dark on the light header and light on the dark footer and menu. An uploaded logo replaces it at the
+// same height.
 export function Wordmark({ content, className = "" }: { content: LogoContent; className?: string }) {
   if (content.logo.kind === "image") {
     return (
@@ -22,10 +19,17 @@ export function Wordmark({ content, className = "" }: { content: LogoContent; cl
     );
   }
 
-  const mask = `url(${withBasePath(LOGO_SRC)}) center / contain no-repeat`;
   return (
-    <span className={`block h-11 bg-current sm:h-14 ${className}`} style={{ aspectRatio: LOGO_RATIO, mask, WebkitMask: mask }}>
-      <span className="sr-only">{content.name}</span>
+    <span className={`flex h-11 items-center gap-2.5 sm:h-14 ${className}`}>
+      <svg viewBox="0 0 40 36" aria-hidden="true" className="h-8 w-auto shrink-0 sm:h-10" fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round">
+        <path d="M3 17 20 3l17 14" strokeLinecap="round" />
+        <path d="M8 14v19h24V14" />
+        <path d="M17 33v-9h6v9" />
+      </svg>
+      <span className="font-heading text-[22px] font-semibold leading-none tracking-[0.08em] sm:text-[26px]">
+        CABINORD
+        <span className="sr-only"> – {content.name}</span>
+      </span>
     </span>
   );
 }

@@ -98,7 +98,7 @@ function AccountBlock() {
 function Logo({ compact = false }: { compact?: boolean }) {
   // The company's own logo: an uploaded one once there is one (Inställningar → Hemsida), otherwise the drawn wordmark.
   const { draft } = useDraft();
-  const content = { logo: draft?.settings.logo ?? ({ kind: "wordmark" } as const), name: draft?.company.shortName ?? "Stenvaller" };
+  const content = { logo: draft?.settings.logo ?? ({ kind: "wordmark" } as const), name: draft?.company.shortName ?? "Cabinord" };
   return (
     <Link href="/admin" className="flex min-h-12 items-center gap-3 rounded-xl text-admin focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin" aria-label="Adminpanelen – dashboard">
       <Wordmark content={content} className={compact ? "origin-left scale-[0.72]" : "origin-left scale-[0.86]"} />

@@ -43,7 +43,7 @@
   }
 }
 
-/* Under section headings: the line with a V-shaped notch from the foot of the STEAB logo, in the accent colour. */
+/* Under section headings: a line rising to a gable roof in the middle, as in the Cabinord mark, in the accent colour. */
 .text-h2::after {
   content: "";
   display: block;
@@ -51,8 +51,8 @@
   height: 10px;
   margin-top: 0.5em;
   background-color: rgb(var(--c-accent));
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10'%3E%3Cpath d='M0 2H29L36 8.5L43 2H72' fill='none' stroke='%23000' stroke-width='2.5'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10'%3E%3Cpath d='M0 2H29L36 8.5L43 2H72' fill='none' stroke='%23000' stroke-width='2.5'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10'%3E%3Cpath d='M0 8.5H27L36 1.5L45 8.5H72' fill='none' stroke='%23000' stroke-width='2.5'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10'%3E%3Cpath d='M0 8.5H27L36 1.5L45 8.5H72' fill='none' stroke='%23000' stroke-width='2.5'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
 .text-center .text-h2::after,
@@ -99,7 +99,7 @@
       animation-timeline: view();
     }
 
-    /* The notch line draws out from the left as its heading scrolls into view. */
+    /* The roof line draws out from the left as its heading scrolls into view. */
     .text-h2::after {
       transform-origin: left;
       animation: notch-draw linear both;

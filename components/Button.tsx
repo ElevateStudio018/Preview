@@ -8,7 +8,7 @@ export type ButtonVariant = "solid" | "outline" | "on-nav" | "on-footer" | "on-p
 
 // Pressing a button squeezes it in a touch.
 const pillBase =
-  "inline-flex items-center justify-center gap-2 rounded-md px-8 py-4 text-center text-label uppercase transition duration-200 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-center text-label uppercase transition duration-200 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const pillVariants: Record<ButtonVariant, string> = {
   solid: "bg-button text-button-text hover:bg-button-hover focus-visible:outline-button",

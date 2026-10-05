@@ -2,7 +2,7 @@
 const isGithubPages = process.env.GITHUB_PAGES === "true";
 // GitHub Pages serves a project site under the repository's name, so the same code works in any repository it is
 // built in (GITHUB_REPOSITORY is "owner/name" in GitHub Actions).
-const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "Stenvaller-Hemsida-L-nk-RR";
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "Preview";
 const basePath = isGithubPages ? `/${repositoryName}` : "";
 
 const nextConfig = {
