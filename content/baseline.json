@@ -1284,30 +1284,30 @@
               "eyebrow": "Direkt från fabrik",
               "heading": "Trästugor i alla format",
               "image": {
-                "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=480"
+                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=480"
                   },
                   {
                     "width": 800,
-                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=800"
                   },
                   {
                     "width": 1200,
-                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   },
                   {
                     "width": 1600,
-                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   },
                   {
                     "width": 2000,
-                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Trästuga i en snöig skog"
+                "alt": "Gul trästuga i en snöig skog"
               },
               "button": {
                 "label": "Begär offert",
@@ -1369,7 +1369,7 @@
                     "src": "https://images.pexels.com/photos/8830265/pexels-photo-8830265.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Snickare som bygger en trästomme"
+                "alt": "Snickare uppe i en trästomme"
               },
               "cards": {
                 "order": [
@@ -1409,7 +1409,7 @@
                           "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=2000"
                         }
                       ],
-                      "alt": "Snickare som sitter på takstolar av trä under montering"
+                      "alt": "Snickare som sitter på takstolar av trä"
                     }
                   },
                   "byggsats": {
@@ -1444,7 +1444,7 @@
                           "src": "https://images.pexels.com/photos/8830259/pexels-photo-8830259.jpeg?auto=compress&cs=tinysrgb&w=2000"
                         }
                       ],
-                      "alt": "Trästomme till ett hus under byggnation"
+                      "alt": "Takstolar av trä under montering"
                     }
                   }
                 }
@@ -1470,30 +1470,30 @@
                       "href": "/tjanster/bastu"
                     },
                     "image": {
-                      "src": "https://images.pexels.com/photos/19404519/pexels-photo-19404519.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                      "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=1600",
                       "variants": [
                         {
                           "width": 480,
-                          "src": "https://images.pexels.com/photos/19404519/pexels-photo-19404519.jpeg?auto=compress&cs=tinysrgb&w=480"
+                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=480"
                         },
                         {
                           "width": 800,
-                          "src": "https://images.pexels.com/photos/19404519/pexels-photo-19404519.jpeg?auto=compress&cs=tinysrgb&w=800"
+                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=800"
                         },
                         {
                           "width": 1200,
-                          "src": "https://images.pexels.com/photos/19404519/pexels-photo-19404519.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         },
                         {
                           "width": 1600,
-                          "src": "https://images.pexels.com/photos/19404519/pexels-photo-19404519.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=1600"
                         },
                         {
                           "width": 2000,
-                          "src": "https://images.pexels.com/photos/19404519/pexels-photo-19404519.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=2000"
                         }
                       ],
-                      "alt": "Bastu i nordisk stil"
+                      "alt": "Bastu med ljusa lavar av trä"
                     }
                   },
                   "attefall": {
@@ -1505,30 +1505,30 @@
                       "href": "/attefallshus-thomas"
                     },
                     "image": {
-                      "src": "https://images.pexels.com/photos/9209878/pexels-photo-9209878.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                      "src": "/photos/cabinord/20250721201724-4-scaled-aspect-ratio-1000-667-2000.webp",
                       "variants": [
                         {
                           "width": 480,
-                          "src": "https://images.pexels.com/photos/9209878/pexels-photo-9209878.jpeg?auto=compress&cs=tinysrgb&w=480"
+                          "src": "/photos/cabinord/20250721201724-4-scaled-aspect-ratio-1000-667-480.webp"
                         },
                         {
                           "width": 800,
-                          "src": "https://images.pexels.com/photos/9209878/pexels-photo-9209878.jpeg?auto=compress&cs=tinysrgb&w=800"
+                          "src": "/photos/cabinord/20250721201724-4-scaled-aspect-ratio-1000-667-800.webp"
                         },
                         {
                           "width": 1200,
-                          "src": "https://images.pexels.com/photos/9209878/pexels-photo-9209878.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                          "src": "/photos/cabinord/20250721201724-4-scaled-aspect-ratio-1000-667-1200.webp"
                         },
                         {
                           "width": 1600,
-                          "src": "https://images.pexels.com/photos/9209878/pexels-photo-9209878.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                          "src": "/photos/cabinord/20250721201724-4-scaled-aspect-ratio-1000-667-1600.webp"
                         },
                         {
                           "width": 2000,
-                          "src": "https://images.pexels.com/photos/9209878/pexels-photo-9209878.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                          "src": "/photos/cabinord/20250721201724-4-scaled-aspect-ratio-1000-667-2000.webp"
                         }
                       ],
-                      "alt": "Modern trästuga bland träden"
+                      "alt": "Attefallshus Thomas"
                     }
                   }
                 }
@@ -1547,30 +1547,30 @@
               "subheading": "Cabinord startade 1988 på Haraholmen vid Piteå Djuphamn, ungefär 11 km sydost om Piteå.",
               "text": "Vi tillverkar allt från förråd, småstugor och grillstugor till garage, fritidshus, carportar och attefallshus – allt efter dina önskemål, direkt från fabrik till konkurrenskraftiga priser.",
               "image": {
-                "src": "https://images.pexels.com/photos/210538/pexels-photo-210538.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                "src": "https://images.pexels.com/photos/8821533/pexels-photo-8821533.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "https://images.pexels.com/photos/210538/pexels-photo-210538.jpeg?auto=compress&cs=tinysrgb&w=480"
+                    "src": "https://images.pexels.com/photos/8821533/pexels-photo-8821533.jpeg?auto=compress&cs=tinysrgb&w=480"
                   },
                   {
                     "width": 800,
-                    "src": "https://images.pexels.com/photos/210538/pexels-photo-210538.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "src": "https://images.pexels.com/photos/8821533/pexels-photo-8821533.jpeg?auto=compress&cs=tinysrgb&w=800"
                   },
                   {
                     "width": 1200,
-                    "src": "https://images.pexels.com/photos/210538/pexels-photo-210538.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    "src": "https://images.pexels.com/photos/8821533/pexels-photo-8821533.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   },
                   {
                     "width": 1600,
-                    "src": "https://images.pexels.com/photos/210538/pexels-photo-210538.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    "src": "https://images.pexels.com/photos/8821533/pexels-photo-8821533.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   },
                   {
                     "width": 2000,
-                    "src": "https://images.pexels.com/photos/210538/pexels-photo-210538.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                    "src": "https://images.pexels.com/photos/8821533/pexels-photo-8821533.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Rött trähus under blå himmel"
+                "alt": "Snickare som bygger en trästomme"
               }
             },
             "process": {
@@ -1737,30 +1737,30 @@
               "anchor": "",
               "label": "",
               "image": {
-                "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                "src": "https://images.pexels.com/photos/4642437/pexels-photo-4642437.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=480"
+                    "src": "https://images.pexels.com/photos/4642437/pexels-photo-4642437.jpeg?auto=compress&cs=tinysrgb&w=480"
                   },
                   {
                     "width": 800,
-                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "src": "https://images.pexels.com/photos/4642437/pexels-photo-4642437.jpeg?auto=compress&cs=tinysrgb&w=800"
                   },
                   {
                     "width": 1200,
-                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    "src": "https://images.pexels.com/photos/4642437/pexels-photo-4642437.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   },
                   {
                     "width": 1600,
-                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    "src": "https://images.pexels.com/photos/4642437/pexels-photo-4642437.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   },
                   {
                     "width": 2000,
-                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                    "src": "https://images.pexels.com/photos/4642437/pexels-photo-4642437.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Trähus i brunt och beige under blå himmel"
+                "alt": "Trähus under byggnation, sett inifrån"
               },
               "size": "tall"
             },
@@ -1851,30 +1851,30 @@
                   },
                   "bild-2": {
                     "image": {
-                      "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                      "src": "https://images.pexels.com/photos/8832031/pexels-photo-8832031.jpeg?auto=compress&cs=tinysrgb&w=1600",
                       "variants": [
                         {
                           "width": 480,
-                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=480"
+                          "src": "https://images.pexels.com/photos/8832031/pexels-photo-8832031.jpeg?auto=compress&cs=tinysrgb&w=480"
                         },
                         {
                           "width": 800,
-                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=800"
+                          "src": "https://images.pexels.com/photos/8832031/pexels-photo-8832031.jpeg?auto=compress&cs=tinysrgb&w=800"
                         },
                         {
                           "width": 1200,
-                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                          "src": "https://images.pexels.com/photos/8832031/pexels-photo-8832031.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         },
                         {
                           "width": 1600,
-                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                          "src": "https://images.pexels.com/photos/8832031/pexels-photo-8832031.jpeg?auto=compress&cs=tinysrgb&w=1600"
                         },
                         {
                           "width": 2000,
-                          "src": "https://images.pexels.com/photos/7587466/pexels-photo-7587466.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                          "src": "https://images.pexels.com/photos/8832031/pexels-photo-8832031.jpeg?auto=compress&cs=tinysrgb&w=2000"
                         }
                       ],
-                      "alt": "Bastu med lavar av trä"
+                      "alt": "Två män som bygger ett trähus i skogen"
                     }
                   }
                 }
@@ -1892,30 +1892,30 @@
                 "href": "/#produkter"
               },
               "image": {
-                "src": "https://images.pexels.com/photos/4406335/pexels-photo-4406335.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                "src": "https://images.pexels.com/photos/10119626/pexels-photo-10119626.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "https://images.pexels.com/photos/4406335/pexels-photo-4406335.jpeg?auto=compress&cs=tinysrgb&w=480"
+                    "src": "https://images.pexels.com/photos/10119626/pexels-photo-10119626.jpeg?auto=compress&cs=tinysrgb&w=480"
                   },
                   {
                     "width": 800,
-                    "src": "https://images.pexels.com/photos/4406335/pexels-photo-4406335.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "src": "https://images.pexels.com/photos/10119626/pexels-photo-10119626.jpeg?auto=compress&cs=tinysrgb&w=800"
                   },
                   {
                     "width": 1200,
-                    "src": "https://images.pexels.com/photos/4406335/pexels-photo-4406335.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    "src": "https://images.pexels.com/photos/10119626/pexels-photo-10119626.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   },
                   {
                     "width": 1600,
-                    "src": "https://images.pexels.com/photos/4406335/pexels-photo-4406335.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    "src": "https://images.pexels.com/photos/10119626/pexels-photo-10119626.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   },
                   {
                     "width": 2000,
-                    "src": "https://images.pexels.com/photos/4406335/pexels-photo-4406335.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                    "src": "https://images.pexels.com/photos/10119626/pexels-photo-10119626.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Röd trästuga på en grön sluttning"
+                "alt": "Trästuga vid en sjö i skogen"
               },
               "secondHeading": "Färdigt hus eller byggsats",
               "secondText": "Du väljer om du vill ha huset färdigbyggt eller som byggsats att montera själv. Vi levererar också färdiga väggblock.",
