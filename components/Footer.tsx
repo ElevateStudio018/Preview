@@ -8,6 +8,7 @@ import { CookieSettingsButton } from "./CookieSettingsButton";
 import { list } from "@/lib/site/collection.ts";
 import { toTelHref } from "@/lib/site/format.ts";
 import type { SiteData } from "@/lib/site/schema.ts";
+import { ElevateCredit } from "./ElevateCredit";
 
 const headingClass = "text-[19px] font-semibold leading-tight lg:text-[22px]";
 // A thin line slides in from the left under a link on hover, like the links in the top bar. On phones the padding makes
@@ -149,6 +150,7 @@ export function Footer({ site }: { site: SiteData }) {
             )}
           </p>
         </Reveal>
+        <ElevateCredit />
       </div>
     </footer>
   );
