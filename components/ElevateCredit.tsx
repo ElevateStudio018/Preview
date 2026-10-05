@@ -1,13 +1,25 @@
-// The web agency's credit under the footer: its mark (a slope running up to a peak, with a smaller peak beside it)
-// and its name, small and quiet.
+import { withBasePath } from "@/lib/site/images.ts";
+
+// Elevate Studio's mark (public/elevate-mark.png, from elevatestudio.nu) used as a mask, so it is drawn in the footer's
+// text colour on any footer.
+const MARK = "/elevate-mark.png";
+
+/** The web agency's credit under the footer: its mark and name, linking to its site. */
 export function ElevateCredit() {
+  const mask = `url(${withBasePath(MARK)}) center / contain no-repeat`;
   return (
-    <p className="mt-6 flex items-center justify-center gap-2 text-[13px] text-footer-text/55 lg:text-[14px]">
-      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinejoin="miter">
-        <path d="M2 22 16 6.5" />
-        <path d="M7.5 20.2h4.2l4-4.7 5.3 6" />
-      </svg>
-      Byggd av Elevate Studio
+    <p className="mt-6 flex justify-center">
+      <a
+        href="https://elevatestudio.nu"
+        target="_blank"
+        rel="noopener"
+        className="group inline-flex items-center gap-2 py-2 text-[13px] text-footer-text/55 transition-colors duration-200 hover:text-footer-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-footer-text lg:text-[14px]"
+      >
+        <span aria-hidden="true" className="block h-4 w-4 shrink-0 bg-current" style={{ mask, WebkitMask: mask }} />
+        <span>
+          Byggd av <span className="underline-offset-4 group-hover:underline">Elevate Studio</span>
+        </span>
+      </a>
     </p>
   );
 }
