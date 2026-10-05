@@ -169,8 +169,12 @@ for (const url of [...productUrls].sort()) {
   note(`${name || url}: ${price || "no price"}, ${photos.length} photos`);
 }
 
-// 3. The site's own galleries.
+// 3. The site's own galleries, and the photos on the start page (its big top photo among them).
 const galleries = [];
+{
+  const $ = await page(`${ORIGIN}/`);
+  if ($) galleries.push({ url: `${ORIGIN}/`, title: "Startsidan", photos: photosOn($, `${ORIGIN}/`) });
+}
 for (const url of galleryUrls) {
   const $ = await page(url);
   if (!$) continue;
