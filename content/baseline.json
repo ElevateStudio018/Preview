@@ -311,7 +311,7 @@
         "href": "#offert"
       }
     },
-    "factsTitle": "Fakta",
+    "factsTitle": "",
     "factLabels": {
       "service": "Kategori",
       "performedBy": "Tillverkas av",
@@ -1743,37 +1743,10 @@
                 "Vill du bygga själv levererar vi gärna som byggsats, och vi kan också leverera färdiga väggblock efter dina önskemål.",
                 "Välkommen att höra av dig – eller kom förbi fabriken."
               ],
-              "factsTitle": "Fakta om oss",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "grundat",
-                  "fabrik",
-                  "verksamhet",
-                  "kontakt",
-                  "org-nr"
-                ],
-                "items": {
-                  "grundat": {
-                    "label": "Grundat",
-                    "value": "1988"
-                  },
-                  "fabrik": {
-                    "label": "Fabrik",
-                    "value": "Farleden 70, Haraholmen, Piteå"
-                  },
-                  "verksamhet": {
-                    "label": "Verksamhet",
-                    "value": "Tillverkning av trähus"
-                  },
-                  "kontakt": {
-                    "label": "Kontakt",
-                    "value": "Lars Andersson"
-                  },
-                  "org-nr": {
-                    "label": "Org.nr",
-                    "value": "559531-1787"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -2737,36 +2710,16 @@
               "heading": "Attefallshus Thomas",
               "subheading": "Grundmålat attefallshus på 30 m², komplett med kök och vitvaror inklusive diskmaskin.",
               "paragraphs": [
+                "Mått: 30 m²",
+                "Pris: 500 000 kr inkl. moms",
                 "Förberett avlopp i toaletten och förberett för golvvärme och mattläggning. Golvvärme i sovrum och kök/allrum. All belysning styrs med Plejd.",
                 "Ta kontakt för mer information.",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Attefallshus"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "30 m²"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "500 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -2974,34 +2927,14 @@
               "heading": "Bastu 6",
               "subheading": "Grundmålad bastu.",
               "paragraphs": [
+                "Mått: 2,34 × 2,04 m (4,8 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Bastu"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "2,34 × 2,04 m (4,8 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -3179,35 +3112,15 @@
               "heading": "Bastu 7",
               "subheading": "Grundmålad bastu med relax.",
               "paragraphs": [
+                "Mått: 2,44 × 3,23 m (7,9 m²)",
+                "Pris: 40 000 kr inkl. moms",
                 "Ytterdörr och bastudörr ingår, monterade vid försäljning.",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Bastu"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "2,44 × 3,23 m (7,9 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "40 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -3385,34 +3298,14 @@
               "heading": "Bastu 30",
               "subheading": "Bastu med omklädningsrum/relax. Plats för ca 4–6 personer i bastun.",
               "paragraphs": [
+                "Mått: 3,70 × 2,47 m (9,14 m²)",
+                "Pris: 60 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Bastu"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "3,70 × 2,47 m (9,14 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "60 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -3590,34 +3483,14 @@
               "heading": "Bastu 35",
               "subheading": "Grundmålad bastu med omklädningsrum/relax. Bastun rymmer ca 4–6 personer.",
               "paragraphs": [
+                "Mått: 4,95 × 2,49 m (12,33 m²)",
+                "Pris: 80 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Bastu"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "4,95 × 2,49 m (12,33 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "80 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -3885,35 +3758,15 @@
               "heading": "Bastu Sven",
               "subheading": "Bastu med altan och större omklädningsrum/relax. Plats för ca 4–6 personer i bastun.",
               "paragraphs": [
+                "Mått: 15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m²",
+                "Pris: 100 000 kr inkl. moms",
                 "Säljs med ytterdörr.",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Bastu"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m²"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "100 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -4121,34 +3974,14 @@
               "heading": "Förråd 16",
               "subheading": "Grundmålat förråd med liggande panel och enkeldörr.",
               "paragraphs": [
+                "Mått: 1,85 × 2,04 m (3,8 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "1,85 × 2,04 m (3,8 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -4326,34 +4159,14 @@
               "heading": "Förråd 19",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
+                "Mått: 1,85 × 2,03 m (3,76 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "1,85 × 2,03 m (3,76 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -4531,34 +4344,14 @@
               "heading": "Förråd 18",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
+                "Mått: 2,06 × 2,06 m (4,12 m²)",
+                "Pris: 20 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "2,06 × 2,06 m (4,12 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "20 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -4736,34 +4529,14 @@
               "heading": "Förråd 20",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
+                "Mått: 2,06 × 2,06 m (4,12 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "2,06 × 2,06 m (4,12 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -4941,34 +4714,14 @@
               "heading": "Förråd 21",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
+                "Mått: 2,06 × 2,06 m (4,12 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "2,06 × 2,06 m (4,12 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -5146,34 +4899,14 @@
               "heading": "Förråd 25",
               "subheading": "Grundmålat förråd med dubbeldörr.",
               "paragraphs": [
+                "Mått: 3,66 × 2,46 m (9 m²)",
+                "Pris: 36 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "3,66 × 2,46 m (9 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "36 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -5351,35 +5084,15 @@
               "heading": "Förråd 29",
               "subheading": "Ogrundat förråd.",
               "paragraphs": [
+                "Mått: 4,85 × 2,46 m (11,9 m²)",
+                "Pris: 39 000 kr inkl. moms",
                 "Kan även levereras grundmålat.",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "4,85 × 2,46 m (11,9 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "39 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -5557,34 +5270,14 @@
               "heading": "Förråd 15",
               "subheading": "Förråd målat med slamfärg, med port monterad på kortsidan. Porten är 1,43 m bred.",
               "paragraphs": [
+                "Mått: 4,85 × 2,46 m (12 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "4,85 × 2,46 m (12 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -5762,34 +5455,14 @@
               "heading": "Förråd 3",
               "subheading": "Grundmålat förråd med både dubbeldörr och enkeldörr.",
               "paragraphs": [
+                "Mått: 4,86 × 2,46 m (12 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "4,86 × 2,46 m (12 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -5907,34 +5580,14 @@
               "heading": "Boda 3",
               "subheading": "Boda med dubbeldörr och enkeldörr på framsidan.",
               "paragraphs": [
+                "Mått: 2,46 × 4,86 m (12 m²)",
+                "Pris: Pris på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "2,46 × 4,86 m (12 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "Pris på förfrågan"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -6112,34 +5765,14 @@
               "heading": "Förråd Adam",
               "subheading": "Förråd med en dubbeldörr och en enkeldörr.",
               "paragraphs": [
+                "Mått: 6,4 × 3,6 m (23 m²)",
+                "Pris: 65 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Förråd"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "6,4 × 3,6 m (23 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "65 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {
@@ -6347,34 +5980,14 @@
               "heading": "Friggebod 14",
               "subheading": "Grundmålad friggebod med isolerat tak och golv (ej väggar).",
               "paragraphs": [
+                "Mått: 4,30 × 3,30 m (14,2 m²)",
+                "Pris: 45 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
-              "factsTitle": "Fakta",
+              "factsTitle": "",
               "facts": {
-                "order": [
-                  "typ",
-                  "matt",
-                  "pris",
-                  "tillverkas"
-                ],
-                "items": {
-                  "typ": {
-                    "label": "Typ",
-                    "value": "Friggebod"
-                  },
-                  "matt": {
-                    "label": "Mått",
-                    "value": "4,30 × 3,30 m (14,2 m²)"
-                  },
-                  "pris": {
-                    "label": "Pris",
-                    "value": "45 000 kr inkl. moms"
-                  },
-                  "tillverkas": {
-                    "label": "Tillverkas",
-                    "value": "Haraholmen, Piteå"
-                  }
-                }
+                "order": [],
+                "items": {}
               }
             },
             "bilder": {

@@ -99,16 +99,19 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
           </article>
 
           <aside className="animate-rise space-y-6 [animation-delay:550ms] lg:pt-14">
-            <FaktaBox
-              title={texts.factsTitle}
-              rows={[
-                { label: texts.factLabels.service, value: service.name },
-                { label: texts.factLabels.performedBy, value: company.legalName },
-                { label: texts.factLabels.seat, value: seat(company) },
-                { label: texts.factLabels.area, value: company.serviceArea },
-                { label: texts.factLabels.org, value: company.orgNumber },
-              ]}
-            />
+            {/* The facts box is left out while its title is empty. */}
+            {texts.factsTitle && (
+              <FaktaBox
+                title={texts.factsTitle}
+                rows={[
+                  { label: texts.factLabels.service, value: service.name },
+                  { label: texts.factLabels.performedBy, value: company.legalName },
+                  { label: texts.factLabels.seat, value: seat(company) },
+                  { label: texts.factLabels.area, value: company.serviceArea },
+                  { label: texts.factLabels.org, value: company.orgNumber },
+                ]}
+              />
+            )}
 
             <div className="bg-card px-6 py-7 sm:px-8 sm:py-8">
               <p className="text-[22px] font-semibold leading-tight text-heading">{company.legalName}</p>
