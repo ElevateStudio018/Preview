@@ -1284,30 +1284,30 @@
               "eyebrow": "Direkt från fabrik",
               "heading": "Trästugor i alla format",
               "image": {
-                "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                "src": "https://images.pexels.com/photos/4969981/pexels-photo-4969981.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=480"
+                    "src": "https://images.pexels.com/photos/4969981/pexels-photo-4969981.jpeg?auto=compress&cs=tinysrgb&w=480"
                   },
                   {
                     "width": 800,
-                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "src": "https://images.pexels.com/photos/4969981/pexels-photo-4969981.jpeg?auto=compress&cs=tinysrgb&w=800"
                   },
                   {
                     "width": 1200,
-                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    "src": "https://images.pexels.com/photos/4969981/pexels-photo-4969981.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   },
                   {
                     "width": 1600,
-                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    "src": "https://images.pexels.com/photos/4969981/pexels-photo-4969981.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   },
                   {
                     "width": 2000,
-                    "src": "https://images.pexels.com/photos/749231/pexels-photo-749231.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                    "src": "https://images.pexels.com/photos/4969981/pexels-photo-4969981.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Gul trästuga i en snöig skog"
+                "alt": "Trähus med snö på taket"
               },
               "button": {
                 "label": "Begär offert",
