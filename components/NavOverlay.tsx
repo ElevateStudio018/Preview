@@ -15,7 +15,6 @@ import { usePrefersReducedMotion } from "@/hooks/useInView";
 const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 interface NavRow {
-  number: string;
   label: string;
   href: string;
 }
@@ -30,11 +29,6 @@ function RowLink({ row, onClose, entrance, isCurrent }: { row: NavRow; onClose: 
   return (
     <li className={`border-b border-nav-text/15 py-4 ${entrance.className}`} style={entrance.style}>
       <Link href={row.href} onClick={onClose} aria-current={isCurrent ? "page" : undefined} className="group flex items-baseline gap-4">
-        <span
-          className={`text-sm font-bold transition-colors duration-300 group-hover:text-nav-text ${isCurrent ? "text-nav-text" : "text-nav-text/50"}`}
-        >
-          {row.number}
-        </span>
         {/* The page you are on is underlined. */}
         <span
           className={`text-3xl font-semibold text-nav-text transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-nav-text/70 sm:text-4xl lg:text-5xl ${
@@ -50,7 +44,7 @@ function RowLink({ row, onClose, entrance, isCurrent }: { row: NavRow; onClose: 
 
 export function NavOverlay({ content, onClose }: { content: NavContent; onClose: () => void }) {
   const { services, labels } = content;
-  const rows = content.menu.map((row, index) => ({ ...row, number: String(index + 1).padStart(2, "0") }));
+  const rows = content.menu;
   const pathname = usePathname();
   const current = pathname.replace(/\/$/, "") || "/";
   const { open: openQuoteModal } = useQuoteModal();
@@ -159,7 +153,6 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
                     aria-controls="meny-produkter"
                     className="group flex w-full items-baseline gap-4 text-left"
                   >
-                    <span className={`text-sm font-bold ${current.startsWith("/tjanster/") ? "text-nav-text" : "text-nav-text/50"}`}>{row.number}</span>
                     <span className="text-3xl font-semibold text-nav-text transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-nav-text/70 sm:text-4xl lg:text-5xl">
                       {row.label}
                     </span>
@@ -174,7 +167,7 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
                     id="meny-produkter"
                     className={`grid transition-all duration-300 ease-out ${servicesOpen ? "visible grid-rows-[1fr] opacity-100" : "invisible grid-rows-[0fr] opacity-0"}`}
                   >
-                    <ul className="ml-[2.6rem] grid min-h-0 grid-cols-1 gap-x-10 overflow-hidden pt-2.5 sm:grid-cols-2 xl:grid-cols-4">
+                    <ul className="grid min-h-0 grid-cols-1 gap-x-10 overflow-hidden pt-2.5 sm:grid-cols-2 xl:grid-cols-4">
                       {services.map((service) => (
                         <li key={service.slug}>
                           <Link
