@@ -1284,30 +1284,31 @@
               "eyebrow": "Direkt från fabrik",
               "heading": "Trästugor i alla format",
               "image": {
-                "src": "/photos/cabinord/1175282716280807178391164380819731230781952n-2000.webp",
+                "src": "/photos/cabinord/starttop-1920.webp",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "/photos/cabinord/1175282716280807178391164380819731230781952n-480.webp"
+                    "src": "/photos/cabinord/starttop-480.webp"
                   },
                   {
                     "width": 800,
-                    "src": "/photos/cabinord/1175282716280807178391164380819731230781952n-800.webp"
+                    "src": "/photos/cabinord/starttop-800.webp"
                   },
                   {
                     "width": 1200,
-                    "src": "/photos/cabinord/1175282716280807178391164380819731230781952n-1200.webp"
+                    "src": "/photos/cabinord/starttop-1200.webp"
                   },
                   {
                     "width": 1600,
-                    "src": "/photos/cabinord/1175282716280807178391164380819731230781952n-1600.webp"
+                    "src": "/photos/cabinord/starttop-1600.webp"
                   },
                   {
-                    "width": 2000,
-                    "src": "/photos/cabinord/1175282716280807178391164380819731230781952n-2000.webp"
+                    "width": 1920,
+                    "src": "/photos/cabinord/starttop-1920.webp"
                   }
                 ],
-                "alt": "Förråd i rad på fabriksområdet på Haraholmen"
+                "alt": "Trästugor i rad i snön vid fabriken på Haraholmen",
+                "focus": "55% 60%"
               },
               "button": {
                 "label": "Begär offert",
@@ -1386,26 +1387,30 @@
                       "href": "#produkter"
                     },
                     "image": {
-                      "src": "/photos/cabinord/1172328767208413251589957105946770818517368n-1536.webp",
+                      "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=1600",
                       "variants": [
                         {
                           "width": 480,
-                          "src": "/photos/cabinord/1172328767208413251589957105946770818517368n-480.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=480"
                         },
                         {
                           "width": 800,
-                          "src": "/photos/cabinord/1172328767208413251589957105946770818517368n-800.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=800"
                         },
                         {
                           "width": 1200,
-                          "src": "/photos/cabinord/1172328767208413251589957105946770818517368n-1200.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         },
                         {
-                          "width": 1536,
-                          "src": "/photos/cabinord/1172328767208413251589957105946770818517368n-1536.webp"
+                          "width": 1600,
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                        },
+                        {
+                          "width": 2000,
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=2000"
                         }
                       ],
-                      "alt": "Väggpanel av trä"
+                      "alt": "Snickare som sitter på takstolar av trä under montering"
                     }
                   },
                   "byggsats": {
@@ -1819,30 +1824,30 @@
                 "items": {
                   "bild-1": {
                     "image": {
-                      "src": "/photos/cabinord/11731787313757563392907034844942304484393574n-2000.webp",
+                      "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=1600",
                       "variants": [
                         {
                           "width": 480,
-                          "src": "/photos/cabinord/11731787313757563392907034844942304484393574n-480.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=480"
                         },
                         {
                           "width": 800,
-                          "src": "/photos/cabinord/11731787313757563392907034844942304484393574n-800.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=800"
                         },
                         {
                           "width": 1200,
-                          "src": "/photos/cabinord/11731787313757563392907034844942304484393574n-1200.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         },
                         {
                           "width": 1600,
-                          "src": "/photos/cabinord/11731787313757563392907034844942304484393574n-1600.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=1600"
                         },
                         {
                           "width": 2000,
-                          "src": "/photos/cabinord/11731787313757563392907034844942304484393574n-2000.webp"
+                          "src": "https://images.pexels.com/photos/8829896/pexels-photo-8829896.jpeg?auto=compress&cs=tinysrgb&w=2000"
                         }
                       ],
-                      "alt": "Trähus under byggnation vid fabriken"
+                      "alt": "Snickare som sitter på takstolar av trä under montering"
                     }
                   },
                   "bild-2": {

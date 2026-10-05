@@ -51,22 +51,22 @@ const config: Config = {
         heading: ["var(--font-heading)"],
         button: ["var(--font-button)"],
       },
-      // Mobile sizes are width-matched against the reference screenshots (Figtree equivalents):
-      // 17px body with tight ~1.12 leading, 29px section headings, 17px uppercase links.
+      // A notch smaller than the Stenvaller originals (16px body and links, 29/40px section headings), with the content
+      // kept to 1140px, so the page sits further in from the edges.
       fontSize: {
         display: ["33px", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "800" }],
-        "display-lg": ["60px", { lineHeight: "1.06", letterSpacing: "-0.015em", fontWeight: "800" }],
+        "display-lg": ["52px", { lineHeight: "1.06", letterSpacing: "-0.015em", fontWeight: "800" }],
         h2: ["29px", { lineHeight: "1.14", letterSpacing: "-0.01em", fontWeight: "800" }],
-        "h2-lg": ["46px", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "800" }],
-        h3: ["22px", { lineHeight: "1.18", fontWeight: "600" }],
-        lead: ["19px", { lineHeight: "1.3" }],
-        copy: ["17px", { lineHeight: "1.12" }],
-        label: ["17px", { lineHeight: "1.18", letterSpacing: "0.03em", fontWeight: "700" }],
+        "h2-lg": ["40px", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "800" }],
+        h3: ["20px", { lineHeight: "1.18", fontWeight: "600" }],
+        lead: ["18px", { lineHeight: "1.3" }],
+        copy: ["16px", { lineHeight: "1.12" }],
+        label: ["16px", { lineHeight: "1.18", letterSpacing: "0.03em", fontWeight: "700" }],
         tag: ["13px", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "700" }],
-        stat: ["50px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "800" }],
+        stat: ["44px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "800" }],
       },
       maxWidth: {
-        content: "1280px",
+        content: "1140px",
         prose: "720px",
       },
       keyframes: {
