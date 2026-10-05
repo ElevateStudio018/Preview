@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useId, useState, type CSSProperties } from "react";
+import { FormEvent, useEffect, useId, useState, type CSSProperties } from "react";
 import { Icon } from "./Icon";
 import { buttonClasses, tapTarget } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
@@ -32,6 +32,8 @@ export interface QuoteFormContent {
   texts: SiteData["form"];
   workTypes: { id: string; label: string }[];
   phone: string;
+  /** Products the form can be opened for ("Pris på förfrågan"), with the tag that picks their kind of work. */
+  products: { slug: string; name: string; tag: string }[];
 }
 
 const fieldBaseClass =
@@ -53,7 +55,7 @@ const fieldIds: Record<keyof FormValues, string> = {
 };
 
 export function QuoteForm({ variant = "inline", content }: { variant?: "inline" | "modal"; content: QuoteFormContent }) {
-  const { texts, workTypes, phone } = content;
+  const { texts, workTypes, phone, products } = content;
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,7 +63,24 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
   // Left empty by people; bots that fill in every field give themselves away.
   const [website, setWebsite] = useState("");
   const idPrefix = useId();
-  const { showConfirmation, close } = useQuoteModal();
+  const { showConfirmation, close, prefill } = useQuoteModal();
+
+  // Opened for a product, the window comes with that product chosen and a ready-made description, so only the name and
+  // phone or e-mail are left to fill in. Whatever was already typed in those is kept.
+  useEffect(() => {
+    if (variant !== "modal" || !prefill) return;
+    const { slug, name } = prefill.value;
+    const product = products.find((item) => (slug ? item.slug === slug : item.name === name));
+    const productName = product?.name ?? name ?? "";
+    if (!productName) return;
+    const kind = product?.tag ? workTypes.find((type) => type.label.toLowerCase().startsWith(product.tag.toLowerCase())) : undefined;
+    const description = texts.inquiryTemplate ? fill(texts.inquiryTemplate, { produkt: productName }) : productName;
+    setValues((current) => ({ ...current, typAvArbete: kind?.id ?? current.typAvArbete, beskrivning: description }));
+    setErrors({});
+    // Straight to the name field, after the window has put focus on itself as it opens.
+    const timer = setTimeout(() => document.getElementById(`${idPrefix}-${fieldIds.namn}`)?.focus(), 250);
+    return () => clearTimeout(timer);
+  }, [prefill, variant, products, workTypes, texts.inquiryTemplate, idPrefix]);
 
   // In the quote window the fields rise into place one after another as it opens, like the rows of the menu.
   function entrance(order: number): { className?: string; style?: CSSProperties } {

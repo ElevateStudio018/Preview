@@ -275,7 +275,8 @@
     "closeHint": "Du kan stänga rutan när som helst genom att klicka utanför eller på",
     "closeHintButton": "X",
     "confirmation": "Tack! Vi återkommer strax",
-    "emailSubject": "Offertförfrågan från {namn}"
+    "emailSubject": "Offertförfrågan från {namn}",
+    "inquiryTemplate": "Hej! Jag är intresserad av {produkt}. Kan ni återkomma med pris och leveranstid?"
   },
   "ui": {
     "skipLink": "Hoppa till innehållet",
@@ -402,7 +403,7 @@
         "shortDescription": "Friggebodar som ryms inom reglerna för bygglovsfria byggnader, byggda för att hålla länge.",
         "description": [
           "En friggebod ger extra utrymme på tomten, som gäststuga, verkstad, hobbyrum eller förråd. Cabinord tillverkar friggebodar i trä i fabriken utanför Piteå.",
-          "Friggebod 14 mäter 4,30 × 3,30 meter (14,2 m²) och har isolerat tak och golv. Den kostar 45 000 kr inklusive moms.",
+          "Friggebod 14 mäter 4,30 × 3,30 meter (14,2 m²) och har isolerat tak och golv. Den kostar 45 000 kr inklusive moms.",
           "Kontrollera alltid med din kommun vad som gäller för just din tomt innan du bygger.",
           "Hör av dig och berätta vad du har tänkt dig, så återkommer vi med pris och leveranstid."
         ],
@@ -441,10 +442,10 @@
       "bastu": {
         "slug": "bastu",
         "name": "Bastur",
-        "shortDescription": "Fristående bastur i fem storlekar, från 4,8 till 15,36 m².",
+        "shortDescription": "Fristående bastur i fem storlekar, från 4,8 till 15,36 m².",
         "description": [
           "En egen bastu på tomten eller vid stugan är svår att slå. Cabinord bygger fristående bastur i trä, med väl tilltagen isolering för bästa kvalitet och hållbarhet.",
-          "Sortimentet omfattar fem modeller: Bastu 6 (4,8 m²), Bastu 7 (7,9 m²), Bastu 30 (9,14 m²), Bastu 35 (12,33 m²) och Bastu Sven (15,36 m² plus altan). De större rymmer ungefär fyra till sex personer i bastun.",
+          "Sortimentet omfattar fem modeller: Bastu 6 (4,8 m²), Bastu 7 (7,9 m²), Bastu 30 (9,14 m²), Bastu 35 (12,33 m²) och Bastu Sven (15,36 m² plus altan). De större rymmer ungefär fyra till sex personer i bastun.",
           "Priserna går från 40 000 kr till 100 000 kr inklusive moms, och varje bastu kan anpassas efter dina önskemål.",
           "Hör av dig och berätta vad du har tänkt dig, så återkommer vi med pris och leveranstid."
         ],
@@ -477,16 +478,16 @@
         },
         "seo": {
           "title": "Bastu i trä – fristående bastur från Cabinord",
-          "description": "Fristående bastur i fem storlekar, från 4,8 till 15,36 m²."
+          "description": "Fristående bastur i fem storlekar, från 4,8 till 15,36 m²."
         }
       },
       "attefallshus": {
         "slug": "attefallshus",
         "name": "Attefallshus",
-        "shortDescription": "Attefallshus på 30 m², kompletta med kök, vitvaror och golvvärme.",
+        "shortDescription": "Attefallshus på 30 m², kompletta med kök, vitvaror och golvvärme.",
         "description": [
           "Ett attefallshus ger plats för gäster, uthyrning eller ett eget boende på tomten. Cabinord bygger attefallshus på upp till 30 kvadratmeter.",
-          "Attefallshus Thomas är 30 m² och levereras grundmålat, komplett med kök och vitvaror inklusive diskmaskin. Det har förberett avlopp i toaletten, golvvärme i sovrum och kök/vardagsrum, och all belysning styrs med Plejd.",
+          "Attefallshus Thomas är 30 m² och levereras grundmålat, komplett med kök och vitvaror inklusive diskmaskin. Det har förberett avlopp i toaletten, golvvärme i sovrum och kök/vardagsrum, och all belysning styrs med Plejd.",
           "Ett attefallshus kräver en anmälan till kommunen och startbesked innan du bygger.",
           "Hör av dig och berätta vad du har tänkt dig, så återkommer vi med pris och leveranstid."
         ],
@@ -518,8 +519,8 @@
           "alt": "Attefallshus Thomas"
         },
         "seo": {
-          "title": "Attefallshus 30 m² komplett med kök – Cabinord",
-          "description": "Attefallshus på 30 m², kompletta med kök, vitvaror och golvvärme."
+          "title": "Attefallshus 30 m² komplett med kök – Cabinord",
+          "description": "Attefallshus på 30 m², kompletta med kök, vitvaror och golvvärme."
         }
       },
       "garage-carport": {
@@ -1464,7 +1465,7 @@
                   "bastu": {
                     "side": "left",
                     "heading": "Egen bastu på tomten",
-                    "text": "Fem bastumodeller från 4,8 till 15,36 m², de flesta för fyra till sex personer. Från 40 000 kr inklusive moms.",
+                    "text": "Fem bastumodeller från 4,8 till 15,36 m², de flesta för fyra till sex personer. Från 40 000 kr inklusive moms.",
                     "link": {
                       "label": "Se bastur",
                       "href": "/tjanster/bastu"
@@ -1499,7 +1500,7 @@
                   "attefall": {
                     "side": "right",
                     "heading": "Attefallshus Thomas",
-                    "text": "30 m² komplett med kök, vitvaror, golvvärme och Plejd-styrd belysning. Grundmålat och klart att flytta in i.",
+                    "text": "30 m² komplett med kök, vitvaror, golvvärme och Plejd-styrd belysning. Grundmålat och klart att flytta in i.",
                     "link": {
                       "label": "Läs mer",
                       "href": "/attefallshus-thomas"
@@ -1932,92 +1933,92 @@
                 "items": {
                   "attefallshus-thomas": {
                     "name": "Attefallshus Thomas",
-                    "description": "30 m²",
+                    "description": "30 m²",
                     "price": "500 000 kr"
                   },
                   "bastu-6": {
                     "name": "Bastu 6",
-                    "description": "2,34 × 2,04 m (4,8 m²)",
+                    "description": "2,34 × 2,04 m (4,8 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "bastu-7": {
                     "name": "Bastu 7",
-                    "description": "2,44 × 3,23 m (7,9 m²)",
+                    "description": "2,44 × 3,23 m (7,9 m²)",
                     "price": "40 000 kr"
                   },
                   "bastu-30": {
                     "name": "Bastu 30",
-                    "description": "3,70 × 2,47 m (9,14 m²)",
+                    "description": "3,70 × 2,47 m (9,14 m²)",
                     "price": "60 000 kr"
                   },
                   "bastu-35": {
                     "name": "Bastu 35",
-                    "description": "4,95 × 2,49 m (12,33 m²)",
+                    "description": "4,95 × 2,49 m (12,33 m²)",
                     "price": "80 000 kr"
                   },
                   "bastu-sven": {
                     "name": "Bastu Sven",
-                    "description": "15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m²",
+                    "description": "15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m²",
                     "price": "100 000 kr"
                   },
                   "forrad-16": {
                     "name": "Förråd 16",
-                    "description": "1,85 × 2,04 m (3,8 m²)",
+                    "description": "1,85 × 2,04 m (3,8 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "forrad-19": {
                     "name": "Förråd 19",
-                    "description": "1,85 × 2,03 m (3,76 m²)",
+                    "description": "1,85 × 2,03 m (3,76 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "forrad-18": {
                     "name": "Förråd 18",
-                    "description": "2,06 × 2,06 m (4,12 m²)",
+                    "description": "2,06 × 2,06 m (4,12 m²)",
                     "price": "20 000 kr"
                   },
                   "forrad-20": {
                     "name": "Förråd 20",
-                    "description": "2,06 × 2,06 m (4,12 m²)",
+                    "description": "2,06 × 2,06 m (4,12 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "forrad-21": {
                     "name": "Förråd 21",
-                    "description": "2,06 × 2,06 m (4,12 m²)",
+                    "description": "2,06 × 2,06 m (4,12 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "forrad-25": {
                     "name": "Förråd 25",
-                    "description": "3,66 × 2,46 m (9 m²)",
+                    "description": "3,66 × 2,46 m (9 m²)",
                     "price": "36 000 kr"
                   },
                   "forrad-29": {
                     "name": "Förråd 29",
-                    "description": "4,85 × 2,46 m (11,9 m²)",
+                    "description": "4,85 × 2,46 m (11,9 m²)",
                     "price": "39 000 kr"
                   },
                   "forrad-15": {
                     "name": "Förråd 15",
-                    "description": "4,85 × 2,46 m (12 m²)",
+                    "description": "4,85 × 2,46 m (12 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "forrad-3": {
                     "name": "Förråd 3",
-                    "description": "4,86 × 2,46 m (12 m²)",
+                    "description": "4,86 × 2,46 m (12 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "boda-3": {
                     "name": "Boda 3",
-                    "description": "2,46 × 4,86 m (12 m²)",
+                    "description": "2,46 × 4,86 m (12 m²)",
                     "price": "Pris på förfrågan"
                   },
                   "forrad-adam": {
                     "name": "Förråd Adam",
-                    "description": "6,4 × 3,6 m (23 m²)",
+                    "description": "6,4 × 3,6 m (23 m²)",
                     "price": "65 000 kr"
                   },
                   "friggebod-14": {
                     "name": "Friggebod 14",
-                    "description": "4,30 × 3,30 m (14,2 m²)",
+                    "description": "4,30 × 3,30 m (14,2 m²)",
                     "price": "45 000 kr"
                   }
                 }
@@ -2659,7 +2660,7 @@
         "title": "Attefallshus Thomas",
         "seo": {
           "title": "Attefallshus Thomas – attefallshus från Cabinord i Piteå",
-          "description": "Attefallshus Thomas: Grundmålat attefallshus på 30 m², komplett med kök och vitvaror inklusive diskmaskin. Mått 30 m². Pris 500 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Attefallshus Thomas: Grundmålat attefallshus på 30 m², komplett med kök och vitvaror inklusive diskmaskin. Mått 30 m². Pris 500 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -2708,9 +2709,9 @@
               "anchor": "",
               "label": "",
               "heading": "Attefallshus Thomas",
-              "subheading": "Grundmålat attefallshus på 30 m², komplett med kök och vitvaror inklusive diskmaskin.",
+              "subheading": "Grundmålat attefallshus på 30 m², komplett med kök och vitvaror inklusive diskmaskin.",
               "paragraphs": [
-                "Mått: 30 m²",
+                "Mått: 30 m²",
                 "Pris: 500 000 kr inkl. moms",
                 "Förberett avlopp i toaletten och förberett för golvvärme och mattläggning. Golvvärme i sovrum och kök/allrum. All belysning styrs med Plejd.",
                 "Ta kontakt för mer information.",
@@ -2862,10 +2863,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Attefallshus Thomas?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-attefallshus-thomas"
               }
             }
           }
@@ -2876,7 +2877,7 @@
         "title": "Bastu 6",
         "seo": {
           "title": "Bastu 6 – bastu från Cabinord i Piteå",
-          "description": "Bastu 6: Grundmålad bastu. Mått 2,34 × 2,04 m (4,8 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Bastu 6: Grundmålad bastu. Mått 2,34 × 2,04 m (4,8 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -2927,8 +2928,8 @@
               "heading": "Bastu 6",
               "subheading": "Grundmålad bastu.",
               "paragraphs": [
-                "Mått: 2,34 × 2,04 m (4,8 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 2,34 × 2,04 m (4,8 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -3046,11 +3047,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Bastu 6?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Bastu 6?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-bastu-6"
               }
             }
           }
@@ -3061,7 +3062,7 @@
         "title": "Bastu 7",
         "seo": {
           "title": "Bastu 7 – bastu från Cabinord i Piteå",
-          "description": "Bastu 7: Grundmålad bastu med relax. Mått 2,44 × 3,23 m (7,9 m²). Pris 40 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Bastu 7: Grundmålad bastu med relax. Mått 2,44 × 3,23 m (7,9 m²). Pris 40 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -3112,7 +3113,7 @@
               "heading": "Bastu 7",
               "subheading": "Grundmålad bastu med relax.",
               "paragraphs": [
-                "Mått: 2,44 × 3,23 m (7,9 m²)",
+                "Mått: 2,44 × 3,23 m (7,9 m²)",
                 "Pris: 40 000 kr inkl. moms",
                 "Ytterdörr och bastudörr ingår, monterade vid försäljning.",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
@@ -3233,10 +3234,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Bastu 7?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-bastu-7"
               }
             }
           }
@@ -3247,7 +3248,7 @@
         "title": "Bastu 30",
         "seo": {
           "title": "Bastu 30 – bastu från Cabinord i Piteå",
-          "description": "Bastu 30: Bastu med omklädningsrum/relax. Plats för ca 4–6 personer i bastun. Mått 3,70 × 2,47 m (9,14 m²). Pris 60 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Bastu 30: Bastu med omklädningsrum/relax. Plats för ca 4–6 personer i bastun. Mått 3,70 × 2,47 m (9,14 m²). Pris 60 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -3298,7 +3299,7 @@
               "heading": "Bastu 30",
               "subheading": "Bastu med omklädningsrum/relax. Plats för ca 4–6 personer i bastun.",
               "paragraphs": [
-                "Mått: 3,70 × 2,47 m (9,14 m²)",
+                "Mått: 3,70 × 2,47 m (9,14 m²)",
                 "Pris: 60 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
@@ -3418,10 +3419,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Bastu 30?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-bastu-30"
               }
             }
           }
@@ -3432,7 +3433,7 @@
         "title": "Bastu 35",
         "seo": {
           "title": "Bastu 35 – bastu från Cabinord i Piteå",
-          "description": "Bastu 35: Grundmålad bastu med omklädningsrum/relax. Bastun rymmer ca 4–6 personer. Mått 4,95 × 2,49 m (12,33 m²). Pris 80 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Bastu 35: Grundmålad bastu med omklädningsrum/relax. Bastun rymmer ca 4–6 personer. Mått 4,95 × 2,49 m (12,33 m²). Pris 80 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -3483,7 +3484,7 @@
               "heading": "Bastu 35",
               "subheading": "Grundmålad bastu med omklädningsrum/relax. Bastun rymmer ca 4–6 personer.",
               "paragraphs": [
-                "Mått: 4,95 × 2,49 m (12,33 m²)",
+                "Mått: 4,95 × 2,49 m (12,33 m²)",
                 "Pris: 80 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
@@ -3693,10 +3694,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Bastu 35?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-bastu-35"
               }
             }
           }
@@ -3707,7 +3708,7 @@
         "title": "Bastu Sven",
         "seo": {
           "title": "Bastu Sven – bastu från Cabinord i Piteå",
-          "description": "Bastu Sven: Bastu med altan och större omklädningsrum/relax. Plats för ca 4–6 personer i bastun. Mått 15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m². Pris 100 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Bastu Sven: Bastu med altan och större omklädningsrum/relax. Plats för ca 4–6 personer i bastun. Mått 15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m². Pris 100 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -3758,7 +3759,7 @@
               "heading": "Bastu Sven",
               "subheading": "Bastu med altan och större omklädningsrum/relax. Plats för ca 4–6 personer i bastun.",
               "paragraphs": [
-                "Mått: 15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m²",
+                "Mått: 15,36 m² exkl. altan (yttermått med altan 4,93 × 3,59 m), altan 2,33 m²",
                 "Pris: 100 000 kr inkl. moms",
                 "Säljs med ytterdörr.",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
@@ -3909,10 +3910,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Bastu Sven?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-bastu-sven"
               }
             }
           }
@@ -3923,7 +3924,7 @@
         "title": "Förråd 16",
         "seo": {
           "title": "Förråd 16 – förråd från Cabinord i Piteå",
-          "description": "Förråd 16: Grundmålat förråd med liggande panel och enkeldörr. Mått 1,85 × 2,04 m (3,8 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 16: Grundmålat förråd med liggande panel och enkeldörr. Mått 1,85 × 2,04 m (3,8 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -3974,8 +3975,8 @@
               "heading": "Förråd 16",
               "subheading": "Grundmålat förråd med liggande panel och enkeldörr.",
               "paragraphs": [
-                "Mått: 1,85 × 2,04 m (3,8 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 1,85 × 2,04 m (3,8 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -4093,11 +4094,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Förråd 16?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Förråd 16?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-forrad-16"
               }
             }
           }
@@ -4108,7 +4109,7 @@
         "title": "Förråd 19",
         "seo": {
           "title": "Förråd 19 – förråd från Cabinord i Piteå",
-          "description": "Förråd 19: Grundmålat förråd. Mått 1,85 × 2,03 m (3,76 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 19: Grundmålat förråd. Mått 1,85 × 2,03 m (3,76 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -4159,8 +4160,8 @@
               "heading": "Förråd 19",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
-                "Mått: 1,85 × 2,03 m (3,76 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 1,85 × 2,03 m (3,76 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -4278,11 +4279,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Förråd 19?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Förråd 19?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-forrad-19"
               }
             }
           }
@@ -4293,7 +4294,7 @@
         "title": "Förråd 18",
         "seo": {
           "title": "Förråd 18 – förråd från Cabinord i Piteå",
-          "description": "Förråd 18: Grundmålat förråd. Mått 2,06 × 2,06 m (4,12 m²). Pris 20 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 18: Grundmålat förråd. Mått 2,06 × 2,06 m (4,12 m²). Pris 20 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -4344,7 +4345,7 @@
               "heading": "Förråd 18",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
-                "Mått: 2,06 × 2,06 m (4,12 m²)",
+                "Mått: 2,06 × 2,06 m (4,12 m²)",
                 "Pris: 20 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
@@ -4464,10 +4465,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Förråd 18?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-forrad-18"
               }
             }
           }
@@ -4478,7 +4479,7 @@
         "title": "Förråd 20",
         "seo": {
           "title": "Förråd 20 – förråd från Cabinord i Piteå",
-          "description": "Förråd 20: Grundmålat förråd. Mått 2,06 × 2,06 m (4,12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 20: Grundmålat förråd. Mått 2,06 × 2,06 m (4,12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -4529,8 +4530,8 @@
               "heading": "Förråd 20",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
-                "Mått: 2,06 × 2,06 m (4,12 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 2,06 × 2,06 m (4,12 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -4648,11 +4649,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Förråd 20?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Förråd 20?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-forrad-20"
               }
             }
           }
@@ -4663,7 +4664,7 @@
         "title": "Förråd 21",
         "seo": {
           "title": "Förråd 21 – förråd från Cabinord i Piteå",
-          "description": "Förråd 21: Grundmålat förråd. Mått 2,06 × 2,06 m (4,12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 21: Grundmålat förråd. Mått 2,06 × 2,06 m (4,12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -4714,8 +4715,8 @@
               "heading": "Förråd 21",
               "subheading": "Grundmålat förråd.",
               "paragraphs": [
-                "Mått: 2,06 × 2,06 m (4,12 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 2,06 × 2,06 m (4,12 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -4833,11 +4834,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Förråd 21?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Förråd 21?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-forrad-21"
               }
             }
           }
@@ -4848,7 +4849,7 @@
         "title": "Förråd 25",
         "seo": {
           "title": "Förråd 25 – förråd från Cabinord i Piteå",
-          "description": "Förråd 25: Grundmålat förråd med dubbeldörr. Mått 3,66 × 2,46 m (9 m²). Pris 36 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 25: Grundmålat förråd med dubbeldörr. Mått 3,66 × 2,46 m (9 m²). Pris 36 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -4899,7 +4900,7 @@
               "heading": "Förråd 25",
               "subheading": "Grundmålat förråd med dubbeldörr.",
               "paragraphs": [
-                "Mått: 3,66 × 2,46 m (9 m²)",
+                "Mått: 3,66 × 2,46 m (9 m²)",
                 "Pris: 36 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
@@ -5019,10 +5020,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Förråd 25?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-forrad-25"
               }
             }
           }
@@ -5033,7 +5034,7 @@
         "title": "Förråd 29",
         "seo": {
           "title": "Förråd 29 – förråd från Cabinord i Piteå",
-          "description": "Förråd 29: Ogrundat förråd. Mått 4,85 × 2,46 m (11,9 m²). Pris 39 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 29: Ogrundat förråd. Mått 4,85 × 2,46 m (11,9 m²). Pris 39 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -5084,7 +5085,7 @@
               "heading": "Förråd 29",
               "subheading": "Ogrundat förråd.",
               "paragraphs": [
-                "Mått: 4,85 × 2,46 m (11,9 m²)",
+                "Mått: 4,85 × 2,46 m (11,9 m²)",
                 "Pris: 39 000 kr inkl. moms",
                 "Kan även levereras grundmålat.",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
@@ -5205,10 +5206,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Förråd 29?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-forrad-29"
               }
             }
           }
@@ -5219,7 +5220,7 @@
         "title": "Förråd 15",
         "seo": {
           "title": "Förråd 15 – förråd från Cabinord i Piteå",
-          "description": "Förråd 15: Förråd målat med slamfärg, med port monterad på kortsidan. Porten är 1,43 m bred. Mått 4,85 × 2,46 m (12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 15: Förråd målat med slamfärg, med port monterad på kortsidan. Porten är 1,43 m bred. Mått 4,85 × 2,46 m (12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -5268,10 +5269,10 @@
               "anchor": "",
               "label": "",
               "heading": "Förråd 15",
-              "subheading": "Förråd målat med slamfärg, med port monterad på kortsidan. Porten är 1,43 m bred.",
+              "subheading": "Förråd målat med slamfärg, med port monterad på kortsidan. Porten är 1,43 m bred.",
               "paragraphs": [
-                "Mått: 4,85 × 2,46 m (12 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 4,85 × 2,46 m (12 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -5389,11 +5390,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Förråd 15?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Förråd 15?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-forrad-15"
               }
             }
           }
@@ -5404,7 +5405,7 @@
         "title": "Förråd 3",
         "seo": {
           "title": "Förråd 3 – förråd från Cabinord i Piteå",
-          "description": "Förråd 3: Grundmålat förråd med både dubbeldörr och enkeldörr. Mått 4,86 × 2,46 m (12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd 3: Grundmålat förråd med både dubbeldörr och enkeldörr. Mått 4,86 × 2,46 m (12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -5455,8 +5456,8 @@
               "heading": "Förråd 3",
               "subheading": "Grundmålat förråd med både dubbeldörr och enkeldörr.",
               "paragraphs": [
-                "Mått: 4,86 × 2,46 m (12 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 4,86 × 2,46 m (12 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -5514,11 +5515,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Förråd 3?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Förråd 3?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-forrad-3"
               }
             }
           }
@@ -5529,7 +5530,7 @@
         "title": "Boda 3",
         "seo": {
           "title": "Boda 3 – förråd från Cabinord i Piteå",
-          "description": "Boda 3: Boda med dubbeldörr och enkeldörr på framsidan. Mått 2,46 × 4,86 m (12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Boda 3: Boda med dubbeldörr och enkeldörr på framsidan. Mått 2,46 × 4,86 m (12 m²). Pris på förfrågan. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -5580,8 +5581,8 @@
               "heading": "Boda 3",
               "subheading": "Boda med dubbeldörr och enkeldörr på framsidan.",
               "paragraphs": [
-                "Mått: 2,46 × 4,86 m (12 m²)",
-                "Pris: Pris på förfrågan",
+                "Mått: 2,46 × 4,86 m (12 m²)",
+                "Pris: på förfrågan",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
               "factsTitle": "",
@@ -5699,11 +5700,11 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Intresserad av Boda 3?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "heading": "Vill du ha ett pris på Boda 3?",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
-                "label": "Intresseanmälan",
-                "href": "#offert"
+                "label": "Begär pris",
+                "href": "#offert-boda-3"
               }
             }
           }
@@ -5714,7 +5715,7 @@
         "title": "Förråd Adam",
         "seo": {
           "title": "Förråd Adam – förråd från Cabinord i Piteå",
-          "description": "Förråd Adam: Förråd med en dubbeldörr och en enkeldörr. Mått 6,4 × 3,6 m (23 m²). Pris 65 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Förråd Adam: Förråd med en dubbeldörr och en enkeldörr. Mått 6,4 × 3,6 m (23 m²). Pris 65 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -5765,7 +5766,7 @@
               "heading": "Förråd Adam",
               "subheading": "Förråd med en dubbeldörr och en enkeldörr.",
               "paragraphs": [
-                "Mått: 6,4 × 3,6 m (23 m²)",
+                "Mått: 6,4 × 3,6 m (23 m²)",
                 "Pris: 65 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
@@ -5915,10 +5916,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Förråd Adam?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-forrad-adam"
               }
             }
           }
@@ -5929,7 +5930,7 @@
         "title": "Friggebod 14",
         "seo": {
           "title": "Friggebod 14 – friggebod från Cabinord i Piteå",
-          "description": "Friggebod 14: Grundmålad friggebod med isolerat tak och golv (ej väggar). Mått 4,30 × 3,30 m (14,2 m²). Pris 45 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
+          "description": "Friggebod 14: Grundmålad friggebod med isolerat tak och golv (ej väggar). Mått 4,30 × 3,30 m (14,2 m²). Pris 45 000 kr inkl. moms. Direkt från fabrik på Haraholmen, Piteå."
         },
         "sections": {
           "order": [
@@ -5980,7 +5981,7 @@
               "heading": "Friggebod 14",
               "subheading": "Grundmålad friggebod med isolerat tak och golv (ej väggar).",
               "paragraphs": [
-                "Mått: 4,30 × 3,30 m (14,2 m²)",
+                "Mått: 4,30 × 3,30 m (14,2 m²)",
                 "Pris: 45 000 kr inkl. moms",
                 "Alla byggnader går att få grundmålade mot en extra kostnad, och vi bygger gärna efter dina önskemål. Skicka en intresseanmälan, så hör vi av oss."
               ],
@@ -6130,10 +6131,10 @@
               "anchor": "",
               "label": "",
               "heading": "Intresserad av Friggebod 14?",
-              "text": "Skicka en intresseanmälan, så återkommer vi med pris och leveranstid.",
+              "text": "Tryck på knappen – produkten och en färdig text är redan ifyllda, så du behöver bara skriva in dina uppgifter.",
               "button": {
                 "label": "Intresseanmälan",
-                "href": "#offert"
+                "href": "#offert-friggebod-14"
               }
             }
           }

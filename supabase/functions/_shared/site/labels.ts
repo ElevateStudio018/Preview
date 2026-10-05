@@ -569,6 +569,7 @@ export const rootFields: Record<"navigation" | "footer" | "form" | "servicePage"
     text("closeHint", "Tips om att stänga rutan", 120, "Följs av stängknappens text."),
     text("closeHintButton", "Stängknappens text i tipset", 10),
     text("emailSubject", "Ämnesrad i mejlet till er", 60, "{namn} byts mot avsändarens namn."),
+    text("inquiryTemplate", "Färdig text när formuläret öppnas för en produkt", 160, "{produkt} byts mot produktens namn."),
   ],
   servicePage: [
     text("badge", "Etikett över tjänstens namn", 20),

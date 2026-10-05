@@ -459,6 +459,8 @@ export const formSchema = z.object({
   confirmation: lineText,
   /** The subject of the e-mail the company gets; {namn} is replaced by the sender's name. */
   emailSubject: lineText,
+  /** The description filled in when the form is opened for a product ("Pris på förfrågan"); {produkt} is its name. */
+  inquiryTemplate: longText.optional(),
 });
 
 export const servicePageSchema = z.object({
