@@ -62,6 +62,8 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
   const [hasEntered, setHasEntered] = useState(false);
   // On short screens the list runs on below the bottom bar; while it does, its lower edge fades out.
   const [moreBelow, setMoreBelow] = useState(false);
+  // The products' list is folded up, except on a product page, where it opens showing the page you are on.
+  const [servicesOpen, setServicesOpen] = useState(() => current.startsWith("/tjanster/"));
 
   useEffect(() => {
     let secondFrame = 0;
@@ -111,9 +113,12 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
     updateMoreBelow();
     list.addEventListener("scroll", updateMoreBelow, { passive: true });
     window.addEventListener("resize", updateMoreBelow);
+    // Folding the products in or out changes how long the list is; check again once that has run.
+    list.addEventListener("transitionend", updateMoreBelow);
     return () => {
       list.removeEventListener("scroll", updateMoreBelow);
       window.removeEventListener("resize", updateMoreBelow);
+      list.removeEventListener("transitionend", updateMoreBelow);
     };
   }, []);
 
@@ -146,26 +151,46 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
             {rows.map((row, index) =>
               row.kind === "services" ? (
                 <li key={row.id} className={`border-b border-nav-text/15 py-4 ${entrance(index).className}`} style={entrance(index).style}>
-                  <div className="flex items-baseline gap-4">
+                  {/* The products fold out under their row, so the menu stays short until they are wanted. */}
+                  <button
+                    type="button"
+                    onClick={() => setServicesOpen((open) => !open)}
+                    aria-expanded={servicesOpen}
+                    aria-controls="meny-produkter"
+                    className="group flex w-full items-baseline gap-4 text-left"
+                  >
                     <span className={`text-sm font-bold ${current.startsWith("/tjanster/") ? "text-nav-text" : "text-nav-text/50"}`}>{row.number}</span>
-                    <span className="text-3xl font-semibold text-nav-text sm:text-4xl lg:text-5xl">{row.label}</span>
+                    <span className="text-3xl font-semibold text-nav-text transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-nav-text/70 sm:text-4xl lg:text-5xl">
+                      {row.label}
+                    </span>
+                    <Icon
+                      name="ChevronDown"
+                      aria-hidden="true"
+                      className={`ml-auto h-7 w-7 shrink-0 self-center text-nav-text transition-transform duration-300 sm:h-8 sm:w-8 ${servicesOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {/* Folded up, the list is also invisible, which keeps its links out of the tab order. */}
+                  <div
+                    id="meny-produkter"
+                    className={`grid transition-all duration-300 ease-out ${servicesOpen ? "visible grid-rows-[1fr] opacity-100" : "invisible grid-rows-[0fr] opacity-0"}`}
+                  >
+                    <ul className="ml-[2.6rem] grid min-h-0 grid-cols-1 gap-x-10 overflow-hidden pt-2.5 sm:grid-cols-2 xl:grid-cols-4">
+                      {services.map((service) => (
+                        <li key={service.slug}>
+                          <Link
+                            href={`/tjanster/${service.slug}`}
+                            onClick={onClose}
+                            aria-current={current === `/tjanster/${service.slug}` ? "page" : undefined}
+                            className={`block py-3 text-[17px] transition duration-300 ease-out hover:translate-x-1.5 hover:text-nav-text ${
+                              current === `/tjanster/${service.slug}` ? "text-nav-text underline underline-offset-[6px]" : "text-nav-text/75"
+                            }`}
+                          >
+                            {service.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="ml-[2.6rem] mt-2.5 grid grid-cols-1 gap-x-10 sm:grid-cols-2 xl:grid-cols-4">
-                    {services.map((service) => (
-                      <li key={service.slug}>
-                        <Link
-                          href={`/tjanster/${service.slug}`}
-                          onClick={onClose}
-                          aria-current={current === `/tjanster/${service.slug}` ? "page" : undefined}
-                          className={`block py-3 text-[17px] transition duration-300 ease-out hover:translate-x-1.5 hover:text-nav-text ${
-                            current === `/tjanster/${service.slug}` ? "text-nav-text underline underline-offset-[6px]" : "text-nav-text/75"
-                          }`}
-                        >
-                          {service.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
                 </li>
               ) : (
                 <RowLink key={row.id} row={row} onClose={onClose} entrance={entrance(index)} isCurrent={current === row.href} />
