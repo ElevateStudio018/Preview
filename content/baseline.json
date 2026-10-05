@@ -1324,7 +1324,7 @@
                 "label": "Se priser",
                 "href": "/produkter#prislista"
               },
-              "cardLinkPrefix": "Läs mer om"
+              "cardLinkPrefix": "Läs mer"
             },
             "aret-runt": {
               "type": "uppdragCarousel",

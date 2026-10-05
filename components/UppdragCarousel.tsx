@@ -62,9 +62,11 @@ export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: str
     trackRef.current?.scrollTo({ left: page * stepWidth(), behavior: reducedMotion ? "auto" : "smooth" });
   }
 
-  // The arrows fade out at either end instead of disappearing, and their chevron nudges the way it points on hover.
+  // Round yellow arrows that sit half over the edge of the cards (inside them on phones), with a ring of the page colour around them so they
+  // stand free of the photos. On hover they turn black and the arrow nudges the way it points; at either end they
+  // fade out instead of disappearing.
   const arrowClass =
-    "group/nav absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-accent text-on-accent transition duration-200 hover:bg-secondary hover:text-on-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink disabled:pointer-events-none disabled:opacity-0";
+    "group/nav absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-on-accent shadow-lg ring-4 ring-page transition duration-200 hover:bg-secondary hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-ink disabled:pointer-events-none disabled:opacity-0 sm:h-14 sm:w-14";
 
   return (
     <div>
@@ -105,13 +107,9 @@ export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: str
           disabled={!canPrev}
           aria-hidden={!canPrev}
           aria-label={labels.previous}
-          className={`${arrowClass} left-0`}
+          className={`${arrowClass} left-3 sm:left-0 sm:-translate-x-1/2`}
         >
-          <Icon
-            name="ChevronLeft"
-            strokeWidth={1.5}
-            className="h-8 w-8 transition-transform duration-200 group-hover/nav:-translate-x-1"
-          />
+          <Icon name="ArrowLeft" strokeWidth={2.25} className="h-5 w-5 transition-transform duration-200 group-hover/nav:-translate-x-1 sm:h-6 sm:w-6" />
         </button>
         <button
           type="button"
@@ -119,17 +117,28 @@ export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: str
           disabled={!canNext}
           aria-hidden={!canNext}
           aria-label={labels.next}
-          className={`${arrowClass} right-0`}
+          className={`${arrowClass} right-3 sm:right-0 sm:translate-x-1/2`}
         >
-          <Icon
-            name="ChevronRight"
-            strokeWidth={1.5}
-            className="h-8 w-8 transition-transform duration-200 group-hover/nav:translate-x-1"
-          />
+          <Icon name="ArrowRight" strokeWidth={2.25} className="h-5 w-5 transition-transform duration-200 group-hover/nav:translate-x-1 sm:h-6 sm:w-6" />
         </button>
       </div>
 
-      {pageCount > 1 && (
+      {/* Many positions (more than fit as dots on a phone): a thin progress line with the position as numbers. */}
+      {pageCount > 8 && (
+        <div className="mx-auto mt-6 flex max-w-xs items-center gap-4 px-4" aria-live="polite">
+          <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-subtle">
+            <span
+              className="absolute inset-y-0 left-0 rounded-full bg-accent transition-[width] duration-300 ease-out"
+              style={{ width: `${((activePage + 1) / pageCount) * 100}%` }}
+            />
+          </div>
+          <span className="shrink-0 text-[14px] font-semibold tabular-nums text-heading">
+            {activePage + 1} / {pageCount}
+          </span>
+        </div>
+      )}
+
+      {pageCount > 1 && pageCount <= 8 && (
         <div className="mt-[15px] flex justify-center">
           {Array.from({ length: pageCount }, (_, page) => (
             <button
