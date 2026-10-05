@@ -8,7 +8,6 @@ import { Icon } from "./Icon";
 import { NavOverlay } from "./NavOverlay";
 import { Wordmark, type LogoContent } from "./Wordmark";
 import { toTelHref } from "@/lib/site/format.ts";
-import type { ContentIcon } from "@/lib/site/schema.ts";
 
 /** What the header and its menu need from the content, as it is handed to the browser. */
 export interface NavContent {
@@ -16,11 +15,8 @@ export interface NavContent {
   barLinks: { id: string; label: string; href: string }[];
   menu: { id: string; label: string; href: string; kind: "link" | "services" }[];
   menuButton: string;
-  services: { slug: string; name: string; icon: ContentIcon }[];
+  services: { slug: string; name: string }[];
   phone: string;
-  email: string;
-  /** The company's full address, shown with the contact details in the menu. */
-  address: string;
   logo: LogoContent;
   labels: {
     callPrefix: string;
@@ -30,8 +26,6 @@ export interface NavContent {
     menu: string;
     mainMenu: string;
     quickLinks: string;
-    /** Heading over the contact details in the menu. */
-    contact: string;
   };
 }
 

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { BurgerIcon, burgerButtonClasses } from "./BurgerIcon";
 import { Icon } from "./Icon";
 import { Wordmark } from "./Wordmark";
-import { ArrowLabel, buttonClasses } from "./Button";
+import { buttonClasses } from "./Button";
 import type { NavContent } from "./Navbar";
 import { toTelHref } from "@/lib/site/format.ts";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
@@ -28,22 +28,17 @@ interface Entrance {
 
 function RowLink({ row, onClose, entrance, isCurrent }: { row: NavRow; onClose: () => void; entrance: Entrance; isCurrent: boolean }) {
   return (
-    <li className={entrance.className} style={entrance.style}>
-      <Link
-        href={row.href}
-        onClick={onClose}
-        aria-current={isCurrent ? "page" : undefined}
-        className="group relative flex items-center py-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:py-3"
-      >
-        <span className={`mr-4 w-7 shrink-0 sm:mr-6 font-heading text-sm font-bold tabular-nums ${isCurrent ? "text-accent" : "text-nav-text/40"}`}>{row.number}</span>
-        {/* A yellow bar grows in front of the label on hover, and stays on the page you are on. */}
+    <li className={`border-b border-nav-text/15 py-4 ${entrance.className}`} style={entrance.style}>
+      <Link href={row.href} onClick={onClose} aria-current={isCurrent ? "page" : undefined} className="group flex items-baseline gap-4">
         <span
-          aria-hidden="true"
-          className={`h-[3px] shrink-0 bg-accent transition-all duration-300 ease-out ${isCurrent ? "mr-4 w-8 sm:w-10" : "mr-0 w-0 group-hover:mr-4 group-hover:w-8 sm:group-hover:w-10"}`}
-        />
+          className={`text-sm font-bold transition-colors duration-300 group-hover:text-nav-text ${isCurrent ? "text-nav-text" : "text-nav-text/50"}`}
+        >
+          {row.number}
+        </span>
+        {/* The page you are on is underlined. */}
         <span
-          className={`font-heading text-[34px] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] transition-colors duration-200 min-[400px]:text-[40px] sm:text-5xl xl:text-[56px] ${
-            isCurrent ? "text-accent" : "text-nav-text group-hover:text-accent"
+          className={`text-3xl font-semibold text-nav-text transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-nav-text/70 sm:text-4xl lg:text-5xl ${
+            isCurrent ? "underline decoration-2 underline-offset-[10px]" : ""
           }`}
         >
           {row.label}
@@ -55,7 +50,7 @@ function RowLink({ row, onClose, entrance, isCurrent }: { row: NavRow; onClose: 
 
 export function NavOverlay({ content, onClose }: { content: NavContent; onClose: () => void }) {
   const { services, labels } = content;
-  const rows = content.menu;
+  const rows = content.menu.map((row, index) => ({ ...row, number: String(index + 1).padStart(2, "0") }));
   const pathname = usePathname();
   const current = pathname.replace(/\/$/, "") || "/";
   const { open: openQuoteModal } = useQuoteModal();
@@ -134,10 +129,6 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
     openQuoteModal();
   }
 
-  // The pages are numbered among themselves; the products get a panel of their own.
-  const linkRows = rows.filter((row) => row.kind !== "services").map((row, index) => ({ ...row, number: String(index + 1).padStart(2, "0") }));
-  const servicesRow = rows.find((row) => row.kind === "services");
-
   return (
     <div ref={overlayRef} role="dialog" aria-modal="true" aria-label={labels.menu} className="fixed inset-0 z-[60] flex flex-col bg-nav pr-[var(--scrollbar-width,0px)]">
       <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
@@ -148,82 +139,39 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
           <BurgerIcon cross={hasEntered} />
         </button>
       </div>
-      {/* A thin yellow line under the bar, drawn out from the left as the menu opens. */}
-      <div aria-hidden="true" className={`h-[3px] origin-left bg-accent transition-transform duration-500 ease-out ${hasEntered ? "scale-x-100" : "scale-x-0"}`} />
 
       <div className="relative min-h-0 flex-1">
-        <nav ref={navRef} aria-label={labels.mainMenu} className="h-full overflow-y-auto px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
-          <div className="mx-auto grid max-w-content gap-10 lg:grid-cols-12 lg:gap-12">
-            {/* The pages, large. */}
-            <ul className="lg:col-span-7">
-              {linkRows.map((row, index) => (
-                <RowLink key={row.id} row={row} onClose={onClose} entrance={entrance(index)} isCurrent={current === row.href} />
-              ))}
-            </ul>
-
-            {/* The products with their icons, and how to reach the company. */}
-            <div className="space-y-8 lg:col-span-5">
-              {servicesRow && (
-                <section className={entrance(linkRows.length).className} style={entrance(linkRows.length).style}>
-                  <h2 className="text-tag uppercase text-accent">
-                    <Link href={servicesRow.href} onClick={onClose} className="hover:underline hover:underline-offset-4">
-                      {servicesRow.label}
-                    </Link>
-                  </h2>
-                  <ul className="mt-4 grid grid-cols-2 gap-2 sm:gap-3">
-                    {services.map((service) => {
-                      const isCurrent = current === `/tjanster/${service.slug}`;
-                      return (
-                        <li key={service.slug}>
-                          <Link
-                            href={`/tjanster/${service.slug}`}
-                            onClick={onClose}
-                            aria-current={isCurrent ? "page" : undefined}
-                            className={`group flex h-full items-center gap-3 border p-2.5 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent sm:p-3 ${
-                              isCurrent ? "border-accent bg-nav-text/10" : "border-nav-text/15 hover:border-accent hover:bg-nav-text/5"
-                            }`}
-                          >
-                            <span className="flex h-9 w-9 shrink-0 items-center justify-center bg-accent text-on-accent sm:h-10 sm:w-10">
-                              <Icon name={service.icon} className="h-5 w-5" strokeWidth={2} />
-                            </span>
-                            <span className="text-[14px] font-semibold leading-tight text-nav-text sm:text-[15px]">{service.name}</span>
-                          </Link>
-                        </li>
-                      );
-                    })}
+        <nav ref={navRef} aria-label={labels.mainMenu} className="h-full overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
+          <ul className="mx-auto max-w-content">
+            {rows.map((row, index) =>
+              row.kind === "services" ? (
+                <li key={row.id} className={`border-b border-nav-text/15 py-4 ${entrance(index).className}`} style={entrance(index).style}>
+                  <div className="flex items-baseline gap-4">
+                    <span className={`text-sm font-bold ${current.startsWith("/tjanster/") ? "text-nav-text" : "text-nav-text/50"}`}>{row.number}</span>
+                    <span className="text-3xl font-semibold text-nav-text sm:text-4xl lg:text-5xl">{row.label}</span>
+                  </div>
+                  <ul className="ml-[2.6rem] mt-2.5 grid grid-cols-1 gap-x-10 sm:grid-cols-2 xl:grid-cols-4">
+                    {services.map((service) => (
+                      <li key={service.slug}>
+                        <Link
+                          href={`/tjanster/${service.slug}`}
+                          onClick={onClose}
+                          aria-current={current === `/tjanster/${service.slug}` ? "page" : undefined}
+                          className={`block py-3 text-[17px] transition duration-300 ease-out hover:translate-x-1.5 hover:text-nav-text ${
+                            current === `/tjanster/${service.slug}` ? "text-nav-text underline underline-offset-[6px]" : "text-nav-text/75"
+                          }`}
+                        >
+                          {service.name}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
-                </section>
-              )}
-
-              <section className={entrance(linkRows.length + 1).className} style={entrance(linkRows.length + 1).style}>
-                <h2 className="text-tag uppercase text-accent">{labels.contact}</h2>
-                <ul className="mt-4 space-y-3 text-[16px] text-nav-text/80">
-                  {content.phone && (
-                    <li>
-                      <a href={toTelHref(content.phone)} className="inline-flex items-center gap-3 font-semibold text-nav-text hover:text-accent">
-                        <Icon name="Phone" className="h-5 w-5 text-accent" />
-                        {content.phone}
-                      </a>
-                    </li>
-                  )}
-                  {content.email && (
-                    <li>
-                      <a href={`mailto:${content.email}`} className="inline-flex items-center gap-3 break-all hover:text-accent">
-                        <Icon name="Mail" className="h-5 w-5 shrink-0 text-accent" />
-                        {content.email}
-                      </a>
-                    </li>
-                  )}
-                  {content.address && (
-                    <li className="flex items-center gap-3">
-                      <Icon name="MapPin" className="h-5 w-5 shrink-0 text-accent" />
-                      {content.address}
-                    </li>
-                  )}
-                </ul>
-              </section>
-            </div>
-          </div>
+                </li>
+              ) : (
+                <RowLink key={row.id} row={row} onClose={onClose} entrance={entrance(index)} isCurrent={current === row.href} />
+              )
+            )}
+          </ul>
         </nav>
         {/* The rows fade into the background where the list runs on, rather than being cut off by the bottom bar. */}
         <div
@@ -235,21 +183,17 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
       </div>
 
       <div
-        className={`border-t border-nav-text/15 px-4 py-4 sm:px-6 sm:py-5 lg:px-8 ${entrance(linkRows.length + 2).className}`}
-        style={entrance(linkRows.length + 2).style}
+        className={`border-t border-nav-text/15 px-4 py-6 sm:px-6 lg:px-8 ${entrance(rows.length).className}`}
+        style={entrance(rows.length).style}
       >
-        <div className="mx-auto flex max-w-content items-center gap-3 sm:justify-between">
-          <button type="button" onClick={handleCtaClick} className={buttonClasses("solid", "group/arrow flex-1 sm:flex-none focus-visible:outline-nav-text")}>
-            <ArrowLabel spaced>{content.menuButton}</ArrowLabel>
+        <div className="mx-auto flex max-w-content flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <button type="button" onClick={handleCtaClick} className={buttonClasses("on-nav", "w-full sm:w-auto")}>
+            {content.menuButton}
           </button>
           {content.phone && (
-            <a
-              href={toTelHref(content.phone)}
-              aria-label={`${labels.callPrefix} ${content.phone}`}
-              className={buttonClasses("on-nav", "w-[54px] shrink-0 !px-0 sm:w-auto sm:!px-8")}
-            >
-              <Icon name="Phone" className="h-5 w-5" />
-              <span className="hidden sm:inline">{content.phone}</span>
+            <a href={toTelHref(content.phone)} className="flex items-center gap-3 text-[18px] font-semibold text-nav-text hover:text-nav-text/70">
+              <Icon name="Phone" className="h-5 w-5 text-nav-text/60" />
+              {content.phone}
             </a>
           )}
         </div>
