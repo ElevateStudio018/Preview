@@ -1284,31 +1284,30 @@
               "eyebrow": "Direkt från fabrik",
               "heading": "Trästugor i alla format",
               "image": {
-                "src": "/photos/cabinord/starttop-1920.webp",
+                "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "/photos/cabinord/starttop-480.webp"
+                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=480"
                   },
                   {
                     "width": 800,
-                    "src": "/photos/cabinord/starttop-800.webp"
+                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=800"
                   },
                   {
                     "width": 1200,
-                    "src": "/photos/cabinord/starttop-1200.webp"
+                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   },
                   {
                     "width": 1600,
-                    "src": "/photos/cabinord/starttop-1600.webp"
+                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   },
                   {
-                    "width": 1920,
-                    "src": "/photos/cabinord/starttop-1920.webp"
+                    "width": 2000,
+                    "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Trästugor i rad i snön vid fabriken på Haraholmen",
-                "focus": "55% 60%"
+                "alt": "Trästuga i en snöig skog"
               },
               "button": {
                 "label": "Begär offert",
@@ -1738,30 +1737,30 @@
               "anchor": "",
               "label": "",
               "image": {
-                "src": "https://images.pexels.com/photos/206648/pexels-photo-206648.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "https://images.pexels.com/photos/206648/pexels-photo-206648.jpeg?auto=compress&cs=tinysrgb&w=480"
+                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=480"
                   },
                   {
                     "width": 800,
-                    "src": "https://images.pexels.com/photos/206648/pexels-photo-206648.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=800"
                   },
                   {
                     "width": 1200,
-                    "src": "https://images.pexels.com/photos/206648/pexels-photo-206648.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   },
                   {
                     "width": 1600,
-                    "src": "https://images.pexels.com/photos/206648/pexels-photo-206648.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   },
                   {
                     "width": 2000,
-                    "src": "https://images.pexels.com/photos/206648/pexels-photo-206648.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                    "src": "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   }
                 ],
-                "alt": "Trähus bland höstfärgade träd"
+                "alt": "Trähus i brunt och beige under blå himmel"
               },
               "size": "tall"
             },
