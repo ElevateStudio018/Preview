@@ -27,7 +27,7 @@ export const tapTarget = "relative before:absolute before:-inset-x-2 before:-ins
 
 /** Uppercase, letter-spaced text link with a chevron — the site's secondary call to action. */
 export function arrowLinkClasses(className = ""): string {
-  return `${tapTarget} group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current text-link hover:text-accent ${className}`;
+  return `${tapTarget} group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current text-link hover:text-accent-ink ${className}`;
 }
 
 /**

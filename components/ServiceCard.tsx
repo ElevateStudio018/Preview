@@ -9,7 +9,7 @@ export function ServiceCard({ service, linkPrefix, wide = false }: { service: Se
     // On hover a thin line also slides in along the bottom of the card, like the line under the links.
     <Link
       href={`/tjanster/${service.slug}`}
-      className="group group/arrow relative flex h-full flex-col bg-card after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      className="group group/arrow relative flex h-full flex-col bg-card after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-ink"
     >
       <div className={`relative overflow-hidden bg-primary/20 ${wide ? "aspect-[2/1]" : "aspect-[4/3] sm:aspect-square"}`}>
         <Photo
@@ -28,7 +28,7 @@ export function ServiceCard({ service, linkPrefix, wide = false }: { service: Se
           {service.name}
         </h3>
         {linkPrefix && (
-          <span className="hidden text-label uppercase text-heading transition-colors duration-200 group-hover:text-accent sm:block">
+          <span className="hidden text-label uppercase text-heading transition-colors duration-200 group-hover:text-accent-ink sm:block">
             <ArrowLabel spaced>{`${linkPrefix} ${service.name}`}</ArrowLabel>
           </span>
         )}

@@ -66,7 +66,7 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
         <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <article>
             {texts.badge && (
-              <span className="inline-block animate-rise bg-accent px-4 py-[11px] text-tag uppercase text-on-primary [animation-delay:250ms]">
+              <span className="inline-block animate-rise bg-accent px-4 py-[11px] text-tag uppercase text-on-accent [animation-delay:250ms]">
                 {texts.badge}
               </span>
             )}
@@ -111,22 +111,22 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
               <ul className="mt-6 space-y-6 text-[18px] text-heading">
                 {company.phone && (
                   <li>
-                    <a href={toTelHref(company.phone)} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-accent`}>
-                      <Icon name="Phone" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-accent" />
+                    <a href={toTelHref(company.phone)} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-accent-ink`}>
+                      <Icon name="Phone" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-accent-ink" />
                       {company.phone}
                     </a>
                   </li>
                 )}
                 {company.email && (
                   <li>
-                    <a href={`mailto:${company.email}`} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-accent`}>
-                      <Icon name="Mail" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-accent" />
+                    <a href={`mailto:${company.email}`} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-accent-ink`}>
+                      <Icon name="Mail" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-accent-ink" />
                       <span className="break-all">{company.email}</span>
                     </a>
                   </li>
                 )}
                 <li className="flex items-start gap-4">
-                  <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-6 w-6 shrink-0 text-accent" />
+                  <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-6 w-6 shrink-0 text-accent-ink" />
                   {address}
                 </li>
               </ul>

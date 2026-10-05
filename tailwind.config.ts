@@ -17,6 +17,8 @@ const config: Config = {
         primary: role("primary"),
         secondary: role("secondary"),
         accent: role("accent"),
+        "accent-ink": role("accent-ink"),
+        "on-accent": role("on-accent"),
         page: role("background"),
         card: role("surface"),
         body: role("text"),
@@ -52,10 +54,10 @@ const config: Config = {
       // Mobile sizes are width-matched against the reference screenshots (Figtree equivalents):
       // 17px body with tight ~1.12 leading, 29px section headings, 17px uppercase links.
       fontSize: {
-        display: ["33px", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "600" }],
-        "display-lg": ["60px", { lineHeight: "1.06", letterSpacing: "-0.015em", fontWeight: "600" }],
-        h2: ["29px", { lineHeight: "1.14", letterSpacing: "-0.01em", fontWeight: "600" }],
-        "h2-lg": ["46px", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "600" }],
+        display: ["33px", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "800" }],
+        "display-lg": ["60px", { lineHeight: "1.06", letterSpacing: "-0.015em", fontWeight: "800" }],
+        h2: ["29px", { lineHeight: "1.14", letterSpacing: "-0.01em", fontWeight: "800" }],
+        "h2-lg": ["46px", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "800" }],
         h3: ["22px", { lineHeight: "1.18", fontWeight: "600" }],
         lead: ["19px", { lineHeight: "1.3" }],
         copy: ["17px", { lineHeight: "1.12" }],

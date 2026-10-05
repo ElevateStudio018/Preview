@@ -13,7 +13,7 @@ export function Breadcrumbs({ items, label }: { items: Crumb[]; label: string })
           <li key={`${index}-${item.label}`} className="flex items-center gap-3">
             {index > 0 && <span aria-hidden="true">-</span>}
             {item.href ? (
-              <Link href={item.href} className="relative transition-colors before:absolute before:-inset-x-1.5 before:-inset-y-3.5 hover:text-accent">
+              <Link href={item.href} className="relative transition-colors before:absolute before:-inset-x-1.5 before:-inset-y-3.5 hover:text-accent-ink">
                 {item.label}
               </Link>
             ) : (

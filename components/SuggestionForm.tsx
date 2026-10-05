@@ -8,7 +8,7 @@ import { fallbackFormEmail, isConnected, supabaseAnonKey, supabaseUrl } from "@/
 // The suggestion box's own words: an internal tool for the company's staff, not part of the public site's content.
 const NAME_KEY = "stenvaller-forslag-namn";
 const fieldClass =
-  "w-full border border-line/15 bg-field px-4 py-3.5 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
+  "w-full border border-line/15 bg-field px-4 py-3.5 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent-ink/25";
 const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
 /** Name, what it concerns and the suggestion; sent to the admin, or by e-mail while the site has no backend. */
@@ -86,7 +86,7 @@ export function SuggestionForm({ areas }: { areas: string[] }) {
   if (state === "sent") {
     return (
       <div role="status" className="animate-rise-fast py-4 text-center">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center text-accent">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center text-accent-ink">
           <Icon name="Check" strokeWidth={2.5} className="h-12 w-12" />
         </span>
         <p className="mt-4 text-h3 text-heading">Tack {sentBy}! Förslaget är skickat.</p>

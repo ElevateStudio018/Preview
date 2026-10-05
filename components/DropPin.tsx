@@ -9,7 +9,7 @@ export function DropPin({ className = "" }: { className?: string }) {
 
   return (
     <span ref={ref} className={`${isInView ? "animate-pin-drop" : "opacity-0"} ${className}`}>
-      <Icon name="MapPin" strokeWidth={2.25} className="h-6 w-6 text-accent" />
+      <Icon name="MapPin" strokeWidth={2.25} className="h-6 w-6 text-accent-ink" />
     </span>
   );
 }

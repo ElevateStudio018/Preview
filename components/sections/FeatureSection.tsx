@@ -46,7 +46,7 @@ export function FeatureSection({ section }: SectionProps<"feature">) {
                     <DrawIcon
                       name={card.icon}
                       delayMs={150 + index * 60}
-                      className="flex h-12 w-12 shrink-0 items-center justify-center bg-accent text-on-primary"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center bg-accent text-on-accent"
                       iconClassName="h-6 w-6"
                     />
                     <h3 className="text-h3 text-heading">{card.heading}</h3>

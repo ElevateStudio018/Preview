@@ -34,16 +34,16 @@ export function TeamSection({ section }: SectionProps<"team">) {
                   <ul className="mt-auto space-y-2 pt-4 text-[15px] text-heading sm:text-[16px]">
                     {member.phone && (
                       <li>
-                        <a href={toTelHref(member.phone)} className={`${tapTarget} inline-flex items-center gap-2 transition-colors hover:text-accent`}>
-                          <Icon name="Phone" strokeWidth={2.25} className="h-4 w-4 shrink-0 text-accent" />
+                        <a href={toTelHref(member.phone)} className={`${tapTarget} inline-flex items-center gap-2 transition-colors hover:text-accent-ink`}>
+                          <Icon name="Phone" strokeWidth={2.25} className="h-4 w-4 shrink-0 text-accent-ink" />
                           {member.phone}
                         </a>
                       </li>
                     )}
                     {member.email && (
                       <li>
-                        <a href={`mailto:${member.email}`} className={`${tapTarget} inline-flex items-center gap-2 transition-colors hover:text-accent`}>
-                          <Icon name="Mail" strokeWidth={2.25} className="h-4 w-4 shrink-0 text-accent" />
+                        <a href={`mailto:${member.email}`} className={`${tapTarget} inline-flex items-center gap-2 transition-colors hover:text-accent-ink`}>
+                          <Icon name="Mail" strokeWidth={2.25} className="h-4 w-4 shrink-0 text-accent-ink" />
                           <span className="break-all">{member.email}</span>
                         </a>
                       </li>

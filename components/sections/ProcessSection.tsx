@@ -20,7 +20,7 @@ export function ProcessSection({ section, ctx }: SectionProps<"process">) {
           {steps.map((step, index) => (
             <li key={step.id} className="flex flex-col border-t-[3px] border-accent bg-card p-7 sm:p-8">
               <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center bg-accent text-on-primary">
+                <span className="flex h-12 w-12 items-center justify-center bg-accent text-on-accent">
                   <Icon name={step.icon} className="h-6 w-6" />
                 </span>
                 <span className="text-[44px] font-semibold leading-none text-heading/15" aria-hidden="true">

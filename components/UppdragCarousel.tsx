@@ -64,7 +64,7 @@ export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: str
 
   // The arrows fade out at either end instead of disappearing, and their chevron nudges the way it points on hover.
   const arrowClass =
-    "group/nav absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-accent text-on-primary transition duration-200 hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-0";
+    "group/nav absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-accent text-on-accent transition duration-200 hover:bg-secondary hover:text-on-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink disabled:pointer-events-none disabled:opacity-0";
 
   return (
     <div>
@@ -138,7 +138,7 @@ export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: str
               onClick={() => goTo(page)}
               aria-label={fill(labels.goTo, { n: page + 1, total: pageCount })}
               aria-current={page === activePage ? "true" : undefined}
-              className="group/dot px-[12.5px] py-[16.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              className="group/dot px-[12.5px] py-[16.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-ink"
             >
               {/* The current position stretches from a dot into a short bar. */}
               <span

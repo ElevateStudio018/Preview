@@ -2,41 +2,41 @@
   "schemaVersion": 1,
   "theme": {
     "colors": {
-      "primary": "#1F3A2E",
-      "secondary": "#14261E",
-      "accent": "#B4642C",
-      "background": "#F4EFE7",
-      "surface": "#FBF8F2",
-      "text": "#33302B",
-      "heading": "#1C1A17",
-      "muted": "#6B655C",
-      "subtle": "#C9C0B2",
-      "border": "#1C1A17",
+      "primary": "#111111",
+      "secondary": "#000000",
+      "accent": "#FFEE00",
+      "background": "#F6F6F3",
+      "surface": "#FFFFFF",
+      "text": "#2A2A2A",
+      "heading": "#111111",
+      "muted": "#5C5C5C",
+      "subtle": "#CFCFCA",
+      "border": "#111111",
       "input": "#FFFFFF",
-      "link": "#1F3A2E",
-      "button": "#9A5122",
-      "buttonHover": "#7E421C",
-      "buttonText": "#FFFFFF",
-      "navigation": "#1F3A2E",
+      "link": "#111111",
+      "button": "#FFEE00",
+      "buttonHover": "#F2D500",
+      "buttonText": "#111111",
+      "navigation": "#000000",
       "navigationText": "#FFFFFF",
-      "footer": "#14261E",
-      "footerText": "#F4EFE7",
+      "footer": "#000000",
+      "footerText": "#FFFFFF",
       "onPrimary": "#FFFFFF",
-      "success": "#1F3A2E",
+      "success": "#111111",
       "warning": "#B45309",
       "error": "#B91C1C"
     },
     "fonts": {
       "heading": {
-        "family": "Fraunces",
-        "category": "serif"
+        "family": "Montserrat",
+        "category": "sans-serif"
       },
       "body": {
-        "family": "Figtree",
+        "family": "Poppins",
         "category": "sans-serif"
       },
       "button": {
-        "family": "Figtree",
+        "family": "Montserrat",
         "category": "sans-serif"
       }
     }
@@ -994,8 +994,8 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "eyebrow": "Haraholmen, Piteå · sedan 1988",
-              "heading": "Trähus byggda för norrländska vintrar",
+              "eyebrow": "Direkt från fabrik",
+              "heading": "Trästugor i alla format",
               "image": {
                 "src": "https://images.pexels.com/photos/6530839/pexels-photo-6530839.jpeg?auto=compress&cs=tinysrgb&w=1600",
                 "variants": [

@@ -32,7 +32,7 @@ export function HeroSection({ section, ctx }: SectionProps<"hero">) {
         {section.eyebrow && (
           <p className="animate-rise text-tag uppercase text-white/85 [animation-delay:150ms] lg:text-[14px]">{section.eyebrow}</p>
         )}
-        <h1 className="mt-4 max-w-[9.5em] animate-rise [animation-delay:300ms] text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-white min-[380px]:text-[40px] sm:text-[56px] lg:mt-6 lg:text-[52px] xl:text-[64px] 2xl:text-[88px]">
+        <h1 className="mt-4 max-w-[12em] animate-rise [animation-delay:300ms] text-[36px] font-extrabold leading-[1.04] tracking-[-0.01em] text-white min-[380px]:text-[40px] sm:text-[56px] lg:mt-6 lg:text-[52px] xl:text-[64px] 2xl:text-[88px]">
           {section.heading}
         </h1>
         <div className="mt-8 flex animate-rise flex-wrap gap-3 [animation-delay:450ms] lg:mt-10">

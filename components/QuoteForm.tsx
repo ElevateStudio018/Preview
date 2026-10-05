@@ -35,7 +35,7 @@ export interface QuoteFormContent {
 }
 
 const fieldBaseClass =
-  "w-full border border-line/15 bg-field py-3.5 pl-12 pr-4 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
+  "w-full border border-line/15 bg-field py-3.5 pl-12 pr-4 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent-ink/25";
 
 const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
@@ -173,7 +173,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.name}
         </label>
         <div className="group/field relative">
-          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
+          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
           <input
             id={`${idPrefix}-namn`}
             type="text"
@@ -197,7 +197,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.phone}
         </label>
         <div className="group/field relative">
-          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
+          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
           <input
             id={`${idPrefix}-telefon`}
             type="tel"
@@ -221,7 +221,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.email}
         </label>
         <div className="group/field relative">
-          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
+          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
           <input
             id={`${idPrefix}-epost`}
             type="email"
@@ -251,7 +251,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.workType}
         </label>
         <div className="group/field relative">
-          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
+          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
           <select
             id={`${idPrefix}-typ`}
             value={values.typAvArbete}
@@ -269,7 +269,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
               </option>
             ))}
           </select>
-          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
+          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
         </div>
         {errors.typAvArbete && (
           <p id={`${idPrefix}-typ-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
@@ -283,7 +283,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.description}
         </label>
         <div className="group/field relative">
-          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
+          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
           <textarea
             id={`${idPrefix}-beskrivning`}
             rows={3}

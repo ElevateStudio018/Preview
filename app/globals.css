@@ -43,14 +43,21 @@
   }
 }
 
-/* Under section headings: a line rising to a gable roof in the middle, as in the Cabinord mark, in the accent colour. */
+/* The page and section headings are set in heavy capitals, as on Cabinord's own site. */
+h1,
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* Under section headings: a line rising to a gable roof in the middle, in the accent where it reads on the page. */
 .text-h2::after {
   content: "";
   display: block;
   width: 72px;
   height: 10px;
   margin-top: 0.5em;
-  background-color: rgb(var(--c-accent));
+  background-color: rgb(var(--c-accent-ink));
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10'%3E%3Cpath d='M0 8.5H27L36 1.5L45 8.5H72' fill='none' stroke='%23000' stroke-width='2.5'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10'%3E%3Cpath d='M0 8.5H27L36 1.5L45 8.5H72' fill='none' stroke='%23000' stroke-width='2.5'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }

@@ -24,8 +24,8 @@ export function UppdragGrid({ items, allLabel, filterLabel }: { items: (Uppdrag 
               type="button"
               onClick={() => setActiveTag(tag)}
               aria-pressed={isActive}
-              className={`rounded-md border-2 border-accent px-5 py-2.5 text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-                isActive ? "bg-accent text-on-primary" : "text-accent hover:bg-accent hover:text-on-primary"
+              className={`rounded-md border-2 border-accent px-5 py-2.5 text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink ${
+                isActive ? "bg-accent text-on-accent" : "text-accent-ink hover:bg-accent hover:text-on-accent"
               }`}
             >
               {tag || allLabel}

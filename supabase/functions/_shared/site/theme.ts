@@ -29,7 +29,18 @@ export function fontStack(font: FontChoice): string {
 export function themeDeclarations(theme: Theme): string {
   const colors = colorRoles.map((role) => `--c-${cssRoleName(role)}:${hexToChannels(theme.colors[role])};`).join("");
   const fonts = (["heading", "body", "button"] as const).map((role) => `--font-${role}:${fontStack(theme.fonts[role])};`).join("");
-  return colors + fonts;
+  return colors + accentDeclarations(theme.colors) + fonts;
+}
+
+/**
+ * Two colours derived from the accent, so that any accent works, a light one (yellow) as well as a dark one:
+ * on-accent is black or white, whichever reads best on the accent; accent-ink is the accent where it reads as text
+ * on the page background, and the heading colour where it does not.
+ */
+function accentDeclarations(colors: Theme["colors"]): string {
+  const onAccent = contrastRatio("#000000", colors.accent) >= contrastRatio("#FFFFFF", colors.accent) ? "#111111" : "#FFFFFF";
+  const ink = contrastRatio(colors.accent, colors.background) >= 3 ? colors.accent : colors.heading;
+  return `--c-on-accent:${hexToChannels(onAccent)};--c-accent-ink:${hexToChannels(ink)};`;
 }
 
 export function themeCss(theme: Theme, selector = ":root"): string {
@@ -72,7 +83,6 @@ export const contrastPairs: { text: ColorRole; background: ColorRole; large?: bo
   { text: "onPrimary", background: "primary" },
   { text: "onPrimary", background: "secondary", large: true },
   { text: "onPrimary", background: "success" },
-  { text: "onPrimary", background: "accent", large: true },
 ];
 
 export interface ContrastProblem {
