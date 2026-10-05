@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-05T21:47:43.636Z",
+  "fetched": "2026-10-05T22:00:37.981Z",
   "categories": [
     "https://www.cabinord.se/produkt-kategori/produkter/",
     "https://www.cabinord.se/produkt-kategori/attefallshus/",
@@ -717,6 +717,15 @@
     }
   ],
   "galleries": [
+    {
+      "url": "https://www.cabinord.se/",
+      "title": "Startsidan",
+      "photos": [
+        "https://www.cabinord.se/wp-content/uploads/2018/06/logocabinord.png",
+        "https://www.cabinord.se/wp-content/uploads/starttop-aspect-ratio-600-461.jpg",
+        "https://www.cabinord.se/wp-content/uploads/2018/06/starttop.jpg"
+      ]
+    },
     {
       "url": "https://www.cabinord.se/bildgalleri/",
       "title": "Bildgalleri",
@@ -2807,6 +2816,28 @@
           "src": "/photos/cabinord/20250721121714-scaled-aspect-ratio-1000-667-2000.webp"
         }
       ]
+    },
+    "https://www.cabinord.se/wp-content/uploads/starttop-aspect-ratio-600-461.jpg": {
+      "width": 1406,
+      "height": 1080,
+      "variants": [
+        {
+          "width": 480,
+          "src": "/photos/cabinord/starttop-aspect-ratio-600-461-480.webp"
+        },
+        {
+          "width": 800,
+          "src": "/photos/cabinord/starttop-aspect-ratio-600-461-800.webp"
+        },
+        {
+          "width": 1200,
+          "src": "/photos/cabinord/starttop-aspect-ratio-600-461-1200.webp"
+        },
+        {
+          "width": 1406,
+          "src": "/photos/cabinord/starttop-aspect-ratio-600-461-1406.webp"
+        }
+      ]
     }
   },
   "log": [
@@ -2829,6 +2860,6 @@
     "Förråd 3: no price, 23 photos",
     "Förråd Adam: no price, 26 photos",
     "Friggebod 14: no price, 26 photos",
-    "photos saved: 81 of 81"
+    "photos saved: 82 of 82"
   ]
 }
