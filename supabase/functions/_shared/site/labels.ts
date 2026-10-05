@@ -587,6 +587,7 @@ export const rootFields: Record<"navigation" | "footer" | "form" | "servicePage"
     text("moreHeading", "Rubrik över andra tjänster", 30),
     text("breadcrumbLabel", "Sökvägens mellansteg", 20),
     { key: "breadcrumbHref", label: "Mellansteget leder till", kind: "href" },
+    { key: "modelsHeading", label: "Rubrik över kategorins modeller", kind: "text" },
   ],
   notFound: [
     text("eyebrow", "Liten text ovanför rubriken", 30),

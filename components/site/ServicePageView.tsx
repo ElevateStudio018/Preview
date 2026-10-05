@@ -4,6 +4,7 @@ import { AccentBlock } from "@/components/AccentBlock";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaktaBox } from "@/components/FaktaBox";
 import { ServiceCard } from "@/components/ServiceCard";
+import { UppdragCard } from "@/components/UppdragCard";
 import { SiteLink } from "@/components/SiteLink";
 import { JsonLd } from "./JsonLd";
 import { buttonClasses, tapTarget } from "@/components/Button";
@@ -19,6 +20,10 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
   const otherServices = list(site.services).filter((item) => item.slug !== service.slug);
   const address = fullAddress(company);
   const linkPrefix = cardLinkPrefix(site);
+  // The models in this category: the projects tagged with the start of its name ("Bastu" for "Bastur").
+  const models = texts.modelsHeading
+    ? list(site.uppdrag).filter((item) => item.tag && service.name.toLowerCase().startsWith(item.tag.toLowerCase()))
+    : [];
 
   return (
     <>
@@ -145,6 +150,23 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
           </aside>
         </div>
       </div>
+
+      {models.length > 0 && (
+        <section className="border-t border-line/10">
+          <div className="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+            <Reveal>
+              <h2 className="text-h2 text-heading lg:text-h2-lg">{texts.modelsHeading}</h2>
+            </Reveal>
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
+              {models.map((item, index) => (
+                <Reveal key={item.id} delayMs={(index % 3) * 70}>
+                  <UppdragCard item={item} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {otherServices.length > 0 && (
         <section className="border-t border-line/10">

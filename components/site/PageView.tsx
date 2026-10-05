@@ -24,7 +24,7 @@ export function PageView({
   reveal?: { id: string; label: string };
 }) {
   const sections = list(page.sections).filter((section) => !section.hidden || section.id === reveal?.id);
-  const breadcrumbs: Crumb[] = [{ label: site.ui.breadcrumbHome, href: "/" }, { label: page.title }];
+  const breadcrumbs: Crumb[] = [{ label: site.ui.breadcrumbHome, href: "/" }, ...parentCrumb(site, page), { label: page.title }];
   // On a subpage the first section that opens it shows the breadcrumb trail and the page's main heading.
   const opener = isHome ? -1 : sections.findIndex((section) => opensPage.has(section.type));
 
@@ -54,4 +54,14 @@ export function PageView({
       })}
     </>
   );
+}
+
+/**
+ * A page that a project card links to (a product's own page) sits under the page listing the projects in the trail:
+ * Hem › Sortiment & priser › Förråd 25.
+ */
+function parentCrumb(site: SiteData, page: Page): Crumb[] {
+  if (!page.slug || !list(site.uppdrag).some((item) => item.href === `/${page.slug}`)) return [];
+  const listing = list(site.pages).find((other) => other.slug && list(other.sections).some((section) => section.type === "uppdragGrid"));
+  return listing && listing.slug !== page.slug ? [{ label: listing.title, href: `/${listing.slug}` }] : [];
 }

@@ -471,6 +471,8 @@ export const servicePageSchema = z.object({
   moreHeading: lineText,
   breadcrumbLabel: lineText,
   breadcrumbHref: hrefSchema,
+  /** Over the models of the category on its page (the projects whose tag the category's name starts with); unset: no list. */
+  modelsHeading: lineText.optional(),
 });
 
 export const uiSchema = z.object({

@@ -12,7 +12,8 @@ const pillBase =
 
 const pillVariants: Record<ButtonVariant, string> = {
   solid: "bg-button text-button-text hover:bg-button-hover focus-visible:outline-button",
-  outline: "border-[1.5px] border-button text-button hover:bg-button hover:text-button-text focus-visible:outline-button",
+  // Drawn in the heading colour, which reads on any light background whatever the button colour is.
+  outline: "border-[1.5px] border-heading text-heading hover:border-button hover:bg-button hover:text-button-text focus-visible:outline-heading",
   "on-nav": "border-[1.5px] border-nav-text text-nav-text hover:bg-nav-text hover:text-nav focus-visible:outline-nav-text",
   "on-footer": "border-[1.5px] border-footer-text text-footer-text hover:bg-footer-text hover:text-footer focus-visible:outline-footer-text",
   "on-primary": "border-[1.5px] border-on-primary text-on-primary hover:bg-on-primary hover:text-primary focus-visible:outline-on-primary",

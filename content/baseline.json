@@ -302,7 +302,7 @@
     "cookieSettings": "Kakinställningar"
   },
   "servicePage": {
-    "badge": "Produkt",
+    "badge": "Kategori",
     "cta": {
       "heading": "Funderar du på ett nytt trähus?",
       "text": "Berätta vad du vill bygga och hur det ska stå, så återkommer vi med pris och leveranstid.",
@@ -313,7 +313,7 @@
     },
     "factsTitle": "Fakta",
     "factLabels": {
-      "service": "Produkt",
+      "service": "Kategori",
       "performedBy": "Tillverkas av",
       "seat": "Fabrik",
       "area": "Leverans",
@@ -330,7 +330,8 @@
     },
     "moreHeading": "Fler produkter",
     "breadcrumbLabel": "Produkter",
-    "breadcrumbHref": "/#produkter"
+    "breadcrumbHref": "/#produkter",
+    "modelsHeading": "Modeller"
   },
   "notFound": {
     "eyebrow": "Fel 404",
@@ -1268,7 +1269,6 @@
             "aret-runt",
             "en-kontakt",
             "kunder",
-            "siffror",
             "om-oss",
             "process",
             "faq",
@@ -1678,40 +1678,6 @@
               "addressPrefix": "Fabrik:",
               "linkLabel": "Öppna i Google Maps",
               "zoom": 11
-            },
-            "siffror": {
-              "type": "stats",
-              "hidden": false,
-              "anchor": "",
-              "label": "",
-              "heading": "Cabinord i siffror",
-              "items": {
-                "order": [
-                  "ar",
-                  "modeller",
-                  "km"
-                ],
-                "items": {
-                  "ar": {
-                    "label": "år av trähustillverkning",
-                    "valueType": "yearsSince",
-                    "value": 1988,
-                    "countUp": true
-                  },
-                  "modeller": {
-                    "label": "modeller i sortimentet",
-                    "valueType": "number",
-                    "value": 18,
-                    "countUp": true
-                  },
-                  "km": {
-                    "label": "km från Piteå centrum",
-                    "valueType": "number",
-                    "value": 11,
-                    "countUp": true
-                  }
-                }
-              }
             }
           }
         }
