@@ -1,4 +1,4 @@
-// Phone numbers and other values derived from the company details, shared by the site and the admin.
+// Phone numbers and other values derived from the company details, used across the site.
 import type { Company } from "./schema.ts";
 
 /** "031-385 41 41" → "tel:+46313854141". */
@@ -20,8 +20,7 @@ export function fullAddress(company: Company): string {
 
 /** "Romelanda, Kungälv": the postal town and the municipality. */
 export function seat(company: Company): string {
-  // "Piteå", not "Piteå, Piteå", when the town and the municipality share their name.
-  return company.address.city && company.address.city !== company.city ? `${company.address.city}, ${company.city}` : company.city;
+  return `${company.address.city}, ${company.city}`;
 }
 
 /** Replaces {name} placeholders in an interface text. */

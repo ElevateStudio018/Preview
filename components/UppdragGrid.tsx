@@ -24,8 +24,8 @@ export function UppdragGrid({ items, allLabel, filterLabel }: { items: (Uppdrag 
               type="button"
               onClick={() => setActiveTag(tag)}
               aria-pressed={isActive}
-              className={`rounded-md border-2 border-accent px-5 py-2.5 text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink ${
-                isActive ? "bg-accent text-on-accent" : "text-accent-ink hover:bg-accent hover:text-on-accent"
+              className={`rounded-md border-2 border-accent px-5 py-2.5 text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                isActive ? "bg-accent text-on-primary" : "text-accent hover:bg-accent hover:text-on-primary"
               }`}
             >
               {tag || allLabel}
@@ -34,7 +34,7 @@ export function UppdragGrid({ items, allLabel, filterLabel }: { items: (Uppdrag 
         })}
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visibleItems.map((item, index) => (
           <Reveal key={item.id} delayMs={(index % 3) * 70}>
             <UppdragCard item={item} />

@@ -17,9 +17,9 @@ export function TestimonialsSection({ section, ctx }: SectionProps<"testimonials
           {list(section.items).map((item, index) => (
             <Reveal key={item.id} as="li" delayMs={(index % 3) * 70} className="flex flex-col border-t-[3px] border-accent bg-page p-7 sm:p-8">
               <figure className="flex flex-1 flex-col">
-                <Icon name="Quote" aria-hidden="true" className="h-8 w-8 text-accent-ink" />
+                <Icon name="Quote" aria-hidden="true" className="h-8 w-8 text-accent" />
                 {item.rating > 0 && (
-                  <p className="mt-4 flex gap-1 text-accent-ink" aria-label={fill(ctx.site.ui.ratingLabel, { n: item.rating })}>
+                  <p className="mt-4 flex gap-1 text-accent" aria-label={fill(ctx.site.ui.ratingLabel, { n: item.rating })}>
                     {Array.from({ length: 5 }, (_, star) => (
                       <Icon key={star} name="Star" aria-hidden="true" className={`h-5 w-5 ${star < item.rating ? "fill-current" : "opacity-30"}`} />
                     ))}

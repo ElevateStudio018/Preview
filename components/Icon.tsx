@@ -1,6 +1,4 @@
 import {
-  ArrowLeft,
-  ArrowRight,
   BadgeCheck,
   Building2,
   Calendar,
@@ -103,8 +101,6 @@ const iconMap = {
   Instagram,
   Linkedin,
   Quote,
-  ArrowLeft,
-  ArrowRight,
 };
 
 export type IconKey = keyof typeof iconMap;

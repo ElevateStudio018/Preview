@@ -31,11 +31,11 @@ export function ContactSection({ section, ctx }: SectionProps<"contact">) {
           <ul className="mt-9 space-y-6">
             {rows.map((row) => (
               <li key={row.icon} className="flex items-start gap-5">
-                <Icon name={row.icon} strokeWidth={2.25} className="mt-1 h-7 w-7 shrink-0 text-accent-ink" />
+                <Icon name={row.icon} strokeWidth={2.25} className="mt-1 h-7 w-7 shrink-0 text-accent" />
                 <div>
                   <p className="text-[15px] font-semibold text-muted">{row.label}</p>
                   {row.href ? (
-                    <a href={row.href} className={`${tapTarget} text-[20px] font-semibold text-heading transition-colors hover:text-accent-ink`}>
+                    <a href={row.href} className={`${tapTarget} text-[20px] font-semibold text-heading transition-colors hover:text-accent`}>
                       {row.value}
                     </a>
                   ) : (

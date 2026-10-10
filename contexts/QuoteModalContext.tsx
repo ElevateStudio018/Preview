@@ -2,18 +2,9 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, ReactNode } from "react";
 
-/** A product the form is opened for: by its page's address (slug) or by its name. */
-export interface QuotePrefill {
-  slug?: string;
-  name?: string;
-}
-
 interface QuoteModalContextValue {
   isOpen: boolean;
-  /** Opens the form; for a product, with the product chosen and a ready-made description. */
-  open: (prefill?: QuotePrefill) => void;
-  /** The product the form was last opened for, and a counter that changes with every opening for one. */
-  prefill: { value: QuotePrefill; key: number } | null;
+  open: () => void;
   close: () => void;
   showConfirmation: () => void;
   confirmationVisible: boolean;
@@ -30,15 +21,13 @@ const AUTO_CLOSE_MS = 1500;
 export function QuoteModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
-  const [prefill, setPrefill] = useState<{ value: QuotePrefill; key: number } | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
   const confirmationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isOpenRef = useRef(false);
 
-  const open = useCallback((value?: QuotePrefill) => {
+  const open = useCallback(() => {
     if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
-    if (value && (value.slug || value.name)) setPrefill((current) => ({ value, key: (current?.key ?? 0) + 1 }));
     triggerRef.current = document.activeElement as HTMLElement;
     isOpenRef.current = true;
     setIsOpen(true);
@@ -82,7 +71,7 @@ export function QuoteModalProvider({ children }: { children: ReactNode }) {
   }, [isOpen]);
 
   return (
-    <QuoteModalContext.Provider value={{ isOpen, open, prefill, close, showConfirmation, confirmationVisible }}>
+    <QuoteModalContext.Provider value={{ isOpen, open, close, showConfirmation, confirmationVisible }}>
       {children}
     </QuoteModalContext.Provider>
   );

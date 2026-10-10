@@ -11,14 +11,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // Every colour is a theme role from the content document (lib/site/theme.ts writes the variables), so the admin
-      // can change them. The channels-only variables keep Tailwind's opacity modifiers (bg-primary/20) working.
+      // Every colour is a theme role from the content document (lib/site/theme.ts writes the variables). The channels-only variables keep Tailwind's opacity modifiers (bg-primary/20) working.
       colors: {
         primary: role("primary"),
         secondary: role("secondary"),
         accent: role("accent"),
-        "accent-ink": role("accent-ink"),
-        "on-accent": role("on-accent"),
         page: role("background"),
         card: role("surface"),
         body: role("text"),
@@ -35,38 +32,28 @@ const config: Config = {
         success: role("success"),
         warning: role("warning"),
         error: role("error"),
-        // The admin panel's own colours: its prime colour (chosen on the colour page) and a few warm neutrals.
-        admin: {
-          DEFAULT: "rgb(var(--admin-primary) / <alpha-value>)",
-          contrast: "rgb(var(--admin-primary-contrast) / <alpha-value>)",
-          canvas: "#F6F5F2",
-          ink: "#1E1E1C",
-          muted: "#6A6963",
-          subtle: "#9C9A93",
-          line: "#E8E6E1",
-        },
       },
       fontFamily: {
         sans: ["var(--font-body)"],
         heading: ["var(--font-heading)"],
         button: ["var(--font-button)"],
       },
-      // A notch smaller than the Stenvaller originals (16px body and links, 29/40px section headings), with the content
-      // kept to 1140px, so the page sits further in from the edges.
+      // Mobile sizes are width-matched against the reference screenshots (Figtree equivalents):
+      // 17px body with tight ~1.12 leading, 29px section headings, 17px uppercase links.
       fontSize: {
-        display: ["33px", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "800" }],
-        "display-lg": ["52px", { lineHeight: "1.06", letterSpacing: "-0.015em", fontWeight: "800" }],
-        h2: ["29px", { lineHeight: "1.14", letterSpacing: "-0.01em", fontWeight: "800" }],
-        "h2-lg": ["40px", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "800" }],
-        h3: ["20px", { lineHeight: "1.18", fontWeight: "600" }],
-        lead: ["18px", { lineHeight: "1.3" }],
-        copy: ["16px", { lineHeight: "1.12" }],
-        label: ["16px", { lineHeight: "1.18", letterSpacing: "0.03em", fontWeight: "700" }],
+        display: ["33px", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "display-lg": ["60px", { lineHeight: "1.06", letterSpacing: "-0.015em", fontWeight: "600" }],
+        h2: ["29px", { lineHeight: "1.14", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "h2-lg": ["46px", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "600" }],
+        h3: ["22px", { lineHeight: "1.18", fontWeight: "600" }],
+        lead: ["19px", { lineHeight: "1.3" }],
+        copy: ["17px", { lineHeight: "1.12" }],
+        label: ["17px", { lineHeight: "1.18", letterSpacing: "0.03em", fontWeight: "700" }],
         tag: ["13px", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "700" }],
-        stat: ["44px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "800" }],
+        stat: ["50px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "800" }],
       },
       maxWidth: {
-        content: "1140px",
+        content: "1280px",
         prose: "720px",
       },
       keyframes: {

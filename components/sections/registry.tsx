@@ -55,7 +55,7 @@ export const sectionComponents: { [T in SectionType]: ComponentType<SectionProps
 export const flushBottom = new Set<SectionType>(["aboutIntro", "certificates", "uppdragGrid"]);
 
 /** Sections that can carry straight on from a flush one before them. */
-export const attachesTop = new Set<SectionType>(["cta", "photoPair", "gallery"]);
+export const attachesTop = new Set<SectionType>(["cta", "photoPair"]);
 
 /** Sections that open a subpage with the breadcrumb trail and the page's main heading. */
 export const opensPage = new Set<SectionType>(["aboutIntro", "certificates", "uppdragGrid"]);

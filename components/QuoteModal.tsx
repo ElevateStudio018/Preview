@@ -91,7 +91,7 @@ export function QuoteModal({ content, closeLabel }: { content: QuoteFormContent;
           type="button"
           onClick={close}
           aria-label={closeLabel}
-          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-heading transition-colors hover:bg-heading/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-ink"
+          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-heading transition-colors hover:bg-heading/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
           {/* Two thin bars that swing into a cross as the panel opens, drawn like the menu's close button. */}
           <span aria-hidden="true" className="relative h-6 w-6">

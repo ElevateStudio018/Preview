@@ -10,7 +10,7 @@ export function HeroSection({ section, ctx }: SectionProps<"hero">) {
   const { phone } = ctx.site.company;
 
   return (
-    // The photo fills the first screen on every device under a dark gradient. The white text sits near the
+    // The photo fills the first screen on every device under an even dark filter. The white text sits near the
     // bottom on phones and tablets, and just below the middle on the left on desktop.
     <section
       id={section.anchor || undefined}
@@ -24,15 +24,14 @@ export function HeroSection({ section, ctx }: SectionProps<"hero">) {
         style={focusStyle(section.image)}
         className="absolute inset-0 -z-10 h-full w-full object-cover object-[74%_center] lg:object-[75%_55%]"
       />
-      {/* Darker towards the bottom left, where the text sits, so the photo stays bright at the top. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-tr from-black/75 via-black/40 to-black/10" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/45" />
 
       <div className="mx-auto mt-auto w-full max-w-content px-4 pb-12 sm:px-6 sm:pb-16 lg:my-auto lg:px-8 lg:pb-0 lg:pt-[8svh]">
         {/* Eyebrow, heading and button rise into place one after another as the page loads. */}
         {section.eyebrow && (
           <p className="animate-rise text-tag uppercase text-white/85 [animation-delay:150ms] lg:text-[14px]">{section.eyebrow}</p>
         )}
-        <h1 className="mt-4 max-w-[12em] animate-rise [animation-delay:300ms] text-[36px] font-extrabold leading-[1.04] tracking-[-0.01em] text-white min-[380px]:text-[40px] sm:text-[56px] lg:mt-6 lg:text-[52px] xl:text-[64px] 2xl:text-[88px]">
+        <h1 className="mt-4 max-w-[9.5em] animate-rise [animation-delay:300ms] text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-white min-[380px]:text-[40px] sm:text-[56px] lg:mt-6 lg:text-[52px] xl:text-[64px] 2xl:text-[88px]">
           {section.heading}
         </h1>
         <div className="mt-8 flex animate-rise flex-wrap gap-3 [animation-delay:450ms] lg:mt-10">

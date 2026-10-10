@@ -1,11 +1,10 @@
 "use client";
 
-import { FormEvent, useEffect, useId, useState, type CSSProperties } from "react";
+import { FormEvent, useId, useState, type CSSProperties } from "react";
 import { Icon } from "./Icon";
 import { buttonClasses, tapTarget } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 import { fill, toTelHref } from "@/lib/site/format.ts";
-import { fallbackFormEmail, isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
 import type { SiteData } from "@/lib/site/schema.ts";
 
 interface FormValues {
@@ -32,19 +31,18 @@ export interface QuoteFormContent {
   texts: SiteData["form"];
   workTypes: { id: string; label: string }[];
   phone: string;
-  /** Products the form can be opened for ("Pris på förfrågan"), with the tag that picks their kind of work. */
-  products: { slug: string; name: string; tag: string }[];
 }
 
 const fieldBaseClass =
-  "w-full border border-line/15 bg-field py-3.5 pl-12 pr-4 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent-ink/25";
+  "w-full border border-line/15 bg-field py-3.5 pl-12 pr-4 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
 
 const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
-// With the site connected to its backend, requests are stored for the admin's list and e-mailed by the submit-quote
-// function. Without it they go by e-mail through FormSubmit (formsubmit.co) to fallbackFormEmail; the first request to a
-// new address there only sends an activation e-mail, and nothing is forwarded until its link has been clicked.
-const submitUrl = `https://formsubmit.co/ajax/${fallbackFormEmail}`;
+// Requests go by e-mail through FormSubmit (formsubmit.co), a free service, so the site needs no backend of its own. The
+// first request to a new address only sends an activation e-mail, and nothing is forwarded until its link is clicked.
+// Elevate Studio receives them during the preview; at launch this becomes Stenvaller's own address.
+const FORM_EMAIL = "elevate.studio018@gmail.com";
+const submitUrl = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 
 const fieldIds: Record<keyof FormValues, string> = {
   namn: "namn",
@@ -55,7 +53,7 @@ const fieldIds: Record<keyof FormValues, string> = {
 };
 
 export function QuoteForm({ variant = "inline", content }: { variant?: "inline" | "modal"; content: QuoteFormContent }) {
-  const { texts, workTypes, phone, products } = content;
+  const { texts, workTypes, phone } = content;
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,24 +61,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
   // Left empty by people; bots that fill in every field give themselves away.
   const [website, setWebsite] = useState("");
   const idPrefix = useId();
-  const { showConfirmation, close, prefill } = useQuoteModal();
-
-  // Opened for a product, the window comes with that product chosen and a ready-made description, so only the name and
-  // phone or e-mail are left to fill in. Whatever was already typed in those is kept.
-  useEffect(() => {
-    if (variant !== "modal" || !prefill) return;
-    const { slug, name } = prefill.value;
-    const product = products.find((item) => (slug ? item.slug === slug : item.name === name));
-    const productName = product?.name ?? name ?? "";
-    if (!productName) return;
-    const kind = product?.tag ? workTypes.find((type) => type.label.toLowerCase().startsWith(product.tag.toLowerCase())) : undefined;
-    const description = texts.inquiryTemplate ? fill(texts.inquiryTemplate, { produkt: productName }) : productName;
-    setValues((current) => ({ ...current, typAvArbete: kind?.id ?? current.typAvArbete, beskrivning: description }));
-    setErrors({});
-    // Straight to the name field, after the window has put focus on itself as it opens.
-    const timer = setTimeout(() => document.getElementById(`${idPrefix}-${fieldIds.namn}`)?.focus(), 250);
-    return () => clearTimeout(timer);
-  }, [prefill, variant, products, workTypes, texts.inquiryTemplate, idPrefix]);
+  const { showConfirmation, close } = useQuoteModal();
 
   // In the quote window the fields rise into place one after another as it opens, like the rows of the menu.
   function entrance(order: number): { className?: string; style?: CSSProperties } {
@@ -141,40 +122,24 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
     setSendFailed(false);
     try {
       const workType = workTypes.find((typ) => typ.id === values.typAvArbete)?.label ?? values.typAvArbete;
-      if (isConnected) {
-        const response = await fetch(`${supabaseUrl}/functions/v1/submit-quote`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", apikey: supabaseAnonKey, Authorization: `Bearer ${supabaseAnonKey}` },
-          body: JSON.stringify({
-            name: values.namn.trim(),
-            phone: values.telefon.trim(),
-            email: values.epost.trim(),
-            workType,
-            message: values.beskrivning.trim(),
-            website,
-          }),
-        });
-        if (!response.ok) throw new Error("Not sent");
-      } else {
-        const response = await fetch(submitUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            _subject: fill(texts.emailSubject, { namn: values.namn.trim() }),
-            _template: "table",
-            _captcha: "false",
-            _honey: website,
-            ...(values.epost.trim() ? { _replyto: values.epost.trim() } : {}),
-            Namn: values.namn.trim(),
-            Telefon: values.telefon.trim() || "–",
-            "E-post": values.epost.trim() || "–",
-            "Typ av arbete": workType,
-            Beskrivning: values.beskrivning.trim() || "–",
-          }),
-        });
-        const result: { success?: string | boolean } | null = await response.json().catch(() => null);
-        if (!response.ok || String(result?.success) !== "true") throw new Error("Not sent");
-      }
+      const response = await fetch(submitUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: fill(texts.emailSubject, { namn: values.namn.trim() }),
+          _template: "table",
+          _captcha: "false",
+          _honey: website,
+          ...(values.epost.trim() ? { _replyto: values.epost.trim() } : {}),
+          Namn: values.namn.trim(),
+          Telefon: values.telefon.trim() || "–",
+          "E-post": values.epost.trim() || "–",
+          "Typ av arbete": workType,
+          Beskrivning: values.beskrivning.trim() || "–",
+        }),
+      });
+      const result: { success?: string | boolean } | null = await response.json().catch(() => null);
+      if (!response.ok || String(result?.success) !== "true") throw new Error("Not sent");
       setValues(initialValues);
       showConfirmation();
     } catch {
@@ -192,7 +157,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.name}
         </label>
         <div className="group/field relative">
-          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
+          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <input
             id={`${idPrefix}-namn`}
             type="text"
@@ -216,7 +181,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.phone}
         </label>
         <div className="group/field relative">
-          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
+          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <input
             id={`${idPrefix}-telefon`}
             type="tel"
@@ -240,7 +205,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.email}
         </label>
         <div className="group/field relative">
-          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
+          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <input
             id={`${idPrefix}-epost`}
             type="email"
@@ -270,7 +235,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.workType}
         </label>
         <div className="group/field relative">
-          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
+          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <select
             id={`${idPrefix}-typ`}
             value={values.typAvArbete}
@@ -288,7 +253,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
               </option>
             ))}
           </select>
-          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
+          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
         </div>
         {errors.typAvArbete && (
           <p id={`${idPrefix}-typ-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
@@ -302,7 +267,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           {texts.labels.description}
         </label>
         <div className="group/field relative">
-          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-muted transition-colors duration-200 group-focus-within/field:text-accent-ink" />
+          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <textarea
             id={`${idPrefix}-beskrivning`}
             rows={3}

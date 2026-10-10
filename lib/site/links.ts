@@ -3,14 +3,9 @@
 /** The href that opens the quote form instead of going anywhere. */
 export const QUOTE_HREF = "#offert";
 
-/** Links that open the quote form rather than going anywhere; "#offert-forrad-25" opens it filled in for that product. */
+/** Links that open the quote form rather than going anywhere. */
 export function isQuoteHref(href: string): boolean {
-  return href === QUOTE_HREF || href.startsWith(`${QUOTE_HREF}-`);
-}
-
-/** The product a quote link is for ("forrad-25" in "#offert-forrad-25"), if any. */
-export function quoteProduct(href: string): string | undefined {
-  return href.startsWith(`${QUOTE_HREF}-`) ? href.slice(QUOTE_HREF.length + 1) : undefined;
+  return href === QUOTE_HREF;
 }
 
 /** Addresses outside the site, which open in a new tab. */

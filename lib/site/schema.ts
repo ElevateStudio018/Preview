@@ -1,6 +1,5 @@
 // The site's whole content as one document: every text, colour, font, image and link the public site shows. The
-// public site is rendered from it, the admin edits it and the AI's change sets are checked against it. Shared with the
-// Edge Functions (see scripts/sync-shared.mjs), so it imports nothing but zod and its own siblings.
+// public site is rendered from it, and every build checks content/baseline.json against it.
 import { z } from "zod";
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -458,8 +457,6 @@ export const formSchema = z.object({
   confirmation: lineText,
   /** The subject of the e-mail the company gets; {namn} is replaced by the sender's name. */
   emailSubject: lineText,
-  /** The description filled in when the form is opened for a product ("Pris på förfrågan"); {produkt} is its name. */
-  inquiryTemplate: longText.optional(),
 });
 
 export const servicePageSchema = z.object({
@@ -473,8 +470,6 @@ export const servicePageSchema = z.object({
   moreHeading: lineText,
   breadcrumbLabel: lineText,
   breadcrumbHref: hrefSchema,
-  /** Over the models of the category on its page (the projects whose tag the category's name starts with); unset: no list. */
-  modelsHeading: lineText.optional(),
 });
 
 export const uiSchema = z.object({

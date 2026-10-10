@@ -2,7 +2,7 @@ import { SiteLink } from "@/components/SiteLink";
 import { buttonClasses } from "@/components/Button";
 import type { SiteData } from "@/lib/site/schema.ts";
 
-/** The page shown for an address that does not exist. Also used by the admin preview. */
+/** The page shown for an address that does not exist. */
 export function NotFoundView({ site }: { site: SiteData }) {
   const texts = site.notFound;
   return (

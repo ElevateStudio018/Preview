@@ -1,5 +1,5 @@
-// The content the site is built from: content/snapshot.json, which scripts/fetch-snapshot.ts writes before every build
-// (the published content from Supabase, or the original content while the site is not connected to one).
+// The content the site is built from: content/snapshot.json, which scripts/fetch-snapshot.ts writes from
+// content/baseline.json before every build.
 import snapshot from "@/content/snapshot.json";
 import fonts from "@/content/fonts.json";
 import { siteDataSchema, type SiteData } from "./schema.ts";

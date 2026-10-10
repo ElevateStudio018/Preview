@@ -1,13 +1,14 @@
-# Cabinord AB – hemsida och adminpanel (förhandsvisning)
+# Stenvaller Entreprenad AB – hemsida
 
-Hemsidan för Cabinord AB (trähus, förråd, friggebodar, bastur, attefallshus, garage och stugor direkt från fabriken på
-Haraholmen i Piteå) med adminpanel. Byggd på samma grund som Stenvaller-hemsidan.
+En enkel, statisk hemsida för Stenvaller Entreprenad AB (fastighetsskötsel, utemiljö och markservice i Stenungsund med
+omnejd): startsida med tjänster, om oss, kontakt och karta, och en sida per tjänst. Ingen databas, ingen adminpanel och
+inga löpande kostnader – sidan ligger gratis på GitHub Pages.
 
-- Innehållet (texter, produkter, priser, sidor, bilder, färger, typsnitt, företagsuppgifter) ligger i
-  `content/baseline.json`; formatet beskrivs i `lib/site/schema.ts`. Kör `node scripts/sync-shared.mjs` efter ändringar
-  i den eller i `lib/site`.
-- Produkterna, texterna och bilderna är hämtade från cabinord.se med `scripts/scrape-cabinord.mjs` (arbetsflödet
-  "Fetch Cabinord products"). Rådata ligger i `scrape/`, bilderna i `public/photos/cabinord`. Priserna finns inte
-  längre på cabinord.se; de som står på sidan kommer från en äldre version av den.
-- Loggan är tills vidare ett ritat ordmärke (`components/Wordmark.tsx`); en riktig logga laddas upp i adminpanelen.
-- `SETUP.md` beskriver hur adminpanelen kopplas till Supabase.
+- Allt innehåll (texter, tjänster, bilder, färger, typsnitt, företagsuppgifter) ligger i `content/baseline.json`;
+  formatet beskrivs i `lib/site/schema.ts`. Varje bygge kontrollerar filen mot schemat.
+- Bilderna är stockfoton från Pexels (fria att använda) som länkas direkt, tills Stenvaller har egna foton. Egna foton
+  läggs i `public/photos` (kör `npm run photos` för mindre kopior).
+- Loggan (STEAB) ligger i `public/logo-steab.png` och ritas i textfärgen via en mask (`components/Wordmark.tsx`).
+- Offertformuläret skickar e-post via FormSubmit (gratis). Mottagaren står i `components/QuoteForm.tsx`; under
+  förhandsvisningen går förfrågningarna till Elevate Studio.
+- Sidan publiceras automatiskt av `.github/workflows/deploy-pages.yml` vid varje push.

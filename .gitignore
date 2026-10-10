@@ -28,5 +28,4 @@ yarn-error.log*
 # generated before each build
 /content/snapshot.json
 /content/fonts.json
-/public/site-version.json
 /public/fonts/

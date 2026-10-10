@@ -17,7 +17,7 @@ export function FaqSection({ section, ctx }: SectionProps<"faq">) {
               {section.phonePrompt}{" "}
               <a
                 href={toTelHref(phone)}
-                className={`${tapTarget} whitespace-nowrap font-semibold text-link transition-colors duration-200 hover:text-accent-ink`}
+                className={`${tapTarget} whitespace-nowrap font-semibold text-link transition-colors duration-200 hover:text-accent`}
               >
                 {phone}
               </a>

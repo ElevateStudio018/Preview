@@ -43,7 +43,7 @@ export function CertificatesSection({ section, ctx }: SectionProps<"certificates
                   className="h-24 w-auto max-w-full self-start object-contain lg:h-32"
                 />
               ) : (
-                <Icon name="BadgeCheck" className="h-9 w-9 text-accent-ink" />
+                <Icon name="BadgeCheck" className="h-9 w-9 text-accent" />
               )}
               <h2 className="mt-5 text-h3 text-heading">{certificate.name}</h2>
               {certificate.issuer && (
@@ -71,7 +71,7 @@ export function CertificatesSection({ section, ctx }: SectionProps<"certificates
                   {" "}
                   <a
                     href={toTelHref(company.phone)}
-                    className={`${tapTarget} font-semibold text-link underline underline-offset-4 hover:text-accent-ink`}
+                    className={`${tapTarget} font-semibold text-link underline underline-offset-4 hover:text-accent`}
                   >
                     {company.phone}
                   </a>

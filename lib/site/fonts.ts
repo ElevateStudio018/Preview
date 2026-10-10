@@ -1,5 +1,5 @@
 // The Google Fonts the owner can choose between, with the weights each has of those the site uses (checked against
-// Google Fonts). The admin offers these; the build downloads the chosen ones so the site hosts its own copies.
+// Google Fonts). The build downloads the chosen ones so the site hosts its own copies.
 import type { FontChoice } from "./schema.ts";
 
 export interface FontOption {
