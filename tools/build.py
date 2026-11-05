@@ -119,24 +119,26 @@ def footer() -> str:
 
 
 def reviews() -> str:
-    cards = "\n".join(
-        f"""      <article class="rv-card{' dk' if i == 1 else ''}">
-        <div class="rv-top"><span class="av a{i + 1}" aria-hidden="true">{''.join(w[0] for w in (n.split()[0], n.split()[-1]))}</span><span><b>{n}</b><span class="lg">{STAR}Local Guide</span></span></div>
+    def card(i, n, meta, when, dup=False):
+        ini = n.split()[0][0] + n.split()[-1][0]
+        hide = ' aria-hidden="true"' if dup else ''
+        tab = ' tabindex="-1"' if dup else ''
+        return f"""<a class="rv-card{' dk' if i % 3 == 1 else ''}" href="{GOOGLE_URL}" target="_blank" rel="noopener"{hide}{tab}>
+        <div class="rv-top"><span class="av a{i + 1}" aria-hidden="true">{ini}</span><span><b>{n}</b><span class="lg">{STAR}Local Guide</span></span></div>
         <p class="rv-meta">{meta}</p>
-        <div class="rv-bot"><span>Omdöme på Google, {when.lower()}</span><a href="{GOOGLE_URL}" target="_blank" rel="noopener" aria-label="Läs {n}s omdöme på Google">Läs</a></div>
-      </article>"""
-        for i, (n, meta, when) in enumerate(REVIEWS)
-    )
-    dots = "".join(f'<button type="button" aria-label="Visa omdöme {i + 1}"></button>' for i in range(len(REVIEWS)))
-    return f"""<section class="bg-steel pad rv" id="omdomen" aria-roledescription="karusell" aria-label="Omdömen på Google">
+        <div class="rv-bot"><span>Omdöme på Google, {when.lower()}</span><span class="rv-go">Läs {ICON['ext']}</span></div>
+      </a>"""
+    first = "\n      ".join(card(i, *r) for i, r in enumerate(REVIEWS))
+    dup = "\n      ".join(card(i, *r, dup=True) for i, r in enumerate(REVIEWS))
+    return f"""<section class="bg-steel pad rv" id="omdomen" aria-label="Omdömen på Google">
   <div class="c sec-head">
     <div><span class="label">Omdömen</span><h2 class="h2">Recenserade på Google</h2></div>
-    <div class="rv-ar"><button type="button" class="prev" aria-label="Föregående">{ICON['back']}</button><button type="button" class="next" aria-label="Nästa">{ICON['arrow']}</button></div>
+    <a class="btn btn-navy" href="{GOOGLE_URL}" target="_blank" rel="noopener">Alla omdömen på Google {ICON['arrow']}</a>
   </div>
-  <div class="rv-track" tabindex="0">
-{cards}
-  </div>
-  <div class="c rv-foot"><div class="rv-dots">{dots}</div><a class="link" href="{GOOGLE_URL}" target="_blank" rel="noopener">Alla omdömen på Google {ICON['arrow']}</a></div>
+  <div class="rv-mq"><div class="rv-tr">
+      {first}
+      {dup}
+  </div></div>
 </section>"""
 
 
