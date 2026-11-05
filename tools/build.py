@@ -142,6 +142,27 @@ def reviews() -> str:
 </section>"""
 
 
+def branscher(label="Branscher", title="Från glasbruk till hela industrin", glass_title="Glasindustrin",
+              glass_text="Formar, verktyg och kringutrustning till glasbruk – kärnverksamheten sedan 1983. Vi bidrar också inom förädling av glas, till exempel tryck på flaskor.",
+              ind_title="Tillverkningsindustrin",
+              ind_text="Bearbetade detaljer i stål, rostfritt, brons, aluminium, gjutjärn, inconel, plast med mera – till tillverkande företag i hela Norden.",
+              glass_href="kontakt.html#forfragan", ind_href="tjanster.html") -> str:
+    return f"""<section class="ind" id="branscher"><div class="c">
+  <span class="label">{label}</span><h2 class="h2" style="margin-top:12px">{title}</h2>
+  <div class="ind-g">
+    <div class="ind-cd nv">
+      <div class="im"><img src="assets/img/formverktyg-sortiment.webp" alt="Formar och verktyg för glasindustrin" width="884" height="570" loading="lazy"></div>
+      <div class="bt"><div><h3>{glass_title}</h3><p>{glass_text}</p></div><a class="btn btn-white" href="{glass_href}">Läs mer {A}</a></div>
+    </div>
+    <div class="ind-cd">
+      <div class="im"><img src="assets/img/referens-detaljer.webp" alt="Svarvade detaljer i stål och mässing" width="820" height="750" loading="lazy"></div>
+      <h3>{ind_title}</h3><p>{ind_text}</p>
+      <a class="link" href="{ind_href}">Läs mer {A}</a>
+    </div>
+  </div>
+</div></section>"""
+
+
 def capacity() -> str:
     items = [
         ("Ø 550", "", "Daewoo Puma 350", "Största svarvdiameter, längd upp till 1050"),
@@ -158,7 +179,7 @@ def capacity() -> str:
     <span class="label">Maskinpark</span>
     <p class="cap-lead">Vi svarvar detaljer upp till <b><em>Ø</em> 550</b>, bearbetar i <b>4 axlar</b>, värmebehandlar i <b>1 200 <em>°C</em></b> och pressar med <b>100 ton</b> – i egen verkstad i Surte.</p>
     <div class="cap-g">
-      <div class="cap-img"><img src="assets/img/formverktyg-panorama.webp" alt="Formar och verktyg för glasindustrin" width="1468" height="626" loading="lazy"></div>
+      <div class="cap-img"><img src="assets/img/referens-svarvad-detalj.webp" alt="Svarvad stålhylsa" width="744" height="704" loading="lazy"></div>
       <div class="cap-list">
 {rows}
         <a class="btn btn-white" href="maskinpark.html">Hela maskinparken {A}</a>
@@ -300,7 +321,13 @@ def page(meta: dict, body: str, slug: str) -> str:
 def main():
     blocks = {"{{reviews}}": reviews(), "{{cta}}": cta(), "{{contact}}": contact(),
               "{{capacity}}": capacity(), "{{services}}": services(),
-              "{{services:tjanster}}": services("Tjänsteområden")}
+              "{{services:tjanster}}": services("Tjänsteområden"),
+              "{{branscher}}": branscher(),
+              "{{branscher:tjanster}}": branscher(glass_href="kontakt.html#forfragan", ind_href="kontakt.html#forfragan"),
+              "{{branscher:om}}": branscher(label="Verksamheten idag", title="Glasindustrin är kärnan – hela industrin är bredden",
+                  glass_title="Kärnan: verktyg till glasbruk", glass_text="Kärnverksamheten är verktyg till glasbruksindustrin. Vi bidrar också inom förädling av glas, till exempel när det gäller tryck på flaskor.",
+                  ind_title="Bredden: detaljer till hela industrin", ind_text="Vi breddar oss mot tillverkande företag som behöver bearbetade detaljer i stål, rostfritt, brons, järn, aluminium, aluminiumbrons, gjutjärn, inconel, glasfiber, plast med mera.",
+                  glass_href="tjanster.html#branscher", ind_href="tjanster.html")}
     for src in sorted(PAGES.glob("*.html")):
         text = src.read_text(encoding="utf-8")
         m = re.match(r"\s*<!--(.*?)-->", text, re.S)
