@@ -92,6 +92,49 @@
     if (h && groups.some((g) => g.id === h)) apply(h);
   }
 
+  // Tjänster: dragspel (ett öppet åt gången, öppnas från #ankare)
+  const accItems = $$('.acc-it');
+  const setAcc = (it, open) => {
+    it.classList.toggle('open', open);
+    $('.acc-h', it).setAttribute('aria-expanded', String(open));
+    $('.acc-b', it).hidden = !open;
+  };
+  accItems.forEach((it) => $('.acc-h', it).addEventListener('click', () => {
+    const open = !it.classList.contains('open');
+    accItems.forEach((o) => setAcc(o, o === it ? open : false));
+  }));
+  const openFromHash = () => {
+    const t = location.hash && document.getElementById(location.hash.slice(1));
+    if (t && t.classList.contains('acc-it')) { accItems.forEach((o) => setAcc(o, o === t)); t.scrollIntoView({ block: 'start' }); }
+  };
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+
+  // Omdömen: karusell med pilar, prickar och automatisk växling
+  const rv = $('.rv');
+  if (rv) {
+    const track = $('.rv-track', rv);
+    const cards = $$('.rv-card', rv);
+    const dots = $$('.rv-dots button', rv);
+    const step = () => cards[0].getBoundingClientRect().width + 20;
+    const current = () => Math.round(track.scrollLeft / step());
+    const go = (i) => { const n = (i + cards.length) % cards.length; track.scrollTo({ left: n * step() }); };
+    const mark = () => { const c = Math.min(current(), cards.length - 1); dots.forEach((d, i) => d.setAttribute('aria-current', String(i === c))); };
+    $('.prev', rv).addEventListener('click', () => go(current() - 1));
+    $('.next', rv).addEventListener('click', () => go(current() + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    track.addEventListener('scroll', () => window.requestAnimationFrame(mark), { passive: true });
+    mark();
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer;
+    const start = () => { if (!still) { clearInterval(timer); timer = setInterval(() => { const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; go(atEnd ? 0 : current() + 1); }, 5000); } };
+    const stop = () => clearInterval(timer);
+    rv.addEventListener('mouseenter', stop); rv.addEventListener('mouseleave', start);
+    rv.addEventListener('focusin', stop); rv.addEventListener('focusout', start);
+    track.addEventListener('touchstart', stop, { passive: true });
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => (e[0].isIntersecting ? start() : stop())).observe(rv); else start();
+  }
+
   // Årtal
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 

@@ -7,6 +7,7 @@ Platshållare i sidorna:
     {{tel}} {{phone}} {{email}} {{street}} {{zip}} {{city}}
     {{icon:arrow}} {{icon:phone}} ...      ikoner
     {{reviews}} {{cta}} {{contact}}        delade sektioner
+    {{capacity}} {{services}}              nyckelkapacitet, tjänster (dragspel)
 Kör:  python3 tools/build.py
 """
 from pathlib import Path
@@ -34,9 +35,11 @@ ICON = {
     "mail": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>',
     "pin": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
     "chev": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+    "back": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>',
     "ext": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
 }
 A = ICON["arrow"]
+STAR = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .8-5.2 4.9 1.4 7-6.2-3.6L5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg>'
 
 # Google-omdömen: bara uppgifter som finns i underlaget (inga texter eller betyg).
 REVIEWS = [
@@ -72,7 +75,7 @@ def header(active: str) -> str:
         <button type="button" aria-expanded="false" aria-controls="mega-tjanster">Tjänster {ICON['chev']}</button>
         <div class="mega" id="mega-tjanster"><div class="c">
           <div><h4>Bearbetning</h4><ul><li><a href="tjanster.html#bearbetning">CNC-svarvning</a></li><li><a href="tjanster.html#bearbetning">CNC-fräsning</a></li><li><a href="tjanster.html#bearbetning">Manuell svarvning</a></li><li><a href="tjanster.html#bearbetning">Borrning och kapning</a></li><li><a href="tjanster.html#bearbetning">Kilspår och splints</a></li><li><a href="tjanster.html#bearbetning">Programmering</a></li></ul></div>
-          <div><h4>Svets &amp; sprutning</h4><ul><li><a href="tjanster.html#svets">TIG, MIG och MMA</a></li><li><a href="tjanster.html#svets">Svetsning av gjutjärn</a></li><li><a href="tjanster.html#svets">Termisk sprutning</a></li><li><a href="tjanster.html#svets">Värmebehandling</a></li></ul></div>
+          <div><h4>Svets &amp; sprutning</h4><ul><li><a href="tjanster.html#svets">TIG, MIG och MMA</a></li><li><a href="tjanster.html#svets">Svetsning av gjutjärn</a></li><li><a href="tjanster.html#svets">Termisk sprutning</a></li><li><a href="tjanster.html#varme">Värmebehandling</a></li></ul></div>
           <div><h4>Ytbehandling &amp; tvätt</h4><ul><li><a href="tjanster.html#yta">Blästring med glas</a></li><li><a href="tjanster.html#yta">Putsning och polering</a></li><li><a href="tjanster.html#yta">Trumling och pressning</a></li><li><a href="tjanster.html#yta">Detalj- och ultraljudstvätt</a></li><li><a href="tjanster.html#yta">Montering</a></li></ul></div>
           <div><h4>Via partners</h4><ul><li><a href="tjanster.html#partners">Vattenskärning</a></li><li><a href="tjanster.html#partners">5-axlig fräsning</a></li><li><a href="tjanster.html#partners">Bockning</a></li><li><a href="tjanster.html#partners">Gnistning</a></li><li><a href="tjanster.html#partners">Konstruktion</a></li><li><a href="tjanster.html#partners">Maskinflytt</a></li></ul></div>
           <div class="feat"><span class="label">Glasindustrin</span><img src="assets/img/formverktyg-sortiment.webp" alt="" width="442" height="285" loading="lazy"><b>Formar och verktyg för glasbruk</b><p>Kärnverksamheten sedan starten 1983.</p><a class="link" href="tjanster.html#branscher">Läs mer {A}</a></div>
@@ -105,7 +108,7 @@ def footer() -> str:
     return f"""<footer class="site"><div class="c">
   <div class="ft">
     <div><img src="assets/img/logo-ljus.png" alt="Surte Formverkstad" width="254" height="67" loading="lazy"><p>Form- och mekanisk verkstad i Surte. Verktyg till glasindustrin och legobearbetning för tillverkande företag i hela Norden – sedan 1983.</p></div>
-    <div><h4>Tjänster</h4><ul><li><a href="tjanster.html#bearbetning">CNC-bearbetning</a></li><li><a href="tjanster.html#svets">Svetsning</a></li><li><a href="tjanster.html#svets">Termisk sprutning</a></li><li><a href="tjanster.html#svets">Värmebehandling</a></li><li><a href="tjanster.html#yta">Ytbehandling</a></li></ul></div>
+    <div><h4>Tjänster</h4><ul><li><a href="tjanster.html#bearbetning">CNC-bearbetning</a></li><li><a href="tjanster.html#svets">Svetsning</a></li><li><a href="tjanster.html#svets">Termisk sprutning</a></li><li><a href="tjanster.html#varme">Värmebehandling</a></li><li><a href="tjanster.html#yta">Ytbehandling</a></li></ul></div>
     <div><h4>Företaget</h4><ul><li><a href="om-oss.html">Om oss</a></li><li><a href="maskinpark.html">Maskinpark</a></li><li><a href="tjanster.html#referenser">Referenser</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
     <div><h4>Kontakt</h4><ul><li><a href="tel:{SITE['tel']}">{SITE['phone']}</a></li><li>Fax {SITE['fax']}</li><li><a href="mailto:{SITE['email']}">{SITE['email']}</a></li></ul></div>
     <div><h4>Besök</h4><ul><li>{SITE['street']}</li><li>{SITE['zip']} {SITE['city']}</li><li>Mån–fre 07–16</li><li>Lör–sön stängt</li></ul></div>
@@ -116,19 +119,87 @@ def footer() -> str:
 
 
 def reviews() -> str:
-    rows = "\n".join(
-        f'      <a href="{GOOGLE_URL}" target="_blank" rel="noopener"><span><b>{n}</b><span class="lg">Local Guide</span></span><span>{meta}</span><span>{when}</span>{ICON["ext"]}</a>'
-        for n, meta, when in REVIEWS
+    cards = "\n".join(
+        f"""      <article class="rv-card{' dk' if i == 1 else ''}">
+        <div class="rv-top"><span class="av a{i + 1}" aria-hidden="true">{''.join(w[0] for w in (n.split()[0], n.split()[-1]))}</span><span><b>{n}</b><span class="lg">{STAR}Local Guide</span></span></div>
+        <p class="rv-meta">{meta}</p>
+        <div class="rv-bot"><span>Omdöme på Google, {when.lower()}</span><a href="{GOOGLE_URL}" target="_blank" rel="noopener" aria-label="Läs {n}s omdöme på Google">Läs</a></div>
+      </article>"""
+        for i, (n, meta, when) in enumerate(REVIEWS)
     )
-    return f"""<section class="bg-steel pad" id="omdomen"><div class="c rev">
-  <div>
-    <span class="label">Omdömen</span>
-    <h2 class="h2" style="margin-top:12px">Recenserade på Google</h2>
-    <p class="muted" style="margin-top:18px">Fem Local Guides har lämnat omdömen om Surte Formverkstad AB på Google Maps.</p>
-    <a class="src" href="{GOOGLE_URL}" target="_blank" rel="noopener">{ICON['pin']}<span><b>Surte Formverkstad AB</b><small>Läs omdömena på Google Maps</small></span></a>
+    dots = "".join(f'<button type="button" aria-label="Visa omdöme {i + 1}"></button>' for i in range(len(REVIEWS)))
+    return f"""<section class="bg-steel pad rv" id="omdomen" aria-roledescription="karusell" aria-label="Omdömen på Google">
+  <div class="c sec-head">
+    <div><span class="label">Omdömen</span><h2 class="h2">Recenserade på Google</h2></div>
+    <div class="rv-ar"><button type="button" class="prev" aria-label="Föregående">{ICON['back']}</button><button type="button" class="next" aria-label="Nästa">{ICON['arrow']}</button></div>
   </div>
-  <div class="rev-list">
+  <div class="rv-track" tabindex="0">
+{cards}
+  </div>
+  <div class="c rv-foot"><div class="rv-dots">{dots}</div><a class="link" href="{GOOGLE_URL}" target="_blank" rel="noopener">Alla omdömen på Google {ICON['arrow']}</a></div>
+</section>"""
+
+
+def capacity() -> str:
+    items = [
+        ("Ø 550", "", "Daewoo Puma 350", "Största svarvdiameter, längd upp till 1050"),
+        ("4", "axlar", "Hitachi Seiki HC400-40", "Horisontell fleroperation med 2 paletter"),
+        ("1 200", "°C", "Nabertherm", "Värmebehandling i egen ugn"),
+        ("100", "ton", "HIAB · Origo HPM-10", "Presskraft – plus en 10-tonspress"),
+    ]
+    rows = "\n".join(
+        f'      <div class="cap-it"><b>{n}{f"<em>{u}</em>" if u else ""}</b><span><strong>{m}</strong>{d}</span></div>'
+        for n, u, m, d in items
+    )
+    return f"""<section class="on-dark pad cap">
+  <div class="c">
+    <span class="label">Maskinpark</span>
+    <p class="cap-lead">Vi svarvar detaljer upp till <b><em>Ø</em> 550</b>, bearbetar i <b>4 axlar</b>, värmebehandlar i <b>1 200 <em>°C</em></b> och pressar med <b>100 ton</b> – i egen verkstad i Surte.</p>
+    <div class="cap-g">
+      <div class="cap-img"><img src="assets/img/formverktyg-panorama.webp" alt="Formar och verktyg för glasindustrin" width="1468" height="626" loading="lazy"></div>
+      <div class="cap-list">
 {rows}
+        <a class="btn btn-white" href="maskinpark.html">Hela maskinparken {A}</a>
+      </div>
+    </div>
+  </div>
+</section>"""
+
+
+SERVICES = [
+    ("bearbetning", "Bearbetning", "Skärande bearbetning i CNC-styrda och manuella maskiner, med egen programmering. CNC-svarvar upp till Ø 550 och fleroperationsmaskiner i 3 och 4 axlar.",
+     ["CNC-svarvning · 2 axlar", "CNC-fräsning · 3 + 1 axlar", "Manuell svarvning", "Borrning", "Kapning", "Kilspår, splints m.m.", "Programmering"],
+     "Daewoo Puma 8 · 10S · 350, Nakamura Super Turn 3, Hitachi Seiki HC400-40, Yamaguchi YMV-60MW"),
+    ("svets", "Svets &amp; sprutning", "Svetsning i flera metoder – även av gjutjärn – och termisk sprutning med tre olika tekniker.",
+     ["TIG · MIG · MMA", "Svetsning av gjutjärn", "Termisk sprutning, varm", "Termisk sprutning, kall", "Keramisk sprutning"],
+     "Migatronic Dyna MIG 335, L-Tec TIG 250 AC/DC, Norgas SL-22, Castolin Super Jet ×2, Castodyn DS 8000"),
+    ("varme", "Värme &amp; yta", "Värmebehandling i egen ugn och efterbearbetning som ger rätt yta.",
+     ["Värmebehandling upp till 1 200 °C", "Blästring med glas", "Putsning", "Polering", "Trumling", "Pressning"],
+     "Nabertherm-ugn, blästerskåp, BRK Autopol, rotations- och vibrationstrumlare, HIAB 100 t"),
+    ("yta", "Tvätt &amp; montering", "Detaljerna levereras rena och, när det behövs, färdigmonterade.",
+     ["Detaljtvätt", "Ultraljudstvätt", "Montering"],
+     "SME hetvattentvätt, ultraljudstvätt"),
+    ("partners", "Via partners", "Det vi inte gör själva ordnar vi via samarbetspartners vi känner väl – du har en kontakt, vi samordnar resten.",
+     ["Vattenskärning", "Bockning", "5-axlig fräsning", "Konstruktion", "Maskinkonstruktion och byggnation", "Programmering", "Gnistning", "Lackering och ytbehandling", "Maskinflytt"],
+     ""),
+]
+
+
+def services(heading: str = "Vad behöver du hjälp med?") -> str:
+    items = []
+    for i, (sid, title, desc, chips, mach) in enumerate(SERVICES):
+        chip_html = "".join(f'<li class="chip"><i></i>{c}</li>' for c in chips)
+        mach_html = f'<p class="acc-m">{"Utrustning" if sid != "bearbetning" else "Maskiner"}: <b>{mach}</b></p>' if mach else ""
+        first = i == 0
+        items.append(f"""      <div class="acc-it{' open' if first else ''}" id="{sid}">
+        <h3><button type="button" class="acc-h" aria-expanded="{'true' if first else 'false'}" aria-controls="acc-{sid}"><span>{title}</span><i aria-hidden="true"></i></button></h3>
+        <div class="acc-b" id="acc-{sid}"{'' if first else ' hidden'}><div class="acc-in"><div><p>{desc}</p>{mach_html}</div><ul>{chip_html}</ul></div></div>
+      </div>""")
+    body = "\n".join(items)
+    return f"""<section class="pad svc" id="tjanster"><div class="c svc-g">
+  <div class="svc-l"><span class="label">Tjänster</span><h2 class="h2" style="margin-top:12px">{heading}</h2><p class="muted" style="margin-top:18px">Allt i egen verkstad i Surte – det vi inte gör själva ordnar vi via samarbetspartners.</p><a class="btn btn-primary" style="margin-top:32px" href="kontakt.html#forfragan">Skicka förfrågan {A}</a></div>
+  <div class="acc">
+{body}
   </div>
 </div></section>"""
 
@@ -225,7 +296,9 @@ def page(meta: dict, body: str, slug: str) -> str:
 
 
 def main():
-    blocks = {"{{reviews}}": reviews(), "{{cta}}": cta(), "{{contact}}": contact()}
+    blocks = {"{{reviews}}": reviews(), "{{cta}}": cta(), "{{contact}}": contact(),
+              "{{capacity}}": capacity(), "{{services}}": services(),
+              "{{services:tjanster}}": services("Tjänsteområden")}
     for src in sorted(PAGES.glob("*.html")):
         text = src.read_text(encoding="utf-8")
         m = re.match(r"\s*<!--(.*?)-->", text, re.S)
