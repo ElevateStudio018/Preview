@@ -1,89 +1,11 @@
 <!-- title: Kontakt – Surte Formverkstad, Kvarnvägen 3 i Surte | description: Kontakta Surte Formverkstad på 031-98 01 60 eller info@surteformverkstad.se. Kvarnvägen 3, 445 57 Surte. Öppet måndag–fredag 07–16. | nav: kontakt -->
-<section class="page-hero">
-  <div class="wrap">
+<section class="ph"><div class="c">
+  <div>
     <nav class="crumbs" aria-label="Brödsmulor"><a href="index.html">Start</a><span>/</span>Kontakt</nav>
-    <span class="eyebrow">Kontakt</span>
-    <h1>Hör av dig – <em class="hl">vi tar gärna en titt</em> på ditt jobb.</h1>
-    <p class="lead">Ring växeln, prata direkt med Roger eller Lennart, eller skicka en förfrågan via formuläret nedan.</p>
+    <h1 class="h1">Prata direkt med verkstaden</h1>
+    <p class="lead">Ring växeln, Roger eller Lennart – eller skicka en förfrågan med material, antal och önskad leveranstid så återkommer vi med pris.</p>
   </div>
-</section>
+  <div class="im"><img src="assets/img/referens-detaljer.webp" alt="Svarvade detaljer i stål och mässing" width="820" height="750"></div>
+</div></section>
 
-<section>
-  <div class="wrap contact-grid">
-    <div class="reveal">
-      <span class="eyebrow">Kontaktuppgifter</span>
-      <h2 class="h2" style="margin:16px 0 28px">Surte Formverkstad AB</h2>
-      <div class="ccards">
-        <a class="ccard" href="tel:{{tel}}">
-          <span class="ic">{{icon:phone}}</span>
-          <small>Växel</small><b>{{phone}}</b>
-        </a>
-        <a class="ccard wide-sm" href="mailto:{{email}}">
-          <span class="ic">{{icon:mail}}</span>
-          <small>E-post</small><b>{{email}}</b>
-        </a>
-        <a class="ccard" href="tel:+46706479010">
-          <span class="ic">{{icon:phone}}</span>
-          <small>Roger Persson</small><b>0706-47 90 10</b>
-        </a>
-        <a class="ccard" href="tel:+46706892554">
-          <span class="ic">{{icon:phone}}</span>
-          <small>Lennart Persson</small><b>0706-89 25 54</b>
-        </a>
-        <div class="ccard">
-          <span class="ic">{{icon:pin}}</span>
-          <small>Adress</small><b>{{street}}<br>{{zip}} {{city}}</b>
-        </div>
-        <div class="ccard">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="1"/><path d="M6 14h12v7H6z"/></svg></span>
-          <small>Fax</small><b>031-98 34 40</b>
-        </div>
-        <div class="ccard wide">
-          <span class="ic">{{icon:clock}}</span>
-          <small>Öppettider</small>
-          <div class="hours">
-            <div><span>Måndag–fredag</span><b>07–16</b></div>
-            <div><span>Lördag–söndag</span><b>Stängt</b></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <form class="form reveal d1" id="forfragan" action="https://formsubmit.co/{{email}}" method="POST" data-ajax="https://formsubmit.co/ajax/{{email}}">
-      <h2>Skicka en förfrågan</h2>
-      <p>Beskriv vad du behöver hjälp med, gärna med material, antal och önskad leveranstid.</p>
-      <input type="hidden" name="_subject" value="Ny förfrågan från surteformverkstad.se">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://www.surteformverkstad.se/kontakt.html?skickat=1">
-      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="fgrid">
-        <div class="field">
-          <label for="f-namn">Namn *</label>
-          <input id="f-namn" name="Namn" type="text" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="f-foretag">Företag</label>
-          <input id="f-foretag" name="Företag" type="text" autocomplete="organization">
-        </div>
-        <div class="field">
-          <label for="f-epost">E-post *</label>
-          <input id="f-epost" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="f-tel">Telefon</label>
-          <input id="f-tel" name="Telefon" type="tel" autocomplete="tel">
-        </div>
-        <div class="field full">
-          <label for="f-meddelande">Meddelande *</label>
-          <textarea id="f-meddelande" name="Meddelande" required></textarea>
-        </div>
-      </div>
-      <label class="consent"><input type="checkbox" required> <span>Jag godkänner att Surte Formverkstad sparar mina uppgifter för att kunna besvara förfrågan. Läs mer i vår <a href="integritetspolicy.html">integritetspolicy</a>.</span></label>
-      <button class="btn btn-primary" type="submit">Skicka förfrågan {{icon:arrow}}</button>
-      <div class="form-status" role="status" aria-live="polite"></div>
-    </form>
-  </div>
-</section>
-
-{{map}}
+{{contact}}

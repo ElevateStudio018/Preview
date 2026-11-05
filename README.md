@@ -1,6 +1,17 @@
 # Surte Formverkstad – ny webbplats
 
-Statisk webbplats för Surte Formverkstad AB (Kvarnvägen 3, Surte). Ren HTML, CSS och lite JavaScript – inga beroenden. Typsnitt: Poppins.
+Statisk webbplats för Surte Formverkstad AB (Kvarnvägen 3, Surte). Ren HTML, CSS och lite JavaScript – inga beroenden.
+
+**Design:** stram industriell stil med frilagda produkter på stålgrå scen. Typsnitt Outfit (rubriker) och DM Sans (brödtext, knappar). Färgpaket i CSS-variablerna överst i `assets/css/style.css`:
+
+| Token | Färg | Används till |
+|---|---|---|
+| `--navy-900` | #0A1F38 | rubriker, header, footer, mörka sektioner |
+| `--blue-600` | #1F6FB5 | knappar, länkar, aktivt läge |
+| `--steel-50` … `--steel-900` | #F5F6F8 … #141A21 | ytor, linjer, text |
+| `--brass-500` | #B4873A | signaturdetalj (linjer, siffror på mörkt) |
+
+**Bilder:** produktbilderna är frilagda med BiRefNet och sparade som transparent WebP i `assets/img/`. Kartan på kontaktsidan är en statisk bild från OpenStreetMap (© OpenStreetMap-bidragsgivare) som länkar till Google Maps.
 
 ## Sidor
 
@@ -8,8 +19,8 @@ Statisk webbplats för Surte Formverkstad AB (Kvarnvägen 3, Surte). Ren HTML, C
 |---|---|
 | Startsida | `index.html` |
 | Om oss | `om-oss.html` |
-| Tjänster (inkl. referensbilder) | `tjanster.html` |
-| Maskinpark | `maskinpark.html` |
+| Tjänster (tjänsteområden, branscher, partners, referensbilder) | `tjanster.html` |
+| Maskinpark (nyckelkapacitet + filtrerbar maskinlista) | `maskinpark.html` |
 | Kontakt (formulär, karta) | `kontakt.html` |
 | Integritetspolicy | `integritetspolicy.html` |
 
@@ -18,7 +29,7 @@ Statisk webbplats för Surte Formverkstad AB (Kvarnvägen 3, Surte). Ren HTML, C
 HTML-filerna i roten **byggs** – ändra inte i dem direkt.
 
 - Sidornas innehåll: `src/pages/*.html`
-- Header, footer, Google-omdömen, karta och kontaktuppgifter: `tools/build.py`
+- Header med meganavigering, footer, Google-omdömen, CTA, kontaktformulär och kontaktuppgifter: `tools/build.py`
 - Stil: `assets/css/style.css` (färger som CSS-variabler överst)
 
 Bygg efter ändringar:
