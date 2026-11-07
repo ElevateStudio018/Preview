@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.squarespace-cdn.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Karla:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Work+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Italiana&family=Manrope:wght@400;500;600&family=Libre+Caslon+Display&family=Libre+Franklin:wght@400;500;600&family=Gloock&family=Figtree:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;family=Montserrat:wght@300;400;500;600&amp;family=Outfit:wght@300;400;500;600&amp;family=Urbanist:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=Sora:wght@300;400;500;600&amp;family=Lexend:wght@300;400;500;600&amp;family=Red+Hat+Display:wght@300;400;500;600&amp;family=Red+Hat+Text:wght@300;400;500;600&amp;family=League+Spartan:wght@300;400;500;600&amp;family=Kumbh+Sans:wght@300;400;500;600&amp;family=Albert+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F3EFE8;
@@ -19,10 +19,11 @@
   --accent:#7A3B2E;
   --accent-ink:#FBF6F0;
   --line:rgba(30,28,25,.14);
-  --f-display:"Instrument Serif", Georgia, serif;
-  --f-body:"Instrument Sans", system-ui, sans-serif;
-  --d-weight:400;
-  --d-track:-0.01em;
+  --f-display:"Poppins", system-ui, sans-serif;
+  --f-body:"Poppins", system-ui, sans-serif;
+  --d-weight:500;
+  --d-track:-0.035em;
+  --em-weight:300;
   --gutter:clamp(16px,4vw,56px);
   --max:1320px;
 }
@@ -33,8 +34,8 @@ img,video{display:block;max-width:100%}
 a{color:inherit}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-.display{font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);line-height:1.02;margin:0}
-.display em{font-style:italic;color:var(--accent)}
+.display{font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);line-height:1.04;margin:0}
+.display em{font-style:normal;font-weight:var(--em-weight);color:var(--accent)}
 .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;display:flex;gap:14px;align-items:center;margin:0 0 28px}
 .eyebrow b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
 .eyebrow::after{content:"";height:1px;flex:0 0 48px;background:currentColor;opacity:.5}
@@ -63,7 +64,7 @@ a{color:inherit}
 .hdr.is-solid{background:rgba(243,239,232,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
 .hdr__in{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
 .logo{display:flex;align-items:baseline;gap:12px;text-decoration:none}
-.logo__mark{font-family:var(--f-display);font-size:30px;line-height:1;letter-spacing:-.02em}
+.logo__mark{font-family:var(--f-display);font-weight:600;font-size:26px;line-height:1;letter-spacing:-.04em}
 .logo__name{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
 .nav{display:flex;gap:30px;font-size:14.5px}
 .nav a{text-decoration:none;opacity:.88;position:relative;padding:4px 0}
@@ -81,7 +82,7 @@ a{color:inherit}
 .mnav.open{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.7,0,.2,1)}
 .mnav__top{display:flex;justify-content:space-between;align-items:center;height:52px}
 .mnav nav{display:flex;flex-direction:column;margin-top:8vh}
-.mnav nav a{font-family:var(--f-display);font-size:44px;line-height:1.25;text-decoration:none}
+.mnav nav a{font-family:var(--f-display);font-weight:500;letter-spacing:-.03em;font-size:40px;line-height:1.3;text-decoration:none}
 .mnav .btn{margin-top:auto;align-self:flex-start}
 
 /* ---------- Hero ---------- */
@@ -92,7 +93,7 @@ a{color:inherit}
 .hero__meta{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.9;margin-bottom:22px}
 .hero__meta span+span::before{content:"·";margin-right:18px;opacity:.7}
 @media (max-width:700px){.hero__meta{gap:6px 0;flex-direction:column;letter-spacing:.14em}.hero__meta span+span::before{content:none}.hero__meta span:first-child{display:none}}
-.hero h1{font-size:clamp(46px,8.4vw,128px);max-width:12ch}
+.hero h1{font-size:clamp(42px,7.4vw,112px);max-width:12ch}
 .hero h1 em{color:inherit}
 .hero__row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:34px}
 .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
@@ -104,7 +105,7 @@ a{color:inherit}
 /* ---------- Intro ---------- */
 .sec{padding:clamp(80px,12vw,160px) 0}
 .intro__grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,7vw,110px);align-items:start}
-.intro h2{font-size:clamp(38px,5.2vw,76px)}
+.intro h2{font-size:clamp(34px,4.3vw,62px)}
 .intro__lead{font-size:clamp(19px,1.6vw,22px);line-height:1.55;color:var(--ink-2);margin:34px 0 0;max-width:34em}
 .intro__body p{margin:0 0 1.1em;color:var(--ink-2)}
 .intro__body p:first-child::first-letter{font-family:var(--f-display);float:left;font-size:4.2em;line-height:.82;padding:.06em .1em 0 0;color:var(--accent)}
@@ -196,7 +197,7 @@ a{color:inherit}
 .rev__track::-webkit-scrollbar{display:none}
 .rev__track{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
 .review{scroll-snap-align:start;margin:0;display:flex;flex-direction:column}
-.review blockquote{margin:0;font-family:var(--f-display);font-size:clamp(24px,2.3vw,32px);line-height:1.28}
+.review blockquote{margin:0;font-family:var(--f-display);font-weight:400;letter-spacing:-0.015em;font-size:clamp(20px,1.9vw,27px);line-height:1.4}
 .review blockquote::before{content:"“";display:block;font-size:3.2em;line-height:.7;color:var(--accent);margin-bottom:10px}
 .review figcaption{margin-top:24px;font-size:14px;letter-spacing:.06em;color:var(--muted);display:flex;align-items:center;gap:12px}
 .review figcaption::before{content:"";width:28px;height:1px;background:currentColor}
@@ -262,8 +263,8 @@ a{color:inherit}
 .fopt:hover{border-color:var(--ink)}
 .fopt[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
 .fopt__n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;grid-row:span 2}
-.fopt__sample{font-size:32px;line-height:1.05}
-.fopt__sample em{color:var(--accent)}
+.fopt__sample{font-size:30px;line-height:1.1}
+.fopt__sample em{color:var(--accent);font-style:normal;font-weight:300}
 .fopt__meta{font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .fopt__meta b{font-weight:500;color:var(--ink-2)}
 .fp__keys{font-size:12px;color:var(--muted);margin-top:14px}
@@ -384,17 +385,17 @@ a{color:inherit}
       <h2 class="display reveal">Tre steg, <em>noll</em> stress.</h2>
       <div class="proc__grid">
         <div class="step reveal">
-          <span class="step__n">i.</span>
+          <span class="step__n">01</span>
           <h3>Vi ses och pratar</h3>
           <p>Helst ansikte mot ansikte – jag kommer vara nära er hela dagen, så det är fint att lära känna varandra. Går det inte tar vi mötet digitalt. Jag tar gärna med ett album så ni kan känna på material och färger.</p>
         </div>
         <div class="step reveal">
-          <span class="step__n">ii.</span>
+          <span class="step__n">02</span>
           <h3>Er bröllopsdag</h3>
           <p>Jag gör vad som krävs för bilden – jag har tappat en kamera från ett träd och förlorat en blixt i havet. Därför har jag alltid backup-utrustning med mig. Regnar det hittar vi vackra platser inomhus.</p>
         </div>
         <div class="step reveal">
-          <span class="step__n">iii.</span>
+          <span class="step__n">03</span>
           <h3>Ni får alla bilder</h3>
           <p>Några smakprov inom en vecka, resten efter 3–4 veckor. Ni får <em>alla</em> bilder från dagen, plus ett urval redigerade i högsta kvalitet – utskrivbara ända upp till A0.</p>
         </div>
@@ -657,16 +658,16 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* ---------- Font picker ---------- */
 const FONTS=[
-  {d:'Instrument Serif',b:'Instrument Sans',note:'Redaktionell & modern',w:400,t:'-0.01em'},
-  {d:'Cormorant Garamond',b:'Karla',note:'Klassisk & luftig',w:500,t:'-0.01em'},
-  {d:'Fraunces',b:'Work Sans',note:'Varm & personlig',w:300,t:'-0.02em'},
-  {d:'Playfair Display',b:'Source Sans 3',note:'Tidlös kontrast',w:400,t:'-0.015em'},
-  {d:'Bodoni Moda',b:'Jost',note:'Mode & magasin',w:400,t:'-0.02em'},
-  {d:'DM Serif Display',b:'DM Sans',note:'Tydlig & vänlig',w:400,t:'-0.01em'},
-  {d:'Italiana',b:'Manrope',note:'Smal & elegant',w:400,t:'0em'},
-  {d:'Libre Caslon Display',b:'Libre Franklin',note:'Bokaktig & trygg',w:400,t:'-0.01em'},
-  {d:'Gloock',b:'Figtree',note:'Karaktärsfull',w:400,t:'-0.02em'},
-  {d:'Newsreader',b:'Public Sans',note:'Dokumentär & lugn',w:400,t:'-0.02em'},
+  {d:'Poppins',b:'Poppins',note:'Originalet – runt & vänligt',w:500,t:'-0.035em'},
+  {d:'Montserrat',b:'Montserrat',note:'Bred & självsäker',w:500,t:'-0.035em'},
+  {d:'Outfit',b:'Outfit',note:'Mjuk & luftig',w:400,t:'-0.03em'},
+  {d:'Urbanist',b:'Urbanist',note:'Stram & elegant',w:500,t:'-0.03em'},
+  {d:'Plus Jakarta Sans',b:'Plus Jakarta Sans',note:'Modern & skarp',w:500,t:'-0.04em'},
+  {d:'Sora',b:'Sora',note:'Teknisk & ren',w:400,t:'-0.045em'},
+  {d:'Lexend',b:'Lexend',note:'Lättläst & öppen',w:400,t:'-0.04em'},
+  {d:'Red Hat Display',b:'Red Hat Text',note:'Personlig & varm',w:500,t:'-0.03em'},
+  {d:'League Spartan',b:'Poppins',note:'Klassisk geometri',w:500,t:'-0.03em'},
+  {d:'Kumbh Sans',b:'Albert Sans',note:'Lugn & balanserad',w:500,t:'-0.035em'},
 ];
 const fpList=document.getElementById('fpList'),fp=document.getElementById('fp'),fpT=document.getElementById('fpToggle'),fpN=document.getElementById('fpN');
 let fi=0;
@@ -679,18 +680,18 @@ FONTS.forEach((f,i)=>{
 });
 function applyFont(i){
   fi=(i+FONTS.length)%FONTS.length;const f=FONTS[fi],r=document.documentElement.style;
-  r.setProperty('--f-display',`"${f.d}", Georgia, serif`);r.setProperty('--f-body',`"${f.b}", system-ui, sans-serif`);
+  r.setProperty('--f-display',`"${f.d}", system-ui, sans-serif`);r.setProperty('--f-body',`"${f.b}", system-ui, sans-serif`);
   r.setProperty('--d-weight',f.w);r.setProperty('--d-track',f.t);
   fpN.textContent=(fi+1)+'/10';
   fpList.querySelectorAll('.fopt').forEach((b,k)=>b.setAttribute('aria-pressed',k===fi));
-  try{localStorage.setItem('jl-font',fi)}catch(e){}
+  try{localStorage.setItem('jl-font-sans',fi)}catch(e){}
   try{const u=new URL(location.href);u.searchParams.set('font',fi+1);history.replaceState(null,'',u)}catch(e){}
 }
 const setFp=o=>{fp.classList.toggle('open',o);fpT.setAttribute('aria-expanded',o)};
 fpT.onclick=()=>setFp(!fp.classList.contains('open'));
 document.getElementById('fpClose').onclick=()=>setFp(false);
 let start=0;
-try{const q=new URLSearchParams(location.search).get('font');if(q)start=parseInt(q,10)-1;else{const s=localStorage.getItem('jl-font');if(s!==null)start=+s}}catch(e){}
+try{const q=new URLSearchParams(location.search).get('font');if(q)start=parseInt(q,10)-1;else{const s=localStorage.getItem('jl-font-sans');if(s!==null)start=+s}}catch(e){}
 applyFont(isNaN(start)?0:start);
 
 /* ---------- Keys ---------- */
