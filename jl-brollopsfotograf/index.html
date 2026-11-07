@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bröllopsfotograf Malmö &amp; Skåne | Janus Langhorn</title>
+<meta name="description" content="Bröllopsfotograf i Malmö med 16 års erfarenhet. Bröllop i hela Skåne och Köpenhamn med en avslappnad, äkta stil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.squarespace-cdn.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Karla:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Work+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Italiana&family=Manrope:wght@400;500;600&family=Libre+Caslon+Display&family=Libre+Franklin:wght@400;500;600&family=Gloock&family=Figtree:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EFE8;
+  --paper-2:#E8E1D6;
+  --ink:#1E1C19;
+  --ink-2:#3A3631;
+  --muted:#6E675D;
+  --accent:#7A3B2E;
+  --accent-ink:#FBF6F0;
+  --line:rgba(30,28,25,.14);
+  --f-display:"Instrument Serif", Georgia, serif;
+  --f-body:"Instrument Sans", system-ui, sans-serif;
+  --d-weight:400;
+  --d-track:-0.01em;
+  --gutter:clamp(16px,4vw,56px);
+  --max:1320px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.display{font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);line-height:1.02;margin:0}
+.display em{font-style:italic;color:var(--accent)}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;display:flex;gap:14px;align-items:center;margin:0 0 28px}
+.eyebrow b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.eyebrow::after{content:"";height:1px;flex:0 0 48px;background:currentColor;opacity:.5}
+
+/* ---------- Buttons (pill) ---------- */
+.btn{--bg:var(--ink);--fg:var(--paper);display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;background:var(--bg);color:var(--fg);border:1px solid var(--bg);font:500 15px/1 var(--f-body);text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:16px;height:16px;transition:transform .25s}
+.btn:hover svg{transform:translateX(3px)}
+.btn--accent{--bg:var(--accent);--fg:var(--accent-ink)}
+.btn--accent:hover{--bg:#61291E}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--ink)}
+.btn--light{--bg:var(--paper);--fg:var(--ink)}
+.btn--glass{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn--glass:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn--sm{padding:11px 20px;font-size:14px}
+.chip{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);font:500 14px/1 var(--f-body);cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip sup{font-size:10px;opacity:.6;margin-left:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- Header ---------- */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,color .35s,box-shadow .35s;color:#fff}
+.hdr.is-solid{background:rgba(243,239,232,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.hdr__in{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{display:flex;align-items:baseline;gap:12px;text-decoration:none}
+.logo__mark{font-family:var(--f-display);font-size:30px;line-height:1;letter-spacing:-.02em}
+.logo__name{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.nav{display:flex;gap:30px;font-size:14.5px}
+.nav a{text-decoration:none;opacity:.88;position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav a:hover{opacity:1}.nav a:hover::after{transform:scaleX(1)}
+.hdr .btn{--bg:#fff;--fg:var(--ink)}
+.hdr.is-solid .btn{--bg:var(--ink);--fg:var(--paper)}
+.burger{display:none;background:none;border:1px solid currentColor;border-radius:999px;color:inherit;padding:9px 16px;font:500 14px/1 var(--f-body);cursor:pointer}
+@media (max-width:960px){
+  .nav,.hdr .btn{display:none}
+  .burger{display:inline-flex}
+  .logo__name{display:none}
+}
+.mnav{position:fixed;inset:0;z-index:60;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;padding:24px var(--gutter);transform:translateY(-100%);visibility:hidden;transition:transform .45s cubic-bezier(.7,0,.2,1),visibility 0s .45s}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.7,0,.2,1)}
+.mnav__top{display:flex;justify-content:space-between;align-items:center;height:52px}
+.mnav nav{display:flex;flex-direction:column;margin-top:8vh}
+.mnav nav a{font-family:var(--f-display);font-size:44px;line-height:1.25;text-decoration:none}
+.mnav .btn{margin-top:auto;align-self:flex-start}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;height:100svh;min-height:600px;color:#fff;overflow:hidden;background:#2a2622}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.45) 0%,rgba(20,17,14,0) 28%,rgba(20,17,14,.05) 50%,rgba(20,17,14,.72) 100%)}
+.hero__in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(36px,7vh,80px)}
+.hero__meta{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.9;margin-bottom:22px}
+.hero__meta span+span::before{content:"·";margin-right:18px;opacity:.7}
+@media (max-width:700px){.hero__meta{gap:6px 0;flex-direction:column;letter-spacing:.14em}.hero__meta span+span::before{content:none}.hero__meta span:first-child{display:none}}
+.hero h1{font-size:clamp(46px,8.4vw,128px);max-width:12ch}
+.hero h1 em{color:inherit}
+.hero__row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:34px}
+.hero__cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero__ctrl{display:flex;align-items:center;gap:14px;font-size:12px;opacity:.85}
+.hero__ctrl button{width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}
+.hero__ctrl button:hover{background:rgba(255,255,255,.15)}
+.hero__ctrl a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4)}
+
+/* ---------- Intro ---------- */
+.sec{padding:clamp(80px,12vw,160px) 0}
+.intro__grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,7vw,110px);align-items:start}
+.intro h2{font-size:clamp(38px,5.2vw,76px)}
+.intro__lead{font-size:clamp(19px,1.6vw,22px);line-height:1.55;color:var(--ink-2);margin:34px 0 0;max-width:34em}
+.intro__body p{margin:0 0 1.1em;color:var(--ink-2)}
+.intro__body p:first-child::first-letter{font-family:var(--f-display);float:left;font-size:4.2em;line-height:.82;padding:.06em .1em 0 0;color:var(--accent)}
+.intro__fig{margin:0;position:relative}
+.intro__fig img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.intro__fig figcaption{font-size:13px;color:var(--muted);margin-top:12px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:clamp(56px,7vw,96px)}
+.fact{padding:28px 24px 0 0}
+.fact+.fact{padding-left:24px;border-left:1px solid var(--line)}
+.fact strong{display:block;font-family:var(--f-display);font-weight:var(--d-weight);font-size:clamp(40px,4.4vw,64px);line-height:1}
+.fact span{display:block;margin-top:10px;font-size:14.5px;color:var(--muted);max-width:22ch}
+@media (max-width:860px){
+  .intro__grid{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .fact+.fact{border-left:0;border-top:1px solid var(--line);padding-left:0;margin-top:28px}
+}
+
+/* ---------- Gallery ---------- */
+.gallery{background:var(--ink);color:var(--paper)}
+.gallery .eyebrow{color:rgba(243,239,232,.6)}
+.gallery .eyebrow b{color:var(--paper)}
+.gal__head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:44px}
+.gal__head h2{font-size:clamp(42px,6vw,92px)}
+.gal__head h2 em{color:#D9A38F}
+.gal__head p{max-width:36ch;color:rgba(243,239,232,.72);margin:0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.gallery .chip{color:rgba(243,239,232,.85);border-color:rgba(243,239,232,.22)}
+.gallery .chip:hover{border-color:var(--paper)}
+.gallery .chip[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.masonry{columns:3 300px;column-gap:14px}
+.tile{break-inside:avoid;margin:0 0 14px;position:relative;cursor:zoom-in;overflow:hidden;border-radius:4px;background:#2c2925;display:block;width:100%;padding:0;border:0}
+.tile img{width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .6s;opacity:0}
+.tile img.loaded{opacity:1}
+.tile:hover img{transform:scale(1.035)}
+.tile[hidden]{display:none}
+.gal__more{display:flex;justify-content:center;margin-top:40px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:80;background:rgba(17,15,13,.96);display:none;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:calc(100vw - 32px);max-height:calc(100svh - 120px);object-fit:contain;border-radius:3px}
+.lb__bar{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gutter);color:var(--paper);font-size:13px;letter-spacing:.12em}
+.lb button{width:48px;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,255,.12)}
+.lb__prev,.lb__next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb__prev{left:var(--gutter)}.lb__next{right:var(--gutter)}
+@media (max-width:700px){.lb__prev,.lb__next{top:auto;bottom:20px;transform:none}}
+
+/* ---------- Process ---------- */
+.proc__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,44px);margin-top:56px}
+.step{border-top:1px solid var(--ink);padding-top:22px}
+.step__n{font-family:var(--f-display);font-size:22px;color:var(--accent)}
+.step h3{font-family:var(--f-display);font-weight:var(--d-weight);font-size:clamp(28px,2.6vw,38px);line-height:1.1;margin:14px 0 12px}
+.step p{margin:0;color:var(--ink-2);font-size:16px}
+.proc h2{font-size:clamp(38px,5vw,72px);max-width:16ch}
+@media (max-width:860px){.proc__grid{grid-template-columns:1fr}}
+
+/* ---------- Pricing ---------- */
+.prices{background:var(--paper-2)}
+.prices__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.prices__head h2{font-size:clamp(40px,5.4vw,80px)}
+.prices__head p{margin:0;color:var(--ink-2);max-width:40ch;justify-self:end}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plan{background:var(--paper);border-radius:22px;padding:30px 26px 26px;display:flex;flex-direction:column;min-height:360px;border:1px solid transparent}
+.plan h3{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin:0}
+.plan__price{font-family:var(--f-display);font-weight:var(--d-weight);font-size:clamp(40px,3.4vw,52px);line-height:1;margin:26px 0 4px}
+.plan__from{font-size:13px;color:var(--muted)}
+.plan p{color:var(--ink-2);font-size:15.5px;margin:22px 0 28px}
+.plan .btn{margin-top:auto;align-self:flex-start}
+.plan--feat{background:var(--ink);color:var(--paper)}
+.plan--feat p,.plan--feat .plan__from{color:rgba(243,239,232,.72)}
+.plan__tag{display:inline-block;align-self:flex-start;font-size:12px;padding:6px 12px;border-radius:999px;background:var(--accent);color:var(--accent-ink);margin-bottom:18px}
+.prices__notes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.note{border:1px solid var(--line);border-radius:22px;padding:26px}
+.note h4{margin:0 0 12px;font-family:var(--f-display);font-weight:var(--d-weight);font-size:26px}
+.note ul{margin:0;padding:0;list-style:none}
+.note li{padding:9px 0;border-top:1px solid var(--line);font-size:15.5px;color:var(--ink-2);display:flex;justify-content:space-between;gap:18px}
+.note li b{font-weight:500;color:var(--ink);white-space:nowrap}
+@media (max-width:1080px){.plans{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.plans,.prices__notes,.prices__head{grid-template-columns:1fr}.prices__head p{justify-self:start}.plan{min-height:0}}
+
+/* ---------- Reviews ---------- */
+.rev__top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px}
+.rev__top h2{font-size:clamp(40px,5.4vw,80px)}
+.rev__nav{display:flex;gap:8px}
+.rev__nav button{width:52px;height:52px;border-radius:999px;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.rev__nav button:hover{border-color:var(--ink)}
+.rev__track{display:grid;grid-auto-flow:column;grid-auto-columns:min(640px,86vw);gap:clamp(20px,3vw,40px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
+.rev__track::-webkit-scrollbar{display:none}
+.rev__track{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+.review{scroll-snap-align:start;margin:0;display:flex;flex-direction:column}
+.review blockquote{margin:0;font-family:var(--f-display);font-size:clamp(24px,2.3vw,32px);line-height:1.28}
+.review blockquote::before{content:"“";display:block;font-size:3.2em;line-height:.7;color:var(--accent);margin-bottom:10px}
+.review figcaption{margin-top:24px;font-size:14px;letter-spacing:.06em;color:var(--muted);display:flex;align-items:center;gap:12px}
+.review figcaption::before{content:"";width:28px;height:1px;background:currentColor}
+
+/* ---------- FAQ ---------- */
+.faq__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,6vw,96px)}
+.faq h2{font-size:clamp(40px,5vw,72px);position:sticky;top:110px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:clamp(18px,1.5vw,21px);font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:0 0 36px;height:36px;border-radius:999px;border:1px solid var(--line);position:relative;transition:transform .3s,background .3s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+.faq details[open] summary i{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq details p{margin:0 0 26px;color:var(--ink-2);max-width:60ch}
+@media (max-width:860px){.faq__grid{grid-template-columns:1fr}.faq h2{position:static}}
+
+/* ---------- Contact ---------- */
+.contact{position:relative;color:#fff;overflow:hidden}
+.contact__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.contact::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,14,.82),rgba(20,17,14,.45));z-index:1}
+.contact .wrap{position:relative;z-index:2}
+.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.contact h2{font-size:clamp(44px,6.4vw,100px)}
+.contact h2 em{color:#E7B9A6}
+.contact__lines{margin-top:36px;display:grid;gap:6px;font-size:18px}
+.contact__lines a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);justify-self:start}
+.contact__lines a:hover{border-color:#fff}
+.form{background:var(--paper);color:var(--ink);border-radius:26px;padding:clamp(24px,3vw,40px);display:grid;gap:14px}
+.form h3{margin:0 0 6px;font-family:var(--f-display);font-weight:var(--d-weight);font-size:32px;line-height:1.1}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;color:var(--muted)}
+.field input,.field textarea{font:inherit;font-size:16px;padding:14px 18px;border-radius:16px;border:1px solid var(--line);background:#FBF9F5;color:var(--ink);width:100%}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.field textarea{min-height:110px;resize:vertical;border-radius:18px}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .btn{justify-self:start;margin-top:6px}
+@media (max-width:860px){.contact__grid,.form__row{grid-template-columns:1fr}}
+
+/* ---------- Footer ---------- */
+.ftr{background:var(--ink);color:rgba(243,239,232,.72);padding:64px 0 36px;font-size:14.5px}
+.ftr__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.ftr .logo__mark{color:var(--paper);font-size:44px}
+.ftr h5{margin:0 0 12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);font-weight:600}
+.ftr p{margin:0}
+.ftr a{text-decoration:none}.ftr a:hover{color:var(--paper)}
+.ftr__base{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid rgba(243,239,232,.14);font-size:13px}
+@media (max-width:760px){.ftr__grid{grid-template-columns:1fr}}
+
+/* ---------- Font picker ---------- */
+.fp-toggle{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:10px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--paper);border:1px solid rgba(255,255,255,.1);font:500 14px/1 var(--f-body);cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.fp-toggle span.n{background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 10px;font-size:12px;font-variant-numeric:tabular-nums}
+.fp{position:fixed;right:16px;bottom:72px;z-index:70;width:min(520px,calc(100vw - 32px));max-height:min(78svh,760px);overflow:auto;background:var(--paper);color:var(--ink);border-radius:26px;box-shadow:0 30px 80px rgba(0,0,0,.3);padding:22px;display:none}
+.fp.open{display:block}
+.fp__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.fp__head strong{font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.fp__head button{border:1px solid var(--line);background:none;border-radius:999px;width:36px;height:36px;cursor:pointer;color:var(--ink)}
+.fp__sub{font-size:13.5px;color:var(--muted);margin:0 0 16px}
+.fp__list{display:grid;gap:8px}
+.fopt{display:grid;grid-template-columns:34px 1fr;gap:4px 12px;align-items:baseline;text-align:left;border:1px solid var(--line);background:#FBF9F5;border-radius:18px;padding:14px 16px;cursor:pointer;color:var(--ink);font:inherit}
+.fopt:hover{border-color:var(--ink)}
+.fopt[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.fopt__n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;grid-row:span 2}
+.fopt__sample{font-size:32px;line-height:1.05}
+.fopt__sample em{color:var(--accent)}
+.fopt__meta{font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.fopt__meta b{font-weight:500;color:var(--ink-2)}
+.fp__keys{font-size:12px;color:var(--muted);margin-top:14px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="#top" aria-label="JL Bröllopsfotograf – till toppen">
+      <span class="logo__mark">JL</span>
+      <span class="logo__name">Janus Langhorn</span>
+    </a>
+    <nav class="nav" aria-label="Huvudmeny">
+      <a href="#galleri">Galleri</a>
+      <a href="#om">Om JL</a>
+      <a href="#priser">Priser</a>
+      <a href="#recensioner">Recensioner</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--sm" href="#kontakt">Boka ett möte</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav">Meny</button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" aria-hidden="true">
+  <div class="mnav__top">
+    <span class="logo__mark">JL</span>
+    <button class="burger" id="mclose" style="display:inline-flex">Stäng</button>
+  </div>
+  <nav>
+    <a href="#galleri">Galleri</a>
+    <a href="#om">Om JL</a>
+    <a href="#priser">Priser</a>
+    <a href="#recensioner">Recensioner</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <a class="btn btn--light" href="tel:+46733828428">Ring 0733-82 84 28</a>
+</div>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduktion">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto"
+      poster="https://images.pexels.com/videos/8775889/pexels-photo-8775889.jpeg?auto=compress&cs=tinysrgb&w=1920">
+      <source src="https://videos.pexels.com/video-files/8775889/8775889-sd_960_540_25fps.mp4" type="video/mp4" media="(max-width: 760px)">
+      <source src="https://videos.pexels.com/video-files/8775889/8775889-hd_1920_1080_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="wrap hero__in">
+      <div class="hero__meta"><span>Bröllopsfotograf</span><span>Malmö · Skåne · Köpenhamn</span><span>Sedan 2010</span></div>
+      <h1 class="display">Er dag, som ni <em>minns</em> den.</h1>
+      <div class="hero__row">
+        <div class="hero__cta">
+          <a class="btn btn--light" href="#galleri">Se galleriet
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+          <a class="btn btn--glass" href="#kontakt">Boka ett möte</a>
+        </div>
+        <div class="hero__ctrl">
+          <button id="vidToggle" aria-label="Pausa video">
+            <svg id="icoPause" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="2" y="1" width="3.2" height="12" rx="1"/><rect x="8.8" y="1" width="3.2" height="12" rx="1"/></svg>
+            <svg id="icoPlay" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><path d="M3 1.5v11l9.5-5.5z"/></svg>
+          </button>
+          <span>Video: <a href="https://www.pexels.com/video/wedding-of-a-man-and-woman-8775889/" target="_blank" rel="noopener">Pavel Danilyuk / Pexels</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / OM -->
+  <section class="sec intro" id="om">
+    <div class="wrap">
+      <div class="intro__grid">
+        <div class="reveal">
+          <p class="eyebrow"><b>01</b> Om JL</p>
+          <h2 class="display">Avslappnat, lekfullt och <em>äkta</em> – från första mötet till sista dansen.</h2>
+          <p class="intro__lead">Jag heter Janus Langhorn och har fotograferat bröllop sedan 2010. Mitt uppdrag är att fånga er kärlekshistoria med känsla – de små, intima detaljerna lika väl som de stora ögonblicken.</p>
+        </div>
+        <div class="intro__body reveal">
+          <p>Med en bakgrund inom porträtt-, landskaps- och dokumentärfotografering har jag utvecklat en stil som hjälper par att slappna av framför kameran. Jag är baserad i Malmö och fotograferar i hela Skåne – Lund, Helsingborg, Ystad och Trelleborg – samt över sundet i Köpenhamn och övriga Danmark.</p>
+          <p>Klassiskt kyrkbröllop, avslappnat på stranden eller en intim vigsel i det gröna – varje par är unikt och jag anpassar fotograferingen efter er. Målet är bilder som känns som ni: äkta, känslosamma och vackra.</p>
+          <figure class="intro__fig">
+            <img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1631093971122-KV6QN9E2FJ9P5BL04IQJ/DSC_8088.jpg?format=1000w" alt="Brudpar på stranden i solnedgång, spegling i vattnet" loading="lazy">
+            <figcaption>Strandbröllop, Skåne</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><strong>16 år</strong><span>som bröllopsfotograf, sedan 2010</span></div>
+        <div class="fact"><strong>FFIM</strong><span>Jubileumsstipendiet – utsedd till södra Sveriges bästa fotograf</span></div>
+        <div class="fact"><strong>1 vecka</strong><span>tills ni får de första bilderna efter bröllopet</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERI -->
+  <section class="sec gallery" id="galleri">
+    <div class="wrap">
+      <p class="eyebrow"><b>02</b> Galleri</p>
+      <div class="gal__head">
+        <h2 class="display">Riktiga bröllop, <em>riktiga</em> känslor.</h2>
+        <p>Från de lugna förberedelserna till dansen sent på kvällen. Klicka på en bild för att se den större.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrera galleriet" id="filters"></div>
+      <div class="masonry" id="masonry"></div>
+      <div class="gal__more"><button class="btn btn--light" id="more">Visa fler bilder</button></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec proc">
+    <div class="wrap">
+      <p class="eyebrow"><b>03</b> Så går det till</p>
+      <h2 class="display reveal">Tre steg, <em>noll</em> stress.</h2>
+      <div class="proc__grid">
+        <div class="step reveal">
+          <span class="step__n">i.</span>
+          <h3>Vi ses och pratar</h3>
+          <p>Helst ansikte mot ansikte – jag kommer vara nära er hela dagen, så det är fint att lära känna varandra. Går det inte tar vi mötet digitalt. Jag tar gärna med ett album så ni kan känna på material och färger.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step__n">ii.</span>
+          <h3>Er bröllopsdag</h3>
+          <p>Jag gör vad som krävs för bilden – jag har tappat en kamera från ett träd och förlorat en blixt i havet. Därför har jag alltid backup-utrustning med mig. Regnar det hittar vi vackra platser inomhus.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step__n">iii.</span>
+          <h3>Ni får alla bilder</h3>
+          <p>Några smakprov inom en vecka, resten efter 3–4 veckor. Ni får <em>alla</em> bilder från dagen, plus ett urval redigerade i högsta kvalitet – utskrivbara ända upp till A0.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRISER -->
+  <section class="sec prices" id="priser">
+    <div class="wrap">
+      <p class="eyebrow"><b>04</b> Priser 2026–2027</p>
+      <div class="prices__head">
+        <h2 class="display reveal">En investering i <em>minnen</em>.</h2>
+        <p>Startpriser för högsäsong juni–augusti. Hör av er så tar jag fram en offert baserad på just er dag.</p>
+      </div>
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>Porträtt</h3>
+          <div class="plan__price">12 500 kr</div><span class="plan__from">från</span>
+          <p>Professionella parbilder utan full bröllopsdokumentation – t.ex. vid borgerlig vigsel eller mindre fest.</p>
+          <a class="btn btn--ghost btn--sm" href="#kontakt">Fråga om datum</a>
+        </article>
+        <article class="plan reveal">
+          <h3>Porträtt &amp; vigsel</h3>
+          <div class="plan__price">15 500 kr</div><span class="plan__from">från</span>
+          <p>Vigseln dokumenterad från början till slut, följt av parporträtt i lugn och ro.</p>
+          <a class="btn btn--ghost btn--sm" href="#kontakt">Fråga om datum</a>
+        </article>
+        <article class="plan reveal">
+          <h3>Halvdag</h3>
+          <div class="plan__price">19 500 kr</div><span class="plan__from">från</span>
+          <p>Förmiddag och eftermiddag dokumenterad – från vigseln fram till att middagen börjar.</p>
+          <a class="btn btn--ghost btn--sm" href="#kontakt">Fråga om datum</a>
+        </article>
+        <article class="plan plan--feat reveal">
+          <span class="plan__tag">Mest komplett</span>
+          <h3>Heldag</h3>
+          <div class="plan__price">25 500 kr</div><span class="plan__from">från</span>
+          <p>Jag följer er hela dagen – från förberedelserna på morgonen till första dansen på kvällen.</p>
+          <a class="btn btn--accent btn--sm" href="#kontakt">Boka ett möte
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+        </article>
+      </div>
+      <div class="prices__notes">
+        <div class="note reveal">
+          <h4>Resor &amp; tillägg</h4>
+          <ul>
+            <li>Reseersättning från Malmö <b>45 kr/mil</b></li>
+            <li>Flyg, hotell m.m. vid längre resor <b>enligt offert</b></li>
+            <li>Bilder i TIFF eller RAW <b>på begäran</b></li>
+          </ul>
+        </div>
+        <div class="note reveal">
+          <h4>Leverans</h4>
+          <ul>
+            <li>Smakprov på bilder <b>inom 1 vecka</b></li>
+            <li>Samtliga bilder <b>3–4 veckor</b></li>
+            <li>Bröllopsbok &amp; utskrifter <b>inom 1 månad</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENSIONER -->
+  <section class="sec" id="recensioner">
+    <div class="wrap">
+      <p class="eyebrow"><b>05</b> Recensioner</p>
+      <div class="rev__top">
+        <h2 class="display reveal">Från brudparen.</h2>
+        <div class="rev__nav">
+          <button id="revPrev" aria-label="Föregående recension"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8H2M7 3L2 8l5 5"/></svg></button>
+          <button id="revNext" aria-label="Nästa recension"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+        </div>
+      </div>
+      <div class="rev__track" id="revTrack">
+        <figure class="review"><blockquote>Han gör allt han kan för att få till den perfekta bilden, oavsett om det innebär att hoppa in i vassen eller att vada ut i havet. Fotona kom efter bara en vecka!</blockquote><figcaption>Benjamin Tidå</figcaption></figure>
+        <figure class="review"><blockquote>Professionell, noggrann och lyhörd med glimten i ögat. Han lyckas fånga de speciella ögonblicken och känslorna på ett makalöst sätt.</blockquote><figcaption>Charlotte &amp; Sebastian Mattsson</figcaption></figure>
+        <figure class="review"><blockquote>Janus är så bra på att få en person att känna sig avslappnad framför kameran. Bilderna överträffade alla våra förväntningar!</blockquote><figcaption>Sofie</figcaption></figure>
+        <figure class="review"><blockquote>Kvaliteten kan bara bedömas i den glädje bilderna har visat hos de vi delat dem med – i många fall till tårar.</blockquote><figcaption>Robin Sarenvik</figcaption></figure>
+        <figure class="review"><blockquote>Han bidrog med god och avslappnad energi och levererade fantastiska bilder!</blockquote><figcaption>Hanna Dahl</figcaption></figure>
+        <figure class="review"><blockquote>Familj och vänner tyckte också att fotografen var så trevlig och rolig. Vi hade inte vågat drömma om att bilderna skulle bli så bra!</blockquote><figcaption>Andreas</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq" id="faq" style="padding-top:0">
+    <div class="wrap faq__grid">
+      <div>
+        <p class="eyebrow"><b>06</b> Vanliga frågor</p>
+        <h2 class="display">Bra att <em>veta</em>.</h2>
+      </div>
+      <div>
+        <details><summary>Hur långt i förväg bör vi boka?<i></i></summary><p>Så snart som möjligt för att säkra ert datum. Vanligtvis bokar brudpar mig minst sex månader i förväg.</p></details>
+        <details><summary>Har du backup-utrustning?<i></i></summary><p>Ja – för min och er trygghet. Jag har bland annat tappat en kamera från ett träd och förlorat ett blixtsystem i havet, eftersom jag gör vad som krävs för en bra bild. Därför finns alltid backup med.</p></details>
+        <details><summary>Kan vi ta mötet digitalt?<i></i></summary><p>Jag rekommenderar att vi ses på riktigt, eftersom jag är nära er under dagen. Men går det inte håller vi mötet digitalt.</p></details>
+        <details><summary>Vad händer om det regnar?<i></i></summary><p>Jag har fotograferat i alla väder och anpassar mig. Vi kan också planera för inomhusbilder på en vacker plats.</p></details>
+        <details><summary>Vad händer om vi blir sjuka?<i></i></summary><p>Kan bröllopet inte genomföras på planerad dag hoppas jag att vi hittar ett nytt datum tillsammans. Jag jobbar gärna med er för att hitta en lösning.</p></details>
+        <details><summary>Vad händer om du som fotograf blir sjuk?<i></i></summary><p>Det har aldrig hänt, men jag samarbetar med två andra fotografer i regionen och gör mitt bästa för att hitta en ersättare. I värsta fall får ni tillbaka depositionen.</p></details>
+        <details><summary>Vilka bilder får vi?<i></i></summary><p>Ni får alla bilder jag tagit under dagen – oredigerade som kan skrivas ut i A5, samt ett urval redigerade bilder i högkvalitet som kan skrivas ut i A0. TIFF och RAW finns om ni vill.</p></details>
+        <details><summary>Kan vi beställa ett bröllopsalbum?<i></i></summary><p>Ja! Jag älskar att designa album och tillhörande boxar, och föredrar layflat-album. Jag tar gärna med ett till vårt möte så ni kan se och känna på material och färger.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="sec contact" id="kontakt">
+    <img class="contact__bg" src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1670927941944-P5MQOA96209S0IQXHSN9/DSC_0276+%281%29.jpg?format=2500w" alt="" loading="lazy">
+    <div class="wrap contact__grid">
+      <div>
+        <p class="eyebrow" style="color:rgba(255,255,255,.7)"><b style="color:#fff">07</b> Kontakt</p>
+        <h2 class="display">Berätta om <em>er</em> dag.</h2>
+        <div class="contact__lines">
+          <a href="tel:+46733828428">0733-82 84 28</a>
+          <a href="mailto:Janus@Ugetthepicture.com">Janus@Ugetthepicture.com</a>
+          <span style="opacity:.75;font-size:15px;margin-top:10px">Annebergsgatan 4C, 214 66 Malmö</span>
+        </div>
+      </div>
+      <form class="form" id="form">
+        <h3>Boka ett förutsättningslöst möte</h3>
+        <div class="form__row">
+          <div class="field"><label for="f-n">Namn</label><input id="f-n" name="namn" autocomplete="name" required></div>
+          <div class="field"><label for="f-d">Bröllopsdatum</label><input id="f-d" name="datum" type="date"></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="f-e">E-post</label><input id="f-e" name="epost" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-p">Plats</label><input id="f-p" name="plats" placeholder="t.ex. Lund"></div>
+        </div>
+        <div class="field"><label for="f-m">Berätta lite om er dag</label><textarea id="f-m" name="meddelande"></textarea></div>
+        <button class="btn btn--accent" type="submit">Skicka förfrågan
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div>
+        <span class="logo__mark">JL</span>
+        <p style="margin-top:14px;max-width:34ch">Bröllopsfotograf i Malmö, Lund, Helsingborg och hela Skåne – samt Köpenhamn.</p>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <p><a href="tel:+46733828428">0733-82 84 28</a><br><a href="mailto:Janus@Ugetthepicture.com">Janus@Ugetthepicture.com</a><br>Annebergsgatan 4C, 214 66 Malmö</p>
+      </div>
+      <div>
+        <h5>Sidor</h5>
+        <p><a href="#galleri">Galleri</a><br><a href="#priser">Priser</a><br><a href="#recensioner">Recensioner</a><br><a href="#faq">FAQ</a></p>
+      </div>
+    </div>
+    <div class="ftr__base">
+      <span>© 2010–2026 Janus Langhorn / JL Bröllopsfotograf</span>
+      <span>Godkänd för F-skatt</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildvisare">
+  <div class="lb__bar"><span id="lbCount"></span><button id="lbClose" aria-label="Stäng"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.5"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <button class="lb__prev" id="lbPrev" aria-label="Föregående bild"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8H2M7 3L2 8l5 5"/></svg></button>
+  <img id="lbImg" alt="">
+  <button class="lb__next" id="lbNext" aria-label="Nästa bild"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+</div>
+
+<!-- Font picker -->
+<button class="fp-toggle" id="fpToggle" aria-expanded="false" aria-controls="fp">Typsnitt <span class="n" id="fpN">1/10</span></button>
+<div class="fp" id="fp" role="dialog" aria-label="Typsnittsförslag">
+  <div class="fp__head"><strong>10 typsnittsförslag</strong><button id="fpClose" aria-label="Stäng">✕</button></div>
+  <p class="fp__sub">Klicka för att se hela sidan med paret rubrik + brödtext. Länka till ett val med <code>?font=3</code>.</p>
+  <div class="fp__list" id="fpList"></div>
+  <p class="fp__keys">Tips: tangenterna <b>[</b> och <b>]</b> bläddrar mellan förslagen.</p>
+</div>
+
+<script>
+const BASE="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/";
+const G=[["1725354731539-HNMW0PN6OJL2XYJIGJEU/DSC_1760-Enhanced-NR-2.jpg",3622,2445,"par"],["1440844095106-EZ1213XG5GMFYW59KKK6/ugetthepicture.com-6059.jpg",2500,3348,"stunder"],["1601362554890-MPSVADF3W4KU6S3P5TDM/Screenshot+2020-09-29+at+08.54.35.png",978,1030,"par"],["1413748512965-PH9K9K8Y8GWWYVOFB7D4/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn--4.jpg",1611,1067,"detaljer"],["1664522630336-2XOJZ8PP0CNHYMJVUK24/DSC_8850-2.jpg",3664,2438,"svartvitt"],["1664522570808-W4XLB2PDQTSRN4CEXTOB/DSC_5146.jpg",4528,3016,"par"],["1601362549633-XTET2PCYTQOT7UFR8FRO/Screenshot+2020-09-24+at+19.36.00.png",778,814,"stunder"],["1453128652100-07DVM594QBN4JE3WXI83/JLbro%CC%88llopsfotograf-2234-2.jpg",6846,4225,"landskap"],["1725354721581-1RKB5U35T6W89D3YFQN2/DSC_1644-2-Enhanced-NR.jpg",3282,3960,"stunder"],["1631093971122-KV6QN9E2FJ9P5BL04IQJ/DSC_8088.jpg",2945,4426,"par"],["1440842949246-3SFDE2K72PACWJDQYES4/ugetthepicture.com-5694.jpg",2051,3073,"detaljer"],["1435912730040-ZHEZFU4DX21UGXZ8WFA6/_DSC7547-2.jpg",2500,1718,"svartvitt"],["1688458585648-808O7DP3Z9JXK3DQUKGE/DSC_5970.jpg",3586,2386,"par"],["1415215031277-HOPXF9C0A1ZWO3RLJPA2/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn--7.jpg",1500,1500,"stunder"],["1670927941944-P5MQOA96209S0IQXHSN9/DSC_0276+%281%29.jpg",5299,2874,"landskap"],["1688458575948-IXC6Y5HUN1T05NAM9GOB/DSC_4473-Enhanced-NR.jpg",4893,3376,"par"],["1413749355414-2J2SWTIQ5XMYJIA96IVB/dsc_2550-2.jpg",2500,1669,"detaljer"],["1601362557984-1V4U36QCKCBQ1TJUA57P/Screenshot+2020-09-29+at+08.54.18.png",950,1126,"svartvitt"],["1529317379816-I9AIJK04PQT10VW0PAC4/Screen+Shot+2018-06-18+at+12.21.27.png",1986,1264,"par"],["1413768172262-Q9DZJGBVE76EV1Z2R0LB/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-5934.jpg",1500,1001,"stunder"],["1725354743283-F4LMV2UXB7CX4RNAXWGX/DSC_1829-Enhanced-NR.jpg",5042,3475,"par"],["1478776999506-N1FXBSP4TMGL0ZN8173J/ugetthepicture-7345.jpg",2500,3750,"detaljer"],["1413749287322-DOSKI6EGVAL2C9S26W0F/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-9133.jpg",2500,1601,"landskap"],["1725354708498-IZVAT9QTB455RTLU7VMO/DSC_0565-Enhanced-NR.jpg",3538,4130,"par"],["1440843006292-3NIJ6FCRQ1C2PR7P56ED/ugetthepicture.com-5971-2.jpg",2500,1693,"svartvitt"],["1725354731654-VTD6K9YDFT02W98JZI55/DSC_1490-2.jpg",5001,3327,"stunder"],["1632664860800-CO9PXAHWKSPLNRBJPP34/DSC_8024-3.jpg",2643,1759,"par"],["1413749160510-979C4YB29SD3Q0WZ9S1X/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-4626.jpg",2500,3746,"detaljer"],["1670927937449-49687OOMPSFRJHHHJA88/DSC_0367+%281%29.jpg",3851,2221,"landskap"],["1576765002266-VD7DILXGUKFFP9R5GZBQ/Bro%CC%88llopsfotograf+Helsingborg.png",1676,1138,"par"],["1569590368136-ZCRH15DVGDT3DR5THHCT/DSC_3799-2.jpg",2500,1669,"stunder"],["1413475391181-O08FAGSZVC5KOPZKSS5W/dsc_4862+%282%29.jpg",2500,1522,"par"],["1440843101935-TU63YEGNNY61IKJJ8P3T/ugetthepicture.com-5695.jpg",2500,3746,"detaljer"],["1664523720912-ZYUYIK8AWFD0GBVEPPLJ/DSC_7443-2.jpg",4038,2687,"svartvitt"],["1688458580105-O053TLRCKOU67TWGP5X2/DSC_4422.jpg",3117,4550,"par"],["1453130314232-CKVC24YNDZ20KK7WJ6UR/_DSC9770.jpg",5959,3977,"landskap"],["1601362631154-K76HC5FDUU83WL13ZWX9/DSC_4964.jpg",2500,1663,"par"],["1413749052286-V7JZVWL2OCTXY83E80UL/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-3291.jpg",2500,1766,"stunder"],["1664522634536-4FGLI25K5KJVYSDHRM30/DSC_8810.jpg",5349,3174,"landskap"],["1413749310080-BVTF03RNCX6F0AMFBJO2/br%C3%B6llopsfotograf+malm%C3%B6-5512.jpg",2500,3535,"par"],["1440842878497-PDE6Q7SDSZUMES8C8X3I/ugetthepicture.com-5386.jpg",2500,1669,"stunder"],["1664522692553-MA7FARAV1AS0914X3DDW/DSC_5244-2.jpg",2617,3934,"svartvitt"],["1704358055866-VNC19DANKBMFWUFDWMU3/DSC_5265-Enhanced-NR.jpg",4892,3255,"par"],["1478777010238-1R2HIAQ3E3TFNKNZGUPG/ugetthepicture-7492.jpg",2500,3746,"detaljer"],["1664522485586-XSY68X098KBH3ZK0V946/DSC_3506.jpg",3873,2580,"par"],["1704358074372-KN92B6K71S06XPNPWX00/DSC_6022-Enhanced-NR.jpg",4534,3017,"stunder"],["1435912692476-U1FIN05SHCFVDPDC6O5E/_DSC6863-2.jpg",2500,1338,"landskap"],["1664522692939-P65UEW17FCKZXZPVW0HV/DSC_4709-2.jpg",4343,2890,"svartvitt"],["1628752480876-AQCV38XRB8LPB5IH2WCZ/DSC_4271-2.jpg",2500,1664,"par"],["1413753210823-U2B24N7SGU0TCCZUYX3S/DSC_4413.jpg",2500,1669,"stunder"],["1413748816656-LDI0JHTJDCEC1IQ0VN08/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-2-2.jpg",2500,1669,"detaljer"],["1664522545062-45VQYCRHVIQZ2S1RTEKT/DSC_4668.jpg",7285,4680,"par"],["1440843166456-5X3LE5IIGFKVI56WJCFQ/ugetthepicture.com-6000-2.jpg",2500,3746,"svartvitt"],["1569590268117-YKVSFP392B8D42C3LWEO/DSC_3331.jpg",2500,1665,"stunder"],["1660551051088-9OJXTUQYN5NLRCRE8865/DSC_0595.jpg",4435,2951,"par"],["1725354699278-Q3IDGRICREL9I4GPBYLI/DSC_0353.jpg",4590,3054,"stunder"],["1664522680280-4XFDX82FFN41D58LE6B6/DSC_4973.jpg",5424,3043,"landskap"],["1576765018738-E94S4EMZMYG82ETZ6J3H/Bro%CC%88llopsfotograf+ska%CC%8Ane.png",1760,1124,"landskap"],["1664522600931-V9PJ1KB5W2940EFHCK4I/DSC_7167.jpg",3779,2891,"detaljer"],["1440843613883-LXLE6QAYKT34KUZ9E8KD/ugetthepicture.com-5922.jpg",2500,3329,"par"],["1670927963430-U6IO4ADD6FSWGM82HY2C/DSC_0091-2.jpg",4430,2932,"par"],["1725354697171-PS07Y8YV29OHHAHGYQQ3/DSC_0421.jpg",5736,3816,"stunder"],["1670927922284-ZAOF1Z7MCH3D6UK3QVD0/DSC_1388-2.jpg",4172,2776,"svartvitt"],["1664522612724-SXY1JVWZ72GAUU3AMOYA/DSC_7389-2.jpg",2849,3884,"svartvitt"],["1440843094771-8NGAMJBGJ9SBYVE42D2A/ugetthepicture.com-5734.jpg",2500,1668,"detaljer"],["1413748539904-AKLM72T824JJPSP98Y9D/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn--6.jpg",2500,1597,"svartvitt"],["1576765021873-09QHDYGMYTOHQRGO0VPM/Bro%CC%88llopsfotograf+ska%CC%8Ane+2.png",1770,1104,"par"],["1413749349427-V9QO7KRUFDQMRXQARNH2/jlbrollopsfotograf--18.jpg",2500,1755,"par"],["1631094063566-MPJF235HOLX57CY74OBC/DSC_7833.jpg",5630,3538,"landskap"]];
+const CATS={alla:"Alla",par:"Par & porträtt",stunder:"Ögonblick",detaljer:"Detaljer",svartvitt:"Svartvitt",landskap:"Natur & ljus"};
+
+/* ---------- Header ---------- */
+const hdr=document.getElementById('hdr');
+const onScroll=()=>hdr.classList.toggle('is-solid',scrollY>window.innerHeight*0.75);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+const mnav=document.getElementById('mnav'),burger=document.getElementById('burger');
+const setMenu=o=>{mnav.classList.toggle('open',o);mnav.setAttribute('aria-hidden',!o);burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
+burger.onclick=()=>setMenu(true);
+document.getElementById('mclose').onclick=()=>setMenu(false);
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+
+/* ---------- Hero video ---------- */
+const vid=document.getElementById('heroVideo'),vt=document.getElementById('vidToggle');
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){vid.removeAttribute('autoplay');vid.pause();}
+const syncV=()=>{const p=vid.paused;document.getElementById('icoPause').style.display=p?'none':'';document.getElementById('icoPlay').style.display=p?'':'none';vt.setAttribute('aria-label',p?'Spela video':'Pausa video')};
+vt.onclick=()=>{vid.paused?vid.play():vid.pause()};
+vid.addEventListener('play',syncV);vid.addEventListener('pause',syncV);syncV();
+
+/* ---------- Gallery ---------- */
+const masonry=document.getElementById('masonry'),filters=document.getElementById('filters'),moreBtn=document.getElementById('more');
+const PAGE=21;let cat='alla',shown=PAGE;
+const counts=G.reduce((a,g)=>(a[g[3]]=(a[g[3]]||0)+1,a),{alla:G.length});
+Object.entries(CATS).forEach(([k,v])=>{
+  const b=document.createElement('button');b.className='chip';b.dataset.cat=k;b.setAttribute('aria-pressed',k==='alla');
+  b.innerHTML=v+'<sup>'+counts[k]+'</sup>';b.onclick=()=>{cat=k;shown=PAGE;render();filters.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b))};
+  filters.appendChild(b);
+});
+const tiles=G.map((g,i)=>{
+  const [p,w,h,c]=g;const b=document.createElement('button');b.className='tile';b.dataset.cat=c;b.dataset.i=i;
+  b.setAttribute('aria-label','Visa bild '+(i+1)+' större');
+  const img=new Image();img.loading='lazy';img.decoding='async';img.alt='';img.width=w;img.height=h;
+  img.sizes='(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw';
+  img.srcset=[500,750,1000,1500].map(s=>BASE+p+'?format='+s+'w '+s+'w').join(', ');
+  img.src=BASE+p+'?format=750w';img.onload=()=>img.classList.add('loaded');
+  b.appendChild(img);b.onclick=()=>openLb(i);masonry.appendChild(b);return b;
+});
+let visible=[];
+function render(){
+  const list=tiles.filter(t=>cat==='alla'||t.dataset.cat===cat);
+  visible=list.slice(0,shown).map(t=>+t.dataset.i);
+  tiles.forEach(t=>t.hidden=true);
+  list.slice(0,shown).forEach(t=>t.hidden=false);
+  moreBtn.parentElement.style.display=list.length>shown?'':'none';
+}
+moreBtn.onclick=()=>{shown+=PAGE;render()};
+render();
+
+/* ---------- Lightbox ---------- */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCount=document.getElementById('lbCount');let cur=0,lastFocus;
+function show(){const g=G[visible[cur]];lbImg.src=BASE+g[0]+'?format=1500w';lbCount.textContent=String(cur+1).padStart(2,'0')+' / '+String(visible.length).padStart(2,'0');
+  const n=G[visible[(cur+1)%visible.length]];new Image().src=BASE+n[0]+'?format=1500w';}
+function openLb(i){lastFocus=document.activeElement;cur=visible.indexOf(i);lb.classList.add('open');document.body.style.overflow='hidden';show();document.getElementById('lbClose').focus()}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+const step=d=>{cur=(cur+d+visible.length)%visible.length;show()};
+document.getElementById('lbClose').onclick=closeLb;
+document.getElementById('lbPrev').onclick=()=>step(-1);
+document.getElementById('lbNext').onclick=()=>step(1);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1)});
+
+/* ---------- Reviews ---------- */
+const track=document.getElementById('revTrack');
+const revStep=d=>track.scrollBy({left:d*(track.firstElementChild.offsetWidth+32),behavior:'smooth'});
+document.getElementById('revPrev').onclick=()=>revStep(-1);
+document.getElementById('revNext').onclick=()=>revStep(1);
+
+/* ---------- Form (mailto) ---------- */
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target);
+  const body=`Namn: ${f.get('namn')}\nDatum: ${f.get('datum')}\nPlats: ${f.get('plats')}\nE-post: ${f.get('epost')}\n\n${f.get('meddelande')}`;
+  location.href='mailto:Janus@Ugetthepicture.com?subject='+encodeURIComponent('Bröllopsförfrågan')+'&body='+encodeURIComponent(body);
+});
+
+/* ---------- Reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- Font picker ---------- */
+const FONTS=[
+  {d:'Instrument Serif',b:'Instrument Sans',note:'Redaktionell & modern',w:400,t:'-0.01em'},
+  {d:'Cormorant Garamond',b:'Karla',note:'Klassisk & luftig',w:500,t:'-0.01em'},
+  {d:'Fraunces',b:'Work Sans',note:'Varm & personlig',w:300,t:'-0.02em'},
+  {d:'Playfair Display',b:'Source Sans 3',note:'Tidlös kontrast',w:400,t:'-0.015em'},
+  {d:'Bodoni Moda',b:'Jost',note:'Mode & magasin',w:400,t:'-0.02em'},
+  {d:'DM Serif Display',b:'DM Sans',note:'Tydlig & vänlig',w:400,t:'-0.01em'},
+  {d:'Italiana',b:'Manrope',note:'Smal & elegant',w:400,t:'0em'},
+  {d:'Libre Caslon Display',b:'Libre Franklin',note:'Bokaktig & trygg',w:400,t:'-0.01em'},
+  {d:'Gloock',b:'Figtree',note:'Karaktärsfull',w:400,t:'-0.02em'},
+  {d:'Newsreader',b:'Public Sans',note:'Dokumentär & lugn',w:400,t:'-0.02em'},
+];
+const fpList=document.getElementById('fpList'),fp=document.getElementById('fp'),fpT=document.getElementById('fpToggle'),fpN=document.getElementById('fpN');
+let fi=0;
+FONTS.forEach((f,i)=>{
+  const b=document.createElement('button');b.className='fopt';b.type='button';
+  b.innerHTML=`<span class="fopt__n">${String(i+1).padStart(2,'0')}</span>
+    <span class="fopt__sample" style="font-family:'${f.d}';font-weight:${f.w};letter-spacing:${f.t}">Janus <em>Langhorn</em></span>
+    <span class="fopt__meta" style="font-family:'${f.b}'"><span><b>${f.d}</b> + ${f.b}</span><span>${f.note}</span></span>`;
+  b.onclick=()=>applyFont(i);fpList.appendChild(b);
+});
+function applyFont(i){
+  fi=(i+FONTS.length)%FONTS.length;const f=FONTS[fi],r=document.documentElement.style;
+  r.setProperty('--f-display',`"${f.d}", Georgia, serif`);r.setProperty('--f-body',`"${f.b}", system-ui, sans-serif`);
+  r.setProperty('--d-weight',f.w);r.setProperty('--d-track',f.t);
+  fpN.textContent=(fi+1)+'/10';
+  fpList.querySelectorAll('.fopt').forEach((b,k)=>b.setAttribute('aria-pressed',k===fi));
+  try{localStorage.setItem('jl-font',fi)}catch(e){}
+  try{const u=new URL(location.href);u.searchParams.set('font',fi+1);history.replaceState(null,'',u)}catch(e){}
+}
+const setFp=o=>{fp.classList.toggle('open',o);fpT.setAttribute('aria-expanded',o)};
+fpT.onclick=()=>setFp(!fp.classList.contains('open'));
+document.getElementById('fpClose').onclick=()=>setFp(false);
+let start=0;
+try{const q=new URLSearchParams(location.search).get('font');if(q)start=parseInt(q,10)-1;else{const s=localStorage.getItem('jl-font');if(s!==null)start=+s}}catch(e){}
+applyFont(isNaN(start)?0:start);
+
+/* ---------- Keys ---------- */
+addEventListener('keydown',e=>{
+  if(lb.classList.contains('open')){if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);return}
+  if(e.target.matches('input,textarea'))return;
+  if(e.key===']')applyFont(fi+1);if(e.key==='[')applyFont(fi-1);
+  if(e.key==='Escape'){setFp(false);setMenu(false)}
+});
+</script>
+</body>
+</html>
