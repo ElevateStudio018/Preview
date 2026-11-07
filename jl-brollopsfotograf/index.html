@@ -169,7 +169,7 @@ a{color:inherit}
 .prices__head h2{font-size:clamp(40px,5.4vw,80px)}
 .prices__head p{margin:0;color:var(--ink-2);max-width:40ch;justify-self:end}
 .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.plan{background:var(--paper);border-radius:22px;padding:30px 26px 26px;display:flex;flex-direction:column;min-height:360px;border:1px solid transparent}
+.plan{background:var(--paper);border-radius:22px;padding:30px 26px 26px;display:flex;flex-direction:column;border:1px solid transparent}
 .plan h3{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin:0}
 .plan__price{font-family:var(--f-display);font-weight:var(--d-weight);font-size:clamp(40px,3.4vw,52px);line-height:1;margin:26px 0 4px}
 .plan__from{font-size:13px;color:var(--muted)}
@@ -269,6 +269,42 @@ a{color:inherit}
 .fopt__meta b{font-weight:500;color:var(--ink-2)}
 .fp__keys{font-size:12px;color:var(--muted);margin-top:14px}
 
+
+/* marquee strip */
+.strip{background:var(--paper);overflow:hidden;padding:14px 0 0}
+.strip__track{display:flex;width:max-content;animation:marq 90s linear infinite}
+.strip:hover .strip__track{animation-play-state:paused}
+.strip img{height:clamp(190px,24vw,330px);width:auto;margin-right:14px;border-radius:4px;flex:none;object-fit:cover}
+@keyframes marq{to{transform:translateX(-50%)}}
+/* intro collage */
+.collage{display:grid;grid-template-columns:7fr 5fr;grid-template-rows:1fr 1fr;gap:14px;aspect-ratio:1/1.08;margin-top:36px}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+.collage img:first-child{grid-row:1/3}
+/* video band */
+.band{position:relative;height:min(92svh,860px);min-height:520px;overflow:hidden;color:#fff;background:#3b3026}
+.band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band em{color:#F0C3AE}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,17,14,.75),rgba(20,17,14,.15) 60%)}
+.band__in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(40px,8vh,90px)}
+.band blockquote{margin:0;font-size:clamp(28px,4vw,58px);max-width:20ch}
+.band__by{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:26px;font-size:14px;opacity:.85}
+.band__by a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4)}
+/* step images */
+.step{border-top:0;padding-top:0}
+.step img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:6px;margin-bottom:22px}
+.step__n{display:block;border-top:1px solid var(--ink);padding-top:18px}
+/* plan images */
+.plan{overflow:hidden;padding-top:0}
+.plan__img{display:block;width:calc(100% + 52px);height:auto;max-width:none;margin:0 -26px 26px;aspect-ratio:16/11;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.plan:hover .plan__img{transform:scale(1.04)}
+.plan__tag{position:absolute;margin-top:-56px}
+.plan{position:relative}
+/* review photos */
+.rev__track{grid-auto-columns:min(760px,88vw)}
+.review{display:grid;grid-template-columns:minmax(150px,40%) 1fr;gap:clamp(20px,3vw,36px);align-items:center}
+.review img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+@media (max-width:600px){.review{grid-template-columns:1fr}.review img{aspect-ratio:4/3}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -314,9 +350,8 @@ a{color:inherit}
   <!-- HERO -->
   <section class="hero" aria-label="Introduktion">
     <video id="heroVideo" autoplay muted loop playsinline preload="auto"
-      poster="https://images.pexels.com/videos/8775889/pexels-photo-8775889.jpeg?auto=compress&cs=tinysrgb&w=1920">
-      <source src="https://videos.pexels.com/video-files/8775889/8775889-sd_960_540_25fps.mp4" type="video/mp4" media="(max-width: 760px)">
-      <source src="https://videos.pexels.com/video-files/8775889/8775889-hd_1920_1080_25fps.mp4" type="video/mp4">
+      poster="https://images.pexels.com/videos/37118581/pexels-photo-37118581.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920">
+      <source src="https://videos.pexels.com/video-files/37118581/15724583_2560_1440_25fps.mp4" type="video/mp4">
     </video>
     <div class="wrap hero__in">
       <div class="hero__meta"><span>Bröllopsfotograf</span><span>Malmö · Skåne · Köpenhamn</span><span>Sedan 2010</span></div>
@@ -332,11 +367,13 @@ a{color:inherit}
             <svg id="icoPause" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="2" y="1" width="3.2" height="12" rx="1"/><rect x="8.8" y="1" width="3.2" height="12" rx="1"/></svg>
             <svg id="icoPlay" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><path d="M3 1.5v11l9.5-5.5z"/></svg>
           </button>
-          <span>Video: <a href="https://www.pexels.com/video/wedding-of-a-man-and-woman-8775889/" target="_blank" rel="noopener">Pavel Danilyuk / Pexels</a></span>
+          <span>Video: <a href="https://www.pexels.com/video/romantic-sunset-silhouette-wedding-scene-37118581/" target="_blank" rel="noopener">GM2newwave / Pexels</a></span>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="strip" aria-label="Bildspel"><div class="strip__track"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1725354731539-HNMW0PN6OJL2XYJIGJEU/DSC_1760-Enhanced-NR-2.jpg?format=750w" width="3622" height="2445" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1664522570808-W4XLB2PDQTSRN4CEXTOB/DSC_5146.jpg?format=750w" width="4528" height="3016" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1725354721581-1RKB5U35T6W89D3YFQN2/DSC_1644-2-Enhanced-NR.jpg?format=750w" width="3282" height="3960" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1440844095106-EZ1213XG5GMFYW59KKK6/ugetthepicture.com-6059.jpg?format=750w" width="2500" height="3348" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1670927941944-P5MQOA96209S0IQXHSN9/DSC_0276+%281%29.jpg?format=750w" width="5299" height="2874" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1688458575948-IXC6Y5HUN1T05NAM9GOB/DSC_4473-Enhanced-NR.jpg?format=750w" width="4893" height="3376" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1440843006292-3NIJ6FCRQ1C2PR7P56ED/ugetthepicture.com-5971-2.jpg?format=750w" width="2500" height="1693" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1688458585648-808O7DP3Z9JXK3DQUKGE/DSC_5970.jpg?format=750w" width="3586" height="2386" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1601362549633-XTET2PCYTQOT7UFR8FRO/Screenshot+2020-09-24+at+19.36.00.png?format=750w" width="778" height="814" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1453128652100-07DVM594QBN4JE3WXI83/JLbro%CC%88llopsfotograf-2234-2.jpg?format=750w" width="6846" height="4225" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1664522630336-2XOJZ8PP0CNHYMJVUK24/DSC_8850-2.jpg?format=750w" width="3664" height="2438" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1601362557984-1V4U36QCKCBQ1TJUA57P/Screenshot+2020-09-29+at+08.54.18.png?format=750w" width="950" height="1126" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413768172262-Q9DZJGBVE76EV1Z2R0LB/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-5934.jpg?format=750w" width="1500" height="1001" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1631094063566-MPJF235HOLX57CY74OBC/DSC_7833.jpg?format=750w" width="5630" height="3538" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1670927937449-49687OOMPSFRJHHHJA88/DSC_0367+%281%29.jpg?format=750w" width="3851" height="2221" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1576765002266-VD7DILXGUKFFP9R5GZBQ/Bro%CC%88llopsfotograf+Helsingborg.png?format=750w" width="1676" height="1138" alt="" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1725354731539-HNMW0PN6OJL2XYJIGJEU/DSC_1760-Enhanced-NR-2.jpg?format=750w" width="3622" height="2445" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1664522570808-W4XLB2PDQTSRN4CEXTOB/DSC_5146.jpg?format=750w" width="4528" height="3016" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1725354721581-1RKB5U35T6W89D3YFQN2/DSC_1644-2-Enhanced-NR.jpg?format=750w" width="3282" height="3960" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1440844095106-EZ1213XG5GMFYW59KKK6/ugetthepicture.com-6059.jpg?format=750w" width="2500" height="3348" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1670927941944-P5MQOA96209S0IQXHSN9/DSC_0276+%281%29.jpg?format=750w" width="5299" height="2874" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1688458575948-IXC6Y5HUN1T05NAM9GOB/DSC_4473-Enhanced-NR.jpg?format=750w" width="4893" height="3376" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1440843006292-3NIJ6FCRQ1C2PR7P56ED/ugetthepicture.com-5971-2.jpg?format=750w" width="2500" height="1693" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1688458585648-808O7DP3Z9JXK3DQUKGE/DSC_5970.jpg?format=750w" width="3586" height="2386" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1601362549633-XTET2PCYTQOT7UFR8FRO/Screenshot+2020-09-24+at+19.36.00.png?format=750w" width="778" height="814" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1453128652100-07DVM594QBN4JE3WXI83/JLbro%CC%88llopsfotograf-2234-2.jpg?format=750w" width="6846" height="4225" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1664522630336-2XOJZ8PP0CNHYMJVUK24/DSC_8850-2.jpg?format=750w" width="3664" height="2438" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1601362557984-1V4U36QCKCBQ1TJUA57P/Screenshot+2020-09-29+at+08.54.18.png?format=750w" width="950" height="1126" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413768172262-Q9DZJGBVE76EV1Z2R0LB/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-5934.jpg?format=750w" width="1500" height="1001" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1631094063566-MPJF235HOLX57CY74OBC/DSC_7833.jpg?format=750w" width="5630" height="3538" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1670927937449-49687OOMPSFRJHHHJA88/DSC_0367+%281%29.jpg?format=750w" width="3851" height="2221" alt="" loading="lazy" decoding="async" aria-hidden="true"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1576765002266-VD7DILXGUKFFP9R5GZBQ/Bro%CC%88llopsfotograf+Helsingborg.png?format=750w" width="1676" height="1138" alt="" loading="lazy" decoding="async" aria-hidden="true"></div></div>
 
   <!-- INTRO / OM -->
   <section class="sec intro" id="om">
@@ -350,10 +387,7 @@ a{color:inherit}
         <div class="intro__body reveal">
           <p>Med en bakgrund inom porträtt-, landskaps- och dokumentärfotografering har jag utvecklat en stil som hjälper par att slappna av framför kameran. Jag är baserad i Malmö och fotograferar i hela Skåne – Lund, Helsingborg, Ystad och Trelleborg – samt över sundet i Köpenhamn och övriga Danmark.</p>
           <p>Klassiskt kyrkbröllop, avslappnat på stranden eller en intim vigsel i det gröna – varje par är unikt och jag anpassar fotograferingen efter er. Målet är bilder som känns som ni: äkta, känslosamma och vackra.</p>
-          <figure class="intro__fig">
-            <img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1631093971122-KV6QN9E2FJ9P5BL04IQJ/DSC_8088.jpg?format=1000w" alt="Brudpar på stranden i solnedgång, spegling i vattnet" loading="lazy">
-            <figcaption>Strandbröllop, Skåne</figcaption>
-          </figure>
+          <div class="collage"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413749310080-BVTF03RNCX6F0AMFBJO2/br%C3%B6llopsfotograf+malm%C3%B6-5512.jpg?format=1200w" width="2500" height="3535" alt="Brudpar i grönskan" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1435912730040-ZHEZFU4DX21UGXZ8WFA6/_DSC7547-2.jpg?format=800w" width="2500" height="1718" alt="Brudpar i svartvitt med slöja i vinden" loading="lazy" decoding="async"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413749160510-979C4YB29SD3Q0WZ9S1X/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-4626.jpg?format=800w" width="2500" height="3746" alt="Brudgum håller fram en blomma" loading="lazy" decoding="async"></div>
         </div>
       </div>
       <div class="facts reveal">
@@ -378,6 +412,14 @@ a{color:inherit}
     </div>
   </section>
 
+  <section class="band" aria-label="Citat">
+    <video id="bandVideo" muted loop playsinline preload="none" poster="https://images.pexels.com/videos/32346559/pexels-photo-32346559.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" data-src="https://videos.pexels.com/video-files/32346559/13799902_1920_1080_25fps.mp4"></video>
+    <div class="wrap band__in">
+      <blockquote class="display">Han gör allt för den perfekta bilden – även om det innebär att hoppa in i <em>vassen</em> eller vada ut i havet.</blockquote>
+      <div class="band__by"><span>Benjamin Tidå, om sin bröllopsdag</span><span>Video: <a href="https://www.pexels.com/video/romantic-couple-walking-through-wheat-field-32346559/" target="_blank" rel="noopener">Vitaliy Izonin / Pexels</a></span></div>
+    </div>
+  </section>
+
   <!-- PROCESS -->
   <section class="sec proc">
     <div class="wrap">
@@ -385,16 +427,19 @@ a{color:inherit}
       <h2 class="display reveal">Tre steg, <em>noll</em> stress.</h2>
       <div class="proc__grid">
         <div class="step reveal">
+          <img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413749349427-V9QO7KRUFDQMRXQARNH2/jlbrollopsfotograf--18.jpg?format=900w" width="2500" height="1755" alt="Brudpar i ett avslappnat porträtt" loading="lazy" decoding="async">
           <span class="step__n">01</span>
           <h3>Vi ses och pratar</h3>
           <p>Helst ansikte mot ansikte – jag kommer vara nära er hela dagen, så det är fint att lära känna varandra. Går det inte tar vi mötet digitalt. Jag tar gärna med ett album så ni kan känna på material och färger.</p>
         </div>
         <div class="step reveal">
+          <img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1725354697171-PS07Y8YV29OHHAHGYQQ3/DSC_0421.jpg?format=900w" width="5736" height="3816" alt="Brudpar har roligt på en gunga" loading="lazy" decoding="async">
           <span class="step__n">02</span>
           <h3>Er bröllopsdag</h3>
           <p>Jag gör vad som krävs för bilden – jag har tappat en kamera från ett träd och förlorat en blixt i havet. Därför har jag alltid backup-utrustning med mig. Regnar det hittar vi vackra platser inomhus.</p>
         </div>
         <div class="step reveal">
+          <img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1478776999506-N1FXBSP4TMGL0ZN8173J/ugetthepicture-7345.jpg?format=900w" width="2500" height="3750" alt="Händer med vigselringar" loading="lazy" decoding="async">
           <span class="step__n">03</span>
           <h3>Ni får alla bilder</h3>
           <p>Några smakprov inom en vecka, resten efter 3–4 veckor. Ni får <em>alla</em> bilder från dagen, plus ett urval redigerade i högsta kvalitet – utskrivbara ända upp till A0.</p>
@@ -413,24 +458,28 @@ a{color:inherit}
       </div>
       <div class="plans">
         <article class="plan reveal">
+          <img class="plan__img" src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1576765021873-09QHDYGMYTOHQRGO0VPM/Bro%CC%88llopsfotograf+ska%CC%8Ane+2.png?format=800w" width="1770" height="1104" alt="" loading="lazy" decoding="async">
           <h3>Porträtt</h3>
           <div class="plan__price">12 500 kr</div><span class="plan__from">från</span>
           <p>Professionella parbilder utan full bröllopsdokumentation – t.ex. vid borgerlig vigsel eller mindre fest.</p>
           <a class="btn btn--ghost btn--sm" href="#kontakt">Fråga om datum</a>
         </article>
         <article class="plan reveal">
+          <img class="plan__img" src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413749052286-V7JZVWL2OCTXY83E80UL/br%C3%B6llopsfotograf+malm%C3%B6+bryllupsfotograf+k%C3%B8benhavn-3291.jpg?format=800w" width="2500" height="1766" alt="" loading="lazy" decoding="async">
           <h3>Porträtt &amp; vigsel</h3>
           <div class="plan__price">15 500 kr</div><span class="plan__from">från</span>
           <p>Vigseln dokumenterad från början till slut, följt av parporträtt i lugn och ro.</p>
           <a class="btn btn--ghost btn--sm" href="#kontakt">Fråga om datum</a>
         </article>
         <article class="plan reveal">
+          <img class="plan__img" src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1664522485586-XSY68X098KBH3ZK0V946/DSC_3506.jpg?format=800w" width="3873" height="2580" alt="" loading="lazy" decoding="async">
           <h3>Halvdag</h3>
           <div class="plan__price">19 500 kr</div><span class="plan__from">från</span>
           <p>Förmiddag och eftermiddag dokumenterad – från vigseln fram till att middagen börjar.</p>
           <a class="btn btn--ghost btn--sm" href="#kontakt">Fråga om datum</a>
         </article>
         <article class="plan plan--feat reveal">
+          <img class="plan__img" src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1725354721581-1RKB5U35T6W89D3YFQN2/DSC_1644-2-Enhanced-NR.jpg?format=800w" width="3282" height="3960" alt="" loading="lazy" decoding="async">
           <span class="plan__tag">Mest komplett</span>
           <h3>Heldag</h3>
           <div class="plan__price">25 500 kr</div><span class="plan__from">från</span>
@@ -472,12 +521,11 @@ a{color:inherit}
         </div>
       </div>
       <div class="rev__track" id="revTrack">
-        <figure class="review"><blockquote>Han gör allt han kan för att få till den perfekta bilden, oavsett om det innebär att hoppa in i vassen eller att vada ut i havet. Fotona kom efter bara en vecka!</blockquote><figcaption>Benjamin Tidå</figcaption></figure>
-        <figure class="review"><blockquote>Professionell, noggrann och lyhörd med glimten i ögat. Han lyckas fånga de speciella ögonblicken och känslorna på ett makalöst sätt.</blockquote><figcaption>Charlotte &amp; Sebastian Mattsson</figcaption></figure>
-        <figure class="review"><blockquote>Janus är så bra på att få en person att känna sig avslappnad framför kameran. Bilderna överträffade alla våra förväntningar!</blockquote><figcaption>Sofie</figcaption></figure>
-        <figure class="review"><blockquote>Kvaliteten kan bara bedömas i den glädje bilderna har visat hos de vi delat dem med – i många fall till tårar.</blockquote><figcaption>Robin Sarenvik</figcaption></figure>
-        <figure class="review"><blockquote>Han bidrog med god och avslappnad energi och levererade fantastiska bilder!</blockquote><figcaption>Hanna Dahl</figcaption></figure>
-        <figure class="review"><blockquote>Familj och vänner tyckte också att fotografen var så trevlig och rolig. Vi hade inte vågat drömma om att bilderna skulle bli så bra!</blockquote><figcaption>Andreas</figcaption></figure>
+        <figure class="review"><img style="object-position:78% 50%" src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413475391181-O08FAGSZVC5KOPZKSS5W/dsc_4862+%282%29.jpg?format=800w" width="2500" height="1522" alt="" loading="lazy" decoding="async"><div><blockquote>Professionell, noggrann och lyhörd med glimten i ögat. Han lyckas fånga de speciella ögonblicken och känslorna på ett makalöst sätt.</blockquote><figcaption>Charlotte &amp; Sebastian Mattsson</figcaption></div></figure>
+        <figure class="review"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1632664860800-CO9PXAHWKSPLNRBJPP34/DSC_8024-3.jpg?format=800w" width="2643" height="1759" alt="" loading="lazy" decoding="async"><div><blockquote>Janus är så bra på att få en person att känna sig avslappnad framför kameran. Bilderna överträffade alla våra förväntningar!</blockquote><figcaption>Sofie</figcaption></div></figure>
+        <figure class="review"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1688458580105-O053TLRCKOU67TWGP5X2/DSC_4422.jpg?format=800w" width="3117" height="4550" alt="" loading="lazy" decoding="async"><div><blockquote>Kvaliteten kan bara bedömas i den glädje bilderna har visat hos de vi delat dem med – i många fall till tårar.</blockquote><figcaption>Robin Sarenvik</figcaption></div></figure>
+        <figure class="review"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1704358055866-VNC19DANKBMFWUFDWMU3/DSC_5265-Enhanced-NR.jpg?format=800w" width="4892" height="3255" alt="" loading="lazy" decoding="async"><div><blockquote>Han bidrog med god och avslappnad energi och levererade fantastiska bilder!</blockquote><figcaption>Hanna Dahl</figcaption></div></figure>
+        <figure class="review"><img src="https://images.squarespace-cdn.com/content/v1/543fdeb4e4b052f9d53a1356/1413749310080-BVTF03RNCX6F0AMFBJO2/br%C3%B6llopsfotograf+malm%C3%B6-5512.jpg?format=800w" width="2500" height="3535" alt="" loading="lazy" decoding="async"><div><blockquote>Familj och vänner tyckte också att fotografen var så trevlig och rolig. Vi hade inte vågat drömma om att bilderna skulle bli så bra!</blockquote><figcaption>Andreas</figcaption></div></figure>
       </div>
     </div>
   </section>
@@ -596,9 +644,17 @@ const syncV=()=>{const p=vid.paused;document.getElementById('icoPause').style.di
 vt.onclick=()=>{vid.paused?vid.play():vid.pause()};
 vid.addEventListener('play',syncV);vid.addEventListener('pause',syncV);syncV();
 
+/* ---------- Band video (lazy) ---------- */
+const bv=document.getElementById('bandVideo');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){if(!bv.src)bv.src=bv.dataset.src;bv.play().catch(()=>{})}else if(bv.src)bv.pause();
+  }),{rootMargin:'200px 0px'}).observe(bv);
+}
+
 /* ---------- Gallery ---------- */
 const masonry=document.getElementById('masonry'),filters=document.getElementById('filters'),moreBtn=document.getElementById('more');
-const PAGE=21;let cat='alla',shown=PAGE;
+const PAGE=24;let cat='alla',shown=PAGE;
 const counts=G.reduce((a,g)=>(a[g[3]]=(a[g[3]]||0)+1,a),{alla:G.length});
 Object.entries(CATS).forEach(([k,v])=>{
   const b=document.createElement('button');b.className='chip';b.dataset.cat=k;b.setAttribute('aria-pressed',k==='alla');
