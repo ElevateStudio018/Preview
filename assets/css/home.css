@@ -1147,15 +1147,3 @@ h2, h3 { margin: 0; font-weight: 400; }
   .dpk__pg { width: 170px; }
 }
 
-/* Symbols from the site's icon family: main lines in the text colour, one detail in lighter green */
-.eico { display: block; width: 24px; height: 24px; flex: none; }
-.eico__a { stroke: #5f9e78; }
-.eico__f { fill: #5f9e78; stroke: none; }
-.bento__cap { display: inline-flex; align-items: center; gap: 8px; color: var(--accent, #1d3b2a); }
-.bento__cap .eico { width: 20px; height: 20px; }
-.bento__ico { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: auto; border-radius: 14px; background: rgba(29, 59, 42, .07); color: var(--accent, #1d3b2a); }
-.bento__ico .eico { width: 28px; height: 28px; }
-.bento__tile--text { justify-content: space-between; }
-.bento__tile--text h3 { margin-top: 24px; }
-.test-teaser__ico { display: grid; place-items: center; width: 60px; height: 60px; margin-bottom: 22px; border-radius: 16px; background: #fff; color: var(--accent, #1d3b2a); }
-.test-teaser__ico .eico { width: 32px; height: 32px; }
