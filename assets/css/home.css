@@ -1108,9 +1108,8 @@ h2, h3 { margin: 0; font-weight: 400; }
 .dpk__title { margin: 0 0 20px; font-size: 56px; font-weight: 400; line-height: 1.05; letter-spacing: -.03em; }
 .dpk__title em, .dpk__h em { font-family: var(--serif); letter-spacing: 0; }
 .dpk__lead { margin: 0 0 22px; font-size: 19px; line-height: 1.55; color: #3c4740; }
-.dpk__list { display: grid; gap: 10px; margin: 0 0 32px; padding: 0; list-style: none; }
-.dpk__list li { position: relative; padding-left: 30px; font-size: 17px; }
-.dpk__list li::before { content: ""; position: absolute; left: 0; top: .2em; width: 18px; height: 18px; border-radius: 50%; background: var(--accent, #1d3b2a) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11px no-repeat; }
+.dpk__list { margin: 0 0 32px; padding: 0; list-style: none; border-top: 1px solid rgba(29, 59, 42, .14); }
+.dpk__list li { padding: 12px 0; border-bottom: 1px solid rgba(29, 59, 42, .14); font-size: 17px; }
 .dpk__btns { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin: 0; }
 .dpk__film { margin: 0; }
 .dpk__video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; background: #e9e7e2; box-shadow: 0 50px 90px -50px rgba(18, 39, 27, .55); }
