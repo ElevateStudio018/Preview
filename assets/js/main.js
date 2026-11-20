@@ -1,0 +1,352 @@
+// The full stylesheet is linked with media="print" so it never blocks the first paint; switch it on now
+document.querySelectorAll('link[data-defer]').forEach(function (l) {
+  var ready = function () { document.documentElement.classList.add('css-ready'); };
+  if (l.sheet && l.sheet.cssRules && l.sheet.cssRules.length) ready(); else l.addEventListener('load', ready);
+  l.media = 'all';
+});
+if (!document.querySelector('link[data-defer]')) document.documentElement.classList.add('css-ready');
+(function () {
+  var body = document.body;
+  var header = document.getElementById('site-header');
+  var megaLink = document.querySelector('.js-show-megamenu');
+  var megamenu = document.getElementById('megamenu');
+  var headerBurger = header.querySelector('.js-show-hamburger');
+  var burgerButtons = document.querySelectorAll('.js-show-hamburger');
+  var burgerMenu = document.getElementById('hamburgermenu');
+
+  // Megamenu
+  function setMegamenu(open) {
+    megamenu.classList.toggle('megamenu--visible', open);
+    megaLink.parentElement.classList.toggle('is-active', open);
+    megaLink.setAttribute('aria-expanded', String(open));
+    body.classList.toggle('main-overlay', open);
+  }
+  megaLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (burgerMenu.classList.contains('hamburgermenu--visible')) setBurger(false);
+    setMegamenu(!megamenu.classList.contains('megamenu--visible'));
+  });
+  document.addEventListener('click', function (e) {
+    if (megamenu.classList.contains('megamenu--visible') && !header.contains(e.target)) setMegamenu(false);
+  });
+
+  // Menu drawer: slides in from the right over a dimmed page
+  var backdrop = document.querySelector('.drawer-backdrop');
+  var drawerClose = burgerMenu.querySelector('.drawer__close');
+  // On desktop the menu drops down from the bottom edge of the header, whatever its current height
+  function placeDrawer() {
+    body.style.setProperty('--drawer-top', Math.round(header.getBoundingClientRect().bottom) + 'px');
+  }
+  window.addEventListener('scroll', function () { if (burgerMenu.classList.contains('hamburgermenu--visible')) placeDrawer(); }, { passive: true });
+  window.addEventListener('resize', placeDrawer);
+  function setBurger(open, byMouse) {
+    if (open === burgerMenu.classList.contains('hamburgermenu--visible')) return;
+    burgerMenu.classList.toggle('hamburgermenu--visible', open);
+    burgerMenu.setAttribute('aria-hidden', String(!open));
+    headerBurger.setAttribute('aria-expanded', String(open));
+    body.classList.toggle('drawer-open', open);
+    if (open) {
+      placeDrawer();
+      backdrop.hidden = false;
+      requestAnimationFrame(function () { backdrop.classList.add('is-visible'); });
+      if (window.matchMedia('(min-width: 993px)').matches) { var first = burgerMenu.querySelector('.drawer__main a'); if (first && !byMouse) first.focus(); } else if (!byMouse) { drawerClose.focus(); }
+    } else {
+      backdrop.classList.remove('is-visible');
+      setTimeout(function () { backdrop.hidden = true; }, 300);
+      headerBurger.focus();
+    }
+  }
+  burgerButtons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      setMegamenu(false);
+      setBurger(!burgerMenu.classList.contains('hamburgermenu--visible'), e.detail > 0);
+    });
+  });
+  document.querySelectorAll('.js-close-drawer').forEach(function (el) {
+    el.addEventListener('click', function () { setBurger(false); });
+  });
+  document.querySelectorAll('.js-toggle-sub').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var open = link.parentElement.classList.toggle('is-open');
+      link.setAttribute('aria-expanded', String(open));
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    setMegamenu(false);
+    setBurger(false);
+  });
+
+  // Shrink header on scroll
+  function onScroll() { header.classList.toggle('site-header--scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // no first call: the page opens at the top, and a restored scroll position fires a scroll event anyway
+
+  // Forms. The enquiry goes to our own server (/api/enquiry), which mails it to Elevate's Gmail, and the
+  // lead is saved straight in the database for the admin.
+  var send = function (url, body, key) {
+    var h = { 'Content-Type': 'application/json', Accept: 'application/json' };
+    if (key) { h.apikey = key; h.Authorization = 'Bearer ' + key; }
+    return fetch(url, { method: 'POST', headers: h, body: JSON.stringify(body) }).then(function (res) {
+      return res.text().then(function (t) {
+        var b = {}; try { b = JSON.parse(t); } catch (e) { /* empty body */ }
+        if (!res.ok || String(b.success) === 'false') throw new Error(b.message || b.error || 'fel');
+        return b;
+      });
+    });
+  };
+  var cut = function (v, n) { v = (v || '').trim(); return v ? v.slice(0, n) : null; };
+  document.querySelectorAll('.js-form').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = form.querySelector('.form-status');
+      var button = form.querySelector('[type="submit"]');
+      var data = {};
+      new FormData(form).forEach(function (value, key) { data[key] = value; });
+      var isBot = !!data._honey;
+      delete data._honey;
+      var show = function (text, ok) {
+        if (!status) return;
+        status.hidden = false;
+        status.textContent = text;
+        status.classList.toggle('form-status--error', !ok);
+        if (ok && window.elevateTrack) window.elevateTrack('form', form.dataset.subject || 'formulär');
+      };
+      button.disabled = true;
+      show('Skickar …', true);
+      var news = form.classList.contains('site-footer__newsletter');
+      var done = news ? 'Tack för att du gick med i vårt nyhetsbrev! Du får tips om hemsidor, synlighet på Google och nyheter från oss ungefär en gång i månaden. Du kan avsluta när du vill via länken i varje mejl.' : 'Tack! Vi återkommer så fort vi kan.';
+      if (isBot) { form.reset(); show(done, true); button.disabled = false; return; }
+      var isLead = 'lead' in form.dataset && data.email;
+      var lead = isLead && { name: cut(data.namn, 100) || cut(data.email, 100), email: cut(data.email, 255), phone: cut(data.telefon, 40), company: cut(data.foretag, 150), service_type: cut(data.tjanst, 100), message: cut(data.meddelande, 2000) };
+      var viaFormSubmit = function () {
+        // Our server mails it and saves the lead in the admin. Only if the server does not answer at all is the lead
+        // saved straight in the database from here, so the enquiry is never lost.
+        data._subject = form.dataset.subject || 'Meddelande från hemsidan';
+        data.sida = location.href;
+        return send(form.action, data).catch(function (err) {
+          if (!(lead && form.dataset.db)) throw err;
+          return send(form.dataset.db + '/rest/v1/quote_requests', Object.assign({ meeting_type: 'quote', admin_notes: 'källa: ' + (form.id === 'bestall' ? 'Beställningssidan' : 'Kontaktformuläret') + '\nmejl: kom inte fram – servern svarade inte' }, lead), form.dataset.key);
+        });
+      };
+      // Newsletter: straight into the Brevo list through our own server; if that is not set up yet, the old routes below take over
+      var viaBrevo = news ? send('/api/newsletter', { email: data.email, page: location.pathname }) : null;
+      var go = news ? viaBrevo.catch(function () { return form.dataset.mail ? send(form.dataset.mail, { action: 'subscribe', email: data.email }, form.dataset.key).catch(viaFormSubmit) : viaFormSubmit(); })
+        : form.dataset.mail && (news || lead)
+        ? send(form.dataset.mail, news ? { action: 'subscribe', email: data.email } : Object.assign({ action: 'lead' }, lead), form.dataset.key).catch(viaFormSubmit)
+        : viaFormSubmit();
+      var timer = setTimeout(function () { show('Det tar längre tid än vanligt … mejla oss gärna på info@elevatestudio.nu om inget händer.', false); }, 12000);
+      go.then(function () { form.reset(); show(done, true); })
+        .catch(function () { show('Något gick fel. Mejla oss gärna direkt på info@elevatestudio.nu.', false); })
+        .then(function () { clearTimeout(timer); button.disabled = false; });
+    });
+  });
+
+  // Films in the laptop mockups: play while on screen, rest when scrolled away
+  var films = document.querySelectorAll('.screen__video, .dpk__video');
+  if (films.length && 'IntersectionObserver' in window) {
+    var filmWatch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else { v.pause(); }
+      });
+    }, { threshold: .15 });
+    films.forEach(function (v) { filmWatch.observe(v); });
+  }
+
+  // Before/after: drag the handle (or use the range input with keyboard) to compare
+  document.querySelectorAll('[data-compare]').forEach(function (box) {
+    var range = box.querySelector('.compare__range');
+    var set = function (v) { v = Math.max(0, Math.min(100, v)); box.style.setProperty('--pos', v + '%'); range.value = v; };
+    var fromPointer = function (e) { var r = box.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+    var dragging = false;
+    box.addEventListener('pointerdown', function (e) { dragging = true; e.preventDefault(); fromPointer(e); });
+    window.addEventListener('pointermove', function (e) { if (dragging) fromPointer(e); });
+    ['pointerup', 'pointercancel'].forEach(function (t) { window.addEventListener(t, function () { dragging = false; }); });
+    range.addEventListener('input', function () { set(Number(range.value)); });
+    set(Number(range.value));
+  });
+
+  // Price page: click (or Enter/Space on) a package to pick it – the picked one turns white and its button turns
+  // dark; the button itself goes on to the order page with that package
+  document.querySelectorAll('[data-pick-plans]').forEach(function (group) {
+    var cards = group.querySelectorAll('.plan');
+    var pick = function (card) {
+      cards.forEach(function (c) {
+        var on = c === card, btn = c.querySelector('.btn');
+        c.classList.toggle('plan--featured', on);
+        c.setAttribute('aria-checked', on ? 'true' : 'false');
+        if (btn) { btn.classList.toggle('btn--primary', on); btn.classList.toggle('plan__btn', !on); }
+      });
+    };
+    cards.forEach(function (card) {
+      card.addEventListener('click', function (e) { if (!e.target.closest('a')) pick(card); });
+      card.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target === card) { e.preventDefault(); pick(card); } });
+    });
+  });
+
+  // Reviews: arrows step one review at a time (only rendered when there is more than one)
+  document.querySelectorAll('[data-reviews]').forEach(function (box) {
+    var track = box.querySelector('.reviews__track');
+    var prev = box.querySelector('.js-review-prev'), next = box.querySelector('.js-review-next');
+    if (!prev || !next) return;
+    var counter = box.querySelector('.js-review-n');
+    var sync = function () {
+      prev.disabled = track.scrollLeft < 10;
+      next.disabled = track.scrollLeft > track.scrollWidth - track.clientWidth - 10;
+      if (counter) counter.textContent = Math.round(track.scrollLeft / track.clientWidth) + 1;
+    };
+    prev.addEventListener('click', function () { track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }); });
+    next.addEventListener('click', function () { track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }); });
+    track.addEventListener('scroll', sync, { passive: true });
+    prev.disabled = true; if (counter) counter.textContent = 1; // start state without reading the layout
+  });
+
+  // Long reviews: show "Läs mer" only when the text is cut, and fold it out on click
+  document.querySelectorAll('.review__card').forEach(function (card) {
+    var p = card.querySelector('.review__text p'), more = card.querySelector('.review__more');
+    if (!p || !more) return;
+    var check = function () { if (!card.classList.contains('is-open')) more.hidden = p.scrollHeight <= p.clientHeight + 2; };
+    check(); window.addEventListener('resize', check, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(check);
+    more.addEventListener('click', function () {
+      var open = card.classList.toggle('is-open'), track = card.parentNode;
+      requestAnimationFrame(function () { track.scrollLeft = card.offsetLeft - track.offsetLeft; });
+      more.textContent = open ? 'Visa mindre' : 'Läs mer';
+      more.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  // Reviews animate: the card rises in on scroll, and each review slides in when you step to it
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    document.querySelectorAll('[data-reviews]').forEach(function (box) {
+      var track = box.querySelector('.reviews__track');
+      if (!track) return;
+      box.classList.add('reviews--anim');
+      new IntersectionObserver(function (entries, obs) {
+        if (entries[0].isIntersecting) { box.classList.add('is-shown'); obs.disconnect(); }
+      }, { rootMargin: '0px 0px -80px 0px' }).observe(box);
+      var cardObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.target.classList.toggle('is-in', e.intersectionRatio > 0.55); });
+      }, { root: track, threshold: [0, 0.55, 1] });
+      track.querySelectorAll('.review__card').forEach(function (c) { cardObs.observe(c); });
+    });
+  }
+})();
+
+/* Hemsidor vi byggt: a card opens the site in a frame on top of the page */
+(function () {
+  var box = document.getElementById('site-preview');
+  if (!box) return;
+  var frame = document.getElementById('sp-frame'), ifr = document.getElementById('sp-iframe'), fb = document.getElementById('sp-fallback'), timer;
+  function open(url, name) {
+    document.getElementById('sp-name').textContent = name;
+    var u = document.getElementById('sp-url'); u.textContent = url.replace(/^https?:\/\//, '').replace(/\/$/, ''); u.href = url;
+    document.getElementById('sp-open').href = url;
+    fb.hidden = true; ifr.src = url; box.hidden = false; document.body.classList.add('has-preview');
+    clearTimeout(timer); timer = setTimeout(function () { try { if (!ifr.contentWindow || ifr.contentWindow.length === undefined) return; } catch (e) { /* cross-origin: fine, it loaded */ } }, 4000);
+    ifr.onerror = function () { fb.hidden = false; };
+  }
+  function close() { box.hidden = true; ifr.src = 'about:blank'; document.body.classList.remove('has-preview'); }
+  document.querySelectorAll('[data-site]').forEach(function (a) {
+    a.addEventListener('click', function (e) { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); open(a.dataset.site, a.dataset.name); });
+  });
+  document.getElementById('sp-close').addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+  box.querySelectorAll('[data-view]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      box.querySelectorAll('[data-view]').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+      frame.classList.toggle('is-mob', b.dataset.view === 'mob');
+    });
+  });
+})();
+
+/* Start page: the booking calendar as in the mail, five days with every time; a free time books on /boka */
+(function () {
+  // Start page: one bar per day, as tall as the number of free meeting times that day (fetched after load)
+  var box = document.getElementById('book-bars');
+  if (!box) return;
+  var run = function () {
+    fetch(box.dataset.info).then(function (r) { return r.json(); }).then(function (d) {
+      var days = (d.days || []).slice(0, 5); if (!days.length) return;
+      var max = Math.max.apply(null, days.map(function (x) { return x.free || 0; }).concat([1]));
+      var top = days.reduce(function (m, x) { return (x.free || 0) > (m.free || 0) ? x : m; }, days[0]);
+      box.innerHTML = days.map(function (x) {
+        var label = x.wd + ' ' + x.d + ' ' + x.mon.toLowerCase() + ': ' + (x.free ? x.free + ' lediga tider' : 'fullt');
+        return '<span class="book-bars__bar' + (x === top && x.free ? ' is-top' : '') + '" style="--h:' + Math.max(12, Math.round((x.free || 0) / max * 100)) + '%" title="' + label + '"><i class="sr-only">' + label + '</i></span>';
+      }).join('');
+      var note = document.getElementById('book-bars-note');
+      if (note && top.free) note.textContent = 'Flest lediga tider ' + top.wd.toLowerCase() + ' ' + top.d + ' ' + top.mon.toLowerCase() + '.';
+    }).catch(function () { /* the bars stay as they are */ });
+  };
+  if (document.readyState === 'complete') setTimeout(run, 300); else addEventListener('load', function () { setTimeout(run, 300); });
+})();
+
+/* Message boxes grow with their text, so the whole message is always visible */
+function fit(t) { t.style.height = 'auto'; t.style.overflowY = 'hidden'; t.style.height = (t.scrollHeight + 2) + 'px'; }
+document.querySelectorAll('form textarea').forEach(function (t) {
+  t.addEventListener('input', function () { fit(t); });
+  addEventListener('resize', function () { if (t.value) fit(t); });
+});
+
+/* Contact form opened from Testa din sajt: the whole test result goes into the message */
+(function () {
+  if (/[?&]fran=cookie\b/.test(location.search)) {
+    var f2 = document.getElementById('formular'); if (!f2) return;
+    var m2 = f2.querySelector('textarea[name="meddelande"]'); if (m2 && !m2.value) { m2.value = 'Hej! Vi vill att ni ser över cookies och GDPR på vår hemsida och lägger in en cookie-banner som följer reglerna.'; fit(m2); }
+    f2.dataset.subject = 'Förfrågan: cookies och GDPR';
+    return;
+  }
+  if (!/[?&]fran=test\b/.test(location.search)) return;
+  var form = document.getElementById('formular'); if (!form) return;
+  var text; try { text = sessionStorage.getItem('es.sitetest'); } catch (e) { text = null; }
+  if (!text) return;
+  var msg = form.querySelector('textarea[name="meddelande"]'), sel = form.querySelector('select[name="tjanst"]');
+  if (msg) { msg.value = text; fit(msg); }
+  if (sel) sel.value = 'Hemsidor';
+  var url = ''; try { url = sessionStorage.getItem('es.sitetest.url') || ''; } catch (e) { /* no address */ }
+  var title = 'Åtgärda resultatet från Testa din sajt' + (url ? ' – ' + url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '');
+  form.dataset.subject = 'Offertförfrågan: ' + title;
+  // the title travels with the request, and the visitor sees what is sent
+  var hid = document.createElement('input'); hid.type = 'hidden'; hid.name = 'arende'; hid.value = title; form.appendChild(hid);
+  var box = document.createElement('div'); box.className = 'form-prefill';
+  box.innerHTML = '<p class="form-prefill__k">Ärende</p><p class="form-prefill__t"></p><p class="form-prefill__n">Testrapporten är bifogad i meddelandet nedan. Fyll i namn och e-post och skicka, så återkommer vi med ett fast pris.</p>';
+  box.querySelector('.form-prefill__t').textContent = title;
+  form.insertBefore(box, form.firstChild);
+  var first = form.querySelector('input[name="namn"]'); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 400);
+})();
+
+/* Web fonts load after the page has loaded, so they are never in the critical request chain.
+   Text shows in the fallback font for a moment and then switches. */
+(function () {
+  if (!window.FontFace || !document.fonts) return;
+  var me = document.currentScript, base = me ? me.src.replace(/assets\/js\/[^/]*$/, '') : '/';
+  var LATIN = 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD';
+  var EXT = 'U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF';
+  var faces = [
+    ['Hanken Grotesk', 'HankenGrotesk-latin', LATIN, { weight: '100 900', style: 'normal', display: 'swap' }],
+    ['Hanken Grotesk', 'HankenGrotesk-latin-ext', EXT, { weight: '100 900', style: 'normal', display: 'swap' }],
+    ['Fraunces', 'Fraunces-latin', LATIN, { weight: '400', style: 'italic', display: 'swap' }],
+    ['Fraunces', 'Fraunces-latin-ext', EXT, { weight: '400', style: 'italic', display: 'swap' }]
+  ];
+  var go = function () {
+    faces.filter(function (f) { return f[2] === LATIN; }).forEach(function (f) {
+      var d = f[3]; d.unicodeRange = f[2];
+      // fetched at low priority, so the fonts never count as critical requests
+      fetch(base + 'assets/fonts/' + f[1] + '.woff2', { priority: 'low' }).then(function (r) { return r.arrayBuffer(); }).then(function (buf) {
+        var face = new FontFace(f[0], buf, d);
+        document.fonts.add(face);
+        return face.load();
+      }).catch(function () {});
+    });
+  };
+  if (document.readyState === 'complete') go(); else addEventListener('load', go);
+})();
+
+// Design examples carousel: the arrow buttons scroll the row (was an inline script, which the security policy blocks)
+document.querySelectorAll('.exs').forEach(function (w) {
+  var t = w.querySelector('.exs__track');
+  if (t) w.querySelectorAll('[data-dir]').forEach(function (b) { b.addEventListener('click', function () { t.scrollBy({ left: +b.dataset.dir * t.clientWidth * .8, behavior: 'smooth' }); }); });
+});

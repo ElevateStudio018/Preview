@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="assets/fonts/HankenGrotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="robots" content="index, follow">
+  <script data-prefix="" data-v="b0023237d6">(function(){var a=document.documentElement,d=document.currentScript,g="elevate-lang",m={get:function(){try{return localStorage.getItem(g)}catch(e){return null}},set:function(e){try{e==="en"?localStorage.setItem(g,"en"):localStorage.removeItem(g)}catch(t){}}},u=new URLSearchParams(location.search).get("lang");(u==="en"||u==="sv")&&m.set(u);var s=(u||m.get())==="en"?"en":"sv",i=null,o=[];function l(e){if(!i||e==null)return e;var t=String(e).replace(/\s+/g," ").trim();if(!t)return e;var n=i[t];if(n===void 0){for(var r=0;r<o.length;r++)if(o[r][0].test(t)){n=t.replace(o[r][0],o[r][1]);break}}if(n===void 0&&/ →$/.test(t)&&i[t.slice(0,-2)]!==void 0&&(n=i[t.slice(0,-2)]+" \u2192"),n===void 0)return e;var c=/^(\s*)[\s\S]*?(\s*)$/.exec(String(e));return c[1]+n+c[2]}var b=["placeholder","aria-label","alt","title"];function f(e){if(e.nodeType===3){var t=e.parentNode;if(t&&/^(SCRIPT|STYLE)$/.test(t.nodeName))return;var n=l(e.nodeValue);n!==e.nodeValue&&(e.nodeValue=n);return}if(!(e.nodeType!==1||/^(SCRIPT|STYLE|svg)$/i.test(e.nodeName)||e.hasAttribute("data-noi18n"))){b.forEach(function(c){var E=e.getAttribute(c);if(E){var L=l(E);L!==E&&e.setAttribute(c,L)}});for(var r=e.firstChild;r;r=r.nextSibling)f(r)}}function w(){var e=document.querySelector(".drawer__lang svg");document.querySelectorAll(".drawer__lang [data-lang]").forEach(function(t){var n=t.dataset.lang===s;t.classList.toggle("is-on",n),n?t.setAttribute("aria-current","true"):t.removeAttribute("aria-current");var r=t.querySelector("svg");n&&!r?e&&t.insertBefore(e.cloneNode(!0),t.firstChild):!n&&r&&r.remove()})}function T(){a.lang="en",document.title=l(document.title);var e=document.querySelector('meta[name="description"]');e&&(e.content=l(e.content)),f(document.body),new MutationObserver(function(t){t.forEach(function(n){n.type==="characterData"?f(n.target):n.addedNodes.forEach(f)})}).observe(document.body,{childList:!0,subtree:!0,characterData:!0}),a.classList.remove("i18n-pending")}if(window.ElevateLang={lang:s,t:l,set:function(e){m.set(e);var t=new URL(location.href);t.searchParams.delete("lang"),location.replace(t.toString())}},document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("[data-lang]");t&&(e.preventDefault(),t.dataset.lang!==s&&window.ElevateLang.set(t.dataset.lang))}),document.addEventListener("DOMContentLoaded",w),s==="en"){a.classList.add("i18n-pending");var S=document.createElement("style");S.textContent="html.i18n-pending body{visibility:hidden}",document.head.appendChild(S),setTimeout(function(){a.classList.remove("i18n-pending")},2500);var p=!1,y=!1,h=function(){p&&y&&T()},v=document.createElement("script");v.src=(d&&d.dataset.prefix||"")+"assets/js/i18n-en.js?v="+(d&&d.dataset.v||""),v.onload=function(){var e=window.ELEVATE_EN||{};i=e.t||{},o=(e.p||[]).map(function(t){return[new RegExp(t[0]),t[1]]}),y=!0,h()},v.onerror=function(){a.classList.remove("i18n-pending")},document.head.appendChild(v),document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){p=!0,h()}):(p=!0,h())}})();</script>
+  <title>Webbyrå i Uppsala – hemsida till fast pris från 5 000 kr</title>
+  <meta name="description" content="Webbyrå i Uppsala som bygger snabba hemsidor till fast pris från 5 000 kr.">
+  <link rel="canonical" href="https://elevatestudio.nu/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Elevate Studio">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:title" content="Webbyrå i Uppsala – hemsida till fast pris från 5 000 kr">
+  <meta property="og:description" content="Webbyrå i Uppsala som bygger snabba hemsidor till fast pris från 5 000 kr.">
+  <meta property="og:url" content="https://elevatestudio.nu/">
+  <meta property="og:image" content="https://elevatestudio.nu/assets/img/brand/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1d3b2a">
+  <meta name="geo.region" content="SE-C">
+  <meta name="geo.placename" content="Uppsala">
+  <link rel="alternate" type="application/rss+xml" title="Elevate Studio – Senaste nytt" href="https://elevatestudio.nu/rss.xml">
+  <link rel="icon" href="assets/img/brand/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/img/brand/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+  <link rel="preload" as="image" media="(min-width: 641px)" href="assets/img/home/hero-800.webp" fetchpriority="high" imagesizes="100vw" imagesrcset="assets/img/home/hero-800.webp 800w, assets/img/home/hero-1200.webp 1200w, assets/img/home/hero-1400.webp 1400w, assets/img/home/hero-1600.webp 1600w, assets/img/home/hero-1920.webp 1920w, assets/img/home/hero.webp 2400w">
+  <style>html:not(.css-ready) .hamburgermenu,html:not(.css-ready) .megamenu,html:not(.css-ready) .drawer-backdrop,html:not(.css-ready) [class*=chat]{display:none!important}:root{--accent:#1d3b2a;--accent-dark:#12271b;--cream:#fdfbf5;--cream-dark:#f6f1e4;--grey:#fdfbf5;--banner-h:0px;--header-h:158px;--burger-top:calc(var(--banner-h) + 240px);--sans:"Hanken Grotesk",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif}*,*::before,*::after{box-sizing:border-box}html{min-height:100vh;text-size-adjust:100%;-webkit-text-size-adjust:100%;overflow-x:clip}body{display:flow-root;margin:0;min-height:100vh;position:relative;padding-top:var(--banner-h);font-family:var(--sans);font-size:18px;font-weight:300;line-height:1.5;letter-spacing:-0.012em;color:#000;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}::selection{background:rgba(29,59,42,.8);color:#fff}p{margin:0 0 26px}a{color:inherit}.container{width:100%;max-width:1334px;margin:0 auto;padding:0 15px}.btn{display:inline-flex;align-items:center;justify-content:center;min-width:130px;height:58px;padding:0 30px;border:none;border-radius:58px;font-family:var(--sans);font-size:18px;font-weight:700;letter-spacing:0;text-align:center;text-decoration:none;cursor:pointer}.btn span{display:inline-flex;align-items:center;height:58px;line-height:normal}.btn--primary{background:#000;color:#fff;transition:background-color .2s}.btn--primary:hover{background:var(--accent)}.btn--secondary{background:#fff;border:2px solid #000;color:#000;transition:color .2s,background-color .2s,border .2s}.btn--secondary:hover{background:var(--accent);border-color:var(--accent);color:#fff}.site-header{position:fixed;top:var(--banner-h);left:0;z-index:100;width:100%;height:var(--header-h);display:flex;flex-wrap:wrap;align-content:center;align-items:center;justify-content:space-between;padding:0 80px;background:#fff;filter:drop-shadow(0 10px 12px rgba(0,0,0,.05));transition:height .2s,background-color .2s}@media (max-width:1200px){.site-header{padding:0 64px}}@media (max-width:576px){.site-header{padding:0 24px}}.site-header--scrolled{height:120px}.site-header__site-logo{margin:0;padding:24px 0;transition:opacity .2s,padding .2s}.site-header--scrolled .site-header__site-logo{padding:12px 0}.wordmark{display:flex;align-items:center;gap:12px;width:auto;height:66px;color:#000;text-decoration:none;transform-origin:left center;transition:transform .2s}.wordmark__mark{flex:0 0 auto;width:64px;height:auto}.wordmark__name{font-size:31px;font-weight:700;letter-spacing:-0.02em;white-space:nowrap}.site-header--scrolled .wordmark{transform:scale(.84)}@media (max-width:576px){.wordmark{height:60px}.wordmark__mark{width:54px}.wordmark__name{font-size:26px}}@media (max-width:374px){.wordmark{gap:9px}.wordmark__mark{width:44px}.wordmark__name{font-size:22px}}.site-header__right{display:flex;align-items:center}.site-header__navbar{position:relative;top:-3px;margin-right:24px;transition:opacity .2s}@media (max-width:992px){.site-header__navbar{display:none}}.site-header__navbar>ul{display:flex;margin:0;padding:0;list-style:none}.site-header__navbar>ul>li{margin-right:30px}.site-header__navbar>ul>li:last-child{margin-right:0}.site-header__navbar>ul>li>a{position:relative;font-size:20px;font-weight:500;line-height:1.33;color:#000;text-decoration:none;transition:color .2s}.site-header__navbar>ul>li>a::after{content:"";position:absolute;bottom:-5px;left:50%;width:0;height:3px;background:var(--accent);transform:translateX(-50%);transition:width .4s,background .2s}.site-header__navbar>ul>li>a:hover{color:var(--accent)}.site-header__navbar>ul>li>a:hover::after,.site-header__navbar>ul>li.is-active>a::after{width:100%}.site-header__navbar>ul>li.is-active>a{color:var(--accent)}@media (max-width:1150px){.site-header__navbar>ul>li{margin-right:20px}.site-header__navbar>ul>li>a{font-size:18px}}.chevron{position:relative;top:2px;width:16px;height:16px;margin-left:-2px;transition:transform .2s,top .2s}.is-active>a>.chevron,[aria-expanded="true"]>.chevron{top:3px;transform:scale(-1)}.hamburger-icon{position:relative;z-index:99999;display:flex;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:2px solid var(--accent);border-radius:50%;background:var(--accent);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:top .2s,background-color .2s}.hamburger-icon .icon,.hamburger-icon .icon::before,.hamburger-icon .icon::after{display:block;width:16px;height:1.5px;background:#fff;transition:transform .2s,background-color .2s}.hamburger-icon .icon{position:relative}.hamburger-icon .icon::before,.hamburger-icon .icon::after{content:"";position:absolute;left:0}.hamburger-icon .icon::before{top:-6px}.hamburger-icon .icon::after{top:6px}.hamburger-icon:hover{background:#fff}.hamburger-icon:hover .icon,.hamburger-icon:hover .icon::before,.hamburger-icon:hover .icon::after{background:var(--accent)}.hamburger-icon:focus-visible{outline:2px solid #000;outline-offset:3px}.lang-btn{padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer}@media (min-width:993px){.site-header .hamburger-icon[aria-expanded="true"] .icon{background:transparent}.site-header .hamburger-icon[aria-expanded="true"] .icon::before{transform:translateY(6px) rotate(45deg)}.site-header .hamburger-icon[aria-expanded="true"] .icon::after{transform:translateY(-6px) rotate(-45deg)}}@media (max-width:768px){body{padding-top:calc(var(--banner-h) + 40px)}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:0s !important}}@keyframes chat-dot{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}@media (prefers-reduced-motion:no-preference){@keyframes chat-hello{0%,100%{transform:none}30%{transform:translateY(-6px) scale(1.04)}60%{transform:translateY(0) scale(.99)}}@keyframes chat-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}.hamburger-icon{width:48px;height:48px;border:0;background:transparent}.hamburger-icon .icon,.hamburger-icon .icon::before,.hamburger-icon .icon::after{width:26px;height:3px;border-radius:2px;background:var(--accent,#1d3b2a)}.hamburger-icon .icon::before{top:-8px}.hamburger-icon .icon::after{top:8px}.hamburger-icon:hover{background:transparent}.hamburger-icon:hover .icon,.hamburger-icon:hover .icon::before,.hamburger-icon:hover .icon::after{background:#000}.site-header .hamburger-icon[aria-expanded="true"] .icon::before{transform:translateY(8px) rotate(45deg)}.site-header .hamburger-icon[aria-expanded="true"] .icon::after{transform:translateY(-8px) rotate(-45deg)}body.home{--header-h:128px;--burger-top:calc(var(--banner-h) + var(--header-h))}body.main-overlay main::after{content:"";position:fixed;inset:calc(var(--banner-h) + var(--header-h)) 0 0 0;z-index:99;background:rgba(0,0,0,.2)}main{position:relative}h2,h3{margin:0;font-weight:400}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}.hero{position:relative;display:flex;align-items:center;min-height:calc(100vh - var(--banner-h));min-height:calc(100svh - var(--banner-h));padding:calc(var(--header-h) + 24px) 0 120px;overflow:hidden;background:var(--accent-dark,#12271b);color:#fff;text-align:center}.hero__visual{position:absolute;inset:0;z-index:0;margin:0}.hero__visual picture{display:block;width:100%;height:100%}.hero__visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 35%}.hero__visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,39,27,.55),rgba(18,39,27,.78))}@keyframes hero-zoom{from{transform:scale(1.08)}to{transform:scale(1)}}.hero__inner{position:relative;z-index:1;max-width:980px}@keyframes hero-in{from{transform:translateY(24px)}to{opacity:1;transform:none}}.hero__eyebrow{margin:0 0 24px;font-size:16px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--cream,#fdfbf5)}.hero__header{margin:0 0 28px;font-size:84px;font-weight:400;line-height:1.03;color:#fff}.hero__header em{font-family:var(--serif);letter-spacing:0;font-variation-settings:"opsz" 72,"SOFT" 0,"WONK" 0}.hero__text{max-width:620px;margin:0 auto 40px;font-size:21px;line-height:1.5;color:var(--cream,#fdfbf5)}.hero__buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}.hero .btn--primary{background:var(--cream,#fdfbf5);color:var(--accent,#1d3b2a)}.hero .btn--primary:hover{background:#fff}.hero .btn--secondary{border-color:#fff;background:transparent;color:#fff}.hero .btn--secondary:hover{border-color:var(--cream,#fdfbf5);background:var(--cream,#fdfbf5);color:var(--accent,#1d3b2a)}@media (max-width:768px){.hero{min-height:calc(100svh - var(--banner-h) - 40px);padding:calc(var(--header-h) - 24px) 0 96px}.hero__header{font-size:44px}.hero__text{font-size:18px}.hero__eyebrow{font-size:13px}}@media (prefers-reduced-motion:reduce){.hero__visual img,.hero__inner{animation:none}}@keyframes marquee-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}@keyframes marquee-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}@media (prefers-reduced-motion:no-preference){@keyframes faq-open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}.btn{transition:transform .2s ease,background-color .2s,color .2s}.btn:hover{transform:translateY(-2px)}}.hero{align-items:center;text-align:center;padding-top:calc(var(--header-h) + 80px);padding-bottom:40px}.hero__inner{max-width:1100px}.hero__h1{margin:0;font:inherit;color:inherit}.hero__h1 .hero__header{display:block}.hero__eyebrow{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 0 30px;font-size:14px;font-weight:600;letter-spacing:.4em}.hero__eyebrow::before,.hero__eyebrow::after{content:"";width:40px;height:1.5px;background:var(--cream,#fdfbf5)}.hero__header{margin:0 0 30px;font-size:80px;font-weight:300;line-height:1.1;letter-spacing:.1em;text-transform:uppercase}.hero__header b{display:block;font-weight:700;letter-spacing:.08em}.hero__text{max-width:600px;margin:0 auto 38px;font-size:20px}.hero__buttons{justify-content:center}.hero__visual::after{background:linear-gradient(180deg,rgba(18,39,27,.6),rgba(18,39,27,.8))}@media (max-width:992px){.hero__header{font-size:56px}}@media (max-width:576px){.hero__eyebrow{gap:12px;font-size:12px;letter-spacing:.3em}.hero__eyebrow::before,.hero__eyebrow::after{width:24px}.hero__header{font-size:31px;letter-spacing:.06em}.hero__header b{letter-spacing:.04em}}@media (max-width:640px){.hero{padding-top:calc(var(--header-h,80px) + 24px);padding-bottom:48px}.hero__inner{padding:0 18px}.hero__eyebrow{margin-bottom:18px;font-size:11px;letter-spacing:.28em}.hero__header{margin-bottom:20px;font-size:clamp(30px,9.4vw,40px);line-height:1.08;letter-spacing:.04em}.hero__header b{font-size:1.04em;letter-spacing:.02em}.hero__text{max-width:330px;margin-bottom:28px;font-size:16px;line-height:1.55}.hero__buttons{gap:10px}.hero__buttons .btn{min-width:150px;justify-content:center}}.site-header__navbar>ul>li.is-current>a::after{width:100%}.site-header__navbar>ul>li.is-current>a{color:var(--accent)}.btn--primary{background:var(--accent)}.btn--primary:hover{background:#000}.btn--secondary:hover{background:var(--accent);border-color:var(--accent)}.btn--light{background:var(--cream);color:var(--accent);transition:background-color .2s,color .2s}.btn--light:hover{background:#fff}@media print{@page{size:A4;margin:0}html{margin:0 !important;padding:0 !important;background:#fff}}:root{--glow-lime:#fdfbf5;--glow-teal:#3fc1b0;--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--glow-card:radial-gradient(56% 64% at 0% 112%,var(--glow-teal) 0%,rgba(63,193,176,.7) 30%,rgba(63,193,176,.25) 52%,transparent 76%),radial-gradient(56% 64% at 100% 112%,var(--glow-teal) 0%,rgba(63,193,176,.7) 30%,rgba(63,193,176,.25) 52%,transparent 76%),linear-gradient(180deg,#0e1f15 0%,#163222 100%);--glow-card-teal:radial-gradient(56% 64% at 0% 112%,#2a7f78 0%,rgba(42,127,120,.7) 30%,rgba(42,127,120,.25) 52%,transparent 76%),radial-gradient(56% 64% at 100% 112%,#8fd27a 0%,rgba(143,210,122,.7) 30%,rgba(143,210,122,.25) 52%,transparent 76%),linear-gradient(180deg,#0e1f15 0%,#163222 100%);--frost-bg:rgba(214,226,218,.55);--frost-edge:rgba(255,255,255,.4);--frost-ink:#12261a}body.has-preview{overflow:hidden}@keyframes deep-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}@keyframes stlive-pulse{50%{opacity:.55}}@keyframes stlive-click{0%{opacity:.9;transform:scale(.3)}100%{opacity:0;transform:scale(1.4)}}@keyframes plan-lift{from{transform:none}to{transform:translateY(-6px) scale(1.035)}}@keyframes plan-bob{0%,100%{transform:translateY(-6px) scale(1.035)}50%{transform:translateY(-14px) scale(1.035)}}@keyframes plan-glow{0%,100%{box-shadow:0 0 0 1.5px #fdfbf5,-28px -20px 70px -10px rgba(253,251,245,.7),34px 26px 84px -14px rgba(170,222,188,.6),0 0 34px rgba(253,251,245,.2)}33%{box-shadow:0 0 0 1.5px #fdfbf5,30px -26px 76px -8px rgba(253,251,245,.75),-34px 22px 70px -16px rgba(170,222,188,.6),0 0 44px rgba(253,251,245,.26)}66%{box-shadow:0 0 0 1.5px #fdfbf5,6px 34px 74px -12px rgba(253,251,245,.7),-14px -32px 64px -16px rgba(170,222,188,.58),0 0 36px rgba(253,251,245,.22)}}</style><link rel="stylesheet" href="assets/css/p/2ca05e2fa86a.css" media="print" data-defer><noscript><link rel="stylesheet" href="assets/css/p/2ca05e2fa86a.css"></noscript>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://elevatestudio.nu/#organisation", "name": "Elevate Studio", "url": "https://elevatestudio.nu/", "logo": "https://elevatestudio.nu/assets/img/brand/favicon-512.png", "image": "https://elevatestudio.nu/assets/img/brand/og.jpg", "description": "Webbyrå i Uppsala som bygger snabba, mobilanpassade hemsidor med bokning, offertflöde, AI-chatt, SEO och AI-optimering till fast pris – för företag i alla storlekar i hela Sverige.", "email": "info\u0040elevatestudio.nu", "telephone": "+46 76 022 83 61", "address": {"@type": "PostalAddress", "addressLocality": "Uppsala", "addressRegion": "Uppsala län", "addressCountry": "SE"}, "areaServed": [{"@type": "City", "name": "Uppsala"}, {"@type": "City", "name": "Knivsta"}, {"@type": "City", "name": "Enköping"}, {"@type": "City", "name": "Sigtuna"}, {"@type": "City", "name": "Märsta"}, {"@type": "City", "name": "Östhammar"}, {"@type": "City", "name": "Tierp"}, {"@type": "City", "name": "Heby"}, {"@type": "City", "name": "Älvkarleby"}, {"@type": "City", "name": "Stockholm"}, {"@type": "Country", "name": "Sverige"}], "hasMap": "https://www.google.com/maps/search/?api=1&query=Elevate%20Studio%20Uppsala&query_place_id=ChIJcRLSybPJX0YRomaZlUJ2bzY", "sameAs": ["https://www.google.com/maps/search/?api=1&query=Elevate%20Studio%20Uppsala&query_place_id=ChIJcRLSybPJX0YRomaZlUJ2bzY", "https://www.instagram.com/elevate.studio018/", "https://www.tiktok.com/@elevate.studio88", "https://www.facebook.com/profile.php?id=61592020254252"], "knowsAbout": ["Webbdesign", "Hemsidor för företag", "Sökmotoroptimering (SEO)", "AI-optimering", "Bokningssystem", "Offertsystem", "AI-chatt", "Webbutveckling"], "slogan": "Hemsidor som ger förfrågningar", "priceRange": "3 000–20 000 kr", "knowsLanguage": ["sv", "en"], "employee": [{"@type": "Person", "name": "Carl From", "jobTitle": "Försäljning & kundkontakt", "telephone": "+46 76 022 83 61", "email": "carl\u0040elevatestudio.nu"}, {"@type": "Person", "name": "Isak Mattsson", "jobTitle": "Försäljning & AI-utveckling", "telephone": "+46 70 289 58 75", "email": "isak\u0040elevatestudio.nu"}, {"@type": "Person", "name": "Oscar Svanerud", "jobTitle": "Försäljning & affärsutveckling", "telephone": "+46 76 849 86 68", "email": "svanerudo\u0040gmail.com"}], "parentOrganization": {"@type": "Organization", "name": "PJM Projekteffektivitet AB", "taxID": "556969-4358", "identifier": "556969-4358"}, "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hemsidor", "url": "https://elevatestudio.nu/tjanster/hemsidor"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI-chatt", "url": "https://elevatestudio.nu/tjanster/ai-chatt"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bokningssystem", "url": "https://elevatestudio.nu/tjanster/bokningssystem"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Offertsystem", "url": "https://elevatestudio.nu/tjanster/offertsystem"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO och AI-optimering", "url": "https://elevatestudio.nu/tjanster/seo-och-ai-optimering"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Support och underhåll", "url": "https://elevatestudio.nu/tjanster/support-och-underhall"}}]}, {"@type": "WebSite", "@id": "https://elevatestudio.nu/#webbplats", "url": "https://elevatestudio.nu/", "name": "Elevate Studio", "inLanguage": "sv-SE", "publisher": {"@id": "https://elevatestudio.nu/#organisation"}}]}</script>
+</head>
+<body class="home">
+
+  <header class="site-header" id="site-header">
+    <figure class="site-header__site-logo">
+      <a href="./index.html" class="wordmark">
+        <svg class="wordmark__mark" viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>
+        <span class="wordmark__name">Elevate Studio</span>
+      </a>
+    </figure>
+
+    <div class="site-header__right">
+      <nav class="site-header__navbar" aria-label="Huvudmeny">
+        <ul>
+          <li><a href="projekt/index.html">Projekt</a></li>
+          <li class="has-megamenu">
+            <a href="tjanster/index.html" class="js-show-megamenu" aria-expanded="false" aria-controls="megamenu">Vad vi gör <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 4.75 8 11.25l6.5-6.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          </li>
+          <li><a href="priser.html">Priser</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="insikter/index.html">Senaste nytt</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger-icon js-show-hamburger" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="hamburgermenu">
+        <span class="icon"></span>
+      </button>
+    </div>
+
+    <div class="megamenu__container">
+      <section class="megamenu" id="megamenu" aria-label="Vad vi gör">
+        <div class="megamenu__sidebar">
+          <div>
+            <p class="megamenu__sidebar-header">Syns ni när kunder frågar AI?</p>
+            <p class="megamenu__sidebar-text">Allt fler frågar en AI-assistent i stället för att googla. Vi bygger hemsidan så att både Google och AI-tjänster beskriver er rätt.</p>
+          </div>
+          <p class="megamenu__sidebar-button"><a href="tjanster/seo-och-ai-optimering.html" class="btn btn--primary"><span>Mer om SEO och AI</span></a></p>
+        </div>
+        <ul class="megamenu__menu"><li><a href="tjanster/hemsidor.html" class="megamenu__menu-link">Hemsidor</a><p class="megamenu__menu-text">Snabba, mobilanpassade hemsidor som visar vad ni gör och gör det enkelt för kunderna att höra av sig.</p></li><li><a href="tjanster/ai-chatt.html" class="megamenu__menu-link">AI-chatt</a><p class="megamenu__menu-text">En AI-chatt på hemsidan som svarar på kundernas vanliga frågor, dygnet runt.</p></li><li><a href="tjanster/bokningssystem.html" class="megamenu__menu-link">Bokningssystem</a><p class="megamenu__menu-text">Ett bokningssystem på hemsidan där kunderna själva väljer en tid som passar – med notiser till er via e-post och SMS.</p></li><li><a href="tjanster/offertsystem.html" class="megamenu__menu-link">Offertsystem</a><p class="megamenu__menu-text">Ett offertflöde på hemsidan där kunden beskriver jobbet steg för steg, så att ni får allt ni behöver för att svara direkt.</p></li><li><a href="tjanster/seo-och-ai-optimering.html" class="megamenu__menu-link">SEO och AI-optimering</a><p class="megamenu__menu-text">Sökmotoroptimering och AI-optimering så att kunderna hittar er – på Google och när de frågar en AI.</p></li><li><a href="tjanster/support-och-underhall.html" class="megamenu__menu-link">Support och underhåll</a><p class="megamenu__menu-text">Vi tar hand om ändringar, uppdateringar och uppföljning så att ni kan fokusera på ert jobb.</p></li></ul>
+      </section>
+    </div>
+  </header>
+
+  <div class="drawer-backdrop js-close-drawer" hidden></div>
+  <nav class="hamburgermenu" id="hamburgermenu" aria-label="Meny" aria-hidden="true">
+    <div class="drawer__top">
+      <span class="drawer__label">Meny</span>
+      <button class="drawer__close js-close-drawer" type="button" aria-label="Stäng meny"><span aria-hidden="true"></span></button>
+    </div>
+    <div class="drawer__nav">
+      <p class="drawer__heading drawer__heading--desk">Meny</p>
+      <ul class="drawer__main">
+        <li><a href="projekt/index.html">Projekt</a></li>
+        <li class="has-sub">
+          <button type="button" class="drawer__toggle js-toggle-sub" aria-expanded="false">Vad vi gör <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 4.75 8 11.25l6.5-6.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <div class="hamburgermenu__sub">
+            <ul>
+              <li><a href="tjanster/hemsidor.html">Hemsidor</a></li><li><a href="tjanster/ai-chatt.html">AI-chatt</a></li><li><a href="tjanster/bokningssystem.html">Bokningssystem</a></li><li><a href="tjanster/offertsystem.html">Offertsystem</a></li><li><a href="tjanster/seo-och-ai-optimering.html">SEO och AI-optimering</a></li><li><a href="tjanster/support-och-underhall.html">Support och underhåll</a></li>
+              <li><a href="tjanster/index.html" class="drawer__all">Alla tjänster</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="drawer__desk-only"><a href="tjanster/index.html">Vad vi gör</a></li>
+        <li><a href="priser.html">Priser</a></li>
+        <li><a href="insikter/index.html">Senaste nytt</a></li>
+        <li><a href="plattformar/index.html">Plattformar</a></li>
+        <li><a href="testa.html">Testa din sajt</a></li>
+        <li><a href="testa-kakor.html">Testa dina kakor</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="drawer__services">
+      <p class="drawer__heading">Tjänster</p>
+      <ul class="drawer__list">
+        <li><a href="tjanster/hemsidor.html">Hemsidor</a></li><li><a href="tjanster/ai-chatt.html">AI-chatt</a></li><li><a href="tjanster/bokningssystem.html">Bokningssystem</a></li><li><a href="tjanster/offertsystem.html">Offertsystem</a></li><li><a href="tjanster/seo-och-ai-optimering.html">SEO och AI-optimering</a></li><li><a href="tjanster/support-och-underhall.html">Support och underhåll</a></li>
+      </ul>
+    </div>
+    <div class="drawer__about">
+      <p class="drawer__heading">Om oss</p>
+      <ul class="drawer__minor">
+        <li><a href="om.html">Om oss</a></li>
+        <li><a href="priser.html">Priser</a></li>
+        <li><a href="avtal.html">Exempel på webbavtal</a></li>
+      </ul>
+      <p class="drawer__heading drawer__heading--lang">Språk / Language</p>
+      <ul class="drawer__lang">
+        <li><button type="button" class="lang-btn is-on" lang="sv" data-lang="sv" aria-current="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Svenska</button></li>
+        <li><button type="button" class="lang-btn" lang="en" data-lang="en">English</button></li>
+      </ul>
+    </div>
+    <div class="drawer__contact">
+      <p class="drawer__contact-title">Har ni ett projekt på gång?</p>
+      <p>Vi svarar så fort vi kan.</p>
+      <a class="drawer__mail" href="mailto:info&#64;elevatestudio.nu">info&#64;elevatestudio.nu</a>
+      <a class="btn btn--primary" href="kontakt.html"><span>Hör av er</span></a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <figure class="hero__visual" aria-hidden="true">
+        <picture><source media="(min-width: 641px)" srcset="assets/img/home/hero-800.webp 800w, assets/img/home/hero-1200.webp 1200w, assets/img/home/hero-1400.webp 1400w, assets/img/home/hero-1600.webp 1600w, assets/img/home/hero-1920.webp 1920w, assets/img/home/hero.webp 2400w" sizes="100vw"><img src="data:image/webp;base64,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" alt="Möte om en ny hemsida – tre personer kring ett bord med laptops" width="2400" height="1600" fetchpriority="high"></picture>
+      </figure>
+      <div class="container hero__inner">
+        <h1 class="hero__h1"><span class="hero__eyebrow">Webbyrå i Uppsala</span>
+          <span class="hero__header">Hemsidor som <b>ger förfrågningar</b></span></h1>
+        <p class="hero__text">Vi är en webbyrå i Uppsala som bygger snabba, mobilanpassade hemsidor till fast pris från 5 000 kr – med bokning, offertflöde och AI-chatt. Första utkastet efter ungefär en dag, och ni pratar alltid med samma person.</p>
+        <div class="hero__buttons">
+          <a href="boka.html" class="btn btn--primary"><span>Boka ett möte</span></a>
+          <a href="priser.html" class="btn btn--secondary"><span>Se priser</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento: services overview -->
+    <!-- build:bento --><section class="block container bento" id="tjanster-oversikt" aria-label="Vad vi gör">
+      <div class="bento__tile bento__tile--big">
+        <svg class="bento__mark" viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>
+        <h2 class="bento__title"><a class="cover-link" href="tjanster/index.html">En hemsida som <em>jobbar åt er</em></a></h2>
+        <div class="bento__text">
+          <p>Vi bygger snabba, mobilanpassade hemsidor med tydliga tjänstesidor och en väg till kontakt på varje sida.</p>
+          <p class="bento__more">Sedan kopplar vi på det som sparar tid åt er – bokning, offertflöden och AI-chatt – och ser till att ni syns på Google och när kunder frågar AI.</p>
+          <p class="bento__more">Efter lansering tar vi hand om ändringar och uppföljning.</p>
+        </div>
+        <span class="btn btn--light"><span>Se alla tjänster</span></span>
+      </div>
+      <a class="bento__tile bento__tile--photo" href="tjanster/hemsidor.html">
+        <img src="assets/img/home/svc-hemsidor.webp" srcset="assets/img/home/svc-hemsidor-160.webp 160w, assets/img/home/svc-hemsidor-240.webp 240w, assets/img/home/svc-hemsidor-320.webp 320w, assets/img/home/svc-hemsidor-400.webp 400w, assets/img/home/svc-hemsidor-480.webp 480w, assets/img/home/svc-hemsidor-640.webp 640w, assets/img/home/svc-hemsidor-720.webp 720w, assets/img/home/svc-hemsidor-800.webp 800w, assets/img/home/svc-hemsidor-960.webp 960w, assets/img/home/svc-hemsidor.webp 1200w" sizes="(max-width: 768px) 62vw, (max-width: 1334px) 32vw, 420px" alt="Skisser och laptop på ett skrivbord under arbetet med en hemsida" width="636" height="477" loading="lazy">
+        <span class="bento__cap">Hemsidor</span>
+      </a>
+      <div class="bento__tile bento__tile--text">
+        <h3><a class="cover-link" href="tjanster/ai-chatt.html">AI-chatt</a></h3>
+        <p>En chatt som svarar på vanliga frågor – även när ni inte hinner.</p>
+        <span class="arrow-link">Läs mer</span>
+      </div>
+      <div class="bento__tile bento__tile--text bento__tile--sand">
+        <h3><a class="cover-link" href="tjanster/bokningssystem.html">Bokningssystem</a></h3>
+        <p>Låt kunderna boka tid direkt på hemsidan – dygnet runt.</p>
+        <span class="arrow-link">Läs mer</span>
+      </div>
+      <a class="bento__tile bento__tile--photo" href="tjanster/seo-och-ai-optimering.html">
+        <img src="assets/img/home/svc-seo.webp" srcset="assets/img/home/svc-seo-160.webp 160w, assets/img/home/svc-seo-240.webp 240w, assets/img/home/svc-seo-320.webp 320w, assets/img/home/svc-seo-400.webp 400w, assets/img/home/svc-seo-480.webp 480w, assets/img/home/svc-seo-640.webp 640w, assets/img/home/svc-seo-720.webp 720w, assets/img/home/svc-seo-800.webp 800w, assets/img/home/svc-seo-960.webp 960w, assets/img/home/svc-seo.webp 1200w" sizes="(max-width: 768px) 62vw, (max-width: 1334px) 32vw, 420px" alt="Team med laptops runt ett bord, sett ovanifrån" width="636" height="477" loading="lazy">
+        <span class="bento__cap">SEO och AI-optimering</span>
+      </a>
+    </section><!-- /build:bento -->
+
+    <!-- Devices: the site on laptop and phone -->
+    <!-- build:projects --><section class="block hp-proj" id="projekt">
+      <div class="container">
+        <div class="hp-proj__hero">
+          <div>
+            <span class="ex-tag ex-tag--demo">Så kan det se ut</span>
+            <h2 class="hp-proj__title">Hemsidor som känns rätt <em>på alla skärmar</em></h2>
+            <p class="hp-proj__lead">Vi bygger mobilen först och finputsar varje skärmstorlek. Lindvik Bygg är en hemsida vi har byggt för att visa hur det kan se ut – på dator och mobil.</p>
+            <div class="hp-proj__btns">
+              <a class="btn btn--light" href="projekt/index.html"><span>Se alla projekt</span></a>
+              <a class="arrow-link hp-proj__link" href="https://elevatestudio018.github.io/lirk/" target="_blank" rel="noopener">Klicka runt på Lindvik Bygg</a>
+            </div>
+          </div>
+          <div class="hp-proj__devs">
+            <div class="laptop"><div class="laptop__scr"><img width="1220" height="785" src="assets/img/home/device-desktop.webp" srcset="assets/img/home/device-desktop-160.webp 160w, assets/img/home/device-desktop-240.webp 240w, assets/img/home/device-desktop-320.webp 320w, assets/img/home/device-desktop-400.webp 400w, assets/img/home/device-desktop-480.webp 480w, assets/img/home/device-desktop-640.webp 640w, assets/img/home/device-desktop-720.webp 720w, assets/img/home/device-desktop-800.webp 800w, assets/img/home/device-desktop-960.webp 960w, assets/img/home/device-desktop-1200.webp 1200w, assets/img/home/device-desktop.webp 1220w" sizes="(max-width: 768px) 48vw, 640px" alt="Lindvik Bygg på en dator" loading="lazy"></div><div class="laptop__base"></div></div>
+            <div class="phone"><img width="780" height="1688" src="assets/img/home/device-phone.webp" srcset="assets/img/home/device-phone-160.webp 160w, assets/img/home/device-phone-240.webp 240w, assets/img/home/device-phone-320.webp 320w, assets/img/home/device-phone-400.webp 400w, assets/img/home/device-phone-480.webp 480w, assets/img/home/device-phone-640.webp 640w, assets/img/home/device-phone.webp 780w" sizes="(max-width: 768px) 15vw, 160px" alt="Lindvik Bygg på en mobil" loading="lazy"></div>
+          </div>
+          <p class="devs-cap"><b>Dator och mobil</b> – samma sajt, anpassad för varje skärm</p>
+        </div>
+        <div class="hp-proj__divider">
+          <p class="hp-proj__sub">Exempel på projekt</p>
+          <a class="arrow-link hp-proj__link" href="projekt/index.html">Fler exempel</a>
+        </div>
+        <div class="hp-proj__grid">
+          <a class="hp-proj__card" href="projekt/jj-el.html">
+            <div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/site-jjel.webp" srcset="assets/img/sites/site-jjel-160.webp 160w, assets/img/sites/site-jjel-240.webp 240w, assets/img/sites/site-jjel-320.webp 320w, assets/img/sites/site-jjel-400.webp 400w, assets/img/sites/site-jjel-480.webp 480w, assets/img/sites/site-jjel-640.webp 640w, assets/img/sites/site-jjel-720.webp 720w, assets/img/sites/site-jjel-800.webp 800w, assets/img/sites/site-jjel-960.webp 960w, assets/img/sites/site-jjel-1200.webp 1200w, assets/img/sites/site-jjel.webp 1440w" sizes="(max-width: 768px) 80vw, (max-width: 1100px) 40vw, 360px" alt="JJ El &amp; Entreprenad AB på en dator" loading="lazy"></div><div class="laptop__base"></div></div>
+          </a>
+          <a class="hp-proj__card" href="projekt/cork.html">
+            <div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/site-cork.webp" srcset="assets/img/sites/site-cork-160.webp 160w, assets/img/sites/site-cork-240.webp 240w, assets/img/sites/site-cork-320.webp 320w, assets/img/sites/site-cork-400.webp 400w, assets/img/sites/site-cork-480.webp 480w, assets/img/sites/site-cork-640.webp 640w, assets/img/sites/site-cork-720.webp 720w, assets/img/sites/site-cork-800.webp 800w, assets/img/sites/site-cork-960.webp 960w, assets/img/sites/site-cork-1200.webp 1200w, assets/img/sites/site-cork.webp 1440w" sizes="(max-width: 768px) 80vw, (max-width: 1100px) 40vw, 360px" alt="CORK på en dator" loading="lazy"></div><div class="laptop__base"></div></div>
+          </a>
+          <a class="hp-proj__card" href="projekt/projekteffektivitet.html">
+            <div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/site-projekteffektivitet.webp" srcset="assets/img/sites/site-projekteffektivitet-160.webp 160w, assets/img/sites/site-projekteffektivitet-240.webp 240w, assets/img/sites/site-projekteffektivitet-320.webp 320w, assets/img/sites/site-projekteffektivitet-400.webp 400w, assets/img/sites/site-projekteffektivitet-480.webp 480w, assets/img/sites/site-projekteffektivitet-640.webp 640w, assets/img/sites/site-projekteffektivitet-720.webp 720w, assets/img/sites/site-projekteffektivitet-800.webp 800w, assets/img/sites/site-projekteffektivitet-960.webp 960w, assets/img/sites/site-projekteffektivitet-1200.webp 1200w, assets/img/sites/site-projekteffektivitet.webp 1440w" sizes="(max-width: 768px) 80vw, (max-width: 1100px) 40vw, 360px" alt="Projekteffektivitet på en dator" loading="lazy"></div><div class="laptop__base"></div></div>
+          </a>
+        </div>
+        <p class="hp-proj__note">CORK och JJ El & Entreprenad AB är kunder hos oss. Projekteffektivitet är vårt eget bolag.</p>
+        <style>.exs{position:relative}.exs__track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 2px 18px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}.exs__card{flex:0 0 min(78vw,340px);scroll-snap-align:start;display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:22px;background:var(--cream-dark,#f6f1e4);color:#12261a;text-decoration:none}.exs__card b{color:#12261a}.hp-proj .exs__note{color:rgba(255,255,255,.75)}.hp-proj .exs .block__header-row{margin-top:56px}.hp-proj .exs .arrow-link{color:#fff}.exs__card .laptop{margin-bottom:10px;position:relative;width:auto;filter:none!important;opacity:1!important;transform:none!important;transition:none!important;-webkit-transform:translateZ(0)}.exs__card .laptop__scr img{width:100%;height:100%}.exs__card b{font-size:1.1rem}.exs__card small{color:#5d6a62}.exs__card span{font-size:.9rem;color:#3c4740;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.exs__nav{display:flex;gap:8px;justify-content:flex-end;margin-bottom:10px}.exs__nav button{width:44px;height:44px;border-radius:50%;border:1px solid #1d3b2a;background:#fff;font-size:18px;cursor:pointer}.exs__note{font-size:.85rem;color:#5d6a62;margin-top:4px}</style><div class="exs"><div class="block__header-row"><h2 class="block__header">Design<span>koncept</span></h2><a class="arrow-link" href="byggda-hemsidor.html">Alla hemsidor vi byggt</a></div><div class="exs__nav"><button type="button" data-dir="-1" aria-label="Föregående">&larr;</button><button type="button" data-dir="1" aria-label="Nästa">&rarr;</button></div><div class="exs__track"><a class="exs__card" href="exempel/hasslo-trabatsvarv/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-hasslo-trabatsvarv.webp" srcset="assets/img/sites/ex-hasslo-trabatsvarv-160.webp 160w, assets/img/sites/ex-hasslo-trabatsvarv-240.webp 240w, assets/img/sites/ex-hasslo-trabatsvarv-320.webp 320w, assets/img/sites/ex-hasslo-trabatsvarv-400.webp 400w, assets/img/sites/ex-hasslo-trabatsvarv-480.webp 480w, assets/img/sites/ex-hasslo-trabatsvarv-640.webp 640w, assets/img/sites/ex-hasslo-trabatsvarv-720.webp 720w, assets/img/sites/ex-hasslo-trabatsvarv-800.webp 800w, assets/img/sites/ex-hasslo-trabatsvarv-960.webp 960w, assets/img/sites/ex-hasslo-trabatsvarv-1200.webp 1200w, assets/img/sites/ex-hasslo-trabatsvarv.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Hasslö Träbåtsvarv på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Hasslö Träbåtsvarv</b><small>Träbåtsvarv i Blekinge</small><span>Renovering av blekingsekor, kosterbåtar, snipor och mahognybåtar. Vi byter bord, kalfatrar och bygger en ny allmogebåt om året på Hasslö utanför Karlskrona.</span></a><a class="exs__card" href="exempel/myrviken-timmerhus/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-myrviken-timmerhus.webp" srcset="assets/img/sites/ex-myrviken-timmerhus-160.webp 160w, assets/img/sites/ex-myrviken-timmerhus-240.webp 240w, assets/img/sites/ex-myrviken-timmerhus-320.webp 320w, assets/img/sites/ex-myrviken-timmerhus-400.webp 400w, assets/img/sites/ex-myrviken-timmerhus-480.webp 480w, assets/img/sites/ex-myrviken-timmerhus-640.webp 640w, assets/img/sites/ex-myrviken-timmerhus-720.webp 720w, assets/img/sites/ex-myrviken-timmerhus-800.webp 800w, assets/img/sites/ex-myrviken-timmerhus-960.webp 960w, assets/img/sites/ex-myrviken-timmerhus-1200.webp 1200w, assets/img/sites/ex-myrviken-timmerhus.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Myrvikens Timmerhus på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Myrvikens Timmerhus</b><small>Timmerhus i Jämtland</small><span>Varje hus provtimras på vår plan vid Storsjön, märks stock för stock och fraktas till tomten. Där står stommen på tio dagar – sedan sätter sig timret i lugn och ro.</span></a><a class="exs__card" href="exempel/repslaget/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-repslaget.webp" srcset="assets/img/sites/ex-repslaget-160.webp 160w, assets/img/sites/ex-repslaget-240.webp 240w, assets/img/sites/ex-repslaget-320.webp 320w, assets/img/sites/ex-repslaget-400.webp 400w, assets/img/sites/ex-repslaget-480.webp 480w, assets/img/sites/ex-repslaget-640.webp 640w, assets/img/sites/ex-repslaget-720.webp 720w, assets/img/sites/ex-repslaget-800.webp 800w, assets/img/sites/ex-repslaget-960.webp 960w, assets/img/sites/ex-repslaget-1200.webp 1200w, assets/img/sites/ex-repslaget.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Repslaget Arborist på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Repslaget Arborist</b><small>Klättrande arborister i Göteborg</small><span>Sex klättrande arborister utan lift och kran. Vi riggar med block och friktionsbromsar på branta bergstomter i Örgryte, Askim, Hovås och på de södra skärgårdsöarna.</span></a><a class="exs__card" href="exempel/saltvind/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-saltvind.webp" srcset="assets/img/sites/ex-saltvind-160.webp 160w, assets/img/sites/ex-saltvind-240.webp 240w, assets/img/sites/ex-saltvind-320.webp 320w, assets/img/sites/ex-saltvind-400.webp 400w, assets/img/sites/ex-saltvind-480.webp 480w, assets/img/sites/ex-saltvind-640.webp 640w, assets/img/sites/ex-saltvind-720.webp 720w, assets/img/sites/ex-saltvind-800.webp 800w, assets/img/sites/ex-saltvind-960.webp 960w, assets/img/sites/ex-saltvind-1200.webp 1200w, assets/img/sites/ex-saltvind.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Saltvind Trädvård på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Saltvind Trädvård</b><small>Trädvård på västkusten</small><span>Stormjour dygnet runt under SMHI:s orange och röda varningar. Resten av året fäller, beskär och stagar vi träd från Laholm till Varberg.</span></a><a class="exs__card" href="exempel/stigtomta-lantbruksbygg/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-stigtomta-lantbruksbygg.webp" srcset="assets/img/sites/ex-stigtomta-lantbruksbygg-160.webp 160w, assets/img/sites/ex-stigtomta-lantbruksbygg-240.webp 240w, assets/img/sites/ex-stigtomta-lantbruksbygg-320.webp 320w, assets/img/sites/ex-stigtomta-lantbruksbygg-400.webp 400w, assets/img/sites/ex-stigtomta-lantbruksbygg-480.webp 480w, assets/img/sites/ex-stigtomta-lantbruksbygg-640.webp 640w, assets/img/sites/ex-stigtomta-lantbruksbygg-720.webp 720w, assets/img/sites/ex-stigtomta-lantbruksbygg-800.webp 800w, assets/img/sites/ex-stigtomta-lantbruksbygg-960.webp 960w, assets/img/sites/ex-stigtomta-lantbruksbygg-1200.webp 1200w, assets/img/sites/ex-stigtomta-lantbruksbygg.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Stigtomta Lantbruksbygg på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Stigtomta Lantbruksbygg</b><small>Lantbruksbyggnader i Sörmland</small><span>Lösdriftsstall, ridhus, maskinhallar och gårdsbutiker i limträ, stål och betong. 22 anställda, de flesta uppvuxna på gård.</span></a><a class="exs__card" href="exempel/trimbussen/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-trimbussen.webp" srcset="assets/img/sites/ex-trimbussen-160.webp 160w, assets/img/sites/ex-trimbussen-240.webp 240w, assets/img/sites/ex-trimbussen-320.webp 320w, assets/img/sites/ex-trimbussen-400.webp 400w, assets/img/sites/ex-trimbussen-480.webp 480w, assets/img/sites/ex-trimbussen-640.webp 640w, assets/img/sites/ex-trimbussen-720.webp 720w, assets/img/sites/ex-trimbussen-800.webp 800w, assets/img/sites/ex-trimbussen-960.webp 960w, assets/img/sites/ex-trimbussen-1200.webp 1200w, assets/img/sites/ex-trimbussen.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Trimbussen i Norr på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Trimbussen i Norr</b><small>Mobil hundtrim i Umeå</small><span>Varmvatten, badkar, hydraulbord och fön – allt i bussen på din uppfart. Hunden behöver aldrig åka bil eller vänta bland andra hundar.</span></a><a class="exs__card" href="exempel/vamo-bygg/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-vamo-bygg.webp" srcset="assets/img/sites/ex-vamo-bygg-160.webp 160w, assets/img/sites/ex-vamo-bygg-240.webp 240w, assets/img/sites/ex-vamo-bygg-320.webp 320w, assets/img/sites/ex-vamo-bygg-400.webp 400w, assets/img/sites/ex-vamo-bygg-480.webp 480w, assets/img/sites/ex-vamo-bygg-640.webp 640w, assets/img/sites/ex-vamo-bygg-720.webp 720w, assets/img/sites/ex-vamo-bygg-800.webp 800w, assets/img/sites/ex-vamo-bygg-960.webp 960w, assets/img/sites/ex-vamo-bygg-1200.webp 1200w, assets/img/sites/ex-vamo-bygg.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Vämö Byggnads på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Vämö Byggnads</b><small>Byggföretag i Blekinge</small><span>Försvarsbyggnader, kajer, verkstäder och säkerhetsklassade lokaler i Karlskrona, Ronneby och Karlshamn. 230 anställda, alla säkerhetsprövade.</span></a><a class="exs__card" href="exempel/vardkas/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-vardkas.webp" srcset="assets/img/sites/ex-vardkas-160.webp 160w, assets/img/sites/ex-vardkas-240.webp 240w, assets/img/sites/ex-vardkas-320.webp 320w, assets/img/sites/ex-vardkas-400.webp 400w, assets/img/sites/ex-vardkas-480.webp 480w, assets/img/sites/ex-vardkas-640.webp 640w, assets/img/sites/ex-vardkas-720.webp 720w, assets/img/sites/ex-vardkas-800.webp 800w, assets/img/sites/ex-vardkas-960.webp 960w, assets/img/sites/ex-vardkas-1200.webp 1200w, assets/img/sites/ex-vardkas.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Vårdkas Fotografi på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Vårdkas Fotografi</b><small>Bröllopsfotograf i Leksand</small><span>Hedvig Åberg fotograferar bröllop i Dalarna i mjukt motljus och ljusa toner – från vigseln i Leksands kyrka till dansen på logen.</span></a><a class="exs__card" href="exempel/viskan-skadedjur/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-viskan-skadedjur.webp" srcset="assets/img/sites/ex-viskan-skadedjur-160.webp 160w, assets/img/sites/ex-viskan-skadedjur-240.webp 240w, assets/img/sites/ex-viskan-skadedjur-320.webp 320w, assets/img/sites/ex-viskan-skadedjur-400.webp 400w, assets/img/sites/ex-viskan-skadedjur-480.webp 480w, assets/img/sites/ex-viskan-skadedjur-640.webp 640w, assets/img/sites/ex-viskan-skadedjur-720.webp 720w, assets/img/sites/ex-viskan-skadedjur-800.webp 800w, assets/img/sites/ex-viskan-skadedjur-960.webp 960w, assets/img/sites/ex-viskan-skadedjur-1200.webp 1200w, assets/img/sites/ex-viskan-skadedjur.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Viskan Skadedjurstjänst på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Viskan Skadedjurstjänst</b><small>Skadedjur för logistiklager</small><span>Viskan är skadedjurspartnern för logistiklagren runt Borås, Ulricehamn och Jönköpingsvägen. 48 medarbetare, egna lagertekniker på plats i de största hallarna och rapporter som klarar kundernas leverantörsrevisioner.</span></a><a class="exs__card" href="exempel/viskan-solel/index.html" target="_blank" rel="noopener"><div class="laptop"><div class="laptop__scr"><img width="1440" height="900" src="assets/img/sites/ex-viskan-solel.webp" srcset="assets/img/sites/ex-viskan-solel-160.webp 160w, assets/img/sites/ex-viskan-solel-240.webp 240w, assets/img/sites/ex-viskan-solel-320.webp 320w, assets/img/sites/ex-viskan-solel-400.webp 400w, assets/img/sites/ex-viskan-solel-480.webp 480w, assets/img/sites/ex-viskan-solel-640.webp 640w, assets/img/sites/ex-viskan-solel-720.webp 720w, assets/img/sites/ex-viskan-solel-800.webp 800w, assets/img/sites/ex-viskan-solel-960.webp 960w, assets/img/sites/ex-viskan-solel-1200.webp 1200w, assets/img/sites/ex-viskan-solel.webp 1440w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Viskan Fasadenergi på en dator" loading="lazy" decoding="async"></div><div class="laptop__base"></div></div><b>Viskan Fasadenergi</b><small>Solcellsfasader i Västsverige</small><span>Solcellsglas i fasader, balkonger och skärmtak för flerbostadshus, skolor och kontor. Vi kommer in i systemhandlingsskedet och lämnar efter oss ett hus som klarar energikraven.</span></a></div><p class="exs__note">Designkoncept som visar vad vi kan bygga.</p></div>
+      </div>
+    </section>
+    <section class="block container film-sec" aria-label="Film: så går det till">
+      <style>.film-sec{display:grid;gap:28px;align-items:center;grid-template-columns:1fr}@media(min-width:900px){.film-sec{grid-template-columns:2fr 3fr}}.film-sec video{width:100%;height:auto;border-radius:22px;background:#12271b;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}.film-sec ol{margin:16px 0 0;padding-left:20px;line-height:1.8}</style>
+      <div><h2 class="block__header">Så går det <span>till</span></h2>
+        <p class="preamble">Under en minut: från första mötet till färdig hemsida.</p>
+        <ol><li>Gratis möte – vi lär känna ert företag.</li><li>Vi bygger – ni ser ett utkast efter ungefär en dag.</li><li>Kunderna hittar er och hör av sig.</li><li>Ni ändrar själva i adminpanelen.</li></ol>
+        <p style="margin-top:20px"><a class="btn btn--primary" href="kontakt.html"><span>Boka ett gratis möte</span></a></p></div>
+      <video controls playsinline preload="none" poster="assets/video/sa-gar-det-till.webp" width="1280" height="720" aria-label="Film: så går det till att få en hemsida av Elevate Studio"><source src="assets/video/sa-gar-det-till.mp4" type="video/mp4"></video>
+    </section><!-- /build:projects -->
+    <!-- build:designpaket --><section class="block dpk" id="designpaket">
+      <div class="container">
+        <div class="dpk__top">
+          <div class="dpk__txt">
+            <span class="dpk__k">Designpaket</span>
+            <h2 class="dpk__title">Ett designpaket som gör er <em>igenkännbara</em></h2>
+            <p class="dpk__lead">Logotyp, färger, typsnitt och bildspråk – samlat i en tydlig PDF som ni kan ge till tryckeriet, skyltfirman och alla som jobbar med ert varumärke.</p>
+            <ul class="dpk__list"><li>Logotyp med varianter och frizon</li><li>Färger med koder för webb och tryck</li><li>Typsnitt och rubrikstil</li><li>Visitkort, hemsida och sociala medier</li></ul>
+            <p class="dpk__btns"><a class="btn btn--primary" href="kontakt.html#formular"><span>Se ditt designpaket idag</span></a><a class="arrow-link" href="kontakt.html">Kontakta oss</a></p>
+          </div>
+          <div class="dpk__film">
+            <video class="dpk__video" src="assets/video/designpaket-elevate.mp4" poster="assets/video/designpaket-elevate.webp" muted loop playsinline preload="none" aria-label="Film: så tas ett designpaket fram – logotyp, färger, typsnitt och en PDF"></video>
+            <p class="dpk__cap">Så tas ett designpaket fram – från logotyp till färdig PDF.</p>
+          </div>
+        </div>
+        <div class="dpk__ex">
+          <h3 class="dpk__h">Exempel på <em>designpaket</em></h3>
+          <div class="dpk__cards">
+          <article class="dpk__card">
+            <a class="dpk__pages" href="assets/docs/designpaket-pe.pdf" target="_blank" rel="noopener" aria-label="Öppna designpaketet för Projekteffektivitet (PDF)">
+              <img class="dpk__pg dpk__pg--3" src="assets/img/designpaket/pe-p6.webp" alt="" loading="lazy" width="400" height="566">
+              <img class="dpk__pg dpk__pg--2" src="assets/img/designpaket/pe-p3.webp" alt="" loading="lazy" width="400" height="566">
+              <img class="dpk__pg dpk__pg--1" src="assets/img/designpaket/pe-p1.webp" alt="Omslaget till designpaketet för Projekteffektivitet" loading="lazy" width="400" height="566">
+            </a>
+            <div class="dpk__meta">
+              <h3>Projekteffektivitet</h3><p>Konsult · Uppsala</p>
+              <p class="dpk__links"><a class="arrow-link" href="assets/docs/designpaket-pe.pdf" target="_blank" rel="noopener">Öppna PDF</a><a class="arrow-link" href="assets/video/designpaket-pe.mp4" target="_blank" rel="noopener">Se filmen</a></p>
+            </div>
+          </article>
+          <article class="dpk__card">
+            <a class="dpk__pages" href="assets/docs/designpaket-hb.pdf" target="_blank" rel="noopener" aria-label="Öppna designpaketet för Haninge Byggteam (PDF)">
+              <img class="dpk__pg dpk__pg--3" src="assets/img/designpaket/hb-p6.webp" alt="" loading="lazy" width="400" height="566">
+              <img class="dpk__pg dpk__pg--2" src="assets/img/designpaket/hb-p3.webp" alt="" loading="lazy" width="400" height="566">
+              <img class="dpk__pg dpk__pg--1" src="assets/img/designpaket/hb-p1.webp" alt="Omslaget till designpaketet för Haninge Byggteam" loading="lazy" width="400" height="566">
+            </a>
+            <div class="dpk__meta">
+              <h3>Haninge Byggteam</h3><p>Bygg &amp; renovering · Stockholm</p>
+              <p class="dpk__links"><a class="arrow-link" href="assets/docs/designpaket-hb.pdf" target="_blank" rel="noopener">Öppna PDF</a><a class="arrow-link" href="assets/video/designpaket-hb.mp4" target="_blank" rel="noopener">Se filmen</a></p>
+            </div>
+          </article>
+            <a class="dpk__card dpk__card--you" href="kontakt.html#formular">
+              <span class="dpk__you-k">Ert företag?</span>
+              <b>Se ditt designpaket idag</b>
+              <span>Berätta kort om företaget, så visar vi hur ert designpaket kan se ut.</span>
+              <span class="btn btn--light"><span>Kontakta oss</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section><!-- /build:designpaket -->
+
+    <!-- Client logos: real customer first, then clearly marked fictional example logos -->
+    <section class="block clients-marquee" aria-label="Kunder" style="padding:150px 0">
+      <h2 class="block__header container clients-marquee__title">Våra <span>kunder</span></h2>
+      <style>.cm-row{overflow:hidden;margin-top:64px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}.cm-row ul{display:flex;align-items:center;gap:110px;width:max-content;list-style:none;margin:0;padding:0;animation:cmspin 28s linear infinite}.cm-row:hover ul{animation-play-state:paused}.cm-row img{filter:brightness(0);display:block;height:84px;width:auto;max-width:320px;object-fit:contain}.cm-row img[src*="client-pe-2"]{filter:none}.cm-row--rev{margin-top:110px!important}.cm-row--rev ul{animation-direction:reverse}@keyframes cmspin{to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){.cm-row ul{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}</style>
+      <div class="cm-row"><ul><li><a href="https://jjel.se/" target="_blank" rel="noopener"><img src="assets/img/home/client-jj-3.svg" alt="JJ El &amp; Entreprenad AB" width="72" height="60" loading="lazy"></a></li><li><a href="https://wearcork.shop/" target="_blank" rel="noopener"><img src="assets/img/home/client-cork.svg" alt="CORK" width="200" height="52" loading="lazy"></a></li><li><a href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img src="assets/img/home/client-pe-2.svg" alt="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li><a href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img src="assets/img/home/client-haninge.webp" alt="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://jjel.se/" target="_blank" rel="noopener"><img alt="JJ El &amp; Entreprenad AB" src="assets/img/home/client-jj-3.svg" data-a="JJ El &amp; Entreprenad AB" width="64" height="60" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://wearcork.shop/" target="_blank" rel="noopener"><img alt="CORK" src="assets/img/home/client-cork.svg" data-a="CORK" width="200" height="52" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img alt="Projekteffektivitet" src="assets/img/home/client-pe-2.svg" data-a="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img alt="Haninge Byggteam AB" src="assets/img/home/client-haninge.webp" data-a="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://jjel.se/" target="_blank" rel="noopener"><img alt="JJ El &amp; Entreprenad AB" src="assets/img/home/client-jj-3.svg" data-a="JJ El &amp; Entreprenad AB" width="64" height="60" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://wearcork.shop/" target="_blank" rel="noopener"><img alt="CORK" src="assets/img/home/client-cork.svg" data-a="CORK" width="200" height="52" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img alt="Projekteffektivitet" src="assets/img/home/client-pe-2.svg" data-a="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img alt="Haninge Byggteam AB" src="assets/img/home/client-haninge.webp" data-a="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://jjel.se/" target="_blank" rel="noopener"><img alt="JJ El &amp; Entreprenad AB" src="assets/img/home/client-jj-3.svg" data-a="JJ El &amp; Entreprenad AB" width="64" height="60" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://wearcork.shop/" target="_blank" rel="noopener"><img alt="CORK" src="assets/img/home/client-cork.svg" data-a="CORK" width="200" height="52" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img alt="Projekteffektivitet" src="assets/img/home/client-pe-2.svg" data-a="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img alt="Haninge Byggteam AB" src="assets/img/home/client-haninge.webp" data-a="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li></ul></div><div class="cm-row cm-row--rev"><ul><li><a href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img src="assets/img/home/client-pe-2.svg" alt="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li><a href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img src="assets/img/home/client-haninge.webp" alt="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li><li><a href="https://jjel.se/" target="_blank" rel="noopener"><img src="assets/img/home/client-jj-3.svg" alt="JJ El &amp; Entreprenad AB" width="72" height="60" loading="lazy"></a></li><li><a href="https://wearcork.shop/" target="_blank" rel="noopener"><img src="assets/img/home/client-cork.svg" alt="CORK" width="200" height="52" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img alt="Projekteffektivitet" src="assets/img/home/client-pe-2.svg" data-a="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img alt="Haninge Byggteam AB" src="assets/img/home/client-haninge.webp" data-a="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://jjel.se/" target="_blank" rel="noopener"><img alt="JJ El &amp; Entreprenad AB" src="assets/img/home/client-jj-3.svg" data-a="JJ El &amp; Entreprenad AB" width="64" height="60" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://wearcork.shop/" target="_blank" rel="noopener"><img alt="CORK" src="assets/img/home/client-cork.svg" data-a="CORK" width="200" height="52" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img alt="Projekteffektivitet" src="assets/img/home/client-pe-2.svg" data-a="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img alt="Haninge Byggteam AB" src="assets/img/home/client-haninge.webp" data-a="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://jjel.se/" target="_blank" rel="noopener"><img alt="JJ El &amp; Entreprenad AB" src="assets/img/home/client-jj-3.svg" data-a="JJ El &amp; Entreprenad AB" width="64" height="60" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://wearcork.shop/" target="_blank" rel="noopener"><img alt="CORK" src="assets/img/home/client-cork.svg" data-a="CORK" width="200" height="52" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://projekteffektivitet.se/" target="_blank" rel="noopener"><img alt="Projekteffektivitet" src="assets/img/home/client-pe-2.svg" data-a="Projekteffektivitet" width="170" height="61" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://haningebyggteam.se/" target="_blank" rel="noopener"><img alt="Haninge Byggteam AB" src="assets/img/home/client-haninge.webp" data-a="Haninge Byggteam AB" width="220" height="74" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://jjel.se/" target="_blank" rel="noopener"><img alt="JJ El &amp; Entreprenad AB" src="assets/img/home/client-jj-3.svg" data-a="JJ El &amp; Entreprenad AB" width="64" height="60" loading="lazy"></a></li><li aria-hidden="true"><a tabindex="-1" href="https://wearcork.shop/" target="_blank" rel="noopener"><img alt="CORK" src="assets/img/home/client-cork.svg" data-a="CORK" width="200" height="52" loading="lazy"></a></li></ul></div>
+    </section>
+
+    <!-- Insights: one featured article and two smaller -->
+    <section class="block insights" id="insikter">
+      <div class="container">
+        <div class="block__header-row">
+          <h2 class="block__header">Senaste <span>nytt</span></h2>
+          <a href="insikter/index.html" class="arrow-link">Alla artiklar</a>
+        </div>
+        <!-- build:posts --><div class="insights__grid">
+          <article class="insights__big">
+            <img src="assets/img/home/process-1.webp" srcset="assets/img/home/process-1-160.webp 160w, assets/img/home/process-1-240.webp 240w, assets/img/home/process-1-320.webp 320w, assets/img/home/process-1-400.webp 400w, assets/img/home/process-1-480.webp 480w, assets/img/home/process-1-640.webp 640w, assets/img/home/process-1-720.webp 720w, assets/img/home/process-1-800.webp 800w, assets/img/home/process-1-960.webp 960w, assets/img/home/process-1.webp 1200w" sizes="(max-width: 768px) calc(100vw - 30px), 55vw" alt="Hemsida fast pris: nu väljer du paket direkt" width="840" height="594" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Priser</span><span>Nyhet</span></p>
+              <h3 class="insights__big-title"><a class="cover-link" href="insikter/hemsida-fast-pris-valj-paket-direkt.html">Hemsida fast pris: nu väljer du paket direkt</a></h3>
+              <p class="post-card__time">20 november 2026</p>
+            </div>
+          </article>
+          <div class="insights__rail"><div class="insights__side" id="insights-side"><article class="insights__small">
+            <img src="assets/img/home/post-1.webp" srcset="assets/img/home/post-1-160.webp 160w, assets/img/home/post-1-240.webp 240w, assets/img/home/post-1-320.webp 320w, assets/img/home/post-1-400.webp 400w, assets/img/home/post-1-480.webp 480w, assets/img/home/post-1-640.webp 640w, assets/img/home/post-1-720.webp 720w, assets/img/home/post-1.webp 840w" sizes="(max-width: 768px) 120px, 200px" alt="Visste du att dina kakor kan bryta mot lagen?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Cookies</span><span>GDPR</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/kan-dina-kakor-bryta-mot-lagen.html">Visste du att dina kakor kan bryta mot lagen?</a></h3>
+              <p class="post-card__time">17 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-1.webp" srcset="assets/img/home/post-1-160.webp 160w, assets/img/home/post-1-240.webp 240w, assets/img/home/post-1-320.webp 320w, assets/img/home/post-1-400.webp 400w, assets/img/home/post-1-480.webp 480w, assets/img/home/post-1-640.webp 640w, assets/img/home/post-1-720.webp 720w, assets/img/home/post-1.webp 840w" sizes="(max-width: 768px) 120px, 200px" alt="Räcker det med en Facebooksida – eller behöver företaget en hemsida?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/hemsida-eller-facebooksida.html">Räcker det med en Facebooksida – eller behöver företaget en hemsida?</a></h3>
+              <p class="post-card__time">12 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-2.webp" srcset="assets/img/home/post-2-160.webp 160w, assets/img/home/post-2-240.webp 240w, assets/img/home/post-2-320.webp 320w, assets/img/home/post-2-400.webp 400w, assets/img/home/post-2-480.webp 480w, assets/img/home/post-2-640.webp 640w, assets/img/home/post-2-720.webp 720w, assets/img/home/post-2-800.webp 800w, assets/img/home/post-2-960.webp 960w, assets/img/home/post-2.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Så mycket kostar en långsam hemsida" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>SEO</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/langsam-hemsida-kostar-kunder.html">Så mycket kostar en långsam hemsida</a></h3>
+              <p class="post-card__time">11 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-3.webp" srcset="assets/img/home/post-3-160.webp 160w, assets/img/home/post-3-240.webp 240w, assets/img/home/post-3-320.webp 320w, assets/img/home/post-3-400.webp 400w, assets/img/home/post-3-480.webp 480w, assets/img/home/post-3-640.webp 640w, assets/img/home/post-3-720.webp 720w, assets/img/home/post-3-800.webp 800w, assets/img/home/post-3-960.webp 960w, assets/img/home/post-3.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Checklista: det här ska finnas på en elektrikers hemsida" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/hemsida-for-elektriker-checklista.html">Checklista: det här ska finnas på en elektrikers hemsida</a></h3>
+              <p class="post-card__time">10 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/about-2.webp" srcset="assets/img/home/about-2-160.webp 160w, assets/img/home/about-2-240.webp 240w, assets/img/home/about-2-320.webp 320w, assets/img/home/about-2-400.webp 400w, assets/img/home/about-2-480.webp 480w, assets/img/home/about-2-640.webp 640w, assets/img/home/about-2-720.webp 720w, assets/img/home/about-2-800.webp 800w, assets/img/home/about-2.webp 900w" sizes="(max-width: 768px) 120px, 200px" alt="Webbyrå i Uppsala – så väljer du rätt" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/webbyra-uppsala-sa-valjer-du.html">Webbyrå i Uppsala – så väljer du rätt</a></h3>
+              <p class="post-card__time">10 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-3.webp" srcset="assets/img/home/post-3-160.webp 160w, assets/img/home/post-3-240.webp 240w, assets/img/home/post-3-320.webp 320w, assets/img/home/post-3-400.webp 400w, assets/img/home/post-3-480.webp 480w, assets/img/home/post-3-640.webp 640w, assets/img/home/post-3-720.webp 720w, assets/img/home/post-3-800.webp 800w, assets/img/home/post-3-960.webp 960w, assets/img/home/post-3.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Billig hemsida till fast pris – vad ska ingå?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Priser</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/billig-hemsida-fast-pris.html">Billig hemsida till fast pris – vad ska ingå?</a></h3>
+              <p class="post-card__time">9 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-2.webp" srcset="assets/img/home/post-2-160.webp 160w, assets/img/home/post-2-240.webp 240w, assets/img/home/post-2-320.webp 320w, assets/img/home/post-2-400.webp 400w, assets/img/home/post-2-480.webp 480w, assets/img/home/post-2-640.webp 640w, assets/img/home/post-2-720.webp 720w, assets/img/home/post-2-800.webp 800w, assets/img/home/post-2-960.webp 960w, assets/img/home/post-2.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Checklista: sju saker som ger hantverkare fler jobb via hemsidan" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/hemsida-for-hantverkare.html">Checklista: sju saker som ger hantverkare fler jobb via hemsidan</a></h3>
+              <p class="post-card__time">8 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/about-2.webp" srcset="assets/img/home/about-2-160.webp 160w, assets/img/home/about-2-240.webp 240w, assets/img/home/about-2-320.webp 320w, assets/img/home/about-2-400.webp 400w, assets/img/home/about-2-480.webp 480w, assets/img/home/about-2-640.webp 640w, assets/img/home/about-2-720.webp 720w, assets/img/home/about-2-800.webp 800w, assets/img/home/about-2.webp 900w" sizes="(max-width: 768px) 120px, 200px" alt="Testa din hemsida gratis – så läser du resultatet" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>SEO</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/testa-din-hemsida-gratis.html">Testa din hemsida gratis – så läser du resultatet</a></h3>
+              <p class="post-card__time">7 november 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/about-2.webp" srcset="assets/img/home/about-2-160.webp 160w, assets/img/home/about-2-240.webp 240w, assets/img/home/about-2-320.webp 320w, assets/img/home/about-2-400.webp 400w, assets/img/home/about-2-480.webp 480w, assets/img/home/about-2-640.webp 640w, assets/img/home/about-2-720.webp 720w, assets/img/home/about-2-800.webp 800w, assets/img/home/about-2.webp 900w" sizes="(max-width: 768px) 120px, 200px" alt="Bygga hemsida själv eller anlita en webbyrå?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/bygga-hemsida-sjalv-eller-webbyra.html">Bygga hemsida själv eller anlita en webbyrå?</a></h3>
+              <p class="post-card__time">28 oktober 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-3.webp" srcset="assets/img/home/post-3-160.webp 160w, assets/img/home/post-3-240.webp 240w, assets/img/home/post-3-320.webp 320w, assets/img/home/post-3-400.webp 400w, assets/img/home/post-3-480.webp 480w, assets/img/home/post-3-640.webp 640w, assets/img/home/post-3-720.webp 720w, assets/img/home/post-3-800.webp 800w, assets/img/home/post-3-960.webp 960w, assets/img/home/post-3.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Vad kostar en hemsida – och vad betalar du egentligen för?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Priser</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/vad-kostar-en-hemsida.html">Vad kostar en hemsida – och vad betalar du egentligen för?</a></h3>
+              <p class="post-card__time">27 oktober 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-2.webp" srcset="assets/img/home/post-2-160.webp 160w, assets/img/home/post-2-240.webp 240w, assets/img/home/post-2-320.webp 320w, assets/img/home/post-2-400.webp 400w, assets/img/home/post-2-480.webp 480w, assets/img/home/post-2-640.webp 640w, assets/img/home/post-2-720.webp 720w, assets/img/home/post-2-800.webp 800w, assets/img/home/post-2-960.webp 960w, assets/img/home/post-2.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Fem saker som får besökare att höra av sig" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/fa-besokare-att-hora-av-sig.html">Fem saker som får besökare att höra av sig</a></h3>
+              <p class="post-card__time">20 oktober 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-1.webp" srcset="assets/img/home/post-1-160.webp 160w, assets/img/home/post-1-240.webp 240w, assets/img/home/post-1-320.webp 320w, assets/img/home/post-1-400.webp 400w, assets/img/home/post-1-480.webp 480w, assets/img/home/post-1-640.webp 640w, assets/img/home/post-1-720.webp 720w, assets/img/home/post-1.webp 840w" sizes="(max-width: 768px) 120px, 200px" alt="Så syns ditt företag när kunder frågar AI" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>AI</span><span>SEO</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/synas-nar-kunder-fragar-ai.html">Så syns ditt företag när kunder frågar AI</a></h3>
+              <p class="post-card__time">13 oktober 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-support.webp" srcset="assets/img/home/svc-support-160.webp 160w, assets/img/home/svc-support-240.webp 240w, assets/img/home/svc-support-320.webp 320w, assets/img/home/svc-support-400.webp 400w, assets/img/home/svc-support-480.webp 480w, assets/img/home/svc-support-640.webp 640w, assets/img/home/svc-support-720.webp 720w, assets/img/home/svc-support-800.webp 800w, assets/img/home/svc-support-960.webp 960w, assets/img/home/svc-support.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Vad händer med hemsidan efter lansering?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Support</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/vad-hander-efter-lansering.html">Vad händer med hemsidan efter lansering?</a></h3>
+              <p class="post-card__time">29 september 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/process-5.webp" srcset="assets/img/home/process-5-160.webp 160w, assets/img/home/process-5-240.webp 240w, assets/img/home/process-5-320.webp 320w, assets/img/home/process-5-400.webp 400w, assets/img/home/process-5-480.webp 480w, assets/img/home/process-5-640.webp 640w, assets/img/home/process-5-720.webp 720w, assets/img/home/process-5-800.webp 800w, assets/img/home/process-5-960.webp 960w, assets/img/home/process-5.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Snabb hemsida slår snygg hemsida" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>SEO</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/darfor-ar-en-snabb-hemsida-viktigare-an-en-snygg.html">Snabb hemsida slår snygg hemsida</a></h3>
+              <p class="post-card__time">15 september 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-3.webp" srcset="assets/img/home/post-3-160.webp 160w, assets/img/home/post-3-240.webp 240w, assets/img/home/post-3-320.webp 320w, assets/img/home/post-3-400.webp 400w, assets/img/home/post-3-480.webp 480w, assets/img/home/post-3-640.webp 640w, assets/img/home/post-3-720.webp 720w, assets/img/home/post-3-800.webp 800w, assets/img/home/post-3-960.webp 960w, assets/img/home/post-3.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Så får byggfirman rätt sorts jobb via hemsidan" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Branscher</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/hemsida-for-byggfirma.html">Så får byggfirman rätt sorts jobb via hemsidan</a></h3>
+              <p class="post-card__time">25 augusti 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-offert.webp" srcset="assets/img/home/svc-offert-160.webp 160w, assets/img/home/svc-offert-240.webp 240w, assets/img/home/svc-offert-320.webp 320w, assets/img/home/svc-offert-400.webp 400w, assets/img/home/svc-offert-480.webp 480w, assets/img/home/svc-offert-640.webp 640w, assets/img/home/svc-offert-720.webp 720w, assets/img/home/svc-offert-800.webp 800w, assets/img/home/svc-offert-960.webp 960w, assets/img/home/svc-offert.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Offertflöde: få in rätt förfrågningar, inte bara fler" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Offert</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/offertflode-ratt-forfragningar.html">Offertflöde: få in rätt förfrågningar, inte bara fler</a></h3>
+              <p class="post-card__time">11 augusti 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-hemsidor.webp" srcset="assets/img/home/svc-hemsidor-160.webp 160w, assets/img/home/svc-hemsidor-240.webp 240w, assets/img/home/svc-hemsidor-320.webp 320w, assets/img/home/svc-hemsidor-400.webp 400w, assets/img/home/svc-hemsidor-480.webp 480w, assets/img/home/svc-hemsidor-640.webp 640w, assets/img/home/svc-hemsidor-720.webp 720w, assets/img/home/svc-hemsidor-800.webp 800w, assets/img/home/svc-hemsidor-960.webp 960w, assets/img/home/svc-hemsidor.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Checklista för städfirmor: det som ska finnas på hemsidan" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Branscher</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/hemsida-for-stadfirma.html">Checklista för städfirmor: det som ska finnas på hemsidan</a></h3>
+              <p class="post-card__time">28 juli 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-2.webp" srcset="assets/img/home/post-2-160.webp 160w, assets/img/home/post-2-240.webp 240w, assets/img/home/post-2-320.webp 320w, assets/img/home/post-2-400.webp 400w, assets/img/home/post-2-480.webp 480w, assets/img/home/post-2-640.webp 640w, assets/img/home/post-2-720.webp 720w, assets/img/home/post-2-800.webp 800w, assets/img/home/post-2-960.webp 960w, assets/img/home/post-2.webp 1260w" sizes="(max-width: 768px) 120px, 200px" alt="Texter som kunder faktiskt läser" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/skriv-texter-som-kunder-faktiskt-laser.html">Texter som kunder faktiskt läser</a></h3>
+              <p class="post-card__time">14 juli 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/about-3.webp" srcset="assets/img/home/about-3-160.webp 160w, assets/img/home/about-3-240.webp 240w, assets/img/home/about-3-320.webp 320w, assets/img/home/about-3-400.webp 400w, assets/img/home/about-3-480.webp 480w, assets/img/home/about-3-640.webp 640w, assets/img/home/about-3-720.webp 720w, assets/img/home/about-3-800.webp 800w, assets/img/home/about-3.webp 900w" sizes="(max-width: 768px) 120px, 200px" alt="Vad ska stå på kontaktsidan?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/vad-ska-sta-pa-kontaktsidan.html">Vad ska stå på kontaktsidan?</a></h3>
+              <p class="post-card__time">23 juni 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/process-3.webp" srcset="assets/img/home/process-3-160.webp 160w, assets/img/home/process-3-240.webp 240w, assets/img/home/process-3-320.webp 320w, assets/img/home/process-3-400.webp 400w, assets/img/home/process-3-480.webp 480w, assets/img/home/process-3-640.webp 640w, assets/img/home/process-3-720.webp 720w, assets/img/home/process-3-800.webp 800w, assets/img/home/process-3-960.webp 960w, assets/img/home/process-3.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Sommarkoll på hemsidan innan semestern" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Tips</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/sommarkoll-pa-hemsidan.html">Sommarkoll på hemsidan innan semestern</a></h3>
+              <p class="post-card__time">9 juni 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/process-4.webp" srcset="assets/img/home/process-4-160.webp 160w, assets/img/home/process-4-240.webp 240w, assets/img/home/process-4-320.webp 320w, assets/img/home/process-4-400.webp 400w, assets/img/home/process-4-480.webp 480w, assets/img/home/process-4-640.webp 640w, assets/img/home/process-4-720.webp 720w, assets/img/home/process-4-800.webp 800w, assets/img/home/process-4-960.webp 960w, assets/img/home/process-4.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Så får ni fler recensioner på Google" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>SEO</span><span>Tips</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/fa-fler-recensioner-pa-google.html">Så får ni fler recensioner på Google</a></h3>
+              <p class="post-card__time">26 maj 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-hemsidor.webp" srcset="assets/img/home/svc-hemsidor-160.webp 160w, assets/img/home/svc-hemsidor-240.webp 240w, assets/img/home/svc-hemsidor-320.webp 320w, assets/img/home/svc-hemsidor-400.webp 400w, assets/img/home/svc-hemsidor-480.webp 480w, assets/img/home/svc-hemsidor-640.webp 640w, assets/img/home/svc-hemsidor-720.webp 720w, assets/img/home/svc-hemsidor-800.webp 800w, assets/img/home/svc-hemsidor-960.webp 960w, assets/img/home/svc-hemsidor.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Mobilen först: så ser kunderna faktiskt er hemsida" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/mobilen-forst-sa-ser-kunderna-er-hemsida.html">Mobilen först: så ser kunderna faktiskt er hemsida</a></h3>
+              <p class="post-card__time">12 maj 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/about-1.webp" srcset="assets/img/home/about-1-160.webp 160w, assets/img/home/about-1-240.webp 240w, assets/img/home/about-1-320.webp 320w, assets/img/home/about-1-400.webp 400w, assets/img/home/about-1-480.webp 480w, assets/img/home/about-1-640.webp 640w, assets/img/home/about-1-720.webp 720w, assets/img/home/about-1-800.webp 800w, assets/img/home/about-1-960.webp 960w, assets/img/home/about-1-1200.webp 1200w, assets/img/home/about-1.webp 1400w" sizes="(max-width: 768px) 120px, 200px" alt="Egna bilder slår bildbanker, varje gång" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Tips</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/egna-bilder-slar-bildbanker.html">Egna bilder slår bildbanker, varje gång</a></h3>
+              <p class="post-card__time">28 april 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-bokning.webp" srcset="assets/img/home/svc-bokning-160.webp 160w, assets/img/home/svc-bokning-240.webp 240w, assets/img/home/svc-bokning-320.webp 320w, assets/img/home/svc-bokning-400.webp 400w, assets/img/home/svc-bokning-480.webp 480w, assets/img/home/svc-bokning-640.webp 640w, assets/img/home/svc-bokning-720.webp 720w, assets/img/home/svc-bokning-800.webp 800w, assets/img/home/svc-bokning-960.webp 960w, assets/img/home/svc-bokning.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Bokningssystem för hantverkare: slipp telefonen i bilen" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Bokning</span><span>Hantverkare</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/bokningssystem-for-hantverkare.html">Bokningssystem för hantverkare: slipp telefonen i bilen</a></h3>
+              <p class="post-card__time">14 april 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-ai-chatt.webp" srcset="assets/img/home/svc-ai-chatt-160.webp 160w, assets/img/home/svc-ai-chatt-240.webp 240w, assets/img/home/svc-ai-chatt-320.webp 320w, assets/img/home/svc-ai-chatt-400.webp 400w, assets/img/home/svc-ai-chatt-480.webp 480w, assets/img/home/svc-ai-chatt-640.webp 640w, assets/img/home/svc-ai-chatt-720.webp 720w, assets/img/home/svc-ai-chatt-800.webp 800w, assets/img/home/svc-ai-chatt-960.webp 960w, assets/img/home/svc-ai-chatt.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="AI-chatt på hemsidan: vad den kan, och vad den inte ska göra" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>AI</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/ai-chatt-pa-hemsidan-vad-den-kan.html">AI-chatt på hemsidan: vad den kan, och vad den inte ska göra</a></h3>
+              <p class="post-card__time">24 mars 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-ai-chatt.webp" srcset="assets/img/home/svc-ai-chatt-160.webp 160w, assets/img/home/svc-ai-chatt-240.webp 240w, assets/img/home/svc-ai-chatt-320.webp 320w, assets/img/home/svc-ai-chatt-400.webp 400w, assets/img/home/svc-ai-chatt-480.webp 480w, assets/img/home/svc-ai-chatt-640.webp 640w, assets/img/home/svc-ai-chatt-720.webp 720w, assets/img/home/svc-ai-chatt-800.webp 800w, assets/img/home/svc-ai-chatt-960.webp 960w, assets/img/home/svc-ai-chatt.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Vad är AI-optimering, och varför pratar alla om det?" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>AI</span><span>SEO</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/vad-ar-ai-optimering.html">Vad är AI-optimering, och varför pratar alla om det?</a></h3>
+              <p class="post-card__time">10 mars 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/post-1.webp" srcset="assets/img/home/post-1-160.webp 160w, assets/img/home/post-1-240.webp 240w, assets/img/home/post-1-320.webp 320w, assets/img/home/post-1-400.webp 400w, assets/img/home/post-1-480.webp 480w, assets/img/home/post-1-640.webp 640w, assets/img/home/post-1-720.webp 720w, assets/img/home/post-1.webp 840w" sizes="(max-width: 768px) 120px, 200px" alt="Därför ska hemsidan ha en sida med vanliga frågor" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>SEO</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/darfor-ska-hemsidan-ha-vanliga-fragor.html">Därför ska hemsidan ha en sida med vanliga frågor</a></h3>
+              <p class="post-card__time">23 februari 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/svc-seo.webp" srcset="assets/img/home/svc-seo-160.webp 160w, assets/img/home/svc-seo-240.webp 240w, assets/img/home/svc-seo-320.webp 320w, assets/img/home/svc-seo-400.webp 400w, assets/img/home/svc-seo-480.webp 480w, assets/img/home/svc-seo-640.webp 640w, assets/img/home/svc-seo-720.webp 720w, assets/img/home/svc-seo-800.webp 800w, assets/img/home/svc-seo-960.webp 960w, assets/img/home/svc-seo.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Google-företagsprofil: det viktigaste ni kan göra gratis" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>SEO</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/google-foretagsprofil-for-sma-foretag.html">Google-företagsprofil: det viktigaste ni kan göra gratis</a></h3>
+              <p class="post-card__time">9 februari 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/process-2.webp" srcset="assets/img/home/process-2-160.webp 160w, assets/img/home/process-2-240.webp 240w, assets/img/home/process-2-320.webp 320w, assets/img/home/process-2-400.webp 400w, assets/img/home/process-2-480.webp 480w, assets/img/home/process-2-640.webp 640w, assets/img/home/process-2-720.webp 720w, assets/img/home/process-2-800.webp 800w, assets/img/home/process-2-960.webp 960w, assets/img/home/process-2.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Äg din domän och din e-post själv" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/aga-din-doman-och-e-post.html">Äg din domän och din e-post själv</a></h3>
+              <p class="post-card__time">26 januari 2026</p>
+            </div>
+          </article><article class="insights__small">
+            <img src="assets/img/home/process-1.webp" srcset="assets/img/home/process-1-160.webp 160w, assets/img/home/process-1-240.webp 240w, assets/img/home/process-1-320.webp 320w, assets/img/home/process-1-400.webp 400w, assets/img/home/process-1-480.webp 480w, assets/img/home/process-1-640.webp 640w, assets/img/home/process-1-720.webp 720w, assets/img/home/process-1-800.webp 800w, assets/img/home/process-1-960.webp 960w, assets/img/home/process-1.webp 1200w" sizes="(max-width: 768px) 120px, 200px" alt="Fem saker att fixa på hemsidan i januari" width="420" height="297" loading="lazy">
+            <div>
+              <p class="post-card__terms"><span>Hemsidor</span><span>Guide</span></p>
+              <h3 class="insights__small-title"><a class="cover-link" href="insikter/fem-saker-att-fixa-pa-hemsidan-2026.html">Fem saker att fixa på hemsidan i januari</a></h3>
+              <p class="post-card__time">12 januari 2026</p>
+            </div>
+          </article></div></div>
+        </div><!-- /build:posts -->
+      </div>
+    </section>
+
+    <!-- Process -->
+    <!-- Book a meeting straight from the start page: the next free times, from the same calendar as /boka -->
+    <section class="book-mini" id="boka" aria-labelledby="book-home-title">
+      <div class="container">
+        <div class="book-bars">
+          <div class="book-bars__text"><h2 id="book-home-title">Boka ett kort möte</h2><p id="book-bars-note">Lediga tider de närmaste dagarna.</p></div>
+          <div class="book-bars__chart" id="book-bars" data-info="/api/booking/info?t=public" aria-label="Lediga tider per dag"><span class="book-bars__bar" style="--h:30%"></span><span class="book-bars__bar" style="--h:55%"></span><span class="book-bars__bar is-top" style="--h:90%"></span><span class="book-bars__bar" style="--h:45%"></span><span class="book-bars__bar" style="--h:70%"></span></div>
+          <a class="book-bars__go" href="boka.html">Boka <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+    <section class="process" id="process">
+      <div class="container">
+        <div class="process__head">
+          <div>
+            <h2 class="block__header">Så <span>jobbar vi</span></h2>
+          </div>
+          <div class="process__intro">
+            <p>Fyra steg från första mötet till en hemsida som ger förfrågningar. Vi tar hand om det tekniska, ni bidrar med kunskapen om ert företag.</p>
+            <div class="process__links"><a class="arrow-link" href="kontakt.html">Boka ett första möte</a><a class="arrow-link" href="avtal.html">Se hur ett avtal ser ut</a></div>
+          </div>
+        </div>
+        <ol class="flow">
+          <li class="flow__step">
+            <div class="flow__head"><span class="flow__no">01</span><span class="flow__when">Första mötet</span></div>
+            <img class="flow__img" src="assets/img/home/process-1.webp" srcset="assets/img/home/process-1-320.webp 320w, assets/img/home/process-1-640.webp 640w, assets/img/home/process-1-960.webp 960w, assets/img/home/process-1.webp 1200w" sizes="(max-width: 992px) calc(100vw - 30px), 45vw" alt="Människor runt ett bord i ett första möte" width="1200" height="800" loading="lazy">
+            <h3 class="flow__title">Vi lär känna företaget</h3>
+            <p class="flow__text">Ett kort möte om era tjänster, era kunder och vilka affärer ni vill ha fler av.</p>
+          </li>
+          <li class="flow__step">
+            <div class="flow__head"><span class="flow__no">02</span><span class="flow__when">Utkast på en dag</span></div>
+            <img class="flow__img" src="assets/img/home/process-2.webp" srcset="assets/img/home/process-2-320.webp 320w, assets/img/home/process-2-640.webp 640w, assets/img/home/process-2-960.webp 960w, assets/img/home/process-2.webp 1200w" sizes="(max-width: 992px) calc(100vw - 30px), 45vw" alt="Team som skissar på en hemsida ovanifrån" width="1200" height="800" loading="lazy">
+            <h3 class="flow__title">Vi bygger hemsidan</h3>
+            <p class="flow__text">Mobilanpassad design med tydliga tjänstesidor och en väg till kontakt på varje sida.</p>
+          </li>
+          <li class="flow__step">
+            <div class="flow__head"><span class="flow__no">03</span><span class="flow__when">Före lansering</span></div>
+            <img class="flow__img" src="assets/img/home/process-3.webp" srcset="assets/img/home/process-3-320.webp 320w, assets/img/home/process-3-640.webp 640w, assets/img/home/process-3-960.webp 960w, assets/img/home/process-3.webp 1200w" sizes="(max-width: 992px) calc(100vw - 30px), 45vw" alt="Utvecklare som skriver kod vid två skärmar" width="1200" height="800" loading="lazy">
+            <h3 class="flow__title">Vi kopplar på smarta funktioner</h3>
+            <p class="flow__text">Offertflöde, bokning, AI-chatt och notiser via e-post och SMS aktiveras och testas.</p>
+          </li>
+          <li class="flow__step">
+            <div class="flow__head"><span class="flow__no">04</span><span class="flow__when">Lanseringsdagen</span></div>
+            <img class="flow__img" src="assets/img/home/process-4.webp" srcset="assets/img/home/process-4-320.webp 320w, assets/img/home/process-4-640.webp 640w, assets/img/home/process-4-960.webp 960w, assets/img/home/process-4.webp 1200w" sizes="(max-width: 992px) calc(100vw - 30px), 45vw" alt="Person med headset som tar emot en förfrågan" width="1200" height="800" loading="lazy">
+            <h3 class="flow__title">Hemsidan börjar ge förfrågningar</h3>
+            <p class="flow__text">Sidan lanseras, indexeras av Google och tar emot förfrågningar med status och historik.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- About -->
+    <section class="block about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <img width="1400" height="935" class="about__pic about__pic--big" src="assets/img/home/about-1.webp" srcset="assets/img/home/about-1-320.webp 320w, assets/img/home/about-1-640.webp 640w, assets/img/home/about-1-960.webp 960w, assets/img/home/about-1.webp 1400w" sizes="(max-width: 768px) calc(100vw - 30px), 60vw" alt="Ett team som arbetar tillsammans vid ett träbord med datorer och växter" loading="lazy">
+        <img width="900" height="600" class="about__pic" src="assets/img/home/about-2.webp" srcset="assets/img/home/about-2-320.webp 320w, assets/img/home/about-2-640.webp 640w, assets/img/home/about-2.webp 900w" sizes="(max-width: 768px) calc(100vw - 30px), (max-width: 1200px) 45vw, 420px" alt="Skiss av en hemsida i ett anteckningsblock bredvid en mobil" loading="lazy">
+        <img width="900" height="1350" class="about__pic" src="assets/img/home/about-3.webp" srcset="assets/img/home/about-3-320.webp 320w, assets/img/home/about-3-640.webp 640w, assets/img/home/about-3.webp 900w" sizes="(max-width: 768px) calc(100vw - 30px), 30vw" alt="Kaffe och en laptop på ett skrivbord" loading="lazy">
+        <div class="about__card">
+          <svg class="about__mark" viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>
+          <h2 class="about__title" id="about-title">Vi är <span>Elevate Studio</span></h2>
+          <p class="about__lead">Vi är ett team i Uppsala som bygger hemsidor åt företag i alla storlekar i hela Sverige – med fast pris, snabba leveranser och personlig kontakt.</p>
+          <p>Ni pratar med samma person från första mötet till uppföljningen varje månad. Inga mellanhänder, inga långa mejltrådar – bara någon som kan ert företag och svarar när ni ringer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review (real customer review from Google) -->
+    <section class="block container review">
+      <!-- build:reviews --><div class="reviews reviews--many" data-reviews aria-label="Kundrecensioner">
+      <div class="reviews__track"><figure class="review__card">
+          <svg class="review__mark" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 22V13C0 5 4 1 12 0l1 3C8 4 6 7 6 11h6v11zm17 0V13c0-8 4-12 12-13l1 3c-5 1-7 4-7 8h6v11z" fill="#1d3b2a"/></svg>
+          <a class="review__go" href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener" aria-label="Läs recensionen på Google"><blockquote class="review__text"><p>Väldigt nöjd med hemsidan som Elevate Studio byggt åt oss! Snygg design, smidig kontakt och bra hjälp hela vägen. Rekommenderas varmt till företag som behöver en ny hemsida.</p></blockquote></a>
+          <button type="button" class="review__more" hidden aria-expanded="false">Läs mer</button>
+          <figcaption class="review__source"><a href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener">Recension på Google</a></figcaption>
+        </figure><figure class="review__card">
+          <svg class="review__mark" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 22V13C0 5 4 1 12 0l1 3C8 4 6 7 6 11h6v11zm17 0V13c0-8 4-12 12-13l1 3c-5 1-7 4-7 8h6v11z" fill="#1d3b2a"/></svg>
+          <a class="review__go" href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener" aria-label="Läs recensionen på Google"><blockquote class="review__text"><p>Gjorde en väldigt bra och professionell hemsida åt oss. Mycket nöjd med detta. Kan varmt rekommendera!</p></blockquote></a>
+          <button type="button" class="review__more" hidden aria-expanded="false">Läs mer</button>
+          <figcaption class="review__source"><a href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener">Hemmacykel · Recension på Google</a></figcaption>
+        </figure><figure class="review__card">
+          <svg class="review__mark" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 22V13C0 5 4 1 12 0l1 3C8 4 6 7 6 11h6v11zm17 0V13c0-8 4-12 12-13l1 3c-5 1-7 4-7 8h6v11z" fill="#1d3b2a"/></svg>
+          <a class="review__go" href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener" aria-label="Läs recensionen på Google"><blockquote class="review__text"><p>Väl utfört arbete med vår hemsida, vi märker redan skillnad på inflöde av förfrågningar till våra tjänster.</p></blockquote></a>
+          <button type="button" class="review__more" hidden aria-expanded="false">Läs mer</button>
+          <figcaption class="review__source"><a href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener">Recension på Google</a></figcaption>
+        </figure><figure class="review__card">
+          <svg class="review__mark" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 22V13C0 5 4 1 12 0l1 3C8 4 6 7 6 11h6v11zm17 0V13c0-8 4-12 12-13l1 3c-5 1-7 4-7 8h6v11z" fill="#1d3b2a"/></svg>
+          <a class="review__go" href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener" aria-label="Läs recensionen på Google"><blockquote class="review__text"><p>Vi är mycket nöjda med Elevate Studio och deras arbete med att skapa vår hemsida. Från första kontakten till färdig leverans har de visat stor professionalism, engagemang och förståelse för våra önskemål. De har varit lyhörda, kreativa och noggranna genom hela processen. Resultatet blev en modern, stilren och professionell hemsida som verkligen representerar vårt företag och vår verksamhet. Vi uppskattar deras goda kommunikation, snabba återkoppling och känsla för detaljer. Vi kan varmt rekommendera Elevate Studio till andra företag som vill ha en snygg och professionell hemsida! Stort tack för ett riktigt bra samarbete!</p></blockquote></a>
+          <button type="button" class="review__more" hidden aria-expanded="false">Läs mer</button>
+          <figcaption class="review__source"><a href="https://www.google.com/maps/place/?q=place_id:ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener">Haninge Byggteam AB</a></figcaption>
+        </figure><div class="review__card review__card--ask">
+          <p class="review__ask-k">Har ni jobbat med oss?</p>
+          <p class="review__ask">Vi blir glada för en recension på Google – det hjälper andra företag att hitta oss.</p>
+          <a class="btn btn--primary" href="https://search.google.com/local/writereview?placeid=ChIJcRLSybPJX0YRomaZlUJ2bzY" target="_blank" rel="noopener"><span>Lämna en recension</span></a>
+        </div></div>
+      <div class="review__nav">
+        <button type="button" class="review__arrow js-review-prev" aria-label="Föregående"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+        <span class="review__count"><b class="js-review-n">1</b> / 5</span>
+        <button type="button" class="review__arrow js-review-next" aria-label="Nästa"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+      </div>
+    </div><!-- /build:reviews -->
+    </section>
+
+
+    <!-- Site test teaser -->
+    <section class="test-teaser">
+      <div class="container test-teaser__row">
+        <div>
+          <h2>Hur presterar <em>din sajt?</em></h2>
+          <p>Gör ett gratis djuptest på cirka 30 sekunder och se direkt vad som kan förbättras – och hur vi fixar det.</p>
+        </div>
+        <form class="sitetest__form" action="testa.html" method="get">
+          <label class="sitetest__field"><span class="sr-only">Webbadress</span><input type="text" name="url" inputmode="url" placeholder="dittforetag.se" required></label>
+          <button type="submit" class="btn btn--primary"><span>Testa nu</span></button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="container faq__inner">
+        <h2 class="faq__title">Vanliga <span>frågor</span></h2>
+        <span class="faq__bar" aria-hidden="true"></span>
+        <!-- build:faq --><div class="faq__list">
+          <details class="faq__item" name="faq" open><summary>Vad kostar en hemsida?</summary><p>Ni får ett fast pris innan vi börjar. Starter kostar 5 000 kr, Pro 9 000 kr, Business 14 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt: Starter 3 000 kr, Pro 6 000 kr och Business 9 000 kr. Större projekt får ett fast pris i en offert. <a href="priser.html">Se våra priser</a> eller <a href="avtal.html">ett exempel på hur ett avtal ser ut</a>.</p></details>
+          <details class="faq__item" name="faq"><summary>Hur lång tid tar det?</summary><p>Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi tillsammans tills ni är nöjda. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.</p></details>
+          <details class="faq__item" name="faq"><summary>Bygger ni hemsidor för alla typer av företag?</summary><p>Ja. Vi bygger hemsidor för företag i alla storlekar – från enmansföretag till större bolag med flera avdelningar och system som ska kopplas ihop. Större projekt får ett fast pris i en offert.</p></details>
+          <details class="faq__item" name="faq"><summary>Jobbar ni bara i Uppsala?</summary><p>Nej. Vi finns i Uppsala men bygger hemsidor åt företag i hela Sverige. Möten går lika bra på distans.</p></details>
+          <details class="faq__item" name="faq"><summary>Vad behöver vi bidra med?</summary><p>Kunskapen om ert företag: vad ni gör, vilka kunder ni vill ha och de bilder och texter ni redan har. Ni får två korrekturvändor innan sidan lanseras, så att allt blir rätt.</p></details>
+          <details class="faq__item" name="faq"><summary>Ingår support efter lansering?</summary><p>Ja. Under första året ingår upp till 10 timmars support och redigering per månad – till exempel text- och bildändringar, layoutjusteringar eller nya funktioner.</p></details>
+          <details class="faq__item" name="faq"><summary>Syns hemsidan på Google?</summary><p>Grundläggande sökmotoroptimering (SEO) och AI-optimering ingår, så att sidan går att hitta både på Google och i AI-tjänster som svarar på frågor.</p></details>
+          <details class="faq__item" name="faq"><summary>Kan ni koppla på bokning, offertformulär eller AI-chatt?</summary><p>Ja. Vi bygger bokningssystem, offertsystem, AI-chatt och notiser via e-post och SMS – och testar allt innan lansering.</p></details>
+          <details class="faq__item" name="faq"><summary>Vem äger domänen?</summary><p>Ni. Domänen är och förblir er. Hosting och eventuella externa avgifter står specificerade i offerten.</p></details>
+          <details class="faq__item" name="faq"><summary>Hur godkänner vi offerten?</summary><p>Ni svarar på mejlet med offerten och skriver att ni godkänner den. Inga krångliga underskrifter.</p></details>
+        </div>
+        <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Vad kostar en hemsida?", "acceptedAnswer": {"@type": "Answer", "text": "Ni får ett fast pris innan vi börjar. Starter kostar 5 000 kr, Pro 9 000 kr, Business 14 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt: Starter 3 000 kr, Pro 6 000 kr och Business 9 000 kr. Större projekt får ett fast pris i en offert. Se våra priser eller ett exempel på hur ett avtal ser ut."}}, {"@type": "Question", "name": "Hur lång tid tar det?", "acceptedAnswer": {"@type": "Answer", "text": "Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi tillsammans tills ni är nöjda. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst."}}, {"@type": "Question", "name": "Bygger ni hemsidor för alla typer av företag?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Vi bygger hemsidor för företag i alla storlekar – från enmansföretag till större bolag med flera avdelningar och system som ska kopplas ihop. Större projekt får ett fast pris i en offert."}}, {"@type": "Question", "name": "Jobbar ni bara i Uppsala?", "acceptedAnswer": {"@type": "Answer", "text": "Nej. Vi finns i Uppsala men bygger hemsidor åt företag i hela Sverige. Möten går lika bra på distans."}}, {"@type": "Question", "name": "Vad behöver vi bidra med?", "acceptedAnswer": {"@type": "Answer", "text": "Kunskapen om ert företag: vad ni gör, vilka kunder ni vill ha och de bilder och texter ni redan har. Ni får två korrekturvändor innan sidan lanseras, så att allt blir rätt."}}, {"@type": "Question", "name": "Ingår support efter lansering?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Under första året ingår upp till 10 timmars support och redigering per månad – till exempel text- och bildändringar, layoutjusteringar eller nya funktioner."}}, {"@type": "Question", "name": "Syns hemsidan på Google?", "acceptedAnswer": {"@type": "Answer", "text": "Grundläggande sökmotoroptimering (SEO) och AI-optimering ingår, så att sidan går att hitta både på Google och i AI-tjänster som svarar på frågor."}}, {"@type": "Question", "name": "Kan ni koppla på bokning, offertformulär eller AI-chatt?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Vi bygger bokningssystem, offertsystem, AI-chatt och notiser via e-post och SMS – och testar allt innan lansering."}}, {"@type": "Question", "name": "Vem äger domänen?", "acceptedAnswer": {"@type": "Answer", "text": "Ni. Domänen är och förblir er. Hosting och eventuella externa avgifter står specificerade i offerten."}}, {"@type": "Question", "name": "Hur godkänner vi offerten?", "acceptedAnswer": {"@type": "Answer", "text": "Ni svarar på mejlet med offerten och skriver att ni godkänner den. Inga krångliga underskrifter."}}]}</script><!-- /build:faq -->
+    </section>
+
+    <!-- Contact form -->
+    <section class="standout" id="kontakt">
+      <div class="container standout__row">
+        <div class="standout__intro">
+          <h2 class="h2">En digital studio med rötterna i <em>Uppsala</em></h2>
+          <p>Funderar ni på ett nytt projekt eller behöver ni hjälp med något som redan finns? Mejla oss på <a href="mailto:info&#64;elevatestudio.nu">info&#64;elevatestudio.nu</a>, <a href="kontakt.html">kontakta någon av oss direkt</a> eller skriv några rader i formuläret, så återkommer vi så fort vi kan.</p>
+        </div>
+        <!-- build:contactform --><form class="standout__form js-form" id="formular" action="/api/enquiry" method="post" data-subject="Ny förfrågan från hemsidan" data-lead data-db="https://halecxdjclrklyufbept.supabase.co" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhbGVjeGRqY2xya2x5dWZiZXB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwODYwOTcsImV4cCI6MjA5ODY2MjA5N30.Svt4abfAirAVLNDQkmSaQWep_0Ggz-h4WfOGdb0A4RQ">
+          <p class="standout__header">Hej! Jag vill gärna bli kontaktad.</p>
+          <div class="standout__fields">
+            <label><span class="sr-only">Namn</span><input type="text" name="namn" placeholder="Namn" autocomplete="name" required></label>
+            <label><span class="sr-only">E-post</span><input type="email" name="email" placeholder="E-post" autocomplete="email" required></label>
+            <label><span class="sr-only">Telefon</span><input type="tel" name="telefon" placeholder="Telefon" autocomplete="tel"></label>
+            <label><span class="sr-only">Företag</span><input type="text" name="foretag" placeholder="Företag" autocomplete="organization"></label>
+            <label class="standout__wide standout__select"><span class="sr-only">Tjänst</span><select name="tjanst">
+              <option value="">Vad är ni intresserade av?</option>
+              <option>Hemsidor</option><option>AI-chatt</option><option>Bokningssystem</option><option>Offertsystem</option><option>SEO och AI-optimering</option><option>Support och underhåll</option>
+              <option>Vet inte än – vill ha råd</option>
+            </select></label>
+            <label class="standout__wide"><span class="sr-only">Meddelande</span><textarea name="meddelande" placeholder="Meddelande" rows="1"></textarea></label>
+          </div>
+          <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="new-password" aria-hidden="true" data-lpignore="true" data-1p-ignore>
+          <p class="standout__consent">När du skickar formuläret godkänner du vår <a href="integritet.html">integritetspolicy</a></p>
+          <button type="submit" class="btn btn--primary"><span>Skicka</span></button>
+          <p class="form-status standout__status" role="status" hidden></p>
+        </form><!-- /build:contactform -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="site-footer">
+      <svg class="site-footer__bigmark" viewBox="0 0 1884.3 1353.9" aria-hidden="true" focusable="false"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>
+      <div class="container">
+        <div class="site-footer__row">
+          <div class="site-footer__small">
+            <a href="./index.html" class="wordmark wordmark--light">
+              <svg class="wordmark__mark" viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>
+              <span class="wordmark__name">Elevate Studio</span>
+            </a>
+          </div>
+          <div class="site-footer__big site-footer__slogan">
+            <p>Hemsidor som ger förfrågningar – byggda i Uppsala, för företag i hela Sverige. <em>Hör av er så tar vi ett första möte.</em></p>
+          </div>
+          <div class="site-footer__small">
+            <p class="site-footer__subheader">Få vårt nyhetsbrev</p>
+            <form class="site-footer__newsletter js-form" action="/api/enquiry" method="post" data-subject="Ny prenumerant på nyhetsbrevet" data-db="https://halecxdjclrklyufbept.supabase.co" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhbGVjeGRqY2xya2x5dWZiZXB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwODYwOTcsImV4cCI6MjA5ODY2MjA5N30.Svt4abfAirAVLNDQkmSaQWep_0Ggz-h4WfOGdb0A4RQ">
+              <label><span class="sr-only">E-postadress</span><input type="email" name="email" placeholder="Din e-postadress" required></label>
+              <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="new-password" aria-hidden="true" data-lpignore="true" data-1p-ignore>
+              <button type="submit" aria-label="Prenumerera"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="#fff" stroke-width="2"/></svg></button>
+              <p class="form-status" role="status" hidden></p>
+            </form>
+            <p class="site-footer__fine">När du skickar formuläret godkänner du vår <a href="integritet.html">integritetspolicy</a></p>
+          </div>
+          <div class="site-footer__big site-footer__cols">
+            <div>
+              <p class="site-footer__subheader">Tjänster</p>
+              <ul class="site-footer__links"><li><a href="tjanster/hemsidor.html">Hemsidor</a></li><li><a href="tjanster/ai-chatt.html">AI-chatt</a></li><li><a href="tjanster/bokningssystem.html">Bokningssystem</a></li><li><a href="tjanster/offertsystem.html">Offertsystem</a></li><li><a href="tjanster/seo-och-ai-optimering.html">SEO och AI-optimering</a></li><li><a href="tjanster/support-och-underhall.html">Support och underhåll</a></li><li><a href="domaner.html">Domäner</a></li><li><a href="foretagsmejl.html">Företagsmejl</a></li></ul>
+            </div>
+            <div>
+              <p class="site-footer__subheader">Elevate Studio</p>
+              <ul class="site-footer__links">
+                <li><a href="kontakt.html">Uppsala</a></li>
+                <li><a href="om.html">Om oss</a></li>
+                <li><a href="priser.html">Priser</a></li>
+                <li><a href="byggda-hemsidor.html">Hemsidor vi byggt</a></li>
+                <li><a href="avtal.html">Exempel på webbavtal</a></li>
+                <li><a href="insikter/index.html">Senaste nytt</a></li>
+                <li><a href="plattformar/index.html">Tekniken vi använder</a></li>
+                <li><a href="webbyra-uppsala.html">Webbyrå i Uppsala</a></li>
+                <li><a href="webbyra-stockholm.html">Webbyrå i Stockholm</a></li>
+                <li><a href="hemsida-for-hantverkare.html">Hemsida för hantverkare</a></li>
+                <li><a href="billig-hemsida.html">Billig hemsida</a></li>
+                <li><a href="branscher.html">Hemsidor för alla branscher</a></li>
+                <li><a href="orter.html">Webbyrå – orter</a></li>
+                <li><a href="vanliga-fragor.html">Vanliga frågor</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="site-footer__subheader">Kontakt</p>
+              <ul class="site-footer__links">
+                <li><a href="mailto:info&#64;elevatestudio.nu">info&#64;elevatestudio.nu</a></li>
+                <li><a href="tel:+46760228361">Ring 076-022 83 61</a></li>
+                <li><span class="site-footer__addr">Elevate Studio, Uppsala, Sverige</span></li>
+                <li><a href="testa.html">Testa din sajt</a></li>
+                <li><a href="testa-kakor.html">Testa dina kakor</a></li>
+              </ul>
+              <p class="site-footer__subheader site-footer__subheader--follow">Följ oss</p>
+              <ul class="social social--footer"><li><a href="https://www.instagram.com/elevate.studio018/" target="_blank" rel="noopener" aria-label="Elevate Studio på Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 5.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="currentColor"/></svg><span>Instagram</span></a></li><li><a href="https://www.tiktok.com/@elevate.studio88" target="_blank" rel="noopener" aria-label="Elevate Studio på TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2h3a5 5 0 0 0 4 4v3a8 8 0 0 1-4-1.3V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z" fill="currentColor"/></svg><span>TikTok</span></a></li><li><a href="https://www.facebook.com/profile.php?id=61592020254252" target="_blank" rel="noopener" aria-label="Elevate Studio på Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z" fill="currentColor"/></svg><span>Facebook</span></a></li></ul>
+            </div>
+          </div>
+          <ul class="site-footer__bottom">
+            <li><a href="integritet.html">Integritetspolicy</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+            <li><button type="button" class="lang-btn" lang="en" data-lang="en">In English</button></li>
+            <li><a class="site-footer__admin" href="admin/index.html">Admin</a></li>
+            <li class="site-footer__legal">Elevate Studio är ett varumärke som tillhör PJM Projekteffektivitet AB, org.nr 556969-4358 · Developed by Isak Mattsson</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.min.js?v=2d32b27cb7" defer></script>
+  <script src="assets/js/track.min.js?v=2d32b27cb7" defer></script>
+  <script src="assets/js/home.min.js?v=2d32b27cb7" defer></script>
+  <script src="assets/js/chat-kb.min.js?v=2d32b27cb7" defer></script>
+  <script src="assets/js/chat.min.js?v=2d32b27cb7" data-prefix="" data-endpoint="/api/enquiry" defer></script>
+</body>
+</html>
