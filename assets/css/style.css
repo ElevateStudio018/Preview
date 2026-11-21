@@ -459,7 +459,7 @@ body.drawer-open { overflow: hidden; }
 .lost__btn:hover, .lost__btn:focus-visible { transform: translateY(-1px); }
 .lost__btn:hover svg { transform: translateX(3px); }
 .lost__btn--fill { background: var(--accent); color: #fff; }
-.lost__btn:not(.lost__btn--fill):hover { background: rgba(29, 59, 42, .06); }
+.lost__btn:not(.lost__btn--fill):hover, .lost__btn:not(.lost__btn--fill):focus-visible { background: var(--accent); color: #fff; }
 .lost__home { margin: 4px 0 0; font-size: 15px; color: #6a766e; }
 .lost__home a { color: var(--accent); font-weight: 600; }
 @media (max-width: 768px) {

@@ -1557,3 +1557,5 @@ body.mail-app .wmx { min-height: 100vh; border-radius: 0 !important; }
   .dh-jump { position: fixed; left: 16px; bottom: 22px; z-index: 40; display: block; padding: 13px 22px; border-radius: 999px; background: var(--accent, #1d3b2a); color: #fdfbf5; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 14px 30px -12px rgba(18, 39, 27, .6); transform: translateY(100px); transition: transform .25s; }
   .dh-jump.is-on { transform: none; }
 }
+/* "Kom igång med Business" fits on one line in the narrow four-column cards */
+.plans--four .plan__btn { padding-left: 20px; padding-right: 20px; font-size: 16px; white-space: nowrap; max-width: 100%; }
