@@ -198,6 +198,32 @@
       st.leads = (r.data || []).filter(canSee);
       render();
       syncBookings();
+      mergeChatLeads();
+    });
+  }
+  // A visitor who gives an e-mail address and later a phone number in the same chat conversation can make two leads
+  // (when the server has no key to update the first). They share "chatt: <id>" in the notes: the oldest keeps the
+  // details of the others, which are then removed.
+  function mergeChatLeads() {
+    var groups = {};
+    st.leads.forEach(function (l) { var m = /chatt: ([a-z0-9]{6,40})/.exec(l.admin_notes || ''); if (m) (groups[m[1]] = groups[m[1]] || []).push(l); });
+    Object.keys(groups).forEach(function (k) {
+      var g = groups[k]; if (g.length < 2) return;
+      g.sort(function (a, b) { return Date.parse(a.created_at) - Date.parse(b.created_at); });
+      var keep = g[0], rest = g.slice(1), patch = {}, notes = [];
+      rest.forEach(function (x) {
+        if (x.email && !keep.email && !patch.email) patch.email = x.email; else if (x.email && x.email !== (patch.email || keep.email)) notes.push('E-post: ' + x.email);
+        if (x.phone && !keep.phone && !patch.phone) patch.phone = x.phone; else if (x.phone && x.phone !== (patch.phone || keep.phone)) notes.push('Telefon: ' + x.phone);
+      });
+      notes.push('Kompletterat i samma chatt ' + rest.map(function (x) { return dt(x.created_at); }).join(', ') + '.');
+      patch.message = ((keep.message || '') + '\n\n' + notes.join('\n')).slice(0, 2000);
+      update(keep.id, patch).then(function () {
+        return Promise.all(rest.map(function (x) { return sb.from('quote_requests').delete().eq('id', x.id); }));
+      }).then(function () {
+        var gone = rest.map(function (x) { return x.id; });
+        st.leads = st.leads.filter(function (x) { return gone.indexOf(x.id) < 0; });
+        render();
+      }).catch(function () { /* left as two leads; nothing is lost */ });
     });
   }
 

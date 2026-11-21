@@ -86,15 +86,18 @@
     return convo.slice(-24).map(function (m) { return (m.who === 'me' ? 'Besökare: ' : 'Chatten: ') + m.text; }).join('\n').slice(0, 3500);
   }
   // the visitor left an e-mail address or a phone number: an enquiry like the contact form, in the inbox and in the admin
+  var leadsSent = 0;
   function sendLead(q, c, about) {
-    var t0 = Date.now(), to = c.email || c.phone;
-    var body = { _subject: 'Fråga från chatten på hemsidan', fraga: about, konversation: transcript(), sida: location.href };
+    var t0 = Date.now(), to = c.email || c.phone, more = leadsSent > 0;
+    // _chat ties every detail from this conversation to the same enquiry in the admin
+    var body = { _subject: more ? 'Komplettering från chatten på hemsidan' : 'Fråga från chatten på hemsidan', _chat: sid, fraga: more ? 'Komplettering: ' + about : about, konversation: transcript(), sida: location.href };
     if (c.email) body.email = c.email;
     if (c.phone) body.telefon = c.phone;
     fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) {
         if (!r.ok) throw new Error();
-        var thanks = 'Tack! Vi hör av oss på ' + to + ' så snart vi kan, oftast samma dag. Vill du lägga till något kan du skriva det här.';
+        leadsSent++;
+        var thanks = more ? 'Tack, jag har lagt till ' + to + ' på din förfrågan.' : 'Tack! Vi hör av oss på ' + to + ' så snart vi kan, oftast samma dag. Vill du lägga till något kan du skriva det här.';
         say(thanks, 'bot'); logTurn(q, thanks, 'kontakt', Date.now() - t0, true, 'kontakt', true);
         if (window.elevateTrack) window.elevateTrack('chat', 'lämnade kontaktuppgift');
       })

@@ -1559,3 +1559,16 @@ body.mail-app .wmx { min-height: 100vh; border-radius: 0 !important; }
 }
 /* "Kom igång med Business" fits on one line in the narrow four-column cards */
 .plans--four .plan__btn { padding-left: 20px; padding-right: 20px; font-size: 16px; white-space: nowrap; max-width: 100%; }
+/* Articles with our own data: key figures, tables and a method box */
+.prose .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 28px 0; }
+.prose .stat-row__item { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 18px; border-radius: 16px; background: var(--cream-dark, #f6f1e4); }
+.prose .stat-row__item b { font-size: 34px; line-height: 1; letter-spacing: -.03em; color: var(--accent, #1d3b2a); font-variant-numeric: tabular-nums; }
+.prose .stat-row__item span { font-size: 15px; line-height: 1.45; color: #3f4b44; }
+.prose .data-table { overflow-x: auto; margin: 24px 0 8px; border: 1px solid #e6e1d2; border-radius: 14px; }
+.prose .data-table table { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+.prose .data-table th, .prose .data-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee9dc; vertical-align: top; }
+.prose .data-table th { background: #f6f1e4; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #4d5a52; }
+.prose .data-table tr:last-child td { border-bottom: 0; }
+.prose .data-table__note { margin: 0 0 24px; font-size: 14px; color: #6a766e; }
+.prose .method-box { margin: 28px 0; padding: 18px 20px; border-left: 4px solid var(--accent, #1d3b2a); border-radius: 0 14px 14px 0; background: #f3f5f1; font-size: 15.5px; line-height: 1.6; }
+.prose h3 { margin: 28px 0 10px; font-size: 21px; }
