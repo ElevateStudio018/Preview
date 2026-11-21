@@ -1114,6 +1114,8 @@ h2, h3 { margin: 0; font-weight: 400; }
 .dpk__film { margin: 0; }
 .dpk__video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; background: #e9e7e2; box-shadow: 0 50px 90px -50px rgba(18, 39, 27, .55); }
 .dpk__cap { margin: 14px 0 0; font-size: 14px; color: #6b746e; }
+.dpk__video--tall { display: none; aspect-ratio: 4 / 5; }
+@media (max-width: 700px) { .dpk__video--wide { display: none; } .dpk__video--tall { display: block; } }
 .dpk__ex { margin-top: 96px; }
 .dpk__h { margin: 0 0 32px; font-size: 36px; font-weight: 400; letter-spacing: -.02em; }
 .dpk__cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }

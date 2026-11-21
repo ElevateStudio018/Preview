@@ -150,7 +150,8 @@ if (!document.querySelector('link[data-defer]')) document.documentElement.classL
     var filmWatch = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var v = e.target;
-        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else { v.pause(); }
+        // if the phone refuses to start it (low power mode and the like), show the play button instead of a still picture
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { v.controls = true; }); } else { v.pause(); }
       });
     }, { threshold: .15 });
     films.forEach(function (v) { filmWatch.observe(v); });
