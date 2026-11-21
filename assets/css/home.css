@@ -1128,12 +1128,9 @@ h2, h3 { margin: 0; font-weight: 400; }
 .dpk__meta { position: relative; z-index: 4; padding: 26px 28px 28px; background: #fff; }
 .dpk__meta h3 { margin: 0 0 4px; font-size: 24px; font-weight: 500; }
 .dpk__meta p { margin: 0; color: #6b746e; font-size: 15px; }
+.dpk__card--you .dpk__links .btn { height: 50px; padding: 0 22px; font-size: 16px; }
+.dpk__card--you .dpk__links .btn span { height: 50px; }
 .dpk__links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px !important; }
-.dpk__card--you { justify-content: flex-end; gap: 12px; padding: 34px 30px; background: var(--accent, #1d3b2a); color: #fff; text-decoration: none; }
-.dpk__you-k { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
-.dpk__card--you b { font-size: 32px; font-weight: 500; line-height: 1.1; }
-.dpk__card--you > span:not(.btn):not(.dpk__you-k) { color: rgba(253, 251, 245, .82); font-size: 16px; }
-.dpk__card--you .btn { align-self: flex-start; margin-top: 10px; }
 @media (max-width: 1100px) { .dpk__top { grid-template-columns: 1fr; gap: 40px; } .dpk__cards { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 700px) {
   .dpk { padding: 72px 0; }

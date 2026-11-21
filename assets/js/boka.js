@@ -5,6 +5,8 @@
   var pick = document.getElementById('pick');
   var token = decodeURIComponent((location.pathname.split('/boka/')[1] || '').replace(/\/+$/, '')) || 'public';
   var preset = Number(new URLSearchParams(location.search).get('v')) || 0;
+  // On the public page the visitor picks who to meet (Carl or Isak); ?h=isak preselects
+  var hostPick = (new URLSearchParams(location.search).get('h') || '').toLowerCase();
   // From the order page: the package the customer picked follows the booking
   var PLANS = { starter: 'Starter', pro: 'Pro', business: 'Business', premium: 'Premium' };
   var plan = PLANS[(new URLSearchParams(location.search).get('plan') || '').toLowerCase()] || '';
@@ -28,6 +30,16 @@
       : (who ? who + ' har föreslagit' : 'Vi har föreslagit') + ' ett kort möte om er hemsida. Tryck på en ledig tid så är det bokat.';
     document.getElementById('pills').innerHTML = '<span class="pill">' + d.minutes + ' min</span><span class="pill">' + esc(d.type) + '</span>' + (plan && d.public ? '<span class="pill">Paket ' + plan + '</span>' : '');
     document.title = 'Välj en tid' + (who ? ' med ' + who : '') + ' – Elevate Studio';
+    // choose who to meet (public page only)
+    var picker = document.getElementById('hostpick');
+    if (d.public && d.hosts && d.hosts.length > 1) {
+      if (!picker) { picker = document.createElement('div'); picker.id = 'hostpick'; picker.className = 'hostpick'; document.getElementById('pills').after(picker); }
+      picker.innerHTML = '<p class="hostpick__k">Vem vill du träffa?</p><div class="hostpick__opts" role="radiogroup">' + d.hosts.map(function (h) {
+        var on = h.key === d.hostKey;
+        return '<button type="button" role="radio" aria-checked="' + on + '" class="hostpick__o' + (on ? ' is-on' : '') + '" data-h="' + esc(h.key) + '"><span class="hostpick__av">' + esc(h.first.charAt(0)) + '</span><span><b>' + esc(h.name) + '</b><small>' + esc(h.role) + '</small></span></button>';
+      }).join('') + '</div>';
+      picker.querySelectorAll('[data-h]').forEach(function (b) { b.addEventListener('click', function () { if (b.dataset.h === st.data.hostKey) return; hostPick = b.dataset.h; st.at = 0; load(); }); });
+    }
     var host = document.getElementById('host');
     if (d.host) {
       var ph = '<svg class="host__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>';
@@ -74,7 +86,7 @@
     if (st.data.public) {
       var f = document.getElementById('who');
       if (f && !f.reportValidity()) return;
-      body.name = st.who.name.trim(); body.email = st.who.email.trim(); body.company = st.who.company.trim(); body.phone = st.who.phone.trim(); body.web = f ? document.getElementById('w-web').value : ''; if (plan) body.plan = plan;
+      body.name = st.who.name.trim(); body.email = st.who.email.trim(); body.company = st.who.company.trim(); body.phone = st.who.phone.trim(); body.web = f ? document.getElementById('w-web').value : ''; if (plan) body.plan = plan; body.host = st.data.hostKey || hostPick || '';
       if (!body.name || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(body.email)) { document.getElementById('msg').textContent = 'Fyll i namn och en riktig e-postadress så vi kan skicka bekräftelsen.'; return; }
     }
     st.busy = true;
@@ -118,7 +130,7 @@
   }
 
   function load(message) {
-    fetch('/api/booking/info?t=' + encodeURIComponent(token)).then(function (r) { return r.json(); }).then(function (d) {
+    fetch('/api/booking/info?t=' + encodeURIComponent(token) + (hostPick ? '&h=' + encodeURIComponent(hostPick) : '')).then(function (r) { return r.json(); }).then(function (d) {
       if (!d.ok) return fail(d.error);
       st.data = d; fillHero(d); init();
       // A time clicked in the mail is booked right away, no extra step
