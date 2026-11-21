@@ -213,57 +213,215 @@
     // 5. which parts the start page has, in which order, and the menu
     applySections(doc);
     applyNav(doc);
+    applyExtras(doc);
 
     var dom = email.indexOf('@') > 0 ? email.split('@')[1] : (shortName ? shortName.toLowerCase().replace(/[åä]/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '') + '.se' : 'dittforetag.se');
     $('dh-url').textContent = dom;
   }
 
-  // ---- the start page's parts: show/hide and move up/down
+  // ---- the start page's parts: show/hide, move, background and spacing per part, and new parts to add
+  var BG = [['', 'Mallens'], ['v', 'Vit'], ['t', 'Tonad'], ['f', 'Färg'], ['m', 'Mörk']];
+  var PAD = [['', 'Mallens'], ['k', 'Kompakt'], ['l', 'Luftig']];
+  var BLOCKS = {
+    cta: 'Kontaktband', siffror: 'Siffror', omdomen: 'Kundomdömen', faq: 'Vanliga frågor', bildtext: 'Bild och text', oppet: 'Hitta hit och öppettider', erbjudande: 'Erbjudande',
+  };
+  var esc = function (t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
+  function isStart(doc) { var path = doc.location.pathname; return /\/(index\.html)?$/.test(path); }
   function sections(doc) {
     var main = doc.querySelector('main'); if (!main) return [];
-    if (!main.__dhSecs) main.__dhSecs = $$(':scope > section, :scope > div', main).filter(function (s) { return !s.classList.contains('hero') && s.offsetHeight > 40; });
+    if (!main.__dhSecs) main.__dhSecs = $$(':scope > section, :scope > div', main).filter(function (x) { return !x.classList.contains('hero') && !x.classList.contains('dhb') && x.offsetHeight > 40; });
     return main.__dhSecs;
   }
-  var label = function (s, i) {
-    var h = s.querySelector('h2, h3'), e = s.querySelector('.etikett');
-    var t = (h && h.textContent.trim()) || s.getAttribute('aria-label') || (e && e.textContent.trim()) || 'Del ' + (i + 1);
-    return t.length > 44 ? t.slice(0, 42) + '…' : t;
-  };
-  function applySections(doc) {
-    var secs = sections(doc); if (!secs.length) return;
-    if (!secState || secState.length !== secs.length) secState = secs.map(function (s, i) { return { i: i, on: true }; });
-    var main = doc.querySelector('main');
-    secState.forEach(function (st) { var s = secs[st.i]; if (!s) return; main.appendChild(s); s.style.display = st.on ? '' : 'none'; });
-    renderSections(secs);
+  function blockHtml(doc, type) {
+    var o = originals(doc), phone = val('telefon') || o.phone, email = val('epost') || o.email, area = val('ort') || o.area;
+    var pic = doc.querySelector('main section:not(.hero) img'), src = pic ? (pic.currentSrc || pic.src) : '';
+    switch (type) {
+      case 'cta': return '<div class="wrap"><div><h2>Behöver ni hjälp? Hör av er i dag</h2><p>Berätta vad ni behöver hjälp med, så återkommer vi med ett förslag.</p></div><div class="dhb-btns"><a class="knapp knapp-primar" href="om-oss.html#kontakt">Begär offert</a><a class="knapp dhb-ghost" data-dhb-tel href="tel:">Ring <span data-dhb-phone></span></a></div></div>';
+      case 'siffror': return '<div class="wrap"><h2>Det här är vi</h2><p>Klicka på siffrorna och skriv era egna (slå på Skriv direkt i sidan).</p><div class="dhb-grid"><div class="dhb-card dhb-num"><b>XX</b><span>år i branschen</span></div><div class="dhb-card dhb-num"><b>XXX</b><span>uppdrag om året</span></div><div class="dhb-card dhb-num"><b>XX h</b><span>till första svar</span></div></div></div>';
+      case 'omdomen': return '<div class="wrap"><h2>Vad kunderna säger</h2><div class="dhb-grid">' + [1, 2, 3].map(function () { return '<figure class="dhb-card dhb-quote"><blockquote>”Här visas ett omdöme från en av era kunder. Klicka och skriv det riktiga.”</blockquote><figcaption>Kundens namn, ort</figcaption></figure>'; }).join('') + '</div></div>';
+      case 'faq': return '<div class="wrap dhb-narrow"><h2>Vanliga frågor</h2>' + ['Vad kostar det?', 'Hur snabbt kan ni börja?', 'Vilka områden arbetar ni i?', 'Hur går det till?'].map(function (q) { return '<details><summary>' + q + '</summary><p>Skriv ert svar här – slå på Skriv direkt i sidan och klicka på texten.</p></details>'; }).join('') + '</div>';
+      case 'bildtext': return '<div class="wrap dhb-split">' + (src ? '<img src="' + esc(src) + '" alt="">' : '<div class="dhb-ph"></div>') + '<div><h2>Om oss</h2><p>Berätta kort om företaget, hur ni arbetar och vad kunderna kan räkna med. Den här texten och bilden byter ni genom att klicka på dem.</p><p><a class="knapp knapp-primar" href="om-oss.html">Läs mer om oss</a></p></div></div>';
+      case 'oppet': return '<div class="wrap"><h2>Hitta hit</h2><div class="dhb-grid"><div class="dhb-card"><h3>Adress</h3><p>Gatan 1<br><span data-dhb-area>' + esc(area) + '</span></p></div><div class="dhb-card"><h3>Öppettider</h3><p data-dhb-hours>' + esc(val('tider') || o.hours || 'Mån–fre 7–16') + '</p></div><div class="dhb-card"><h3>Kontakt</h3><p><span data-dhb-phone></span><br><span data-dhb-mail>' + esc(email) + '</span></p></div></div></div>';
+      case 'erbjudande': return '<div class="wrap"><h2>Erbjudande – skriv ert erbjudande här</h2><a class="knapp knapp-primar" href="om-oss.html#kontakt">Passa på</a></div>';
+    }
+    return '';
   }
-  function renderSections(secs) {
+  function block(doc, type) {
+    var m = doc.__dhBlocks || (doc.__dhBlocks = {});
+    if (!m[type]) { var el = doc.createElement('section'); el.className = 'dhb dhb-' + type; el.innerHTML = blockHtml(doc, type); m[type] = el; }
+    return m[type];
+  }
+  function elOf(doc, st) { return typeof st.k === 'number' ? sections(doc)[st.k] : block(doc, st.k); }
+  function label(doc, st) {
+    if (typeof st.k !== 'number') return BLOCKS[st.k] + ' (ny)';
+    var x = sections(doc)[st.k]; if (!x) return '';
+    var h = x.querySelector('h2, h3'), e = x.querySelector('.etikett');
+    var t = (h && h.textContent.trim()) || x.getAttribute('aria-label') || (e && e.textContent.trim()) || 'Del ' + (st.k + 1);
+    return t.length > 40 ? t.slice(0, 38) + '…' : t;
+  }
+  function applySections(doc) {
+    var note = $('dh-secs-note');
+    if (!isStart(doc)) { note.hidden = false; $('dh-secs').hidden = true; return; }
+    note.hidden = true; $('dh-secs').hidden = false;
+    var secs = sections(doc); if (!secs.length) return;
+    var base = secState ? secState.filter(function (x) { return typeof x.k === 'number'; }).length : -1;
+    if (!secState || base !== secs.length) secState = secs.map(function (x, i) { return { k: i, on: true, bg: '', pad: '' }; });
+    var main = doc.querySelector('main');
+    $$('.dhb', main).forEach(function (x) { if (!secState.some(function (st) { return st.k === x.className.replace(/.*dhb-(\w+).*/, '$1'); })) x.remove(); });
+    secState.forEach(function (st) {
+      var x = elOf(doc, st); if (!x) return;
+      main.appendChild(x);
+      x.style.display = st.on ? '' : 'none';
+      BG.forEach(function (o) { if (o[0]) x.classList.toggle('dh-bg-' + o[0], st.bg === o[0]); });
+      PAD.forEach(function (o) { if (o[0]) x.classList.toggle('dh-pad-' + o[0], st.pad === o[0]); });
+    });
+    // live details in the new parts
+    var o = originals(doc), phone = val('telefon') || o.phone;
+    $$('[data-dhb-phone]', main).forEach(function (x) { x.textContent = phone; });
+    $$('[data-dhb-tel]', main).forEach(function (x) { x.setAttribute('href', 'tel:' + phone.replace(/[^\d+]/g, '')); });
+    $$('[data-dhb-area]', main).forEach(function (x) { x.textContent = val('ort') || o.area; });
+    $$('[data-dhb-hours]', main).forEach(function (x) { if (val('tider')) x.textContent = val('tider'); });
+    $$('[data-dhb-mail]', main).forEach(function (x) { x.textContent = val('epost') || o.email; });
+    if (!doc.getElementById('dh-blocks')) { var bs = doc.createElement('style'); bs.id = 'dh-blocks'; bs.textContent = BLOCK_CSS; doc.head.appendChild(bs); }
+    renderSections(doc);
+  }
+  var openRow = -1;
+  function renderSections(doc) {
     var ol = $('dh-secs'); if (!ol) return;
     var html = secState.map(function (st, pos) {
-      var s = secs[st.i]; if (!s) return '';
-      return '<li class="dh-sec' + (st.on ? '' : ' is-off') + '"><label><input type="checkbox" data-sec-on="' + pos + '"' + (st.on ? ' checked' : '') + '><span>' + label(s, st.i).replace(/</g, '&lt;') + '</span></label>' +
+      var opts = '<div class="dh-sec__opts"><span>Bakgrund</span>' + BG.map(function (o) { return '<button type="button" data-sec-bg="' + pos + ':' + o[0] + '"' + (st.bg === o[0] ? ' class="is-on"' : '') + '>' + o[1] + '</button>'; }).join('') +
+        '<span>Luft</span>' + PAD.map(function (o) { return '<button type="button" data-sec-pad="' + pos + ':' + o[0] + '"' + (st.pad === o[0] ? ' class="is-on"' : '') + '>' + o[1] + '</button>'; }).join('') +
+        (typeof st.k !== 'number' ? '<button type="button" class="dh-sec__del" data-sec-del="' + pos + '">Ta bort delen</button>' : '') + '</div>';
+      return '<li class="dh-sec' + (st.on ? '' : ' is-off') + (openRow === pos ? ' is-open' : '') + (typeof st.k !== 'number' ? ' is-new' : '') + '"><div class="dh-sec__row"><label><input type="checkbox" data-sec-on="' + pos + '"' + (st.on ? ' checked' : '') + '><span>' + esc(label(doc, st)) + '</span></label>' +
+        '<button type="button" data-sec-more="' + pos + '" aria-label="Inställningar för delen" aria-expanded="' + (openRow === pos) + '">⋯</button>' +
         '<button type="button" data-sec-up="' + pos + '" aria-label="Flytta upp"' + (pos === 0 ? ' disabled' : '') + '>↑</button>' +
-        '<button type="button" data-sec-down="' + pos + '" aria-label="Flytta ner"' + (pos === secState.length - 1 ? ' disabled' : '') + '>↓</button></li>';
+        '<button type="button" data-sec-down="' + pos + '" aria-label="Flytta ner"' + (pos === secState.length - 1 ? ' disabled' : '') + '>↓</button></div>' + opts + '</li>';
     }).join('');
     if (ol.__html !== html) { ol.innerHTML = html; ol.__html = html; }
+    var used = secState.map(function (x) { return x.k; });
+    $$('#dh-addblock option').forEach(function (op) { op.disabled = used.indexOf(op.value) >= 0; });
   }
+  function secChanged(pos) { var doc = frameDoc(); if (doc) applySections(doc); save(); if (pos != null) scrollToSection(pos); }
   $('dh-secs').addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b) return;
-    var up = b.dataset.secUp, down = b.dataset.secDown, i = +(up !== undefined ? up : down), j = up !== undefined ? i - 1 : i + 1;
-    if (j < 0 || j >= secState.length) return;
+    var bt = e.target.closest('button'); if (!bt) return;
+    var d = bt.dataset;
+    if (d.secMore !== undefined) { openRow = openRow === +d.secMore ? -1 : +d.secMore; secChanged(); return; }
+    if (d.secBg !== undefined || d.secPad !== undefined) {
+      var parts = (d.secBg !== undefined ? d.secBg : d.secPad).split(':'), st = secState[+parts[0]];
+      st[d.secBg !== undefined ? 'bg' : 'pad'] = parts[1]; secChanged(+parts[0]); return;
+    }
+    if (d.secDel !== undefined) { secState.splice(+d.secDel, 1); openRow = -1; secChanged(); return; }
+    var up = d.secUp, i = +(up !== undefined ? up : d.secDown), j = up !== undefined ? i - 1 : i + 1;
+    if (isNaN(i) || j < 0 || j >= secState.length) return;
     var t = secState[i]; secState[i] = secState[j]; secState[j] = t;
-    var doc = frameDoc(); if (doc) applySections(doc); save();
+    if (openRow === i) openRow = j; else if (openRow === j) openRow = i;
+    secChanged(j);
     var nb = $('dh-secs').querySelector('[data-sec-' + (up !== undefined ? 'up' : 'down') + '="' + j + '"]'); if (nb && !nb.disabled) nb.focus();
-    scrollToSection(secState[j].i);
   });
   $('dh-secs').addEventListener('change', function (e) {
     var cb = e.target.closest('[data-sec-on]'); if (!cb) return;
     secState[+cb.dataset.secOn].on = cb.checked;
-    var doc = frameDoc(); if (doc) applySections(doc); save();
-    if (cb.checked) scrollToSection(secState[+cb.dataset.secOn].i);
+    secChanged(cb.checked ? +cb.dataset.secOn : null);
   });
-  function scrollToSection(i) { var doc = frameDoc(); if (!doc) return; var s = sections(doc)[i]; if (s && s.style.display !== 'none') s.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  var secCode = function () { return secState ? secState.map(function (s) { return (s.on ? '' : '~') + s.i; }).join('.') : ''; };
-  var secDefault = function () { return !secState || secState.every(function (s, i) { return s.on && s.i === i; }); };
+  $('dh-addbtn').addEventListener('click', function () {
+    var type = $('dh-addblock').value, doc = frameDoc();
+    if (!type || !BLOCKS[type] || !doc || !secState) return;
+    if (secState.some(function (x) { return x.k === type; })) return;
+    secState.splice(Math.min(2, secState.length), 0, { k: type, on: true, bg: '', pad: '' });
+    $('dh-addblock').value = '';
+    secChanged(Math.min(2, secState.length - 1));
+  });
+  function scrollToSection(pos) { var doc = frameDoc(); if (!doc || !secState[pos]) return; var x = elOf(doc, secState[pos]); if (x && x.style.display !== 'none') x.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  var secCode = function () {
+    return secState ? secState.map(function (x) { var c = (x.on ? '' : '~') + (typeof x.k === 'number' ? x.k : '+' + x.k); if (x.bg || x.pad) c += ':' + x.bg; if (x.pad) c += ':' + x.pad; return c; }).join('.') : '';
+  };
+  var secDefault = function () { return !secState || secState.every(function (x, i) { return x.on && x.k === i && !x.bg && !x.pad; }); };
+  function parseSec(code, n) {
+    var arr = code.split('.').map(function (x) {
+      var on = x.charAt(0) !== '~', parts = x.replace('~', '').split(':'), k = parts[0].charAt(0) === '+' ? parts[0].slice(1) : +parts[0];
+      return { k: k, on: on, bg: parts[1] || '', pad: parts[2] || '' };
+    });
+    var nums = arr.filter(function (x) { return typeof x.k === 'number'; });
+    var ok = nums.length === n && nums.every(function (x) { return x.k >= 0 && x.k < n; }) && arr.every(function (x) { return typeof x.k === 'number' || BLOCKS[x.k]; });
+    return ok ? arr : null;
+  }
+  var BLOCK_CSS = '.dhb{padding-block:clamp(56px,7vw,104px);background:var(--c-bg);color:var(--c-ink)}' +
+    '.dhb h2{margin:0 0 14px;font-family:var(--font-r);font-weight:var(--w-r);letter-spacing:var(--tr-r);text-transform:var(--tt-r);color:var(--c-rubrik);font-size:calc(clamp(28px,3.4vw,46px)*var(--skala-r,1));line-height:1.08}' +
+    '.dhb h3{margin:0 0 8px;font-family:var(--font-r);font-size:20px;color:var(--c-rubrik)}' +
+    '.dhb p{margin:0 0 12px;color:var(--c-mut);font-size:var(--t-text,17px);line-height:1.6}' +
+    '.dhb-cta{background:var(--c-p)}.dhb-cta h2,.dhb-cta p{color:var(--c-p-ink)}' +
+    '.dhb-cta .wrap,.dhb-erbjudande .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}' +
+    '.dhb-btns{display:flex;flex-wrap:wrap;gap:10px}.dhb-ghost{background:transparent!important;border:1.5px solid currentColor!important;color:var(--c-p-ink)!important}' +
+    '.dhb-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}' +
+    '.dhb-card{margin:0;padding:28px;border-radius:var(--r-card,16px);background:var(--c-yta)}' +
+    '.dhb-num b{display:block;margin-bottom:6px;font-family:var(--font-r);font-weight:var(--w-r);font-size:calc(56px*var(--skala-r,1));line-height:1;color:var(--c-siffra,var(--c-p))}.dhb-num span{color:var(--c-mut)}' +
+    '.dhb-quote blockquote{margin:0 0 16px;font-size:18px;line-height:1.5;color:var(--c-ink)}.dhb-quote figcaption{font-weight:600;color:var(--c-mut)}' +
+    '.dhb-narrow{max-width:860px}.dhb-faq details{padding:18px 0;border-top:1px solid var(--c-line)}.dhb-faq summary{cursor:pointer;font-weight:600;font-size:19px;color:var(--c-rubrik)}.dhb-faq details p{margin-top:10px}' +
+    '.dhb-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}.dhb-split img,.dhb-ph{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-img,16px);background:var(--c-yta)}' +
+    '.dhb-erbjudande{padding-block:30px;background:var(--c-a)}.dhb-erbjudande h2{margin:0;font-size:calc(26px*var(--skala-r,1));color:var(--c-a-ink)}' +
+    '@media(max-width:800px){.dhb-grid,.dhb-split{grid-template-columns:1fr}}' +
+    '.dh-bg-v{--c-yta:var(--c-ton);background:var(--c-bg)!important}' +
+    '.dh-bg-t{--c-bg:var(--c-yta);background:var(--c-yta)!important}' +
+    '.dh-bg-f{--c-bg:var(--c-p);--c-yta:rgba(255,255,255,.1);--c-ton:rgba(255,255,255,.1);--c-ink:var(--c-p-ink);--c-rubrik:var(--c-p-ink);--c-mut:var(--c-p-ink);--c-line:rgba(255,255,255,.22);--c-etikett:var(--c-p-ink);--c-siffra:var(--c-p-ink);--c-knapp:var(--c-p-ink);--c-knapp2:var(--c-p-ink);--c-knapp-ink:var(--c-p);background:var(--c-p)!important;color:var(--c-p-ink)}' +
+    '.dh-bg-m{--c-bg:var(--c-dark);--c-yta:rgba(255,255,255,.07);--c-ton:rgba(255,255,255,.07);--c-ink:#eef0ec;--c-rubrik:#fff;--c-mut:rgba(255,255,255,.74);--c-line:rgba(255,255,255,.16);--c-etikett:#fff;--c-siffra:#fff;background:var(--c-dark)!important;color:#eef0ec}' +
+    '.dh-bg-f :is(h2,h3,p,.etikett),.dh-bg-m :is(h2,h3,.etikett){color:inherit}' +
+    '.dhb-cta .knapp-primar,.dh-bg-f .knapp-primar{background:var(--c-p-ink)!important;color:var(--c-p)!important;border-color:var(--c-p-ink)!important}' +
+    '.dh-pad-k{padding-block:36px!important}.dh-pad-l{padding-block:150px!important}' +
+    '.dhx-banner{position:relative;z-index:60;padding:10px 20px;background:var(--c-a);color:var(--c-a-ink);font:600 14px/1.4 var(--font-t);text-align:center}' +
+    '.dhx-ring{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:8px;padding:14px 20px;border-radius:999px;background:var(--c-knapp,var(--c-p));color:var(--c-knapp-ink,#fff);font:700 15px var(--font-t);text-decoration:none;box-shadow:0 12px 30px -10px rgba(0,0,0,.45)}' +
+    '.dhx-chat{position:fixed;right:20px;bottom:20px;z-index:91;width:60px;height:60px;border:0;border-radius:50%;background:var(--c-p);color:var(--c-p-ink);cursor:pointer;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);display:grid;place-items:center}' +
+    '.dhx-ring~.dhx-chat{bottom:86px}' +
+    '.dhx-chatbox{position:fixed;right:20px;bottom:96px;z-index:92;width:320px;max-width:calc(100vw - 40px);border-radius:18px;background:#fff;color:#14171b;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);font:15px/1.45 var(--font-t);overflow:hidden}' +
+    '.dhx-ring~.dhx-chatbox{bottom:162px}.dhx-chatbox[hidden]{display:none}' +
+    '.dhx-chatbox header{padding:14px 16px;background:var(--c-p);color:var(--c-p-ink);font-weight:700}.dhx-chatbox p{margin:14px 16px;padding:10px 12px;border-radius:12px 12px 12px 4px;background:#f1f2ef}' +
+    '.dhx-chatbox input{display:block;width:calc(100% - 32px);margin:0 16px 10px;padding:10px 12px;border:1px solid #ddd;border-radius:10px;font:inherit}.dhx-chatbox small{display:block;margin:0 16px 14px;color:#777;font-size:12px}';
+
+  // ---- extras on the page: offer bar at the top, call button, chat bubble
+  function applyExtras(doc) {
+    var o = originals(doc), phone = val('telefon') || o.phone, body = doc.body;
+    var ban = doc.querySelector('.dhx-banner'), btxt = val('banner');
+    if (btxt) { if (!ban) { ban = doc.createElement('div'); ban.className = 'dhx-banner'; body.insertBefore(ban, body.firstChild); } ban.textContent = btxt; }
+    else if (ban) ban.remove();
+    var ring = doc.querySelector('.dhx-ring');
+    if (val('ring')) {
+      if (!ring) { ring = doc.createElement('a'); ring.className = 'dhx-ring'; body.appendChild(ring); }
+      ring.href = 'tel:' + phone.replace(/[^\d+]/g, '');
+      ring.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Ring ' + esc(phone);
+    } else if (ring) ring.remove();
+    var chat = doc.querySelector('.dhx-chat'), box = doc.querySelector('.dhx-chatbox');
+    if (val('chatt')) {
+      if (!chat) {
+        chat = doc.createElement('button'); chat.type = 'button'; chat.className = 'dhx-chat'; chat.setAttribute('aria-label', 'Chatta med oss');
+        chat.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>';
+        box = doc.createElement('div'); box.className = 'dhx-chatbox'; box.hidden = true;
+        chat.addEventListener('click', function () { box.hidden = !box.hidden; });
+        body.appendChild(chat); body.appendChild(box);
+      }
+      var nm = val('namn') || o.name;
+      box.innerHTML = '<header>' + esc(nm) + '</header><p>Hej! Vad kan vi hjälpa till med? Fråga om priser, tider eller vad som helst.</p><input placeholder="Skriv en fråga …" aria-label="Fråga"><small>Så här kan er AI-chatt se ut – den ingår i paketet Pro.</small>';
+    } else { if (chat) chat.remove(); if (box) box.remove(); }
+    // keep the call button before the chat in the page, so the chat sits above it
+    if (ring && chat && ring.compareDocumentPosition(chat) & 2) body.insertBefore(ring, chat);
+    if (!doc.getElementById('dh-blocks')) { var bs = doc.createElement('style'); bs.id = 'dh-blocks'; bs.textContent = BLOCK_CSS; doc.head.appendChild(bs); }
+  }
+
+  // ---- which page of the example site the preview shows
+  var pageSel = $('dh-page'), pendingPage = '';
+  function pageOf(doc) { var f = doc.location.pathname.split('/').pop(); return f || 'index.html'; }
+  function syncPages(doc) {
+    var cur = pageOf(doc);
+    if (cur === 'index.html' || !pageSel.__mall || pageSel.__mall !== current()) {
+      if (cur === 'index.html') {
+        var seen = { 'index.html': 1 }, opts = [['index.html', 'Startsidan']];
+        $$('.head .nav a, .meny-huvud a', doc).forEach(function (a) { var h = (a.getAttribute('href') || '').split('#')[0]; if (h && /\.html$/.test(h) && !seen[h]) { seen[h] = 1; opts.push([h, (a.__dhOrig || a.textContent).trim()]); } });
+        pageSel.innerHTML = opts.map(function (x) { return '<option value="' + esc(x[0]) + '">' + esc(x[1]) + '</option>'; }).join('');
+        pageSel.__mall = current();
+      }
+    }
+    if (!$$('option', pageSel).some(function (op) { return op.value === cur; })) { var op = document.createElement('option'); op.value = cur; op.textContent = cur.replace('.html', ''); pageSel.appendChild(op); }
+    pageSel.value = cur;
+  }
+  pageSel.addEventListener('change', function () { frame.src = base + 'exempel/' + current() + '/' + pageSel.value; save(); });
 
   // ---- the menu: rename links, or empty one to hide it
   function navLinks(doc) { return $$('.head .nav a', doc); }
@@ -339,23 +497,21 @@
   });
   function setColour(group, hex) { var inp = form.elements[group + '-egen']; inp.value = hex; egenRadio[group].checked = true; marks(); }
 
-  function load() { secState = null; navState = {}; $('dh-navs').__key = ''; frame.src = base + 'exempel/' + current() + '/index.html'; }
+  function load() { secState = null; navState = {}; openRow = -1; $('dh-navs').__key = ''; frame.src = base + 'exempel/' + current() + '/' + (pendingPage && /^[a-z0-9-]+\.html$/.test(pendingPage) ? pendingPage : 'index.html'); pendingPage = ''; }
   frame.addEventListener('load', function () {
     var doc = frameDoc(); if (!doc) return;
     if (pendingSec) { // a shared link: the parts' order for this template
-      var secs = sections(doc), arr = pendingSec.split('.').map(function (x) { return { i: +x.replace('~', ''), on: x.charAt(0) !== '~' }; });
-      if (arr.length === secs.length && arr.every(function (s) { return s.i >= 0 && s.i < secs.length; })) secState = arr;
-      pendingSec = '';
+      if (isStart(doc)) { var arr = parseSec(pendingSec, sections(doc).length); if (arr) secState = arr; pendingSec = ''; }
     }
     if (pendingNav) { pendingNav.split('|').forEach(function (x) { var k = x.indexOf('~'); if (k > 0) navState[+x.slice(0, k)] = x.slice(k + 1); }); pendingNav = ''; }
-    setupEdit(doc); apply();
+    setupEdit(doc); syncPages(doc); apply(); save();
   });
 
   // ---- settings in the address (not the images), so a design can be shared or sent with an enquiry
   var KEYS = ['namn', 'bransch', 'ort', 'rubrik', 'ingress', 'slogan', 'telefon', 'epost', 'tider', 'knapptext', 'tjanst1', 'tjanst2', 'tjanst3',
     'mall', 'farg', 'farg-egen', 'accent', 'accent-egen', 'typsnitt', 'tema', 'horn', 'knapp', 'meny', 'rubrikstil', 'motiv',
     'herotext', 'kursiv', 'kort', 'nyheter', 'skala', 'text', 'bredd',
-    'loggtext', 'loggfont', 'loggversal', 'loggskala', 'vikt', 'sparr', 'navversal', 'btnversal', 'ljus', 'topprad', 'sok', 'rorelse'];
+    'loggtext', 'loggfont', 'loggversal', 'loggskala', 'vikt', 'sparr', 'navversal', 'btnversal', 'ljus', 'topprad', 'sok', 'rorelse', 'banner', 'ring', 'chatt'];
   var DEFAULTS = { mall: 'saltvind', skala: '100', text: '100', bredd: '1360', loggskala: '100' };
   var pendingSec = '';
   function save() {
@@ -368,6 +524,7 @@
     });
     if (!secDefault()) q.set('delar', secCode());
     if (navCode()) q.set('nav', navCode());
+    if (pageSel.value && pageSel.value !== 'index.html') q.set('sida', pageSel.value);
     $$('.dh-cc input[type=color]').forEach(function (inp) { if (inp.dataset.on) q.set(inp.name, inp.value); });
     try { history.replaceState(null, '', location.pathname + location.search + (q.toString() ? '#' + q.toString() : '')); } catch (e) {}
     var msg = 'Hej! Jag testade "Se hur din hemsida kan se ut" och vill ha en offert på något liknande. Min design: ' + location.href;
@@ -382,6 +539,7 @@
     q.forEach(function (v, k) {
       if (k === 'delar') { pendingSec = v; return; }
       if (k === 'nav') { pendingNav = v; return; }
+      if (k === 'sida') { pendingPage = v; return; }
       if (CC[k]) { var ci = form.elements[k]; if (ci && isHex(v)) { ci.value = v; ci.dataset.on = '1'; } return; }
       if (KEYS.indexOf(k) < 0) return;
       var el = form.elements[k]; if (!el) return;
@@ -393,13 +551,13 @@
 
   var timer;
   form.addEventListener('input', function (e) {
-    if (e.target.name === 'mall' || e.target.type === 'file' || e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox) return;
+    if (e.target.name === 'mall' || e.target.type === 'file' || e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox || e.target === pageSel || e.target.id === 'dh-addblock') return;
     if (CC[e.target.name]) e.target.dataset.on = '1';
     marks();
     clearTimeout(timer); timer = setTimeout(function () { apply(); save(); }, 100);
   });
   form.addEventListener('change', function (e) {
-    if (e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox) return;
+    if (e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox || e.target === pageSel || e.target.id === 'dh-addblock') return;
     if (CC[e.target.name]) { e.target.dataset.on = '1'; apply(); save(); return; }
     if (e.target.name === 'mall') { marks(); load(); save(); }
     else if (e.target.tagName === 'SELECT' || e.target.type === 'radio') { marks(); apply(); save(); }

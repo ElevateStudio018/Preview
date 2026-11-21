@@ -1441,6 +1441,19 @@ body.mail-app .wmx { min-height: 100vh; border-radius: 0 !important; }
 .dh__screen.is-phone iframe { left: 50%; top: 20px; width: 390px; height: 760px !important; transform: translateX(-50%) scale(var(--dh-ps, .9)); transform-origin: 50% 0; border-radius: 18px; box-shadow: 0 0 0 8px #1f2023; }
 .dh__note { margin: 12px 0 0; font-size: 13px; color: #6b746e; }
 .dh-jump { display: none; }
+.dh-secs .dh-sec { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
+.dh-sec__row { display: flex; align-items: center; gap: 4px; padding: 6px 6px 6px 12px; min-width: 0; }
+.dh-sec.is-new { border-color: #c9d8c9; background: #f6faf5; }
+.dh-sec__opts { display: none; flex-wrap: wrap; align-items: center; gap: 5px; padding: 4px 12px 12px; }
+.dh-sec.is-open .dh-sec__opts { display: flex; }
+.dh-sec__opts span { width: 100%; margin-top: 4px; font-size: 12px; font-weight: 700; color: #6b746e; }
+.dh-secs .dh-sec__opts button { width: auto; height: auto; padding: 6px 10px; border: 1.5px solid #e0d9c6; border-radius: 999px; background: #fff; font: inherit; font-size: 12px; font-weight: 600; color: #3c4740; }
+.dh-secs .dh-sec__opts button.is-on { border-color: var(--accent, #1d3b2a); background: var(--accent, #1d3b2a); color: #fdfbf5; }
+.dh-secs .dh-sec__opts .dh-sec__del { margin-top: 6px; border-color: #e7c3c3; color: #9b2c2c; }
+.dh-addrow { display: flex; gap: 8px; }
+.dh-addrow select { flex: 1; min-width: 0; padding: 10px 12px; border: 1.5px solid #e0d9c6; border-radius: 12px; background: #fff; font: inherit; font-size: 14px; }
+.dh__page { flex: none; max-width: 170px; padding: 6px 8px; border: 0; border-radius: 8px; background: #2c2e32; color: #ddd; font: inherit; font-size: 13px; }
+
 .dh-ccs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .dh-cc { display: flex; align-items: center; gap: 6px; padding: 6px 6px 6px 8px; border: 1.5px solid #e9e3d3; border-radius: 12px; min-width: 0; }
 .dh-cc.is-on { border-color: var(--accent, #1d3b2a); }
@@ -1516,6 +1529,7 @@ body.mail-app .wmx { min-height: 100vh; border-radius: 0 !important; }
   .dh-tpls { grid-template-columns: repeat(3, 1fr); } .dh-fonts { grid-template-columns: repeat(2, 1fr); }
   .dh-row3 { grid-template-columns: 1fr; }
   .dh-ccs { grid-template-columns: 1fr; }
+  .dh__page { max-width: 120px; }
   .dh-tabs button { font-size: 13px; padding: 10px 2px; }
   .dh__price { flex-wrap: wrap; } .dh__price b { font-size: 17px; }
   .dh-jump { position: fixed; left: 16px; bottom: 22px; z-index: 40; display: block; padding: 13px 22px; border-radius: 999px; background: var(--accent, #1d3b2a); color: #fdfbf5; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 14px 30px -12px rgba(18, 39, 27, .6); transform: translateY(100px); transition: transform .25s; }
