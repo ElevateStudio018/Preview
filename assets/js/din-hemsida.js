@@ -1,31 +1,37 @@
-// "Se hur din hemsida kan se ut": the visitor fills in their company, picks colours, fonts and style and can add a logo
-// and a photo; one of our example sites (same origin, in a frame) is rewritten live. Nothing is saved or sent – the
-// settings (not the images) live in the address, so the design can be shared or sent along with an enquiry.
+// "Se hur din hemsida kan se ut": the visitor fills in their company, picks colours, fonts and style, adds a logo and
+// photos, chooses which parts the start page has and can even type straight into the page; one of our example sites
+// (same origin, in a frame) is rewritten live. Nothing is saved or sent – the settings (not the images or the typed
+// text) live in the address, so the design can be shared or sent along with an enquiry.
 (function () {
   var form = document.getElementById('dh-form');
   var frame = document.getElementById('dh-frame');
   var screen = document.getElementById('dh-screen');
   if (!form || !frame || !screen) return;
   var base = frame.dataset.base || '';
-  var imgs = { logga: '', bild: '' }; // data URLs, only in this tab
+  var imgs = { logga: '', bild: [] }; // data URLs, only in this tab
+  var secState = null; // [{i, on}] for the start page's parts, in the chosen order
 
   // ---- helpers
+  var $ = function (id) { return document.getElementById(id); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
   var val = function (n) {
     var el = form.elements[n]; if (!el) return '';
     if (el.length && !el.tagName) { for (var i = 0; i < el.length; i++) if (el[i].checked) return el[i].value; return ''; }
-    if (el.type === 'radio') return el.checked ? el.value : '';
+    if (el.type === 'radio' || el.type === 'checkbox') return el.checked ? el.value : '';
     return (el.value || '').trim();
   };
   var rgb = function (hex) { var n = parseInt(hex.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; };
+  var hexOf = function (r, g, b) { return '#' + [r, g, b].map(function (c) { return Math.round(c).toString(16).padStart(2, '0'); }).join(''); };
   var shade = function (hex, f) { // f < 0 darker, f > 0 lighter
-    return '#' + rgb(hex).map(function (c) { return Math.max(0, Math.min(255, Math.round(f < 0 ? c * (1 + f) : c + (255 - c) * f))).toString(16).padStart(2, '0'); }).join('');
+    var c = rgb(hex).map(function (v) { return Math.max(0, Math.min(255, f < 0 ? v * (1 + f) : v + (255 - v) * f)); });
+    return hexOf(c[0], c[1], c[2]);
   };
   var light = function (hex) { var c = rgb(hex).map(function (v) { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > .4; };
   var inkOn = function (hex) { return light(hex) ? '#14171b' : '#ffffff'; };
   var isHex = function (v) { return /^#[0-9a-f]{6}$/i.test(v); };
   var colour = function (n) { var v = val(n); return v === 'egen' ? val(n + '-egen') : v; };
   var current = function () { return val('mall') || 'saltvind'; };
+  var frameDoc = function () { try { var d = frame.contentDocument; return d && d.body ? d : null; } catch (e) { return null; } };
 
   var FONTS = {
     modern: ['"Manrope"', '"Inter"', 700, '-0.03em', 'none', .94],
@@ -44,6 +50,7 @@
     mork: '--c-bg:#121513;--c-yta:#1a1e1b;--c-ink:#eceee9;--c-rubrik:#ffffff;--c-mut:#a7aca5;--c-line:#2c312d;--c-head:#121513;--c-head-ink:#ffffff;' +
       '--c-head-fast:#121513;--c-head-fast-ink:#ffffff;--c-topp:#1a1e1b;--c-topp-ink:#eceee9;--c-ton:#1a1e1b;--c-statement:#1a1e1b;--c-ruta-ink:#ffffff',
   };
+  var SWITCHES = { knapp: 'knapp', meny: 'header', rubrikstil: 'rubrik', motiv: 'motiv', herotext: 'herotext', kursiv: 'kursiv', kort: 'kort', nyheter: 'nyheter' };
 
   // ---- what the example page says today, read once per page so any of the templates works
   function originals(doc) {
@@ -55,20 +62,23 @@
     var mail = doc.querySelector('a[href^="mailto:"]'); if (mail) o.email = mail.getAttribute('href').slice(7);
     var area = doc.querySelector('.topprad a span'); if (area) o.area = area.textContent.trim();
     var hours = doc.querySelector('.topprad span.t-dold'); if (hours) o.hours = hours.textContent.trim();
-    o.body = {}; ['knapp', 'header', 'rubrik', 'motiv'].forEach(function (k) { o.body[k] = doc.body.getAttribute('data-' + k); });
+    o.body = {}; Object.keys(SWITCHES).forEach(function (k) { o.body[SWITCHES[k]] = doc.body.getAttribute('data-' + SWITCHES[k]); });
+    var cs = doc.defaultView.getComputedStyle(doc.documentElement);
+    o.skala = parseFloat(cs.getPropertyValue('--skala-r')) || 1;
+    o.text = parseFloat(cs.getPropertyValue('--t-text')) || 17;
     return (doc.__dh = o);
   }
-  // set an element's text and remember the original, so clearing the field brings it back
+  // set an element's text and remember the original, so clearing the field brings it back; text typed straight into
+  // the page wins
   function setText(el, v) {
-    if (!el) return;
+    if (!el || el.__dhUser) return;
     if (el.__dhOrig === undefined) el.__dhOrig = el.textContent;
     var t = v || el.__dhOrig;
     if (el.textContent !== t) el.textContent = t;
   }
 
   function apply() {
-    var doc; try { doc = frame.contentDocument; } catch (e) { return; }
-    if (!doc || !doc.body) return;
+    var doc = frameDoc(); if (!doc) return;
     var o = originals(doc);
     var name = val('namn'), shortName = name ? name.replace(/\s+(AB|HB|KB|Aktiebolag|Handelsbolag)$/i, '') : '';
     var phone = val('telefon'), email = val('epost'), area = val('ort'), branch = val('bransch');
@@ -81,13 +91,17 @@
     if (email && o.email) swaps.push([o.email, email]);
     if (area && o.area) swaps.push([o.area, area]);
     if (val('tider') && o.hours) swaps.push([o.hours, val('tider')]);
-    var walk = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT), node, orig = doc.__dhText || (doc.__dhText = new Map());
+    var orig = doc.__dhText || (doc.__dhText = new Map()), last = doc.__dhLast || (doc.__dhLast = new Map());
+    var walk = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT), node;
     while ((node = walk.nextNode())) {
-      if (node.parentNode && node.parentNode.closest && node.parentNode.closest('.logga .ord')) continue; // the logo is set below
+      var par = node.parentNode;
+      if (!par || par.closest('.logga .ord') || par.closest('script,style')) continue; // the logo is set below
+      if (last.has(node) && last.get(node) !== node.nodeValue) orig.set(node, node.nodeValue); // typed into the page
       if (!orig.has(node)) orig.set(node, node.nodeValue);
       var v = orig.get(node);
       swaps.forEach(function (s) { if (v.indexOf(s[0]) >= 0) v = v.split(s[0]).join(s[1]); });
       if (node.nodeValue !== v) node.nodeValue = v;
+      last.set(node, v);
     }
     $$('a[href^="tel:"]', doc).forEach(function (a) { if (!a.__dhHref) a.__dhHref = a.getAttribute('href'); a.setAttribute('href', phone ? 'tel:' + phone.replace(/[^\d+]/g, '') : a.__dhHref); });
     $$('a[href^="mailto:"]', doc).forEach(function (a) { if (!a.__dhHref) a.__dhHref = a.getAttribute('href'); a.setAttribute('href', email ? 'mailto:' + email : a.__dhHref); });
@@ -112,25 +126,26 @@
       setText(l.querySelector('.tag'), val('slogan') || (area ? 'Hemma i ' + area : ''));
     });
 
-    // 3. the start page: heading, text, label, menu button, three services, photo
+    // 3. the start page: heading, text, label, menu button, three services, photos
     var hero = doc.querySelector('.hero') || doc.querySelector('main');
     if (hero) {
       setText(hero.querySelector('h1'), val('rubrik'));
       setText(hero.querySelector('.ingress'), val('ingress'));
       setText(hero.querySelector('.etikett'), branch ? branch + (area ? ' i ' + area : '') : '');
-      var pic = hero.querySelector('img');
-      if (pic) {
+      var pics = $$('.bild-slide img', hero); if (!pics.length) pics = $$('img', hero).slice(0, 1);
+      pics.forEach(function (pic, i) {
         if (pic.__dhSrc === undefined) { pic.__dhSrc = pic.getAttribute('src'); pic.__dhSet = pic.getAttribute('srcset') || ''; }
-        if (imgs.bild) { pic.removeAttribute('srcset'); pic.src = imgs.bild; }
-        else if (pic.getAttribute('src') !== pic.__dhSrc) { pic.src = pic.__dhSrc; if (pic.__dhSet) pic.setAttribute('srcset', pic.__dhSet); }
-      }
+        var mine = imgs.bild[i];
+        if (mine) { if (pic.getAttribute('src') !== mine) { pic.removeAttribute('srcset'); pic.removeAttribute('loading'); pic.src = mine; } }
+        else if (!pic.__dhUser && pic.getAttribute('src') !== pic.__dhSrc) { pic.src = pic.__dhSrc; if (pic.__dhSet) pic.setAttribute('srcset', pic.__dhSet); }
+      });
     }
     var btn = doc.querySelector('.head-kontakt'); if (btn) setText(btn.querySelector('span') || btn, val('knapptext'));
     var list = $$('main a[href^="verksamhet.html"] h3', doc);
     if (!list.length) { var ul = $$('main section ul', doc).filter(function (u) { return u.querySelector('li h3') && !u.closest('.hero'); })[0]; list = ul ? $$('li h3', ul) : []; }
     ['tjanst1', 'tjanst2', 'tjanst3'].forEach(function (k, i) { setText(list[i], val(k)); });
 
-    // 4. the look: colours, theme, fonts, corners, and the template's own style switches
+    // 4. the look: colours, theme, fonts, sizes, corners, and the template's own style switches
     var css = [], p = colour('farg'), a = colour('accent');
     if (isHex(p)) {
       var d1 = shade(p, -.2), d2 = shade(p, -.45), l1 = shade(p, .9), ink = inkOn(p), txt = light(p) ? d2 : p;
@@ -141,60 +156,153 @@
     }
     if (isHex(a)) css.push('--c-a:' + a, '--c-a-ink:' + inkOn(a), '--c-knapp:' + a, '--c-knapp2:' + shade(a, -.15), '--c-knapp-ink:' + inkOn(a), '--c-band2:' + a, '--c-ton2:' + shade(a, .82), '--c-ruta-hover:' + shade(a, -.1));
     if (THEMES[val('tema')]) css.push(THEMES[val('tema')]);
-    var f = FONTS[val('typsnitt')];
+    var f = FONTS[val('typsnitt')], skala = (+val('skala') || 100) / 100;
     if (f) css.push('--font-r:' + f[0] + ', system-ui, sans-serif', '--font-logo:' + f[0] + ', system-ui, sans-serif', '--font-t:' + f[1] + ', system-ui, sans-serif',
       '--w-r:' + f[2], '--w-logo:' + Math.max(f[2], 400), '--tr-r:' + f[3], '--tt-r:' + f[4], '--tt-nav:' + (f[4] === 'uppercase' ? 'uppercase' : 'none'),
-      '--tt-btn:' + (f[4] === 'uppercase' ? 'uppercase' : 'none'), '--skala-r:' + f[5]);
+      '--tt-btn:' + (f[4] === 'uppercase' ? 'uppercase' : 'none'));
+    if (f || skala !== 1) css.push('--skala-r:' + ((f ? f[5] : o.skala) * skala).toFixed(3));
+    if (+val('text') && +val('text') !== 100) css.push('--t-text:' + (o.text * val('text') / 100).toFixed(1) + 'px');
+    if (+val('bredd') && +val('bredd') !== 1360) css.push('--maxw:' + val('bredd') + 'px');
     var c = CORNERS[val('horn')]; if (c) css.push('--r-btn:' + c[0], '--r-card:' + c[1], '--r-img:' + c[2]);
     var st = doc.getElementById('dh-style');
     if (!st) { st = doc.createElement('style'); st.id = 'dh-style'; doc.head.appendChild(st); }
-    st.textContent = css.length ? ':root{' + css.join(';') + '}' : '';
-    var sw = { knapp: val('knapp'), header: val('meny'), rubrik: val('rubrikstil'), motiv: val('motiv') };
-    Object.keys(sw).forEach(function (k) { var v = sw[k] || o.body[k]; if (v) doc.body.setAttribute('data-' + k, v); });
+    st.textContent = (css.length ? ':root{' + css.join(';') + '}' : '') +
+      (doc.designMode === 'on' ? '[contenteditable],body *:hover{cursor:text}img:hover{outline:3px dashed ' + (isHex(a) ? a : '#e2632b') + ';outline-offset:-3px;cursor:pointer!important}' : '');
+    Object.keys(SWITCHES).forEach(function (k) { var at = SWITCHES[k], v = val(k) || o.body[at]; if (v != null && v !== '') doc.body.setAttribute('data-' + at, v); });
     // the fonts come from our own server (the site's security policy blocks Google's)
     if (!doc.getElementById('dh-fonts')) { var lk = doc.createElement('link'); lk.id = 'dh-fonts'; lk.rel = 'stylesheet'; lk.href = '../typsnitt/typsnitt.css'; doc.head.appendChild(lk); }
 
+    // 5. which parts the start page has, in which order
+    applySections(doc);
+
     var dom = email.indexOf('@') > 0 ? email.split('@')[1] : (shortName ? shortName.toLowerCase().replace(/[åä]/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '') + '.se' : 'dittforetag.se');
-    document.getElementById('dh-url').textContent = dom;
+    $('dh-url').textContent = dom;
   }
 
-  // ---- keep the chosen card / chip / swatch marked
+  // ---- the start page's parts: show/hide and move up/down
+  function sections(doc) {
+    var main = doc.querySelector('main'); if (!main) return [];
+    if (!main.__dhSecs) main.__dhSecs = $$(':scope > section, :scope > div', main).filter(function (s) { return !s.classList.contains('hero') && s.offsetHeight > 40; });
+    return main.__dhSecs;
+  }
+  var label = function (s, i) {
+    var h = s.querySelector('h2, h3'), e = s.querySelector('.etikett');
+    var t = (h && h.textContent.trim()) || s.getAttribute('aria-label') || (e && e.textContent.trim()) || 'Del ' + (i + 1);
+    return t.length > 44 ? t.slice(0, 42) + '…' : t;
+  };
+  function applySections(doc) {
+    var secs = sections(doc); if (!secs.length) return;
+    if (!secState || secState.length !== secs.length) secState = secs.map(function (s, i) { return { i: i, on: true }; });
+    var main = doc.querySelector('main');
+    secState.forEach(function (st) { var s = secs[st.i]; if (!s) return; main.appendChild(s); s.style.display = st.on ? '' : 'none'; });
+    renderSections(secs);
+  }
+  function renderSections(secs) {
+    var ol = $('dh-secs'); if (!ol) return;
+    var html = secState.map(function (st, pos) {
+      var s = secs[st.i]; if (!s) return '';
+      return '<li class="dh-sec' + (st.on ? '' : ' is-off') + '"><label><input type="checkbox" data-sec-on="' + pos + '"' + (st.on ? ' checked' : '') + '><span>' + label(s, st.i).replace(/</g, '&lt;') + '</span></label>' +
+        '<button type="button" data-sec-up="' + pos + '" aria-label="Flytta upp"' + (pos === 0 ? ' disabled' : '') + '>↑</button>' +
+        '<button type="button" data-sec-down="' + pos + '" aria-label="Flytta ner"' + (pos === secState.length - 1 ? ' disabled' : '') + '>↓</button></li>';
+    }).join('');
+    if (ol.__html !== html) { ol.innerHTML = html; ol.__html = html; }
+  }
+  $('dh-secs').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var up = b.dataset.secUp, down = b.dataset.secDown, i = +(up !== undefined ? up : down), j = up !== undefined ? i - 1 : i + 1;
+    if (j < 0 || j >= secState.length) return;
+    var t = secState[i]; secState[i] = secState[j]; secState[j] = t;
+    var doc = frameDoc(); if (doc) applySections(doc); save();
+    var nb = $('dh-secs').querySelector('[data-sec-' + (up !== undefined ? 'up' : 'down') + '="' + j + '"]'); if (nb && !nb.disabled) nb.focus();
+    scrollToSection(secState[j].i);
+  });
+  $('dh-secs').addEventListener('change', function (e) {
+    var cb = e.target.closest('[data-sec-on]'); if (!cb) return;
+    secState[+cb.dataset.secOn].on = cb.checked;
+    var doc = frameDoc(); if (doc) applySections(doc); save();
+    if (cb.checked) scrollToSection(secState[+cb.dataset.secOn].i);
+  });
+  function scrollToSection(i) { var doc = frameDoc(); if (!doc) return; var s = sections(doc)[i]; if (s && s.style.display !== 'none') s.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  var secCode = function () { return secState ? secState.map(function (s) { return (s.on ? '' : '~') + s.i; }).join('.') : ''; };
+  var secDefault = function () { return !secState || secState.every(function (s, i) { return s.on && s.i === i; }); };
+
+  // ---- typing straight into the page, and clicking a picture to change it
+  var editBox = $('dh-edit'), picker = document.createElement('input'), pickTarget = null;
+  picker.type = 'file'; picker.accept = 'image/png,image/jpeg,image/webp';
+  picker.addEventListener('change', function () {
+    var t = pickTarget; if (!t || !picker.files[0]) return;
+    readImage(picker.files[0], 1600, function (url) { t.removeAttribute('srcset'); t.src = url; t.__dhUser = true; picker.value = ''; });
+  });
+  function setupEdit(doc) {
+    doc.designMode = editBox.checked ? 'on' : 'off';
+    if (doc.__dhEdit) return; doc.__dhEdit = true;
+    doc.addEventListener('click', function (e) {
+      if (doc.designMode !== 'on') return;
+      var im = e.target.closest && e.target.closest('img');
+      if (im) { e.preventDefault(); pickTarget = im; picker.click(); }
+      else if (e.target.closest && e.target.closest('a')) e.preventDefault();
+    }, true);
+    doc.addEventListener('input', function () { // text typed by the visitor is theirs: the form no longer overwrites it
+      var sel = doc.getSelection(), n = sel && sel.anchorNode, el = n && (n.nodeType === 1 ? n : n.parentNode);
+      for (; el && el !== doc.body; el = el.parentNode) el.__dhUser = true;
+    });
+  }
+  editBox.addEventListener('change', function () { var doc = frameDoc(); if (doc) { setupEdit(doc); apply(); } screen.classList.toggle('is-edit', editBox.checked); });
+
+  // ---- keep the chosen card / chip / swatch marked, and the sliders' numbers
   function marks() {
     $$('.dh-tpl, .dh-chip, .dh-font, .dh-color').forEach(function (l) { var i = l.querySelector('input[type=radio]'); l.classList.toggle('is-on', !!(i && i.checked)); });
     $$('.dh-color--egen').forEach(function (l) { l.querySelector('i').style.background = l.querySelector('input[type=color]').value; });
+    $$('output[data-for]').forEach(function (o) { var v = val(o.dataset.for); o.textContent = v + (o.dataset.for === 'bredd' ? ' px' : ' %'); });
   }
   // a custom colour picker counts as choosing that swatch
+  var egenRadio = {};
   $$('.dh-color--egen input[type=color]').forEach(function (inp) {
     var group = inp.name.replace('-egen', '');
     var r = document.createElement('input'); r.type = 'radio'; r.name = group; r.value = 'egen'; r.hidden = true; inp.parentNode.appendChild(r);
+    egenRadio[group] = r;
     inp.addEventListener('input', function () { r.checked = true; marks(); });
   });
+  function setColour(group, hex) { var inp = form.elements[group + '-egen']; inp.value = hex; egenRadio[group].checked = true; marks(); }
 
-  function load() { frame.src = base + 'exempel/' + current() + '/index.html'; }
-  frame.addEventListener('load', apply);
+  function load() { secState = null; frame.src = base + 'exempel/' + current() + '/index.html'; }
+  frame.addEventListener('load', function () {
+    var doc = frameDoc(); if (!doc) return;
+    if (pendingSec) { // a shared link: the parts' order for this template
+      var secs = sections(doc), arr = pendingSec.split('.').map(function (x) { return { i: +x.replace('~', ''), on: x.charAt(0) !== '~' }; });
+      if (arr.length === secs.length && arr.every(function (s) { return s.i >= 0 && s.i < secs.length; })) secState = arr;
+      pendingSec = '';
+    }
+    setupEdit(doc); apply();
+  });
 
   // ---- settings in the address (not the images), so a design can be shared or sent with an enquiry
   var KEYS = ['namn', 'bransch', 'ort', 'rubrik', 'ingress', 'slogan', 'telefon', 'epost', 'tider', 'knapptext', 'tjanst1', 'tjanst2', 'tjanst3',
-    'mall', 'farg', 'farg-egen', 'accent', 'accent-egen', 'typsnitt', 'tema', 'horn', 'knapp', 'meny', 'rubrikstil', 'motiv'];
+    'mall', 'farg', 'farg-egen', 'accent', 'accent-egen', 'typsnitt', 'tema', 'horn', 'knapp', 'meny', 'rubrikstil', 'motiv',
+    'herotext', 'kursiv', 'kort', 'nyheter', 'skala', 'text', 'bredd'];
+  var DEFAULTS = { mall: 'saltvind', skala: '100', text: '100', bredd: '1360' };
+  var pendingSec = '';
   function save() {
     var q = new URLSearchParams();
     KEYS.forEach(function (k) {
       var v = val(k);
-      if (!v || (k === 'mall' && v === 'saltvind')) return;
+      if (!v || DEFAULTS[k] === v) return;
       if (/-egen$/.test(k) && val(k.replace('-egen', '')) !== 'egen') return;
       q.set(k, v);
     });
+    if (!secDefault()) q.set('delar', secCode());
     try { history.replaceState(null, '', location.pathname + location.search + (q.toString() ? '#' + q.toString() : '')); } catch (e) {}
     var msg = 'Hej! Jag testade "Se hur din hemsida kan se ut" och vill ha en offert på något liknande. Min design: ' + location.href;
     var o = new URLSearchParams({ meddelande: msg });
     if (val('namn')) o.set('foretag', val('namn'));
     if (val('telefon')) o.set('telefon', val('telefon'));
     if (val('epost')) o.set('email', val('epost'));
-    document.getElementById('dh-offert').href = base + 'kontakt.html?' + o.toString() + '#formular';
+    $('dh-offert').href = base + 'kontakt.html?' + o.toString() + '#formular';
   }
   function restore() {
     var q = new URLSearchParams(location.hash.slice(1)); if (!q.toString()) return;
     q.forEach(function (v, k) {
+      if (k === 'delar') { pendingSec = v; return; }
       if (KEYS.indexOf(k) < 0) return;
       var el = form.elements[k]; if (!el) return;
       if (el.length && !el.tagName) { for (var i = 0; i < el.length; i++) el[i].checked = el[i].value === v; }
@@ -205,11 +313,12 @@
 
   var timer;
   form.addEventListener('input', function (e) {
-    if (e.target.name === 'mall' || e.target.type === 'file') return;
+    if (e.target.name === 'mall' || e.target.type === 'file' || e.target.closest('#dh-secs') || e.target === editBox) return;
     marks();
-    clearTimeout(timer); timer = setTimeout(function () { apply(); save(); }, 120);
+    clearTimeout(timer); timer = setTimeout(function () { apply(); save(); }, 100);
   });
   form.addEventListener('change', function (e) {
+    if (e.target.closest('#dh-secs') || e.target === editBox) return;
     if (e.target.name === 'mall') { marks(); load(); save(); }
     else if (e.target.tagName === 'SELECT' || e.target.type === 'radio') { marks(); apply(); save(); }
   });
@@ -219,35 +328,82 @@
     if (!file || !/^image\//.test(file.type)) return;
     var r = new FileReader();
     r.onload = function () {
-      if (file.type === 'image/svg+xml') return cb(r.result);
+      if (file.type === 'image/svg+xml') return cb(r.result, null);
       var im = new Image();
       im.onload = function () {
         var s = Math.min(1, max / Math.max(im.width, im.height)), cv = document.createElement('canvas');
         cv.width = Math.round(im.width * s); cv.height = Math.round(im.height * s);
         cv.getContext('2d').drawImage(im, 0, 0, cv.width, cv.height);
-        cb(cv.toDataURL(file.type === 'image/jpeg' ? 'image/jpeg' : 'image/png', .86));
+        cb(cv.toDataURL(file.type === 'image/jpeg' ? 'image/jpeg' : 'image/png', .86), cv);
       };
       im.src = r.result;
     };
     r.readAsDataURL(file);
   }
+  // the strongest colours in the logo (ignoring white, black and grey), most used first
+  function logoColours(url) {
+    var im = new Image();
+    im.onload = function () {
+      var cv = document.createElement('canvas'), n = 64; cv.width = n; cv.height = Math.max(1, Math.round(n * im.height / im.width));
+      var cx = cv.getContext('2d'); cx.drawImage(im, 0, 0, cv.width, cv.height);
+      var d; try { d = cx.getImageData(0, 0, cv.width, cv.height).data; } catch (e) { return; }
+      var bins = {};
+      for (var i = 0; i < d.length; i += 4) {
+        if (d[i + 3] < 128) continue;
+        var r = d[i], g = d[i + 1], b = d[i + 2], mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+        if (mx - mn < 28 || mx < 30 || mn > 230) continue; // grey, black, white
+        var key = (r >> 5) + ',' + (g >> 5) + ',' + (b >> 5), bn = bins[key] || (bins[key] = { n: 0, r: 0, g: 0, b: 0 });
+        bn.n++; bn.r += r; bn.g += g; bn.b += b;
+      }
+      var top = Object.keys(bins).map(function (k) { var b = bins[k]; return { n: b.n, hex: hexOf(b.r / b.n, b.g / b.n, b.b / b.n) }; })
+        .sort(function (x, y) { return y.n - x.n; }).slice(0, 4).map(function (x) { return x.hex; });
+      var box = document.querySelector('[data-dh-logocolors]'); if (!top.length) { box.hidden = true; return; }
+      box.querySelector('div').innerHTML = top.map(function (h) { return '<button type="button" data-hex="' + h + '" style="background:' + h + '" title="Använd ' + h + ' som huvudfärg"></button>'; }).join('') +
+        '<button type="button" class="dh-logocolors__all" data-auto>Använd loggans färger</button>';
+      box.hidden = false;
+      box.__top = top;
+    };
+    im.src = url;
+  }
+  document.querySelector('[data-dh-logocolors]').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var top = this.__top || [];
+    if (b.dataset.auto !== undefined) { setColour('farg', top[0]); if (top[1]) setColour('accent', top[1]); }
+    else setColour('farg', b.dataset.hex);
+    apply(); save();
+  });
   var logoSize = document.querySelector('[data-dh-logo-size]');
-  $$('.dh-up input[type=file]').forEach(function (inp) {
-    inp.addEventListener('change', function () {
-      readImage(inp.files[0], inp.name === 'logga' ? 600 : 1800, function (url) {
-        imgs[inp.name] = url;
-        var pv = inp.parentNode.querySelector('.dh-up__img'); pv.src = url; pv.hidden = false;
-        if (inp.name === 'logga') logoSize.hidden = false;
-        apply();
+  form.elements.logga.addEventListener('change', function () {
+    var inp = this;
+    readImage(inp.files[0], 600, function (url) {
+      imgs.logga = url;
+      var pv = inp.parentNode.querySelector('.dh-up__img'); pv.src = url; pv.hidden = false;
+      logoSize.hidden = false; logoColours(url); apply();
+    });
+  });
+  form.elements.bild.addEventListener('change', function () {
+    var files = Array.prototype.slice.call(this.files, 0, 3), thumbs = document.querySelector('[data-dh-thumbs]'), out = [], left = files.length;
+    if (!left) return;
+    files.forEach(function (fl, i) {
+      readImage(fl, 1800, function (url) {
+        out[i] = url;
+        if (--left === 0) {
+          imgs.bild = out.filter(Boolean);
+          thumbs.innerHTML = imgs.bild.map(function (u) { return '<img src="' + u + '" alt="">'; }).join('');
+          apply();
+        }
       });
     });
   });
-  document.getElementById('dh-clear-img').addEventListener('click', function () {
-    imgs.logga = imgs.bild = '';
+  $('dh-clear-img').addEventListener('click', function () {
+    imgs.logga = ''; imgs.bild = [];
     $$('.dh-up input[type=file]').forEach(function (i) { i.value = ''; });
     $$('.dh-up__img').forEach(function (i) { i.hidden = true; i.removeAttribute('src'); });
+    document.querySelector('[data-dh-thumbs]').innerHTML = '';
+    document.querySelector('[data-dh-logocolors]').hidden = true;
     logoSize.hidden = true;
-    apply();
+    var doc = frameDoc(); if (doc) $$('img', doc).forEach(function (im) { if (im.__dhUser) { im.__dhUser = false; } });
+    load();
   });
 
   // ---- tabs
@@ -255,26 +411,37 @@
     b.addEventListener('click', function () {
       $$('[data-dh-tab]').forEach(function (x) { var on = x === b; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on ? 'true' : 'false'); });
       $$('[data-dh-panel]').forEach(function (p) { var on = p.dataset.dhPanel === b.dataset.dhTab; p.hidden = !on; p.classList.toggle('is-on', on); });
-      if (b.dataset.dhTab === 'utseende' && !document.getElementById('dh-fonts-page')) { // the "Aa" samples on the font buttons
+      if (b.dataset.dhTab === 'utseende' && !$('dh-fonts-page')) { // the "Aa" samples on the font buttons
         var lk = document.createElement('link'); lk.id = 'dh-fonts-page'; lk.rel = 'stylesheet'; lk.href = base + 'exempel/typsnitt/typsnitt.css'; document.head.appendChild(lk);
       }
     });
   });
 
-  // ---- random style
+  // ---- random style, and start over
   var pick = function (name) { var opts = $$('input[name="' + name + '"]').filter(function (i) { return i.value && i.value !== 'egen'; }); if (opts.length) opts[Math.floor(Math.random() * opts.length)].checked = true; };
   var pickSel = function (name) { var s = form.elements[name], o = $$('option', s).filter(function (x) { return x.value; }); s.value = o[Math.floor(Math.random() * o.length)].value; };
-  document.getElementById('dh-random').addEventListener('click', function () {
+  var none = function (name) { var e = form.querySelector('input[name="' + name + '"][value=""]'); if (e) e.checked = true; };
+  $('dh-random').addEventListener('click', function () {
     var before = current();
-    ['mall', 'farg', 'accent', 'typsnitt', 'horn', 'knapp', 'meny'].forEach(pick);
-    if (Math.random() < .3) pick('tema'); else form.querySelector('input[name="tema"][value=""]').checked = true;
+    ['mall', 'farg', 'accent', 'typsnitt', 'horn', 'knapp', 'meny', 'herotext'].forEach(pick);
+    [['tema', .3], ['kort', .4], ['kursiv', .4]].forEach(function (x) { if (Math.random() < x[1]) pick(x[0]); else none(x[0]); });
     pickSel('rubrikstil'); pickSel('motiv');
     marks(); save();
     if (current() !== before) load(); else apply();
   });
+  $('dh-reset').addEventListener('click', function () {
+    var keep = { namn: 1, bransch: 1, ort: 1, rubrik: 1, ingress: 1, slogan: 1, telefon: 1, epost: 1, tider: 1, knapptext: 1, tjanst1: 1, tjanst2: 1, tjanst3: 1 };
+    $$('input, select', $$('[data-dh-panel="utseende"]')[0]).forEach(function (el) {
+      if (keep[el.name]) return;
+      if (el.type === 'radio') el.checked = el.value === '' || (el.name === 'mall' && el.value === 'saltvind');
+      else if (el.tagName === 'SELECT') el.value = '';
+      else if (el.type === 'range') el.value = DEFAULTS[el.name];
+    });
+    marks(); load(); save();
+  });
 
   // ---- share
-  var share = document.getElementById('dh-share');
+  var share = $('dh-share');
   share.addEventListener('click', function () {
     save();
     var done = function () { share.textContent = 'Länken är kopierad'; setTimeout(function () { share.textContent = 'Kopiera länk till designen'; }, 2200); };
@@ -282,7 +449,7 @@
     else prompt('Kopiera länken:', location.href);
   });
 
-  form.addEventListener('submit', function (e) { e.preventDefault(); apply(); save(); document.getElementById('dh-cta').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+  form.addEventListener('submit', function (e) { e.preventDefault(); apply(); save(); $('dh-cta').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
 
   // ---- dator / mobil, and fitting the 1280 px desktop page into the frame
   function fit() {
@@ -302,7 +469,7 @@
   if (window.matchMedia('(max-width: 700px)').matches) { var mb = document.querySelector('[data-dh-view="mobil"]'); if (mb) mb.click(); }
 
   // ---- on phones the preview sits under the form: a button to jump to it while filling in
-  var jump = document.getElementById('dh-jump');
+  var jump = $('dh-jump');
   if (jump && 'IntersectionObserver' in window) {
     var formOn = false, prevOn = false, upd = function () { jump.classList.toggle('is-on', formOn && !prevOn); };
     new IntersectionObserver(function (es) { formOn = es[0].isIntersecting; upd(); }, { threshold: .05 }).observe(form);
@@ -310,6 +477,7 @@
   }
 
   restore();
+  marks();
   fit();
   load();
   save();
