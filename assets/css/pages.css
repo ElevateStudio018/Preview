@@ -7,6 +7,7 @@ body.subpage main { padding-top: var(--header-h); }
 /* Current section in the main navigation */
 .site-header__navbar > ul > li.is-current > a::after { width: 100%; }
 .site-header__navbar > ul > li.is-current > a { color: var(--accent); }
+@media (max-width: 1080px) { .site-header__navbar > ul > li.nav-dh { display: none; } }
 
 /* Primary buttons in the brand colour */
 .btn--primary { background: var(--accent); }
