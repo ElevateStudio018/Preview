@@ -34,9 +34,14 @@
     var picker = document.getElementById('hostpick');
     if (d.public && d.hosts && d.hosts.length > 1) {
       if (!picker) { picker = document.createElement('div'); picker.id = 'hostpick'; picker.className = 'hostpick'; document.getElementById('pills').after(picker); }
-      picker.innerHTML = '<p class="hostpick__k">Vem vill du träffa?</p><div class="hostpick__opts" role="radiogroup">' + d.hosts.map(function (h) {
+      var MK = '<svg class="hp__logo" viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0 1353.9 1218.7 0v329.1L479.7 1136.4 786.7 1132.4 1215.5 687.4 1884.3 1349.9H1590.1L1218.6 994.7 865.4 1349.9Z" fill="currentColor"/></svg>';
+      var phone = function (x) { return String(x || '').replace('+46 ', '0').replace(/^\+46/, '0'); };
+      picker.innerHTML = '<p class="hostpick__k">Vem vill du träffa?</p><div class="hostpick__opts" role="radiogroup" aria-label="Vem vill du träffa?">' + d.hosts.map(function (h) {
         var on = h.key === d.hostKey;
-        return '<button type="button" role="radio" aria-checked="' + on + '" class="hostpick__o' + (on ? ' is-on' : '') + '" data-h="' + esc(h.key) + '"><span class="hostpick__av">' + esc(h.first.charAt(0)) + '</span><span><b>' + esc(h.name) + '</b><small>' + esc(h.role) + '</small></span></button>';
+        return '<button type="button" role="radio" aria-checked="' + on + '" class="hp' + (on ? ' is-on' : '') + '" data-h="' + esc(h.key) + '">' +
+          '<span class="hp__top"><span><b class="hp__name">' + esc(h.name) + '</b><span class="hp__role">' + esc(h.role) + '</span></span>' + MK + '</span>' +
+          '<span class="hp__links">' + (h.phone ? '<span>' + esc(phone(h.phone)) + '</span>' : '') + (h.email ? '<span>' + esc(h.email) + '</span>' : '') + '</span>' +
+          '<span class="hp__company">Elevate Studio · Uppsala</span><span class="hp__check" aria-hidden="true"></span></button>';
       }).join('') + '</div>';
       picker.querySelectorAll('[data-h]').forEach(function (b) { b.addEventListener('click', function () { if (b.dataset.h === st.data.hostKey) return; hostPick = b.dataset.h; st.at = 0; load(); }); });
     }

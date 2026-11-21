@@ -119,7 +119,8 @@
   ['.bento__tile', '.svc-card', '.hp-proj__card', '.faq__item'].forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) {
       el.classList.add('rv');
-      el.style.setProperty('--i', String(i % 6));
+      // the questions come up one by one from the top; the cards repeat a short pattern
+      el.style.setProperty('--i', sel === '.faq__item' ? String(i * .7) : String(i % 6));
       rvObserver.observe(el);
     });
   });
