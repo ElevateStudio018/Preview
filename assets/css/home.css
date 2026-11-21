@@ -768,8 +768,12 @@ h2, h3 { margin: 0; font-weight: 400; }
 }
 .foot .container { position: relative; z-index: 1; }
 @media (max-width: 768px) { .foot__bigmark { right: -40px; bottom: -20px; width: 300px; } }
-.foot__band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; padding-bottom: 44px; margin-bottom: 56px; border-bottom: 1px solid rgba(255, 255, 255, .16); }
-.foot__ask { margin: 0; font-size: clamp(28px, 3.4vw, 42px); font-weight: 700; line-height: 1.1; letter-spacing: -.025em; color: #fff; }
+.foot__band { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; padding-bottom: 44px; margin-bottom: 56px; border-bottom: 1px solid rgba(255, 255, 255, .16); }
+.foot__ask { margin: 0; max-width: 720px; font-size: clamp(28px, 3.4vw, 44px); font-weight: 300; line-height: 1.12; letter-spacing: -.02em; color: #fff; text-wrap: balance; }
+.foot__ask b { font-weight: 700; }
+.foot__go { gap: 10px; }
+.foot__go svg { width: 16px; height: 16px; transition: transform .2s; }
+.foot__go:hover svg { transform: translateX(3px); }
 .foot__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin: 0; }
 .foot__call { color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .4); }
 .foot__call:hover { border-color: #fff; }
@@ -1088,7 +1092,7 @@ h2, h3 { margin: 0; font-weight: 400; }
 
 /* Designpaket: the film of how a design package is made, and two example packages as PDFs */
 .dpk { padding: 120px 0; background: var(--cream, #fdfbf5); }
-.dpk__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: center; }
+.dpk__top { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; max-width: 760px; }
 .dpk__k { display: inline-block; margin-bottom: 18px; padding: 7px 14px; border-radius: 99px; background: var(--accent, #1d3b2a); color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .dpk__title { margin: 0 0 20px; font-size: 56px; font-weight: 400; line-height: 1.05; letter-spacing: -.03em; }
 .dpk__title em, .dpk__h em { font-family: var(--serif); letter-spacing: 0; }
