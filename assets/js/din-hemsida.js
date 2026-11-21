@@ -195,7 +195,8 @@
     var st = doc.getElementById('dh-style');
     if (!st) { st = doc.createElement('style'); st.id = 'dh-style'; doc.head.appendChild(st); }
     st.textContent = (css.length ? ':root{' + css.join(';') + '}' : '') + rules.join('') +
-      (doc.designMode === 'on' ? '[contenteditable],body *:hover{cursor:text}img:hover{outline:3px dashed ' + (isHex(a) ? a : '#e2632b') + ';outline-offset:-3px;cursor:pointer!important}' : '');
+      '.dh-hid{display:none!important}' +
+      (doc.designMode === 'on' ? 'body *:hover{outline:2px dashed rgba(226,99,43,.55);outline-offset:-2px;cursor:pointer}.dh-sel,.dh-sel:hover{outline:3px solid #e2632b!important;outline-offset:-3px}' : '');
     Object.keys(SWITCHES).forEach(function (k) { var at = SWITCHES[k], v = val(k) || o.body[at]; if (v != null && v !== '') doc.body.setAttribute('data-' + at, v); });
     // the fonts come from our own server (the site's security policy blocks Google's)
     if (!doc.getElementById('dh-fonts')) { var lk = doc.createElement('link'); lk.id = 'dh-fonts'; lk.rel = 'stylesheet'; lk.href = '../typsnitt/typsnitt.css'; doc.head.appendChild(lk); }
@@ -458,28 +459,175 @@
   var navCode = function () { return Object.keys(navState).map(function (i) { return i + '~' + navState[i]; }).join('|'); };
   var pendingNav = '';
 
-  // ---- typing straight into the page, and clicking a picture to change it
-  var editBox = $('dh-edit'), picker = document.createElement('input'), pickTarget = null;
-  picker.type = 'file'; picker.accept = 'image/png,image/jpeg,image/webp';
-  picker.addEventListener('change', function () {
-    var t = pickTarget; if (!t || !picker.files[0]) return;
-    readImage(picker.files[0], 1600, function (url) { t.removeAttribute('srcset'); t.src = url; t.__dhUser = true; picker.value = ''; });
-  });
+  // ---- edit anything in the page: type straight into it, or click an element and change its size, weight, alignment,
+  // colours or picture, or hide it. Kept per template and page in `edits` – in the link (not the pictures) and in this browser
+  var editBox = $('dh-edit'), editBtn = $('dh-editbtn'), tool = $('dh-tool'), edits = {}, undoStack = [], sel = null;
+  var picker = document.createElement('input'); picker.type = 'file'; picker.accept = 'image/png,image/jpeg,image/webp';
+  var NAMES = { H1: 'Stor rubrik', H2: 'Rubrik', H3: 'Underrubrik', H4: 'Underrubrik', P: 'Text', A: 'Länk eller knapp', IMG: 'Bild', LI: 'Punkt i lista',
+    SPAN: 'Text', SECTION: 'Del av sidan', HEADER: 'Menyraden', FOOTER: 'Sidfoten', BUTTON: 'Knapp', BLOCKQUOTE: 'Citat', FIGURE: 'Kort', FIGCAPTION: 'Bildtext',
+    UL: 'Lista', OL: 'Lista', NAV: 'Meny', DIV: 'Ruta', B: 'Fet text', STRONG: 'Fet text', SUMMARY: 'Fråga', DETAILS: 'Fråga och svar', LABEL: 'Text' };
+  var TEXTY = /^(H[1-6]|P|A|LI|SPAN|B|STRONG|EM|I|BLOCKQUOTE|FIGCAPTION|SUMMARY|BUTTON|LABEL|TD|TH|DT|DD|SMALL)$/;
+  var ANCH = { R: '.hero', H: '.head', T: '.topprad', M: '.meny', F: 'footer' };
+  function anchorOf(doc, el) {
+    var secs = sections(doc);
+    for (var x = el; x && x !== doc.body && x !== doc.documentElement; x = x.parentElement) {
+      var i = secs.indexOf(x); if (i >= 0) return ['s' + i, x];
+      if (x.classList.contains('dhx-banner') || x.classList.contains('dhx-ring') || x.classList.contains('dhx-chat') || x.classList.contains('dhx-chatbox') || x.classList.contains('demo-rad')) return null;
+      if (x.classList.contains('dhb')) return ['b' + x.className.replace(/.*\bdhb-([a-z]+).*/, '$1'), x];
+      for (var k in ANCH) if (x.matches(ANCH[k])) return [k, x];
+    }
+    return null;
+  }
+  function keyOf(doc, el) {
+    var an = anchorOf(doc, el); if (!an) return '';
+    var path = [];
+    for (var x = el; x !== an[1]; x = x.parentElement) path.unshift(Array.prototype.indexOf.call(x.parentElement.children, x));
+    return current() + '/' + pageOf(doc) + '|' + an[0] + (path.length ? '/' + path.join('.') : '');
+  }
+  var KEY_RE = /^([a-z-]+)\/([a-z0-9-]+\.html)\|(s\d{1,2}|b[a-z]{2,12}|[RHTMF])(?:\/([\d.]{1,80}))?$/;
+  function findKey(doc, key) {
+    var m = KEY_RE.exec(key);
+    if (!m || m[1] !== current() || m[2] !== pageOf(doc)) return null;
+    var an = m[3], el = an.charAt(0) === 's' ? sections(doc)[+an.slice(1)] : an.charAt(0) === 'b' && an.length > 1 ? doc.querySelector('.dhb-' + an.slice(1)) : doc.querySelector(ANCH[an]);
+    (m[4] ? m[4].split('.') : []).forEach(function (i) { el = el && el.children[+i]; });
+    return el || null;
+  }
+  // only safe values are kept, whether they come from the page or from a shared link
+  function cleanRec(r, withSrc) {
+    var o = {};
+    if (!r || typeof r !== 'object') return o;
+    if (typeof r.t === 'string') o.t = r.t.slice(0, 600);
+    if (isHex(r.c)) o.c = r.c; if (isHex(r.b)) o.b = r.b;
+    if (/^\d{1,3}px$/.test(r.fs)) o.fs = r.fs;
+    if (r.fw === '400' || r.fw === '700') o.fw = r.fw;
+    if (r.fi === 'normal' || r.fi === 'italic') o.fi = r.fi;
+    if (/^(left|center|right)$/.test(r.ta)) o.ta = r.ta;
+    if (r.h === 1) o.h = 1;
+    if (withSrc && typeof r.src === 'string' && /^data:image\/(png|jpeg|webp);base64,/.test(r.src)) o.src = r.src;
+    return o;
+  }
+  function cleanEdits(e, withSrc) {
+    var out = {};
+    if (!e || typeof e !== 'object') return out;
+    Object.keys(e).slice(0, 300).forEach(function (k) { if (KEY_RE.test(k)) { var r = cleanRec(e[k], withSrc); if (Object.keys(r).length) out[k] = r; } });
+    return out;
+  }
+  function setTextKeep(el, t) { // replace an element's words but keep icons and other child elements
+    var tn = $$('*', el).length ? Array.prototype.filter.call(el.childNodes, function (n) { return n.nodeType === 3 && n.nodeValue.trim(); }) : null;
+    if (!tn) { if (el.textContent !== t) el.textContent = t; return; }
+    if (tn.length) { tn[0].nodeValue = t; tn.slice(1).forEach(function (n) { n.nodeValue = ''; }); }
+  }
+  function styleEl(el, r, withText) {
+    el.style.color = r.c || ''; el.style.backgroundColor = r.b || ''; el.style.fontSize = r.fs || '';
+    el.style.fontWeight = r.fw || ''; el.style.fontStyle = r.fi || ''; el.style.textAlign = r.ta || '';
+    el.classList.toggle('dh-hid', !!r.h);
+    if (r.src && el.tagName === 'IMG') { el.removeAttribute('srcset'); if (el.getAttribute('src') !== r.src) el.src = r.src; el.__dhUser = true; }
+    if (withText && r.t != null) { setTextKeep(el, r.t); for (var x = el; x && x.nodeType === 1; x = x.parentNode) x.__dhUser = true; }
+  }
+  function applyEdits(doc, withText) {
+    Object.keys(edits).forEach(function (k) { var el = findKey(doc, k); if (el) styleEl(el, edits[k], withText); });
+  }
+  function pushUndo() { undoStack.push(JSON.stringify(edits)); if (undoStack.length > 60) undoStack.shift(); $('dh-undo').disabled = false; }
+  function reloadFrame() { var doc = frameDoc(); sel = null; if (doc) frame.src = doc.location.href.split('#')[0]; }
+
   function setupEdit(doc) {
     doc.designMode = editBox.checked ? 'on' : 'off';
     if (doc.__dhEdit) return; doc.__dhEdit = true;
     doc.addEventListener('click', function (e) {
       if (doc.designMode !== 'on') return;
-      var im = e.target.closest && e.target.closest('img');
-      if (im) { e.preventDefault(); pickTarget = im; picker.click(); }
-      else if (e.target.closest && e.target.closest('a')) e.preventDefault();
+      var t = e.target; if (!t || t.nodeType !== 1) return;
+      if (t.closest('a, button')) e.preventDefault();
+      if (t.closest('.dhx-chat, .dhx-ring, .dhx-banner, .dhx-chatbox, .demo-rad')) return;
+      select(doc, t);
     }, true);
-    doc.addEventListener('input', function () { // text typed by the visitor is theirs: the form no longer overwrites it
-      var sel = doc.getSelection(), n = sel && sel.anchorNode, el = n && (n.nodeType === 1 ? n : n.parentNode);
-      for (; el && el !== doc.body; el = el.parentNode) el.__dhUser = true;
+    var typing = 0;
+    doc.addEventListener('input', function () {
+      var s2 = doc.getSelection(), n = s2 && s2.anchorNode, el = n && (n.nodeType === 1 ? n : n.parentNode);
+      for (var x = el; x && x !== doc.body; x = x.parentNode) x.__dhUser = true; // text typed by the visitor is theirs: the form no longer overwrites it
+      while (el && el !== doc.body && !TEXTY.test(el.tagName)) el = el.parentNode;
+      if (!el || el === doc.body) return;
+      var key = keyOf(doc, el); if (!key) return;
+      if (Date.now() - typing > 1500) pushUndo(); typing = Date.now();
+      (edits[key] || (edits[key] = {})).t = el.textContent.slice(0, 600);
+      clearTimeout(timer); timer = setTimeout(save, 400);
     });
+    doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') select(doc, null); });
   }
-  editBox.addEventListener('change', function () { var doc = frameDoc(); if (doc) { setupEdit(doc); apply(); } screen.classList.toggle('is-edit', editBox.checked); });
+  function rgbHex(c) { var m = /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/.exec(c || ''); if (!m || m[4] === '0') return ''; return hexOf(+m[1], +m[2], +m[3]); }
+  function select(doc, el) {
+    if (sel && sel.ownerDocument === doc) sel.classList.remove('dh-sel');
+    sel = el && el !== doc.body && el !== doc.documentElement && keyOf(doc, el) ? el : null;
+    var on = !!sel;
+    $$('[data-t]', tool).forEach(function (b) { if (!/^(undo)$/.test(b.dataset.t)) b.disabled = !on; });
+    if (!on) { $('dh-tool-name').textContent = 'Klicka på något i sidan för att ändra det'; return; }
+    sel.classList.add('dh-sel');
+    var cs = doc.defaultView.getComputedStyle(sel), r = edits[keyOf(doc, sel)] || {};
+    $('dh-tool-name').textContent = (NAMES[sel.tagName] || 'Del') + (sel.tagName === 'IMG' ? '' : sel.textContent.trim() ? ': ”' + sel.textContent.trim().slice(0, 26) + (sel.textContent.trim().length > 26 ? '…' : '') + '”' : '');
+    tool.querySelector('[data-t="c"]').value = r.c || rgbHex(cs.color) || '#111111';
+    tool.querySelector('[data-t="b"]').value = r.b || rgbHex(cs.backgroundColor) || '#ffffff';
+    tool.querySelector('[data-t="img"]').hidden = sel.tagName !== 'IMG';
+    tool.querySelector('[data-t="bold"]').classList.toggle('is-on', +cs.fontWeight >= 600);
+    tool.querySelector('[data-t="italic"]').classList.toggle('is-on', cs.fontStyle === 'italic');
+    ['left', 'center', 'right'].forEach(function (a) { tool.querySelector('[data-t="' + a + '"]').classList.toggle('is-on', cs.textAlign === a || (a === 'left' && cs.textAlign === 'start')); });
+  }
+  function change(fn) {
+    var doc = frameDoc(); if (!doc || !sel) return;
+    var key = keyOf(doc, sel); if (!key) return;
+    pushUndo();
+    var r = edits[key] || (edits[key] = {});
+    fn(r, doc.defaultView.getComputedStyle(sel));
+    Object.keys(r).forEach(function (k) { if (r[k] === '' || r[k] == null) delete r[k]; });
+    if (!Object.keys(r).length) delete edits[key];
+    styleEl(sel, r, false);
+    select(doc, sel);
+    save();
+  }
+  tool.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-t]'); if (!b || b.disabled) return;
+    var t = b.dataset.t, doc = frameDoc();
+    if (t === 'undo') { if (undoStack.length) { edits = cleanEdits(JSON.parse(undoStack.pop()), true); $('dh-undo').disabled = !undoStack.length; save(); reloadFrame(); } return; }
+    if (t === 'up') { if (sel && sel.parentElement && doc && keyOf(doc, sel.parentElement)) select(doc, sel.parentElement); return; }
+    if (t === 'img') { picker.click(); return; }
+    change(function (r, cs) {
+      var fs = parseFloat(cs.fontSize) || 16;
+      if (t === 'bigger') r.fs = Math.min(200, Math.round(fs * 1.12)) + 'px';
+      if (t === 'smaller') r.fs = Math.max(9, Math.round(fs / 1.12)) + 'px';
+      if (t === 'bold') r.fw = +cs.fontWeight >= 600 ? '400' : '700';
+      if (t === 'italic') r.fi = cs.fontStyle === 'italic' ? 'normal' : 'italic';
+      if (t === 'left' || t === 'center' || t === 'right') r.ta = t;
+      if (t === 'hide') { r.h = 1; }
+      if (t === 'reset') { Object.keys(r).forEach(function (k) { if (k !== 't') delete r[k]; }); }
+    });
+    if (t === 'hide' && doc) select(doc, null);
+  });
+  tool.addEventListener('input', function (e) {
+    var inp = e.target.closest('input[type=color][data-t]'); if (!inp || !sel) return;
+    change(function (r) { r[inp.dataset.t] = inp.value; });
+  });
+  picker.addEventListener('change', function () {
+    if (!sel || sel.tagName !== 'IMG' || !picker.files[0]) return;
+    var target = sel;
+    readImage(picker.files[0], 1600, function (url) {
+      if (sel !== target) return;
+      change(function (r) { r.src = url; });
+      picker.value = '';
+    });
+  });
+  function setEditMode(on) {
+    editBox.checked = on;
+    editBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); editBtn.classList.toggle('is-on', on);
+    tool.hidden = !on;
+    screen.classList.toggle('is-edit', on);
+    var doc = frameDoc(); if (doc) { if (!on) select(doc, null); setupEdit(doc); apply(); if (on) select(doc, null); }
+    fit();
+  }
+  editBox.addEventListener('change', function () { setEditMode(editBox.checked); });
+  editBtn.addEventListener('click', function () { setEditMode(!editBox.checked); });
+  $('dh-showhidden').addEventListener('click', function () {
+    pushUndo(); Object.keys(edits).forEach(function (k) { delete edits[k].h; if (!Object.keys(edits[k]).length) delete edits[k]; });
+    var doc = frameDoc(); if (doc) $$('.dh-hid', doc).forEach(function (x) { x.classList.remove('dh-hid'); }); save();
+  });
+  $('dh-resetedits').addEventListener('click', function () { pushUndo(); edits = {}; save(); reloadFrame(); });
 
   // ---- keep the chosen card / chip / swatch marked, and the sliders' numbers
   function marks() {
@@ -504,7 +652,7 @@
       if (isStart(doc)) { var arr = parseSec(pendingSec, sections(doc).length); if (arr) secState = arr; pendingSec = ''; }
     }
     if (pendingNav) { pendingNav.split('|').forEach(function (x) { var k = x.indexOf('~'); if (k > 0) navState[+x.slice(0, k)] = x.slice(k + 1); }); pendingNav = ''; }
-    setupEdit(doc); syncPages(doc); apply(); save();
+    setupEdit(doc); syncPages(doc); apply(); applyEdits(doc, true); save();
   });
 
   // ---- settings in the address (not the images), so a design can be shared or sent with an enquiry
@@ -526,13 +674,39 @@
     if (navCode()) q.set('nav', navCode());
     if (pageSel.value && pageSel.value !== 'index.html') q.set('sida', pageSel.value);
     $$('.dh-cc input[type=color]').forEach(function (inp) { if (inp.dataset.on) q.set(inp.name, inp.value); });
+    var plain = q.toString(), linkEd = cleanEdits(edits, false);
+    if (Object.keys(linkEd).length) q.set('ed', JSON.stringify(linkEd));
     try { history.replaceState(null, '', location.pathname + location.search + (q.toString() ? '#' + q.toString() : '')); } catch (e) {}
-    var msg = 'Hej! Jag testade "Se hur din hemsida kan se ut" och vill ha en offert på något liknande. Min design: ' + location.href;
+    store(plain);
+    var link = location.href.length > 1500 ? location.origin + location.pathname + (plain ? '#' + plain : '') + ' (texterna jag skrev direkt i sidan fick inte plats i länken)' : location.href;
+    var msg = 'Hej! Jag testade "Se hur din hemsida kan se ut" och vill ha en offert på något liknande. Min design: ' + link;
     var o = new URLSearchParams({ meddelande: msg });
     if (val('namn')) o.set('foretag', val('namn'));
     if (val('telefon')) o.set('telefon', val('telefon'));
     if (val('epost')) o.set('email', val('epost'));
     $('dh-offert').href = base + 'kontakt.html?' + o.toString() + '#formular';
+  }
+  // the whole design, pictures too, is kept in this browser so it is still there next time
+  var STORE = 'dh-design-v1';
+  function store(plain) {
+    var data = { h: plain, e: cleanEdits(edits, true), i: imgs };
+    try { localStorage.setItem(STORE, JSON.stringify(data)); }
+    catch (e) { try { data.e = cleanEdits(edits, false); data.i = { logga: '', bild: [] }; localStorage.setItem(STORE, JSON.stringify(data)); } catch (e2) {} }
+  }
+  function fromStore() {
+    if (location.hash.length > 1) return;
+    var d; try { d = JSON.parse(localStorage.getItem(STORE) || 'null'); } catch (e) { return; }
+    if (!d || typeof d.h !== 'string') return;
+    try { history.replaceState(null, '', location.pathname + location.search + (d.h ? '#' + d.h : '')); } catch (e) {}
+    edits = cleanEdits(d.e, true);
+    var ok = function (u) { return typeof u === 'string' && /^data:image\/(png|jpeg|webp|svg\+xml);base64,/.test(u) ? u : ''; };
+    if (d.i) {
+      imgs.logga = ok(d.i.logga);
+      imgs.bild = Array.isArray(d.i.bild) ? d.i.bild.map(ok).filter(Boolean).slice(0, 3) : [];
+      if (imgs.logga) { var pv = form.elements.logga.parentNode.querySelector('.dh-up__img'); pv.src = imgs.logga; pv.hidden = false; logoSize.hidden = false; logoColours(imgs.logga); }
+      if (imgs.bild.length) document.querySelector('[data-dh-thumbs]').innerHTML = imgs.bild.map(function (u) { return '<img src="' + u + '" alt="">'; }).join('');
+    }
+    $('dh-saved').hidden = !(d.h || Object.keys(edits).length || imgs.logga || imgs.bild.length);
   }
   function restore() {
     var q = new URLSearchParams(location.hash.slice(1)); if (!q.toString()) return;
@@ -540,6 +714,7 @@
       if (k === 'delar') { pendingSec = v; return; }
       if (k === 'nav') { pendingNav = v; return; }
       if (k === 'sida') { pendingPage = v; return; }
+      if (k === 'ed') { try { edits = cleanEdits(JSON.parse(v), false); } catch (e) {} return; }
       if (CC[k]) { var ci = form.elements[k]; if (ci && isHex(v)) { ci.value = v; ci.dataset.on = '1'; } return; }
       if (KEYS.indexOf(k) < 0) return;
       var el = form.elements[k]; if (!el) return;
@@ -687,6 +862,11 @@
     marks(); load(); save();
   });
 
+  $('dh-wipe').addEventListener('click', function () {
+    try { localStorage.removeItem(STORE); } catch (e) {}
+    location.href = location.pathname;
+  });
+
   // ---- share
   var share = $('dh-share');
   share.addEventListener('click', function () {
@@ -723,6 +903,7 @@
     new IntersectionObserver(function (es) { prevOn = es[0].isIntersecting; upd(); }, { threshold: .3 }).observe(screen);
   }
 
+  fromStore();
   restore();
   marks();
   fit();
