@@ -351,3 +351,13 @@ document.querySelectorAll('.exs').forEach(function (w) {
   var t = w.querySelector('.exs__track');
   if (t) w.querySelectorAll('[data-dir]').forEach(function (b) { b.addEventListener('click', function () { t.scrollBy({ left: +b.dataset.dir * t.clientWidth * .8, behavior: 'smooth' }); }); });
 });
+
+// Prefill the contact form from the address (used by "Se hur din hemsida kan se ut", which sends the design link along)
+(function () {
+  var f = document.getElementById('formular'); if (!f || !location.search) return;
+  var q = new URLSearchParams(location.search);
+  ['namn', 'foretag', 'email', 'telefon', 'meddelande'].forEach(function (k) {
+    var el = f.elements[k], v = q.get(k);
+    if (el && v && !el.value) el.value = v.slice(0, 1500);
+  });
+})();
