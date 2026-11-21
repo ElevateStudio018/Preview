@@ -45,7 +45,7 @@ body {
   letter-spacing: -0.012em;
   color: #000;
   background: #fff;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden would make body a scroll container and stop position: sticky (the process timeline) */
   -webkit-font-smoothing: antialiased;
 }
 

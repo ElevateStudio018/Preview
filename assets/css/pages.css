@@ -1367,11 +1367,4 @@ body.mail-app .wmx { min-height: 100vh; border-radius: 0 !important; }
   .co-panel__text { margin-top: -10px; }
 }
 
-/* Section headings: the emphasised word is green in the same typeface. The serif italic is kept for the big page
-   titles at the top only, so not every heading follows the same pattern. */
-.block__header span, .h2 em, .faq__title span, .about__title span, .test-teaser h2 em, .dpk__h em, .devices__title em {
-  font-family: inherit; font-style: normal; font-weight: inherit; font-variation-settings: normal; letter-spacing: inherit; color: var(--accent, #1d3b2a);
-}
-/* On dark green the emphasised word is light sage instead */
-.about__card .about__title span, .faq__title span, .hp-proj .block__header span { color: #a9c4b2; }
 
