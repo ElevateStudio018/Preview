@@ -50,6 +50,13 @@
     mork: '--c-bg:#121513;--c-yta:#1a1e1b;--c-ink:#eceee9;--c-rubrik:#ffffff;--c-mut:#a7aca5;--c-line:#2c312d;--c-head:#121513;--c-head-ink:#ffffff;' +
       '--c-head-fast:#121513;--c-head-fast-ink:#ffffff;--c-topp:#1a1e1b;--c-topp-ink:#eceee9;--c-ton:#1a1e1b;--c-statement:#1a1e1b;--c-ruta-ink:#ffffff',
   };
+  var CC = { // "Egna färger på allt": each control and the template colours it sets
+    c_bg: ['--c-bg'], c_yta: ['--c-yta', '--c-ton', '--c-statement'], c_ink: ['--c-ink'], c_rubrik: ['--c-rubrik'],
+    c_head: ['--c-head', '--c-head-fast', '+--c-head-ink', '+--c-head-fast-ink'], c_topp: ['--c-topp', '+--c-topp-ink'],
+    c_ruta: ['--c-ruta', '--c-panel', '--c-split', '--c-meny', '+--c-ruta-ink', '+--c-panel-ink', '+--c-split-ink', '+--c-meny-ink'],
+    c_knappf: ['--c-knapp', '-.15--c-knapp2', '+--c-knapp-ink'], c_fot: ['--c-fot', '+--c-fot-ink'], c_etikett: ['--c-etikett', '--c-siffra'],
+  };
+  var navState = {}; // {index: text} for renamed ('' = hidden) menu links
   var SWITCHES = { knapp: 'knapp', meny: 'header', rubrikstil: 'rubrik', motiv: 'motiv', herotext: 'herotext', kursiv: 'kursiv', kort: 'kort', nyheter: 'nyheter' };
 
   // ---- what the example page says today, read once per page so any of the templates works
@@ -119,7 +126,7 @@
           if (!im) { w.textContent = ''; im = doc.createElement('img'); im.alt = ''; w.appendChild(im); }
           im.src = imgs.logga; im.style.cssText = 'display:block;height:' + size + 'px;width:auto;max-width:280px;object-fit:contain';
         } else {
-          var t = shortName || w.__dhOrig;
+          var t = val('loggtext') || shortName || w.__dhOrig;
           if (im || w.textContent !== t) w.textContent = t;
         }
       }
@@ -164,16 +171,48 @@
     if (+val('text') && +val('text') !== 100) css.push('--t-text:' + (o.text * val('text') / 100).toFixed(1) + 'px');
     if (+val('bredd') && +val('bredd') !== 1360) css.push('--maxw:' + val('bredd') + 'px');
     var c = CORNERS[val('horn')]; if (c) css.push('--r-btn:' + c[0], '--r-card:' + c[1], '--r-img:' + c[2]);
+    var lf = FONTS[val('loggfont')]; if (lf) css.push('--font-logo:' + lf[0] + ', system-ui, sans-serif', '--w-logo:' + Math.max(lf[2], 500));
+    if (val('loggversal')) css.push('--tt-logo:' + val('loggversal'));
+    if (val('vikt')) css.push('--w-r:' + val('vikt'));
+    if (val('sparr')) css.push('--tr-r:' + val('sparr'));
+    if (val('navversal')) css.push('--tt-nav:' + val('navversal'));
+    if (val('btnversal')) css.push('--tt-btn:' + val('btnversal'));
+    $$('.dh-cc input[type=color]').forEach(function (inp) {
+      if (!inp.dataset.on) return;
+      var hex = inp.value;
+      CC[inp.name].forEach(function (v) {
+        if (v.charAt(0) === '+') css.push(v.slice(1) + ':' + inkOn(hex));
+        else if (/^-[.\d]/.test(v)) css.push(v.slice(v.indexOf('--')) + ':' + shade(hex, -parseFloat(v.slice(1, v.indexOf('--')))));
+        else css.push(v + ':' + hex);
+      });
+    });
+    var rules = [];
+    if (+val('loggskala') && +val('loggskala') !== 100) rules.push('.logga .ord{zoom:' + (val('loggskala') / 100) + '}');
+    var lj = val('ljus'); if (lj) rules.push('.hero img{filter:' + (lj === 'bw' ? 'grayscale(1) contrast(1.05)' : 'brightness(' + lj + ')') + '}');
+    if (val('topprad')) rules.push('.topprad{display:none!important}');
+    if (val('sok')) rules.push('.sok{display:none!important}');
+    if (val('rorelse')) rules.push('*,*::before,*::after{animation:none!important;transition:none!important}');
     var st = doc.getElementById('dh-style');
     if (!st) { st = doc.createElement('style'); st.id = 'dh-style'; doc.head.appendChild(st); }
-    st.textContent = (css.length ? ':root{' + css.join(';') + '}' : '') +
+    st.textContent = (css.length ? ':root{' + css.join(';') + '}' : '') + rules.join('') +
       (doc.designMode === 'on' ? '[contenteditable],body *:hover{cursor:text}img:hover{outline:3px dashed ' + (isHex(a) ? a : '#e2632b') + ';outline-offset:-3px;cursor:pointer!important}' : '');
     Object.keys(SWITCHES).forEach(function (k) { var at = SWITCHES[k], v = val(k) || o.body[at]; if (v != null && v !== '') doc.body.setAttribute('data-' + at, v); });
     // the fonts come from our own server (the site's security policy blocks Google's)
     if (!doc.getElementById('dh-fonts')) { var lk = doc.createElement('link'); lk.id = 'dh-fonts'; lk.rel = 'stylesheet'; lk.href = '../typsnitt/typsnitt.css'; doc.head.appendChild(lk); }
 
-    // 5. which parts the start page has, in which order
+    // the colour controls nobody has touched show what the page uses right now
+    var cs = doc.defaultView.getComputedStyle(doc.documentElement);
+    $$('.dh-cc input[type=color]').forEach(function (inp) {
+      if (inp.dataset.on) return;
+      var v = cs.getPropertyValue(CC[inp.name][0]).trim();
+      if (isHex(v)) inp.value = v.toLowerCase();
+      else if (/^#[0-9a-f]{3}$/i.test(v)) inp.value = '#' + v.slice(1).split('').map(function (c) { return c + c; }).join('');
+    });
+    $$('.dh-cc').forEach(function (d) { d.classList.toggle('is-on', !!d.querySelector('input').dataset.on); });
+
+    // 5. which parts the start page has, in which order, and the menu
     applySections(doc);
+    applyNav(doc);
 
     var dom = email.indexOf('@') > 0 ? email.split('@')[1] : (shortName ? shortName.toLowerCase().replace(/[åä]/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '') + '.se' : 'dittforetag.se');
     $('dh-url').textContent = dom;
@@ -226,6 +265,41 @@
   var secCode = function () { return secState ? secState.map(function (s) { return (s.on ? '' : '~') + s.i; }).join('.') : ''; };
   var secDefault = function () { return !secState || secState.every(function (s, i) { return s.on && s.i === i; }); };
 
+  // ---- the menu: rename links, or empty one to hide it
+  function navLinks(doc) { return $$('.head .nav a', doc); }
+  function applyNav(doc) {
+    var links = navLinks(doc), box = $('dh-navs');
+    links.forEach(function (a, i) {
+      if (a.__dhOrig === undefined) a.__dhOrig = a.textContent;
+      var t = navState[i], href = a.getAttribute('href');
+      var twins = [a].concat($$('.meny a', doc).filter(function (m) { return m.getAttribute('href') === href && (m.__dhOrig !== undefined || m.textContent.trim() === a.__dhOrig.trim()); }));
+      twins.forEach(function (m) {
+        if (m.__dhOrig === undefined) m.__dhOrig = m.textContent;
+        var box2 = m.closest('li') || m;
+        if (t === undefined) { m.textContent = m.__dhOrig; box2.style.display = ''; }
+        else if (t === '') box2.style.display = 'none';
+        else { m.textContent = t; box2.style.display = ''; }
+      });
+    });
+    var key = links.map(function (a) { return a.__dhOrig; }).join('|');
+    if (box.__key !== key) {
+      box.__key = key;
+      box.innerHTML = links.map(function (a, i) {
+        var v = navState[i] === undefined ? a.__dhOrig : navState[i];
+        return '<input data-nav="' + i + '" value="' + v.replace(/"/g, '&quot;') + '" placeholder="Dold – skriv för att visa" aria-label="Menylänk ' + (i + 1) + '">';
+      }).join('');
+    }
+  }
+  $('dh-navs').addEventListener('input', function (e) {
+    var inp = e.target.closest('[data-nav]'); if (!inp) return;
+    var doc = frameDoc(), i = +inp.dataset.nav, a = doc && navLinks(doc)[i];
+    if (!a) return;
+    if (inp.value === a.__dhOrig) delete navState[i]; else navState[i] = inp.value.trim();
+    applyNav(doc); save();
+  });
+  var navCode = function () { return Object.keys(navState).map(function (i) { return i + '~' + navState[i]; }).join('|'); };
+  var pendingNav = '';
+
   // ---- typing straight into the page, and clicking a picture to change it
   var editBox = $('dh-edit'), picker = document.createElement('input'), pickTarget = null;
   picker.type = 'file'; picker.accept = 'image/png,image/jpeg,image/webp';
@@ -265,7 +339,7 @@
   });
   function setColour(group, hex) { var inp = form.elements[group + '-egen']; inp.value = hex; egenRadio[group].checked = true; marks(); }
 
-  function load() { secState = null; frame.src = base + 'exempel/' + current() + '/index.html'; }
+  function load() { secState = null; navState = {}; $('dh-navs').__key = ''; frame.src = base + 'exempel/' + current() + '/index.html'; }
   frame.addEventListener('load', function () {
     var doc = frameDoc(); if (!doc) return;
     if (pendingSec) { // a shared link: the parts' order for this template
@@ -273,14 +347,16 @@
       if (arr.length === secs.length && arr.every(function (s) { return s.i >= 0 && s.i < secs.length; })) secState = arr;
       pendingSec = '';
     }
+    if (pendingNav) { pendingNav.split('|').forEach(function (x) { var k = x.indexOf('~'); if (k > 0) navState[+x.slice(0, k)] = x.slice(k + 1); }); pendingNav = ''; }
     setupEdit(doc); apply();
   });
 
   // ---- settings in the address (not the images), so a design can be shared or sent with an enquiry
   var KEYS = ['namn', 'bransch', 'ort', 'rubrik', 'ingress', 'slogan', 'telefon', 'epost', 'tider', 'knapptext', 'tjanst1', 'tjanst2', 'tjanst3',
     'mall', 'farg', 'farg-egen', 'accent', 'accent-egen', 'typsnitt', 'tema', 'horn', 'knapp', 'meny', 'rubrikstil', 'motiv',
-    'herotext', 'kursiv', 'kort', 'nyheter', 'skala', 'text', 'bredd'];
-  var DEFAULTS = { mall: 'saltvind', skala: '100', text: '100', bredd: '1360' };
+    'herotext', 'kursiv', 'kort', 'nyheter', 'skala', 'text', 'bredd',
+    'loggtext', 'loggfont', 'loggversal', 'loggskala', 'vikt', 'sparr', 'navversal', 'btnversal', 'ljus', 'topprad', 'sok', 'rorelse'];
+  var DEFAULTS = { mall: 'saltvind', skala: '100', text: '100', bredd: '1360', loggskala: '100' };
   var pendingSec = '';
   function save() {
     var q = new URLSearchParams();
@@ -291,6 +367,8 @@
       q.set(k, v);
     });
     if (!secDefault()) q.set('delar', secCode());
+    if (navCode()) q.set('nav', navCode());
+    $$('.dh-cc input[type=color]').forEach(function (inp) { if (inp.dataset.on) q.set(inp.name, inp.value); });
     try { history.replaceState(null, '', location.pathname + location.search + (q.toString() ? '#' + q.toString() : '')); } catch (e) {}
     var msg = 'Hej! Jag testade "Se hur din hemsida kan se ut" och vill ha en offert på något liknande. Min design: ' + location.href;
     var o = new URLSearchParams({ meddelande: msg });
@@ -303,6 +381,8 @@
     var q = new URLSearchParams(location.hash.slice(1)); if (!q.toString()) return;
     q.forEach(function (v, k) {
       if (k === 'delar') { pendingSec = v; return; }
+      if (k === 'nav') { pendingNav = v; return; }
+      if (CC[k]) { var ci = form.elements[k]; if (ci && isHex(v)) { ci.value = v; ci.dataset.on = '1'; } return; }
       if (KEYS.indexOf(k) < 0) return;
       var el = form.elements[k]; if (!el) return;
       if (el.length && !el.tagName) { for (var i = 0; i < el.length; i++) el[i].checked = el[i].value === v; }
@@ -313,12 +393,14 @@
 
   var timer;
   form.addEventListener('input', function (e) {
-    if (e.target.name === 'mall' || e.target.type === 'file' || e.target.closest('#dh-secs') || e.target === editBox) return;
+    if (e.target.name === 'mall' || e.target.type === 'file' || e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox) return;
+    if (CC[e.target.name]) e.target.dataset.on = '1';
     marks();
     clearTimeout(timer); timer = setTimeout(function () { apply(); save(); }, 100);
   });
   form.addEventListener('change', function (e) {
-    if (e.target.closest('#dh-secs') || e.target === editBox) return;
+    if (e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox) return;
+    if (CC[e.target.name]) { e.target.dataset.on = '1'; apply(); save(); return; }
     if (e.target.name === 'mall') { marks(); load(); save(); }
     else if (e.target.tagName === 'SELECT' || e.target.type === 'radio') { marks(); apply(); save(); }
   });
@@ -406,6 +488,12 @@
     load();
   });
 
+  // ---- "Mallens" next to each colour control
+  form.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-cc-reset]'); if (!b) return;
+    delete form.elements[b.dataset.ccReset].dataset.on; apply(); save();
+  });
+
   // ---- tabs
   $$('[data-dh-tab]').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -437,6 +525,7 @@
       else if (el.tagName === 'SELECT') el.value = '';
       else if (el.type === 'range') el.value = DEFAULTS[el.name];
     });
+    $$('.dh-cc input[type=color]').forEach(function (i) { delete i.dataset.on; });
     marks(); load(); save();
   });
 
