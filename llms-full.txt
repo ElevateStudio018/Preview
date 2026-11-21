@@ -41,6 +41,9 @@
 - Oscar Svanerud, Försäljning & affärsutveckling: +46 76 849 86 68, svanerudo@gmail.com
 
 ## Artiklar
+- [Vi testade 116 bygg- och fastighetsbolags hemsidor – så snabba är de på mobilen](https://elevatestudio.nu/insikter/vi-testade-116-bygg-och-fastighetsbolags-hemsidor)
+- [Spårar de dig innan du hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag](https://elevatestudio.nu/insikter/sparar-de-dig-innan-du-valt-vi-kollade-kakorna)
+- [Hur lätt är det att ringa? Vi kollade kontaktvägarna på 105 bygg- och fastighetsbolags startsidor](https://elevatestudio.nu/insikter/hur-latt-ar-det-att-ringa-vi-kollade-kontaktvagarna)
 - [Hemsida fast pris: nu väljer du paket direkt](https://elevatestudio.nu/insikter/hemsida-fast-pris-valj-paket-direkt)
 - [Visste du att dina kakor kan bryta mot lagen?](https://elevatestudio.nu/insikter/kan-dina-kakor-bryta-mot-lagen)
 - [Räcker det med en Facebooksida – eller behöver företaget en hemsida?](https://elevatestudio.nu/insikter/hemsida-eller-facebooksida)
@@ -1809,6 +1812,1106 @@ För en redesign räcker oftast Starter om ni vill ha en tydlig företagspresent
 I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
 
 # Artiklar
+
+## Vi testade 116 bygg- och fastighetsbolags hemsidor – så snabba är de på mobilen (21 november 2026)
+Vi mätte hemsidorna hos 116 stora svenska bygg-, fastighets- och installationsbolag med Googles eget verktyg PageSpeed Insights, så som en besökare med mobil upplever dem. De flesta laddar långsamt: bara 8 av de 112 sajter vi kunde mäta får 90 poäng eller mer, vilket är Googles gräns för en snabb sida.
+- ['64', 'poäng av 100 i hastighet på mobil, för den mittersta sajten']
+- ['8 av 112', 'fick 90 poäng eller mer']
+- ['8,2 s', 'innan det största innehållet syns, för den mittersta sajten']
+- ['3,7 MB', 'laddar den mittersta startsidan']
+### Vad vi mätte
+PageSpeed Insights laddar sidan som en vanlig mobil på en långsam 4G-uppkoppling och ger ett betyg från 0 till 100. Google räknar 90–100 som bra, 50–89 som att sidan behöver förbättras och under 50 som dåligt.
+Vi tittade också på hur lång tid det tar innan det största innehållet på skärmen syns, oftast den stora bilden eller rubriken överst. Google räknar 2,5 sekunder eller mindre som bra och mer än 4 sekunder som dåligt.
+### Resultatet
+- head
+- rows
+- note
+Tiden innan det största innehållet syns är ännu tydligare. Bara 6 av 112 sajter visar det inom 2,5 sekunder. Hos 92 sajter, alltså 82 procent, tar det mer än 4 sekunder.
+### Det som gör sidorna tunga
+Den mittersta startsidan laddar 3,7 MB och gör 57 anrop till olika filer och tjänster. 43 sajter laddar mer än 5 MB redan på startsidan, och den tyngsta laddar 77 MB.
+Det mesta av vikten kommer från stora bilder och filmer överst på sidan och från skript från andra tjänster, till exempel statistik, annonser, chatt och cookie-rutor. Varje sådant skript gör att telefonen får mer att ladda och räkna på innan sidan går att använda.
+### De snabbaste
+- head
+- rows
+De visar att det går att ha en snabb sida även som stort bolag med mycket innehåll. Vi nämner bara de som klarade sig bäst och pekar inte ut någon som klarade sig dåligt.
+### Vad betyder det för ett mindre företag?
+Om stora bolag med egna webbavdelningar har långsamma sidor är det en möjlighet för ett mindre företag. En snabb hemsida gör att fler stannar kvar, och Google använder sidans upplevelse, bland annat laddtiden, som en av många signaler när den väljer vad som ska visas.
+- Använd bilder i formatet WebP och i rätt storlek för mobilen – inte samma bild som till en stor skärm.
+- Lägg inte en tung film överst, eller låt den laddas först när resten av sidan syns.
+- Ta bara med de skript ni faktiskt använder. Varje statistik-, annons- eller chattverktyg kostar laddtid.
+- Testa alltid på mobil, inte bara på datorn på kontoret.
+Vill du se hur din egen hemsida ligger till kan du <a href="testa">testa din sajt gratis</a>. Det är samma mätning som i den här undersökningen.
+- L
+- i
+- s
+- t
+- a
+- n
+-  
+- b
+- e
+- s
+- t
+- å
+- r
+-  
+- a
+- v
+-  
+- 1
+- 1
+- 6
+-  
+- s
+- t
+- o
+- r
+- a
+-  
+- s
+- v
+- e
+- n
+- s
+- k
+- a
+-  
+- b
+- y
+- g
+- g
+- -
+- ,
+-  
+- f
+- a
+- s
+- t
+- i
+- g
+- h
+- e
+- t
+- s
+- -
+- ,
+-  
+- b
+- o
+- s
+- t
+- a
+- d
+- s
+- -
+-  
+- o
+- c
+- h
+-  
+- i
+- n
+- s
+- t
+- a
+- l
+- l
+- a
+- t
+- i
+- o
+- n
+- s
+- b
+- o
+- l
+- a
+- g
+- .
+-  
+- V
+- i
+-  
+- m
+- ä
+- t
+- t
+- e
+-  
+- s
+- t
+- a
+- r
+- t
+- s
+- i
+- d
+- o
+- r
+- n
+- a
+-  
+- d
+- e
+- n
+-  
+- 2
+- 1
+-  
+- n
+- o
+- v
+- e
+- m
+- b
+- e
+- r
+-  
+- 2
+- 0
+- 2
+- 6
+- .
+-  
+- M
+- ä
+- t
+- n
+- i
+- n
+- g
+- e
+- n
+-  
+- g
+- j
+- o
+- r
+- d
+- e
+- s
+-  
+- m
+- e
+- d
+-  
+- P
+- a
+- g
+- e
+- S
+- p
+- e
+- e
+- d
+-  
+- I
+- n
+- s
+- i
+- g
+- h
+- t
+- s
+-  
+- i
+-  
+- m
+- o
+- b
+- i
+- l
+- l
+- ä
+- g
+- e
+- .
+-  
+- F
+- y
+- r
+- a
+-  
+- s
+- a
+- j
+- t
+- e
+- r
+-  
+- g
+- i
+- c
+- k
+-  
+- i
+- n
+- t
+- e
+-  
+- a
+- t
+- t
+-  
+- m
+- ä
+- t
+- a
+- ,
+-  
+- s
+- å
+-  
+- 1
+- 1
+- 2
+-  
+- i
+- n
+- g
+- å
+- r
+- .
+-  
+- S
+- i
+- f
+- f
+- r
+- o
+- r
+- n
+- a
+-  
+- ä
+- r
+-  
+- l
+- a
+- b
+- b
+- v
+- ä
+- r
+- d
+- e
+- n
+-  
+- f
+- r
+- å
+- n
+-  
+- G
+- o
+- o
+- g
+- l
+- e
+- s
+-  
+- t
+- e
+- s
+- t
+- m
+- i
+- l
+- j
+- ö
+-  
+- –
+-  
+- v
+- e
+- r
+- k
+- l
+- i
+- g
+- a
+-  
+- b
+- e
+- s
+- ö
+- k
+- a
+- r
+- e
+-  
+- k
+- a
+- n
+-  
+- f
+- å
+-  
+- b
+- å
+- d
+- e
+-  
+- s
+- n
+- a
+- b
+- b
+- a
+- r
+- e
+-  
+- o
+- c
+- h
+-  
+- l
+- å
+- n
+- g
+- s
+- a
+- m
+- m
+- a
+- r
+- e
+-  
+- t
+- i
+- d
+- e
+- r
+-  
+- b
+- e
+- r
+- o
+- e
+- n
+- d
+- e
+-  
+- p
+- å
+-  
+- t
+- e
+- l
+- e
+- f
+- o
+- n
+-  
+- o
+- c
+- h
+-  
+- u
+- p
+- p
+- k
+- o
+- p
+- p
+- l
+- i
+- n
+- g
+- .
+
+## Spårar de dig innan du hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag (21 november 2026)
+Vi öppnade startsidan hos 105 stora svenska bygg- och fastighetsbolag som en ny besökare på mobilen och rörde ingenting i åtta sekunder. Hos 29 av dem hade spårningskakor från till exempel Google, Meta, LinkedIn eller Microsoft redan sparats – innan besökaren hunnit välja något i cookie-rutan.
+- ['29 av 105', 'satte spårningskakor innan besökaren valt något']
+- ['86 %', 'visade en cookie-ruta']
+- ['24 av 90', 'cookie-rutor hade en tydlig neka-knapp direkt']
+- ['49 av 105', 'skickade anrop till analys- eller annonstjänster före ett val']
+### Så gjorde vi
+Vi öppnade varje startsida i en vanlig webbläsare, inställd som en mobil, utan sparade kakor sedan tidigare. Efter åtta sekunder utan att klicka på något läste vi av vilka kakor som fanns och vilka tjänster sidan hade skickat anrop till.
+### Vad lagen säger
+Enligt lagen om elektronisk kommunikation ska besökaren ha samtyckt innan en sajt sparar kakor som inte behövs för att sidan ska fungera. Spårningskakor för statistik och annonser är inte nödvändiga, så de ska vänta tills besökaren har sagt ja.
+### Vilka kakor som sparades
+- head
+- rows
+- note
+Räknar man anrop i stället för kakor är siffran högre: 49 sajter skickade anrop till analys- eller annonstjänster innan besökaren valt något. Google Ads (33 sajter) och Google Analytics (32 sajter) var vanligast. En del av de anropen kan vara så kallade cookiefria signaler som Google tillåter innan samtycke, och därför räknar vi kakorna för sig.
+### Neka-knappen saknas ofta
+90 av sajterna visade en cookie-ruta. I 24 av dem hittade vi en tydlig knapp för att neka eller välja bara nödvändiga kakor direkt i rutan. I de övriga måste besökaren oftast gå in i inställningar för att säga nej. Vår kontroll läser knapparnas text automatiskt, så några sajter kan ha en neka-knapp med en ovanlig formulering.
+Europeiska dataskyddsmyndigheter har vid flera tillfällen sagt att det ska vara lika lätt att neka som att godkänna.
+### Vad ska ett mindre företag göra?
+- Låt statistik- och annonsverktyg vänta tills besökaren har tryckt Godkänn.
+- Ha en Neka-knapp lika synlig som Godkänn-knappen.
+- Kontrollera själv: öppna sajten i ett privat fönster och se vilka kakor som finns innan du klickar.
+- Ta bort verktyg ni inte längre använder – de sätter ofta kakor i onödan.
+Med vårt verktyg <a href="testa-kakor">Testa dina kakor</a> ser du vilka kakor din egen sajt sätter innan besökaren har valt.
+- L
+- i
+- s
+- t
+- a
+- n
+-  
+- b
+- e
+- s
+- t
+- å
+- r
+-  
+- a
+- v
+-  
+- 1
+- 1
+- 6
+-  
+- s
+- t
+- o
+- r
+- a
+-  
+- s
+- v
+- e
+- n
+- s
+- k
+- a
+-  
+- b
+- y
+- g
+- g
+- -
+- ,
+-  
+- f
+- a
+- s
+- t
+- i
+- g
+- h
+- e
+- t
+- s
+- -
+- ,
+-  
+- b
+- o
+- s
+- t
+- a
+- d
+- s
+- -
+-  
+- o
+- c
+- h
+-  
+- i
+- n
+- s
+- t
+- a
+- l
+- l
+- a
+- t
+- i
+- o
+- n
+- s
+- b
+- o
+- l
+- a
+- g
+- .
+-  
+- V
+- i
+-  
+- m
+- ä
+- t
+- t
+- e
+-  
+- s
+- t
+- a
+- r
+- t
+- s
+- i
+- d
+- o
+- r
+- n
+- a
+-  
+- d
+- e
+- n
+-  
+- 2
+- 1
+-  
+- n
+- o
+- v
+- e
+- m
+- b
+- e
+- r
+-  
+- 2
+- 0
+- 2
+- 6
+- .
+-  
+- 1
+- 1
+-  
+- s
+- a
+- j
+- t
+- e
+- r
+-  
+- g
+- i
+- c
+- k
+-  
+- i
+- n
+- t
+- e
+-  
+- a
+- t
+- t
+-  
+- k
+- o
+- n
+- t
+- r
+- o
+- l
+- l
+- e
+- r
+- a
+-  
+- (
+- d
+- e
+-  
+- s
+- v
+- a
+- r
+- a
+- d
+- e
+-  
+- i
+- n
+- t
+- e
+-  
+- e
+- l
+- l
+- e
+- r
+-  
+- b
+- l
+- o
+- c
+- k
+- e
+- r
+- a
+- d
+- e
+-  
+- a
+- u
+- t
+- o
+- m
+- a
+- t
+- i
+- s
+- k
+- a
+-  
+- b
+- e
+- s
+- ö
+- k
+- )
+- ,
+-  
+- s
+- å
+-  
+- 1
+- 0
+- 5
+-  
+- i
+- n
+- g
+- å
+- r
+- .
+-  
+- U
+- n
+- d
+- e
+- r
+- s
+- ö
+- k
+- n
+- i
+- n
+- g
+- e
+- n
+-  
+- v
+- i
+- s
+- a
+- r
+-  
+- v
+- a
+- d
+-  
+- s
+- a
+- j
+- t
+- e
+- r
+- n
+- a
+-  
+- g
+- j
+- o
+- r
+- d
+- e
+-  
+- v
+- i
+- d
+-  
+- v
+- å
+- r
+- t
+-  
+- b
+- e
+- s
+- ö
+- k
+-  
+- o
+- c
+- h
+-  
+- ä
+- r
+-  
+- i
+- n
+- g
+- e
+- n
+-  
+- j
+- u
+- r
+- i
+- d
+- i
+- s
+- k
+-  
+- b
+- e
+- d
+- ö
+- m
+- n
+- i
+- n
+- g
+-  
+- a
+- v
+-  
+- e
+- n
+- s
+- k
+- i
+- l
+- d
+- a
+-  
+- s
+- a
+- j
+- t
+- e
+- r
+- .
+
+## Hur lätt är det att ringa? Vi kollade kontaktvägarna på 105 bygg- och fastighetsbolags startsidor (21 november 2026)
+Vi gick igenom startsidan hos 105 stora svenska bygg- och fastighetsbolag på mobilen och tittade på en enkel sak: hur lätt det är att ta kontakt. Nästan alla har en länk till kontaktsidan, men bara 2 av 105 visar ett telefonnummer man kan trycka på direkt när sidan öppnas.
+- ['2 av 105', 'visade ett klickbart telefonnummer direkt på mobilskärmen']
+- ['33 %', 'hade ett klickbart telefonnummer någonstans på startsidan']
+- ['38 %', 'saknade både telefonnummer och e-post på startsidan']
+- ['96 %', 'hade en länk till kontaktsidan']
+### Vad vi kollade
+Vi öppnade varje startsida i en webbläsare inställd som en vanlig mobil och läste av vilka kontaktvägar som fanns. Med första skärmen menar vi det man ser innan man börjar scrolla.
+- head
+- rows
+- note
+### Varför det spelar roll
+För ett stort bolag är det kanske rimligt att kunderna går via kontaktsidan och letar upp rätt avdelning. För ett mindre företag ser det annorlunda ut. Den som behöver en elektriker, en snickare eller en städfirma vill ofta ringa direkt, och då ska numret finnas där tummen redan är.
+Varje extra steg – öppna menyn, hitta kontaktsidan, leta efter numret – är ett tillfälle för besökaren att ge upp och gå tillbaka till sökresultatet.
+### Så gör ni det enkelt att kontakta er
+- Visa ett klickbart telefonnummer överst på mobilen, eller en knapp som säger Ring.
+- Skriv numret som text också, så att det syns även för den som sitter vid datorn.
+- Ha ett kort formulär på startsidan, med bara namn, telefon och vad det gäller.
+- Skriv när ni svarar, till exempel samma dag eller inom en timme på vardagar.
+- Testa själv: hur många tryck behöver du från startsidan tills telefonen ringer?
+Det här är saker vi bygger in från start i <a href="priser">alla våra paket</a>. Vill du ha hjälp att se över din egen sajt kan du <a href="kontakt">kontakta oss</a>.
+- L
+- i
+- s
+- t
+- a
+- n
+-  
+- b
+- e
+- s
+- t
+- å
+- r
+-  
+- a
+- v
+-  
+- 1
+- 1
+- 6
+-  
+- s
+- t
+- o
+- r
+- a
+-  
+- s
+- v
+- e
+- n
+- s
+- k
+- a
+-  
+- b
+- y
+- g
+- g
+- -
+- ,
+-  
+- f
+- a
+- s
+- t
+- i
+- g
+- h
+- e
+- t
+- s
+- -
+- ,
+-  
+- b
+- o
+- s
+- t
+- a
+- d
+- s
+- -
+-  
+- o
+- c
+- h
+-  
+- i
+- n
+- s
+- t
+- a
+- l
+- l
+- a
+- t
+- i
+- o
+- n
+- s
+- b
+- o
+- l
+- a
+- g
+- .
+-  
+- V
+- i
+-  
+- m
+- ä
+- t
+- t
+- e
+-  
+- s
+- t
+- a
+- r
+- t
+- s
+- i
+- d
+- o
+- r
+- n
+- a
+-  
+- d
+- e
+- n
+-  
+- 2
+- 1
+-  
+- n
+- o
+- v
+- e
+- m
+- b
+- e
+- r
+-  
+- 2
+- 0
+- 2
+- 6
+- .
+-  
+- 1
+- 1
+-  
+- s
+- a
+- j
+- t
+- e
+- r
+-  
+- g
+- i
+- c
+- k
+-  
+- i
+- n
+- t
+- e
+-  
+- a
+- t
+- t
+-  
+- k
+- o
+- n
+- t
+- r
+- o
+- l
+- l
+- e
+- r
+- a
+-  
+- a
+- u
+- t
+- o
+- m
+- a
+- t
+- i
+- s
+- k
+- t
+- ,
+-  
+- s
+- å
+-  
+- 1
+- 0
+- 5
+-  
+- i
+- n
+- g
+- å
+- r
+- .
+-  
+- K
+- o
+- n
+- t
+- r
+- o
+- l
+- l
+- e
+- n
+-  
+- l
+- ä
+- s
+- e
+- r
+-  
+- s
+- i
+- d
+- a
+- n
+-  
+- a
+- u
+- t
+- o
+- m
+- a
+- t
+- i
+- s
+- k
+- t
+-  
+- o
+- c
+- h
+-  
+- k
+- a
+- n
+-  
+- m
+- i
+- s
+- s
+- a
+-  
+- k
+- o
+- n
+- t
+- a
+- k
+- t
+- v
+- ä
+- g
+- a
+- r
+-  
+- s
+- o
+- m
+-  
+- b
+- a
+- r
+- a
+-  
+- v
+- i
+- s
+- a
+- s
+-  
+- e
+- f
+- t
+- e
+- r
+-  
+- a
+- t
+- t
+-  
+- m
+- a
+- n
+-  
+- k
+- l
+- i
+- c
+- k
+- a
+- t
+-  
+- p
+- å
+-  
+- n
+- å
+- g
+- o
+- t
+- .
 
 ## Hemsida fast pris: nu väljer du paket direkt (20 november 2026)
 Vill du ha en hemsida till fast pris ska du veta vad den kostar innan något händer. Därför har vi gjort om våra paket och lagt till en beställningssida där du själv väljer paket och hur du vill gå vidare. Just nu gäller dessutom en limiterad rabatt på de tre första paketen.

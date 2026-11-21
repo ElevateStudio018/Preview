@@ -129,3 +129,31 @@
     rvObserver.observe(el);
   });
 })();
+
+
+// "Prova själv": the typed name shows as the address in the frame, the picked style swaps the picture, and the
+// design tool opens with both filled in
+(function () {
+  var form = document.querySelector('[data-tryit]'); if (!form) return;
+  var input = form.querySelector('input[name="namn"]'), url = document.querySelector('[data-tryit-url]'), img = document.querySelector('[data-tryit-img]');
+  var base = form.getAttribute('action');
+  var domain = function (n) {
+    var s = n.replace(/\s+(AB|HB|KB|Aktiebolag|Handelsbolag)$/i, '').toLowerCase().replace(/[åä]/g, 'a').replace(/ö/g, 'o').replace(/é/g, 'e').replace(/[^a-z0-9]+/g, '');
+    return (s || 'ertforetag') + '.se';
+  };
+  input.addEventListener('input', function () { url.textContent = domain(input.value.trim()); });
+  form.addEventListener('change', function (e) {
+    if (e.target.name !== 'mall') return;
+    var k = e.target.value, src = img.getAttribute('src').replace(/ex-[a-z-]+-(\d+)\.webp/, 'ex-' + k + '-$1.webp');
+    img.setAttribute('srcset', img.getAttribute('srcset').replace(/ex-[a-z-]+?-(\d+)\.webp/g, 'ex-' + k + '-$1.webp'));
+    img.setAttribute('src', src); img.alt = 'Exempelsajten ' + (e.target.dataset.name || '');
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = new URLSearchParams(), n = input.value.trim(), m = form.querySelector('input[name="mall"]:checked');
+    if (n) q.set('namn', n.slice(0, 60));
+    if (m) q.set('mall', m.value);
+    if (window.elevateTrack) window.elevateTrack('designa', 'startsidan');
+    location.href = base + (q.toString() ? '#' + q.toString() : '');
+  });
+})();
