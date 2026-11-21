@@ -55,11 +55,7 @@ p { margin: 0 0 26px; }
 a { color: inherit; }
 
 /* ---------- 404 page background ---------- */
-body.error404 {
-  background: var(--cream) url("../img/404.svg") right bottom / auto no-repeat;
-}
-@media (max-width: 1300px) { body.error404 { background-size: 720px auto; } }
-@media (max-width: 1200px) { body.error404 { background-size: 520px auto; } }
+body.error404 { background: var(--cream); }
 @media (max-width: 576px)  { body.error404 { background-size: 320px auto; } }
 
 /* ---------- Layout ---------- */
@@ -449,18 +445,28 @@ body.drawer-open { overflow: hidden; }
   .topbar .menu-btn[aria-expanded="true"] .icon::after { transform: translateY(-6px) rotate(-45deg); }
 }
 
-/* ---------- 404: a plain page ---------- */
-.lost { position: relative; z-index: 1; padding: 200px 0 120px; }
-.lost__wrap { display: grid; gap: 18px; justify-items: start; }
-.lost__k { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6a766e; }
-.lost__h { margin: 0; font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.05; letter-spacing: -.03em; }
-.lost__lead { margin: 0; max-width: 52ch; font-size: 19px; line-height: 1.55; color: #3f4b44; }
-.lost__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin: 10px 0 0; }
-.lost__link { font-weight: 600; color: var(--accent); }
+/* ---------- 404: a big number in its own typeface, a short text, and the ways on (prices first) ---------- */
+@font-face { font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 500 800; font-display: block;
+  src: url(../fonts/Bricolage-latin.woff2) format("woff2"); unicode-range: U+0030-0039; }
+.lost { position: relative; z-index: 1; padding: 230px 0 120px; }
+.lost__wrap { display: grid; gap: 16px; justify-items: start; }
+.lost__num { margin: 0 0 6px; font-family: "Bricolage Grotesque", var(--sans); font-size: clamp(120px, 20vw, 240px); font-weight: 800; line-height: .82; letter-spacing: -.05em; color: var(--accent); font-variation-settings: "opsz" 96; }
+.lost__h { margin: 0; font-size: clamp(26px, 3.2vw, 38px); font-weight: 600; line-height: 1.15; letter-spacing: -.02em; }
+.lost__lead { margin: 0; max-width: 52ch; font-size: 18px; line-height: 1.55; color: #4d5a52; }
+.lost__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0 0; }
+.lost__btn { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border: 2px solid var(--accent); border-radius: 999px; color: var(--accent); font-weight: 700; text-decoration: none; transition: background-color .2s, color .2s, transform .2s; }
+.lost__btn svg { width: 16px; height: 16px; transition: transform .2s; }
+.lost__btn:hover, .lost__btn:focus-visible { transform: translateY(-1px); }
+.lost__btn:hover svg { transform: translateX(3px); }
+.lost__btn--fill { background: var(--accent); color: #fff; }
+.lost__btn:not(.lost__btn--fill):hover { background: rgba(29, 59, 42, .06); }
+.lost__home { margin: 4px 0 0; font-size: 15px; color: #6a766e; }
+.lost__home a { color: var(--accent); font-weight: 600; }
 @media (max-width: 768px) {
   body { padding-top: calc(var(--banner-h) + 40px); }
-  .lost { padding: 110px 0 80px; }
+  .lost { padding: 100px 0 80px; }
 }
+
 
 
 
