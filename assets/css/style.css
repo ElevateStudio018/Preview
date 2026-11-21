@@ -445,12 +445,10 @@ body.drawer-open { overflow: hidden; }
   .topbar .menu-btn[aria-expanded="true"] .icon::after { transform: translateY(-6px) rotate(-45deg); }
 }
 
-/* ---------- 404: a big number in its own typeface, a short text, and the ways on (prices first) ---------- */
-@font-face { font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 500 800; font-display: block;
-  src: url(../fonts/Bricolage-latin.woff2) format("woff2"); unicode-range: U+0030-0039; }
+/* ---------- 404: a big number in the italic serif of the headings' accent words, a short text, and the ways on (prices first) ---------- */
 .lost { position: relative; z-index: 1; padding: 230px 0 120px; }
 .lost__wrap { display: grid; gap: 16px; justify-items: start; }
-.lost__num { margin: 0 0 6px; font-family: "Bricolage Grotesque", var(--sans); font-size: clamp(120px, 20vw, 240px); font-weight: 800; line-height: .82; letter-spacing: -.05em; color: var(--accent); font-variation-settings: "opsz" 96; }
+.lost__num { margin: 0 0 6px; font-family: var(--serif); font-style: italic; font-size: clamp(120px, 20vw, 240px); font-weight: 400; line-height: .9; letter-spacing: -.02em; color: var(--accent); font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0; }
 .lost__h { margin: 0; font-size: clamp(26px, 3.2vw, 38px); font-weight: 600; line-height: 1.15; letter-spacing: -.02em; }
 .lost__lead { margin: 0; max-width: 52ch; font-size: 18px; line-height: 1.55; color: #4d5a52; }
 .lost__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0 0; }
