@@ -445,10 +445,12 @@ body.drawer-open { overflow: hidden; }
   .topbar .menu-btn[aria-expanded="true"] .icon::after { transform: translateY(-6px) rotate(-45deg); }
 }
 
-/* ---------- 404: a big number in the italic serif of the headings' accent words, a short text, and the ways on (prices first) ---------- */
+/* ---------- 404: a big number in DM Serif Display italic (served from our own server, only its digits), a short text, and the ways on (prices first) ---------- */
 .lost { position: relative; z-index: 1; padding: 230px 0 120px; }
 .lost__wrap { display: grid; gap: 16px; justify-items: start; }
-.lost__num { margin: 0 0 6px; font-family: var(--serif); font-style: italic; font-size: clamp(120px, 20vw, 240px); font-weight: 400; line-height: .9; letter-spacing: -.02em; color: var(--accent); font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0; }
+@font-face { font-family: "DM Serif Display"; font-style: italic; font-weight: 400; font-display: block;
+  src: url(../fonts/DMSerifDisplay-italic-latin.woff2) format("woff2"); unicode-range: U+0030-0039; }
+.lost__num { margin: 0 0 10px; font-family: "DM Serif Display", var(--serif); font-style: italic; font-size: clamp(120px, 20vw, 240px); font-weight: 400; line-height: .9; letter-spacing: -.02em; color: var(--accent); }
 .lost__h { margin: 0; font-size: clamp(26px, 3.2vw, 38px); font-weight: 600; line-height: 1.15; letter-spacing: -.02em; }
 .lost__lead { margin: 0; max-width: 52ch; font-size: 18px; line-height: 1.55; color: #4d5a52; }
 .lost__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0 0; }
