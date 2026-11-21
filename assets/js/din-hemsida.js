@@ -84,7 +84,7 @@
     if (el.textContent !== t) el.textContent = t;
   }
 
-  function apply() {
+  function apply(lookOnly) {
     var doc = frameDoc(); if (!doc) return;
     var o = originals(doc);
     var name = val('namn'), shortName = name ? name.replace(/\s+(AB|HB|KB|Aktiebolag|Handelsbolag)$/i, '') : '';
@@ -100,6 +100,8 @@
     if (val('tider') && o.hours) swaps.push([o.hours, val('tider')]);
     var orig = doc.__dhText || (doc.__dhText = new Map()), last = doc.__dhLast || (doc.__dhLast = new Map());
     var walk = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT), node;
+    if (lookOnly && doc.__dhWalked) walk = { nextNode: function () { return null; } }; // colours, sizes, switches: the text is unchanged
+    doc.__dhWalked = true;
     while ((node = walk.nextNode())) {
       var par = node.parentNode;
       if (!par || par.closest('.logga .ord') || par.closest('script,style')) continue; // the logo is set below
@@ -194,21 +196,26 @@
     if (val('rorelse')) rules.push('*,*::before,*::after{animation:none!important;transition:none!important}');
     var st = doc.getElementById('dh-style');
     if (!st) { st = doc.createElement('style'); st.id = 'dh-style'; doc.head.appendChild(st); }
-    st.textContent = (css.length ? ':root{' + css.join(';') + '}' : '') + rules.join('') +
+    var sheet = (css.length ? ':root{' + css.join(';') + '}' : '') + rules.join('') +
       '.dh-hid{display:none!important}' +
       (doc.designMode === 'on' ? 'body *:hover{outline:2px dashed rgba(226,99,43,.55);outline-offset:-2px;cursor:pointer}.dh-sel,.dh-sel:hover{outline:3px solid #e2632b!important;outline-offset:-3px}' : '');
-    Object.keys(SWITCHES).forEach(function (k) { var at = SWITCHES[k], v = val(k) || o.body[at]; if (v != null && v !== '') doc.body.setAttribute('data-' + at, v); });
+    if (st.textContent !== sheet) st.textContent = sheet; // an unchanged sheet would still make the page recalculate
+    Object.keys(SWITCHES).forEach(function (k) { var at = SWITCHES[k], v = val(k) || o.body[at]; if (v != null && v !== '' && doc.body.getAttribute('data-' + at) !== v) doc.body.setAttribute('data-' + at, v); });
     // the fonts come from our own server (the site's security policy blocks Google's)
     if (!doc.getElementById('dh-fonts')) { var lk = doc.createElement('link'); lk.id = 'dh-fonts'; lk.rel = 'stylesheet'; lk.href = '../typsnitt/typsnitt.css'; doc.head.appendChild(lk); }
 
-    // the colour controls nobody has touched show what the page uses right now
-    var cs = doc.defaultView.getComputedStyle(doc.documentElement);
-    $$('.dh-cc input[type=color]').forEach(function (inp) {
-      if (inp.dataset.on) return;
-      var v = cs.getPropertyValue(CC[inp.name][0]).trim();
-      if (isHex(v)) inp.value = v.toLowerCase();
-      else if (/^#[0-9a-f]{3}$/i.test(v)) inp.value = '#' + v.slice(1).split('').map(function (c) { return c + c; }).join('');
-    });
+    // the colour controls nobody has touched show what the page uses right now (read a moment later, so it
+    // never holds up the preview)
+    clearTimeout(doc.__dhCcT);
+    doc.__dhCcT = setTimeout(function () {
+      var cs = doc.defaultView && doc.defaultView.getComputedStyle(doc.documentElement); if (!cs) return;
+      $$('.dh-cc input[type=color]').forEach(function (inp) {
+        if (inp.dataset.on) return;
+        var v = cs.getPropertyValue(CC[inp.name][0]).trim();
+        if (isHex(v)) inp.value = v.toLowerCase();
+        else if (/^#[0-9a-f]{3}$/i.test(v)) inp.value = '#' + v.slice(1).split('').map(function (c) { return c + c; }).join('');
+      });
+    }, 400);
     $$('.dh-cc').forEach(function (d) { d.classList.toggle('is-on', !!d.querySelector('input').dataset.on); });
 
     // 5. which parts the start page has, in which order, and the menu
@@ -269,9 +276,12 @@
     if (!secState || base !== secs.length) secState = secs.map(function (x, i) { return { k: i, on: true, bg: '', pad: '' }; });
     var main = doc.querySelector('main');
     $$('.dhb', main).forEach(function (x) { if (!secState.some(function (st) { return st.k === x.className.replace(/.*dhb-(\w+).*/, '$1'); })) x.remove(); });
+    var want = secState.map(function (st) { return elOf(doc, st); }).filter(Boolean);
+    var have = Array.prototype.filter.call(main.children, function (c) { return want.indexOf(c) >= 0; });
+    var tail = main.lastElementChild, same = have.length === want.length && want.every(function (x, i) { return have[i] === x; }) && (!want.length || tail === want[want.length - 1]);
     secState.forEach(function (st) {
       var x = elOf(doc, st); if (!x) return;
-      main.appendChild(x);
+      if (!same) main.appendChild(x);
       x.style.display = st.on ? '' : 'none';
       BG.forEach(function (o) { if (o[0]) x.classList.toggle('dh-bg-' + o[0], st.bg === o[0]); });
       PAD.forEach(function (o) { if (o[0]) x.classList.toggle('dh-pad-' + o[0], st.pad === o[0]); });
@@ -387,7 +397,7 @@
     if (val('ring')) {
       if (!ring) { ring = doc.createElement('a'); ring.className = 'dhx-ring'; body.appendChild(ring); }
       ring.href = 'tel:' + phone.replace(/[^\d+]/g, '');
-      ring.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Ring ' + esc(phone);
+      if (ring.__dhPhone !== phone) ring.__dhPhone = phone, ring.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Ring ' + esc(phone);
     } else if (ring) ring.remove();
     var chat = doc.querySelector('.dhx-chat'), box = doc.querySelector('.dhx-chatbox');
     if (val('chatt')) {
@@ -399,7 +409,7 @@
         body.appendChild(chat); body.appendChild(box);
       }
       var nm = val('namn') || o.name;
-      box.innerHTML = '<header>' + esc(nm) + '</header><p>Hej! Vad kan vi hjälpa till med? Fråga om priser, tider eller vad som helst.</p><input placeholder="Skriv en fråga …" aria-label="Fråga"><small>Så här kan er AI-chatt se ut – den ingår i paketet Pro.</small>';
+      if (box.__dhName !== nm) box.__dhName = nm, box.innerHTML = '<header>' + esc(nm) + '</header><p>Hej! Vad kan vi hjälpa till med? Fråga om priser, tider eller vad som helst.</p><input placeholder="Skriv en fråga …" aria-label="Fråga"><small>Så här kan er AI-chatt se ut – den ingår i paketet Pro.</small>';
     } else { if (chat) chat.remove(); if (box) box.remove(); }
     // keep the call button before the chat in the page, so the chat sits above it
     if (ring && chat && ring.compareDocumentPosition(chat) & 2) body.insertBefore(ring, chat);
@@ -422,7 +432,7 @@
     if (!$$('option', pageSel).some(function (op) { return op.value === cur; })) { var op = document.createElement('option'); op.value = cur; op.textContent = cur.replace('.html', ''); pageSel.appendChild(op); }
     pageSel.value = cur;
   }
-  pageSel.addEventListener('change', function () { frame.src = base + 'exempel/' + current() + '/' + pageSel.value; save(); });
+  pageSel.addEventListener('change', function () { frame.src = base + 'exempel/' + current() + '/' + pageSel.value; watch(); save(); });
 
   // ---- the menu: rename links, or empty one to hide it
   function navLinks(doc) { return $$('.head .nav a', doc); }
@@ -528,7 +538,7 @@
     Object.keys(edits).forEach(function (k) { var el = findKey(doc, k); if (el) styleEl(el, edits[k], withText); });
   }
   function pushUndo() { undoStack.push(JSON.stringify(edits)); if (undoStack.length > 60) undoStack.shift(); $('dh-undo').disabled = false; }
-  function reloadFrame() { var doc = frameDoc(); sel = null; if (doc) frame.src = doc.location.href.split('#')[0]; }
+  function reloadFrame() { var doc = frameDoc(); sel = null; if (doc) { frame.src = doc.location.href.split('#')[0]; watch(); } }
 
   function setupEdit(doc) {
     doc.designMode = editBox.checked ? 'on' : 'off';
@@ -645,14 +655,61 @@
   });
   function setColour(group, hex) { var inp = form.elements[group + '-egen']; inp.value = hex; egenRadio[group].checked = true; marks(); }
 
-  function load() { secState = null; navState = {}; openRow = -1; $('dh-navs').__key = ''; frame.src = base + 'exempel/' + current() + '/' + (pendingPage && /^[a-z0-9-]+\.html$/.test(pendingPage) ? pendingPage : 'index.html'); pendingPage = ''; }
-  frame.addEventListener('load', function () {
-    var doc = frameDoc(); if (!doc) return;
+  // the example sites fade parts in as they scroll into view and load far-down pictures late; in the preview
+  // that looks like loading, so everything is shown straight away and every picture is fetched at once
+  var PREP_CSS = '.reveal,.reveal *{transition:none!important}';
+  function prep(doc) {
+    if (doc.__dhPrep) return; doc.__dhPrep = true;
+    var st = doc.createElement('style'); st.textContent = PREP_CSS; (doc.head || doc.documentElement).appendChild(st);
+    $$('.reveal', doc).forEach(function (el) { el.classList.add('syns'); });
+    $$('img[loading]', doc).forEach(function (im) { im.loading = 'eager'; });
+  }
+  function init(doc) {
+    if (doc.__dhInit) return; doc.__dhInit = doc.__dhSeen = true;
+    prep(doc);
     if (pendingSec) { // a shared link: the parts' order for this template
       if (isStart(doc)) { var arr = parseSec(pendingSec, sections(doc).length); if (arr) secState = arr; pendingSec = ''; }
     }
     if (pendingNav) { pendingNav.split('|').forEach(function (x) { var k = x.indexOf('~'); if (k > 0) navState[+x.slice(0, k)] = x.slice(k + 1); }); pendingNav = ''; }
     setupEdit(doc); syncPages(doc); apply(); applyEdits(doc, true); save();
+    warm();
+  }
+  // catch the new page while it is still being parsed and take it over at DOMContentLoaded (the stylesheets
+  // have loaded by then), instead of waiting for every picture
+  function watch() {
+    var n = 0;
+    (function tick() {
+      var d; try { d = frame.contentDocument; } catch (e) { return; }
+      if (d && !d.__dhSeen && d.URL !== 'about:blank' && /\/exempel\//.test(d.URL)) {
+        d.__dhSeen = true; // a page already past parsing (the old one, or a very quick load) is left to the load event
+        if (d.readyState === 'loading') { d.addEventListener('DOMContentLoaded', function () { if (d.body) init(d); }); return; }
+      }
+      if (++n < 900) requestAnimationFrame(tick);
+    })();
+  }
+  // the other templates, fetched quietly once the first one shows, so switching is instant
+  var warmed = false;
+  function warm() {
+    if (warmed) return; warmed = true;
+    var later = window.requestIdleCallback || function (cb) { return setTimeout(cb, 1200); };
+    later(function () {
+      $$('input[name=mall]', form).forEach(function (r, i) {
+        var dir = base + 'exempel/' + r.value + '/';
+        setTimeout(function () {
+          fetch(dir + 'index.html', { priority: 'low' }).then(function (res) { return res.ok ? res.text() : ''; }).then(function (html) {
+            var m = html.match(/<img[^>]*fetchpriority[^>]*>/), src = m && m[0].match(/\ssrc="([^"]+)"/);
+            var tok = html.match(/href="(assets\/tokens\.css[^"]*)"/);
+            if (src) fetch(dir + src[1], { priority: 'low' }).catch(function () {});
+            if (tok) fetch(dir + tok[1], { priority: 'low' }).catch(function () {});
+          }).catch(function () {});
+        }, i * 250);
+      });
+    });
+  }
+  function load() { secState = null; navState = {}; openRow = -1; $('dh-navs').__key = ''; frame.src = base + 'exempel/' + current() + '/' + (pendingPage && /^[a-z0-9-]+\.html$/.test(pendingPage) ? pendingPage : 'index.html'); pendingPage = ''; watch(); }
+  frame.addEventListener('load', function () {
+    var doc = frameDoc(); if (!doc) return;
+    init(doc); // if it was not caught earlier
   });
 
   // ---- settings in the address (not the images), so a design can be shared or sent with an enquiry
@@ -677,7 +734,7 @@
     var plain = q.toString(), linkEd = cleanEdits(edits, false);
     if (Object.keys(linkEd).length) q.set('ed', JSON.stringify(linkEd));
     try { history.replaceState(null, '', location.pathname + location.search + (q.toString() ? '#' + q.toString() : '')); } catch (e) {}
-    store(plain);
+    lastPlain = plain; store(plain);
     var link = location.href.length > 1500 ? location.origin + location.pathname + (plain ? '#' + plain : '') + ' (texterna jag skrev direkt i sidan fick inte plats i länken)' : location.href;
     var msg = 'Hej! Jag testade "Se hur din hemsida kan se ut" och vill ha en offert på något liknande. Min design: ' + link;
     var o = new URLSearchParams({ meddelande: msg });
@@ -688,7 +745,12 @@
   }
   // the whole design, pictures too, is kept in this browser so it is still there next time
   var STORE = 'dh-design-v1';
-  function store(plain) {
+  var storeTimer;
+  function store(plain) { clearTimeout(storeTimer); storeTimer = setTimeout(function () { storeNow(plain); }, 600); }
+  addEventListener('pagehide', function () { if (storeTimer) { clearTimeout(storeTimer); storeNow(lastPlain); } });
+  var lastPlain = '';
+  function storeNow(plain) {
+    storeTimer = null; lastPlain = plain;
     var data = { h: plain, e: cleanEdits(edits, true), i: imgs };
     try { localStorage.setItem(STORE, JSON.stringify(data)); }
     catch (e) { try { data.e = cleanEdits(edits, false); data.i = { logga: '', bild: [] }; localStorage.setItem(STORE, JSON.stringify(data)); } catch (e2) {} }
@@ -729,13 +791,14 @@
     if (e.target.name === 'mall' || e.target.type === 'file' || e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox || e.target === pageSel || e.target.id === 'dh-addblock') return;
     if (CC[e.target.name]) e.target.dataset.on = '1';
     marks();
-    clearTimeout(timer); timer = setTimeout(function () { apply(); save(); }, 100);
+    var lookOnly = !/^(text|tel|email|search)$/.test(e.target.type || '') && e.target.tagName !== 'TEXTAREA';
+    clearTimeout(timer); timer = setTimeout(function () { requestAnimationFrame(function () { apply(lookOnly); save(); }); }, lookOnly ? 40 : 100);
   });
   form.addEventListener('change', function (e) {
     if (e.target.closest('#dh-secs') || e.target.closest('#dh-navs') || e.target === editBox || e.target === pageSel || e.target.id === 'dh-addblock') return;
-    if (CC[e.target.name]) { e.target.dataset.on = '1'; apply(); save(); return; }
+    if (CC[e.target.name]) { e.target.dataset.on = '1'; apply(true); save(); return; }
     if (e.target.name === 'mall') { marks(); load(); save(); }
-    else if (e.target.tagName === 'SELECT' || e.target.type === 'radio') { marks(); apply(); save(); }
+    else if (e.target.tagName === 'SELECT' || e.target.type === 'radio') { marks(); apply(true); save(); }
   });
 
   // ---- images: read in the browser only, scaled down so the page stays quick
@@ -876,7 +939,8 @@
     else prompt('Kopiera länken:', location.href);
   });
 
-  form.addEventListener('submit', function (e) { e.preventDefault(); apply(); save(); $('dh-cta').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+  // "Få en offert för den här sidan": straight to the contact form, with the design link in the message
+  form.addEventListener('submit', function (e) { e.preventDefault(); apply(); save(); storeNow(lastPlain); location.href = $('dh-offert').href; });
 
   // ---- dator / mobil, and fitting the 1280 px desktop page into the frame
   function fit() {

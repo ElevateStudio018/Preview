@@ -7,27 +7,27 @@ document.querySelectorAll('link[data-defer]').forEach(function (l) {
 if (!document.querySelector('link[data-defer]')) document.documentElement.classList.add('css-ready');
 (function () {
   var body = document.body;
-  var header = document.getElementById('site-header');
-  var megaLink = document.querySelector('.js-show-megamenu');
-  var megamenu = document.getElementById('megamenu');
-  var headerBurger = header.querySelector('.js-show-hamburger');
-  var burgerButtons = document.querySelectorAll('.js-show-hamburger');
-  var burgerMenu = document.getElementById('hamburgermenu');
+  var header = document.getElementById('topbar');
+  var megaLink = document.querySelector('.js-svc-toggle');
+  var svcpanel = document.getElementById('svcpanel');
+  var headerBurger = header.querySelector('.js-menu-toggle');
+  var burgerButtons = document.querySelectorAll('.js-menu-toggle');
+  var burgerMenu = document.getElementById('menu-drawer');
 
   // Megamenu
   function setMegamenu(open) {
-    megamenu.classList.toggle('megamenu--visible', open);
+    svcpanel.classList.toggle('svcpanel--open', open);
     megaLink.parentElement.classList.toggle('is-active', open);
     megaLink.setAttribute('aria-expanded', String(open));
-    body.classList.toggle('main-overlay', open);
+    body.classList.toggle('page-dim', open);
   }
   megaLink.addEventListener('click', function (e) {
     e.preventDefault();
-    if (burgerMenu.classList.contains('hamburgermenu--visible')) setBurger(false);
-    setMegamenu(!megamenu.classList.contains('megamenu--visible'));
+    if (burgerMenu.classList.contains('menu-drawer--open')) setBurger(false);
+    setMegamenu(!svcpanel.classList.contains('svcpanel--open'));
   });
   document.addEventListener('click', function (e) {
-    if (megamenu.classList.contains('megamenu--visible') && !header.contains(e.target)) setMegamenu(false);
+    if (svcpanel.classList.contains('svcpanel--open') && !header.contains(e.target)) setMegamenu(false);
   });
 
   // Menu drawer: slides in from the right over a dimmed page
@@ -37,11 +37,11 @@ if (!document.querySelector('link[data-defer]')) document.documentElement.classL
   function placeDrawer() {
     body.style.setProperty('--drawer-top', Math.round(header.getBoundingClientRect().bottom) + 'px');
   }
-  window.addEventListener('scroll', function () { if (burgerMenu.classList.contains('hamburgermenu--visible')) placeDrawer(); }, { passive: true });
+  window.addEventListener('scroll', function () { if (burgerMenu.classList.contains('menu-drawer--open')) placeDrawer(); }, { passive: true });
   window.addEventListener('resize', placeDrawer);
   function setBurger(open, byMouse) {
-    if (open === burgerMenu.classList.contains('hamburgermenu--visible')) return;
-    burgerMenu.classList.toggle('hamburgermenu--visible', open);
+    if (open === burgerMenu.classList.contains('menu-drawer--open')) return;
+    burgerMenu.classList.toggle('menu-drawer--open', open);
     burgerMenu.setAttribute('aria-hidden', String(!open));
     headerBurger.setAttribute('aria-expanded', String(open));
     body.classList.toggle('drawer-open', open);
@@ -59,7 +59,7 @@ if (!document.querySelector('link[data-defer]')) document.documentElement.classL
   burgerButtons.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       setMegamenu(false);
-      setBurger(!burgerMenu.classList.contains('hamburgermenu--visible'), e.detail > 0);
+      setBurger(!burgerMenu.classList.contains('menu-drawer--open'), e.detail > 0);
     });
   });
   document.querySelectorAll('.js-close-drawer').forEach(function (el) {
@@ -80,7 +80,7 @@ if (!document.querySelector('link[data-defer]')) document.documentElement.classL
   });
 
   // Shrink header on scroll
-  function onScroll() { header.classList.toggle('site-header--scrolled', window.scrollY > 10); }
+  function onScroll() { header.classList.toggle('topbar--scrolled', window.scrollY > 10); }
   window.addEventListener('scroll', onScroll, { passive: true });
   // no first call: the page opens at the top, and a restored scroll position fires a scroll event anyway
 
@@ -116,7 +116,7 @@ if (!document.querySelector('link[data-defer]')) document.documentElement.classL
       };
       button.disabled = true;
       show('Skickar …', true);
-      var news = form.classList.contains('site-footer__newsletter');
+      var news = form.classList.contains('foot__newsletter');
       var done = news ? 'Tack för att du gick med i vårt nyhetsbrev! Du får tips om hemsidor, synlighet på Google och nyheter från oss ungefär en gång i månaden. Du kan avsluta när du vill via länken i varje mejl.' : 'Tack! Vi återkommer så fort vi kan.';
       if (isBot) { form.reset(); show(done, true); button.disabled = false; return; }
       var isLead = 'lead' in form.dataset && data.email;
@@ -333,4 +333,7 @@ document.querySelectorAll('.exs').forEach(function (w) {
     var el = f.elements[k], v = q.get(k);
     if (el && v && !el.value) el.value = v.slice(0, 1500);
   });
+  // a filled-in message shows in full, not as one line
+  var m = f.querySelector('textarea[name="meddelande"]');
+  if (m && m.value) { fit(m); addEventListener('load', function () { fit(m); }); }
 })();

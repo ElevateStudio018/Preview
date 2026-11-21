@@ -1452,15 +1452,65 @@
     });
   }
 
-  /* ---------- Chatten ---------- */
+  /* ---------- Chatten: every question and answer, grouped into conversations, with device and where visitors came from ---------- */
+  var CHAT_SRC = { ai: 'AI-svar', faq: 'Färdigt svar', knapp: 'Snabbknapp', obesvarad: 'Kunde inte svara', kontakt: 'Kontakt' };
+  var DEV = { desktop: 'Dator', mobile: 'Mobil', tablet: 'Surfplatta', unknown: 'Okänd' };
+  var VSRC = { google: 'Google', bing: 'Bing', duckduckgo: 'DuckDuckGo', social: 'Sociala medier', ai: 'AI-tjänster (ChatGPT m.fl.)', referral: 'Länk från annan sajt', direct: 'Direkt / okänt' };
   function renderChat() {
-    main().innerHTML = head('Chatten', 'Vad besökarna frågar chatten – senaste 90 dagarna.');
-    fetchRows(sb.from('chatbot_queries').select('question,matched,topic,page_path,created_at').gte('created_at', since(90)).order('created_at', { ascending: false }).limit(5000), function (q) {
+    main().innerHTML = head('Chatten', 'Allt besökarna har frågat chatten och vad den svarade – senaste 90 dagarna.');
+    fetchRows(sb.from('chatbot_queries').select('*').gte('created_at', since(90)).order('created_at', { ascending: false }).limit(5000), function (all) {
+      var q = all.filter(function (x) { return !x.is_bot; }).sort(function (a, b) { return Date.parse(b.created_at) - Date.parse(a.created_at); });
+      var rich = q.some(function (x) { return x.session_id; });
+      // conversations: rows with the same id; older rows (before the id existed) count as one question each
+      var conv = {}, order = [];
+      q.slice().reverse().forEach(function (x, i) {
+        var k = x.session_id || ('rad' + i);
+        if (!conv[k]) { conv[k] = { id: k, rows: [] }; order.push(k); }
+        conv[k].rows.push(x);
+      });
+      var C = order.map(function (k) { var c = conv[k], r = c.rows, f = r[0], l = r[r.length - 1];
+        c.first = f.created_at; c.last = l.created_at; c.secs = Math.max(0, Math.round((Date.parse(l.created_at) - Date.parse(f.created_at)) / 1000));
+        c.lead = r.some(function (x) { return x.lead; }); c.dev = f.device_type; c.os = f.os; c.browser = f.browser; c.city = f.city; c.country = f.country;
+        c.src = f.visit_source; c.ref = f.referrer_host; c.pages = r.map(function (x) { return x.page_path; }).filter(function (p, i, a) { return p && a.indexOf(p) === i; });
+        return c; }).reverse();
       var miss = q.filter(function (x) { return !x.matched; });
-      main().insertAdjacentHTML('beforeend', kpis([['Frågor', q.length], ['Besvarade', q.length ? Math.round((q.length - miss.length) / q.length * 100) + ' %' : '–'], ['Obesvarade', miss.length], ['Senaste 7 dagar', q.filter(function (x) { return Date.parse(x.created_at) > Date.now() - 7 * 864e5; }).length]]) +
-        '<div class="split">' + bars('Ämnen', countBy(q, function (x) { return x.topic || 'Övrigt'; }), q.length) + bars('Sidor där chatten används', countBy(q, function (x) { return x.page_path; })) + '</div>' +
-        '<section class="panel"><h3>Frågor chatten inte kunde svara på</h3><p class="panel__sub">Lägg till svaren i chattens FAQ så blir den bättre.</p>' +
-        table([['Fråga', function (x) { return esc(x.question); }], ['Sida', function (x) { return esc(x.page_path || '–'); }], ['När', function (x) { return dt(x.created_at); }]], miss.slice(0, 50)) + '</section>');
+      var leads = C.filter(function (c) { return c.lead; }).length;
+      var avg = C.length ? (q.length / C.length).toFixed(1).replace('.', ',') : '–';
+      var dur = function (s) { return s < 60 ? s + ' s' : Math.round(s / 60) + ' min'; };
+      var len = function (c) { var n = c.rows.length; return n === 1 ? '1 fråga' : n <= 3 ? '2–3 frågor' : n <= 6 ? '4–6 frågor' : '7+ frågor'; };
+      var ms = q.filter(function (x) { return x.source === 'ai' && x.answer_ms; }).map(function (x) { return x.answer_ms; }).sort(function (a, b) { return a - b; });
+      var place = function (c) { return [c.city, c.country].filter(Boolean).join(', '); };
+      var html = kpis([['Frågor', q.length], ['Samtal', C.length], ['Frågor per samtal', avg], ['Lämnade kontaktuppgift', leads],
+        ['Besvarade', q.length ? Math.round((q.length - miss.length) / q.length * 100) + ' %' : '–'], ['Svarstid AI (median)', ms.length ? (ms[Math.floor(ms.length / 2)] / 1000).toFixed(1).replace('.', ',') + ' s' : '–'],
+        ['Senaste 7 dagar', q.filter(function (x) { return Date.parse(x.created_at) > Date.now() - 7 * 864e5; }).length]]);
+      if (!rich) html += info('Mer statistik', 'Enhet, varifrån besökaren kom, svaren och hela samtal sparas när du har kört <b>supabase/sql/2026-11-21_chat_details.sql</b> i Supabase (SQL Editor). Frågorna nedan sparas redan.');
+      html += '<div class="split">' + bars('Enhet', countBy(C, function (c) { return c.dev ? DEV[c.dev] || c.dev : null; }), C.length) + bars('Varifrån besökarna kom', countBy(C, function (c) { return c.src ? VSRC[c.src] || c.src : null; }), C.length) + '</div>' +
+        '<div class="split">' + bars('Sajter de kom från', countBy(C, function (c) { return c.ref; })) + bars('Ort', countBy(C, place)) + '</div>' +
+        '<div class="split">' + bars('Webbläsare', countBy(C, function (c) { return c.browser; }), C.length) + bars('Operativsystem', countBy(C, function (c) { return c.os; }), C.length) + '</div>' +
+        '<div class="split">' + bars('Samtalens längd', countBy(C, len), C.length) + bars('Hur chatten svarade', countBy(q, function (x) { return x.source ? CHAT_SRC[x.source] || x.source : (x.matched ? 'Besvarad' : 'Kunde inte svara'); }), q.length) + '</div>' +
+        '<div class="split">' + bars('Sidor där chatten används', countBy(q, function (x) { return x.page_path; })) + bars('Ämnen', countBy(q, function (x) { return x.topic || 'Övrigt'; }), q.length) + '</div>';
+      // every conversation, newest first, with the exact words
+      html += '<section class="panel"><h3>Alla samtal</h3><p class="panel__sub">Klicka på ett samtal för att se exakt vad besökaren skrev och vad chatten svarade.</p>' +
+        '<label class="fld" style="max-width:360px"><span>Sök i samtalen</span><input class="input" id="chat-find" type="search" placeholder="Ord, sida eller ort …"></label><div class="chatlog" id="chat-list">' +
+        (C.length ? C.map(function (c) {
+          var meta = [dt(c.first), DEV[c.dev] || '', [c.os, c.browser].filter(Boolean).join(' · '), place(c), c.src ? (VSRC[c.src] || c.src) + (c.ref ? ' (' + c.ref + ')' : '') : '', c.rows.length + (c.rows.length === 1 ? ' fråga' : ' frågor'), c.rows.length > 1 ? dur(c.secs) : ''].filter(Boolean);
+          var words = c.rows.map(function (x) { return x.question + ' ' + (x.answer || ''); }).join(' ') + ' ' + c.pages.join(' ') + ' ' + place(c);
+          return '<details class="chatconv" data-find="' + esc(words.toLowerCase()) + '"><summary><b>' + esc(c.rows[0].question.slice(0, 90)) + '</b>' + (c.lead ? ' <span class="pill pill--on">Lämnade kontaktuppgift</span>' : '') +
+            '<span class="muted">' + meta.map(esc).join(' · ') + '</span></summary><div class="chatconv__body">' +
+            c.rows.map(function (x) {
+              return '<p class="chatconv__q"><small>' + dt(x.created_at, { timeStyle: 'short' }) + (x.page_path ? ' · ' + esc(x.page_path) : '') + '</small>' + esc(x.question) + '</p>' +
+                (x.answer ? '<p class="chatconv__a"><small>' + esc(CHAT_SRC[x.source] || 'Svar') + (x.answer_ms ? ' · ' + (x.answer_ms / 1000).toFixed(1).replace('.', ',') + ' s' : '') + '</small>' + esc(x.answer) + '</p>'
+                  : '<p class="chatconv__a chatconv__a--none">' + (x.matched ? 'Besvarad (svaret sparades inte då)' : 'Kunde inte svara') + '</p>');
+            }).join('') + '</div></details>';
+        }).join('') : '<p class="empty">Inga samtal än.</p>') + '</div></section>';
+      html += '<section class="panel"><h3>Frågor chatten inte kunde svara på</h3><p class="panel__sub">Lägg till svaren i chattens FAQ så blir den bättre.</p>' +
+        table([['Fråga', function (x) { return esc(x.question); }], ['Sida', function (x) { return esc(x.page_path || '–'); }], ['När', function (x) { return dt(x.created_at); }]], miss.slice(0, 50)) + '</section>';
+      main().insertAdjacentHTML('beforeend', html);
+      var find = $('#chat-find');
+      if (find) find.addEventListener('input', function () {
+        var t = find.value.trim().toLowerCase();
+        main().querySelectorAll('.chatconv').forEach(function (d) { d.hidden = !!t && d.dataset.find.indexOf(t) < 0; });
+      });
     });
   }
 

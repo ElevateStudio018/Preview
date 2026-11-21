@@ -64,6 +64,45 @@
   var log = root.querySelector('.chat__log'), chips = root.querySelector('.chat__chips');
   var form = root.querySelector('.chat__form'), input = root.querySelector('#chat-input');
   var waitingForEmail = null, greeted = false;
+  // the conversation, for the admin: an id that lives only in memory for this page view (nothing is stored on the device)
+  var sid = Date.now().toString(36) + Math.random().toString(36).slice(2, 10), turn = 0, convo = [], lastQuestion = '';
+  var utm = new URLSearchParams(location.search).get('utm_source') || '';
+  function logTurn(q, ans, source, ms, matched, topic, lead) {
+    turn++;
+    try {
+      fetch('/api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true, body: JSON.stringify({
+        kind: 'chat', question: q.slice(0, 500), answer: String(ans || '').slice(0, 4000), source: source, matched: !!matched, topic: topic || null,
+        page_path: location.pathname, sid: sid, turn: turn, ms: ms, lead: !!lead, ref: document.referrer || '', utm: utm }) });
+    } catch (e) { /* the log never blocks the chat */ }
+  }
+  var EMAIL_RE = /[^\s@<>()",;]+@[^\s@<>()",;]+\.[a-zåäö]{2,}/i;
+  var PHONE_RE = /(?:\+46|0)[\s-]?\d(?:[\s-]?\d){6,11}/;
+  var CONTACT_RE = /kontakt|nå er\b|nå dig\b|ringa? (mig|er|upp)|hör(a)? av|bli kontaktad|prata med (någon|en människa|er\b|en person)|människa|talk to (someone|a human)|contact/i;
+  function contactIn(q) {
+    var e = q.match(EMAIL_RE), p = q.match(PHONE_RE);
+    return { email: e ? e[0].replace(/[.,;:!?]+$/, '') : '', phone: p ? p[0].trim() : '' };
+  }
+  function transcript() {
+    return convo.slice(-24).map(function (m) { return (m.who === 'me' ? 'Besökare: ' : 'Chatten: ') + m.text; }).join('\n').slice(0, 3500);
+  }
+  // the visitor left an e-mail address or a phone number: an enquiry like the contact form, in the inbox and in the admin
+  function sendLead(q, c, about) {
+    var t0 = Date.now(), to = c.email || c.phone;
+    var body = { _subject: 'Fråga från chatten på hemsidan', fraga: about, konversation: transcript(), sida: location.href };
+    if (c.email) body.email = c.email;
+    if (c.phone) body.telefon = c.phone;
+    fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        var thanks = 'Tack! Vi hör av oss på ' + to + ' så snart vi kan, oftast samma dag. Vill du lägga till något kan du skriva det här.';
+        say(thanks, 'bot'); logTurn(q, thanks, 'kontakt', Date.now() - t0, true, 'kontakt', true);
+        if (window.elevateTrack) window.elevateTrack('chat', 'lämnade kontaktuppgift');
+      })
+      .catch(function () {
+        var fail = 'Något gick fel när jag skulle skicka det. Mejla gärna info@elevatestudio.nu eller ring Carl på +46 76 022 83 61.';
+        say(fail, 'bot'); logTurn(q, fail, 'kontakt', Date.now() - t0, false, 'kontakt', false);
+      });
+  }
 
   var LOGO = '<svg viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>';
   var queue = Promise.resolve();
@@ -86,12 +125,13 @@
       dots.innerHTML = '<i></i><i></i><i></i>';
       r.appendChild(dots);
       log.scrollTop = log.scrollHeight;
-      var wait = reduced ? 0 : Math.min(1100, 420 + text.length * 3);
+      var wait = reduced ? 0 : Math.min(2200, 900 + text.length * 5); // the typing dots stay a little longer for longer answers
       return new Promise(function (ok) { setTimeout(ok, wait); }).then(function () { r.remove(); show(text, 'bot', link); });
     });
     return queue;
   }
   function show(text, who, link) {
+    convo.push({ who: who, text: text });
     var r = row(who);
     var m = document.createElement('div');
     m.className = 'chat__msg chat__msg--' + who;
@@ -136,52 +176,55 @@
   }
   function ask(q, fromChip) {
     say(q, 'me');
-    if (waitingForEmail) {
-      var email = q.trim();
-      if (!/^\S+@\S+\.\S+$/.test(email)) { say('Det ser inte ut som en e-postadress. Försök igen, eller mejla info@elevatestudio.nu.', 'bot'); return; }
-      var question = waitingForEmail; waitingForEmail = null;
-      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ _subject: 'Fråga från chatten på hemsidan', _template: 'table', email: email, fraga: question, sida: location.href }) })
-        .then(function (r) { if (!r.ok) throw new Error(); say('Tack! Vi svarar dig på ' + email + ' så fort vi kan.', 'bot'); })
-        .catch(function () { say('Något gick fel. Mejla gärna info@elevatestudio.nu direkt.', 'bot'); });
+    // an e-mail address or phone number anywhere in the message: that is an enquiry, never a question for the AI
+    var c = contactIn(q);
+    if (c.email || c.phone) {
+      var about = waitingForEmail || lastQuestion || 'Vill bli kontaktad';
+      waitingForEmail = null; sendLead(q, c, about); return;
+    }
+    waitingForEmail = null; // a new question instead of an address: answer it as usual
+    if (CONTACT_RE.test(q)) {
+      var how = 'Absolut! Skriv din e-postadress eller ditt telefonnummer här i chatten, så hör vi av oss så snart vi kan. Du kan också ringa Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu.';
+      say(how, 'bot'); logTurn(q, how, 'kontakt', 0, true, 'kontakt', false);
+      waitingForEmail = q; lastQuestion = q;
       return;
     }
-    if (/prata med någon|människa|person|talk to someone|human/i.test(q)) {
-      say('Absolut! Ring Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu. Vill du att vi hör av oss? Skriv din e-postadress här.', 'bot');
-      waitingForEmail = 'Vill bli kontaktad';
-      return;
-    }
+    lastQuestion = q;
     var hit = answer(q);
     // typed questions go to the AI (Workers AI); the keyword answers are the fallback and are used for the quick buttons
     if (!fromChip) { askAi(q, hit); return; }
-    reply(q, hit);
+    reply(q, hit, 'knapp', Date.now());
   }
   var history = [];
   function askAi(q, hit) {
-    var wait = row('bot'), dots = document.createElement('div');
+    var t0 = Date.now(), wait = row('bot'), dots = document.createElement('div');
     dots.className = 'chat__msg chat__msg--bot chat__typing'; dots.setAttribute('aria-label', 'Skriver'); dots.innerHTML = '<i></i><i></i><i></i>';
     wait.appendChild(dots); log.scrollTop = log.scrollHeight;
     fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ q: q, history: history.slice(-6) }) })
       .then(function (r) { return r.ok ? r.json() : { error: r.status }; })
       .catch(function () { return { error: 'net' }; })
       .then(function (d) {
-        if (wait && wait.parentNode) wait.parentNode.removeChild(wait);
-        var showNow = function (t, l) { show(t, 'bot', l); };
+        var showNow = function (t, l) {
+          var left = reduced ? 0 : Math.min(2200, 900 + t.length * 5) - (Date.now() - t0);
+          setTimeout(function () { if (wait && wait.parentNode) wait.parentNode.removeChild(wait); show(t, 'bot', l); }, Math.max(0, left));
+        };
+        if (!(d && d.answer) && wait && wait.parentNode) wait.parentNode.removeChild(wait);
         if (d && d.answer) {
           history.push({ role: 'user', content: q }, { role: 'assistant', content: d.answer });
-          try { fetch('/api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true, body: JSON.stringify({ kind: 'chat', question: q.slice(0, 500), matched: true, topic: 'ai', page_path: location.pathname }) }); } catch (e) { /* fine */ }
+          logTurn(q, d.answer, 'ai', Date.now() - t0, true, 'ai', false);
           showNow(d.answer, hit && hit.link ? hit.link : null);
           return;
         }
-        reply(q, d && d.unknown ? null : hit);
+        reply(q, d && d.unknown ? null : hit, null, t0);
       });
   }
-  function reply(q, hit) {
-    // every question goes to Chatten in the admin, answered or not
-    try { fetch('/api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true, body: JSON.stringify({ kind: 'chat', question: q.slice(0, 500), matched: !!hit, topic: hit ? (hit.link ? hit.link[0] : hit.k[0]) : null, page_path: location.pathname }) }); } catch (e) { /* never block the chat */ }
+  function reply(q, hit, src, t0) {
+    // every question goes to Chatten in the admin, answered or not, with the answer it got
+    var unknown = 'Det vet jag inte säkert – men vi svarar gärna själva. Skriv din e-postadress eller ditt telefonnummer här, så hör vi av oss.';
+    logTurn(q, hit ? hit.a : unknown, src || (hit ? 'faq' : 'obesvarad'), Date.now() - (t0 || Date.now()), !!hit, hit ? (hit.link ? hit.link[0] : hit.k[0]) : null, false);
     if (window.elevateTrack) window.elevateTrack('chat', hit ? 'besvarad' : 'obesvarad');
     if (hit) { say(hit.a, 'bot', hit.link); return; }
-    say('Det vet jag inte säkert – men vi svarar gärna själva. Skriv din e-postadress så mejlar vi dig ett svar.', 'bot');
+    say(unknown, 'bot');
     waitingForEmail = q;
   }
   toggle.addEventListener('click', function () { open(panel.hidden); });
