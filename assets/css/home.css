@@ -1165,7 +1165,7 @@ h2, h3 { margin: 0; font-weight: 400; }
 .tryit__go { gap: 10px; }
 .tryit__go svg { width: 16px; height: 16px; transition: transform .2s; }
 .tryit__go:hover svg { transform: translateX(3px); }
-.tryit__styles { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 14px 0 0; padding: 0; border: 0; }
+.tryit__styles { display: none; grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 14px 0 0; padding: 0; border: 0; }
 .tryit__styles legend { margin-bottom: 10px; padding: 0; font-size: 14px; color: rgba(253, 251, 245, .7); }
 .tryit__style { position: relative; display: grid; gap: 6px; cursor: pointer; font-size: 13px; font-weight: 600; color: rgba(253, 251, 245, .85); }
 .tryit__style input { position: absolute; opacity: 0; pointer-events: none; }

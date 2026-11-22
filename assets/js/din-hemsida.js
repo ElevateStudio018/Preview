@@ -140,7 +140,7 @@
     if (hero) {
       setText(hero.querySelector('h1'), val('rubrik'));
       setText(hero.querySelector('.ingress'), val('ingress'));
-      setText(hero.querySelector('.etikett'), branch ? branch + (area ? ' i ' + area : '') : '');
+      $$('.etikett', hero).forEach(function (et) { setText(et, branch ? branch + (area ? ' i ' + area : '') : ''); }); // every slide of the slideshow
       var pics = $$('.bild-slide img', hero); if (!pics.length) pics = $$('img', hero).slice(0, 1);
       pics.forEach(function (pic, i) {
         if (pic.__dhSrc === undefined) { pic.__dhSrc = pic.getAttribute('src'); pic.__dhSet = pic.getAttribute('srcset') || ''; }
@@ -967,10 +967,75 @@
     new IntersectionObserver(function (es) { prevOn = es[0].isIntersecting; upd(); }, { threshold: .3 }).observe(screen);
   }
 
+  // ---- guided start (from the start page): five quick questions, a short "building" animation, then the preview
+  var guide = $('dh-guide'), guideWanted = /(^|[#&])guide=1(&|$)/.test(location.hash);
+  function openGuide() {
+    if (!guide) return;
+    var step = 1, N = 5, ans = {};
+    var steps = $$('[data-g-step]', guide), dots = $$('.dhg__dots i', guide), next = guide.querySelector('[data-g-next]'), back = guide.querySelector('[data-g-back]');
+    var name = val('namn');
+    if (name) guide.querySelector('[data-g-hello]').textContent = 'Hej ' + name + '! Svara så bygger vi ihop ett första förslag. Ni kan ändra allt efteråt.';
+    $$('[data-g-input]', guide).forEach(function (inp) { var v = val(inp.dataset.gInput); if (v) inp.value = v; });
+    function show() {
+      steps.forEach(function (s) { s.hidden = +s.dataset.gStep !== step; });
+      dots.forEach(function (d, i) { d.classList.toggle('is-on', i < step); });
+      back.hidden = step === 1;
+      next.querySelector('span').textContent = step === N ? 'Bygg min hemsida' : 'Nästa';
+      var f = guide.querySelector('[data-g-step="' + step + '"] input'); if (f && matchMedia('(min-width: 700px)').matches) setTimeout(function () { f.focus(); }, 50);
+    }
+    guide.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-v]');
+      if (b && b.closest('[data-g-pick]')) {
+        var key = b.closest('[data-g-pick]').dataset.gPick;
+        $$('[data-v]', b.closest('[data-g-pick]')).forEach(function (x) { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
+        ans[key] = b.dataset.v;
+        if (key === 'bransch') { var t = guide.querySelector('[data-g-input="bransch"]'); if (t) t.value = ''; }
+        if (key !== 'bransch' && step < N) setTimeout(function () { step++; show(); }, 220);
+      }
+    });
+    guide.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.matches('input')) { e.preventDefault(); next.click(); } });
+    back.addEventListener('click', function () { if (step > 1) { step--; show(); } });
+    next.addEventListener('click', function () { if (step < N) { step++; show(); } else build(); });
+    guide.querySelector('[data-g-skip]').addEventListener('click', function () { build(true); });
+    function set(k, v) { var el = form.elements[k]; if (!el) return; if (el.length && !el.tagName) { for (var i = 0; i < el.length; i++) el[i].checked = el[i].value === v; } else el.value = v; }
+    function build(skipped) {
+      $$('[data-g-input]', guide).forEach(function (inp) { if (inp.value.trim()) ans[inp.dataset.gInput] = inp.value.trim(); });
+      ['bransch', 'ort', 'telefon'].forEach(function (k) { if (ans[k]) set(k, ans[k]); });
+      if (ans.farg !== undefined) set('farg', ans.farg);
+      var newMall = ans.mall && ans.mall !== current();
+      if (ans.mall) set('mall', ans.mall);
+      marks();
+      if (newMall) load(); else apply();
+      save();
+      // the building animation (shorter for people who have asked for less motion)
+      var card = guide.querySelector('.dhg__card'), anim = guide.querySelector('[data-g-build]'), status = guide.querySelector('[data-g-status]'), bar = guide.querySelector('[data-g-bar]'), list = guide.querySelector('[data-g-list]');
+      card.hidden = true; anim.hidden = false;
+      var who = val('namn') || 'ert företag';
+      var lines = ['Väljer layout och bilder', 'Lägger in ' + who, 'Sätter färger och typsnitt', 'Skriver in era uppgifter', 'Anpassar för mobilen'];
+      var total = matchMedia('(prefers-reduced-motion: reduce)').matches ? 1500 : 5000, t0 = Date.now(), shown = 0;
+      list.innerHTML = '';
+      (function tick() {
+        var p = Math.min(1, (Date.now() - t0) / total);
+        bar.style.width = Math.round(p * 100) + '%';
+        var due = Math.min(lines.length, Math.floor(p * (lines.length + 1)));
+        while (shown < due) { var li = document.createElement('li'); li.textContent = lines[shown]; list.appendChild(li); shown++; status.textContent = lines[Math.min(shown, lines.length - 1)] + ' …'; }
+        if (p < 1) return requestAnimationFrame(tick);
+        status.textContent = 'Klart! Här är ert förslag.';
+        setTimeout(function () {
+          guide.classList.add('is-leaving');
+          setTimeout(function () { guide.hidden = true; document.documentElement.classList.remove('dhg-open'); fit(); var s = $('dh-screen'); if (s && s.scrollIntoView && matchMedia('(max-width: 1100px)').matches) s.scrollIntoView({ block: 'start' }); }, 450);
+        }, 700);
+      })();
+    }
+    guide.hidden = false; document.documentElement.classList.add('dhg-open');
+    show();
+  }
+
   fromStore();
   restore();
   marks();
   fit();
   load();
   save();
+  if (guideWanted) openGuide();
 })();

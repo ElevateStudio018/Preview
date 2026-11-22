@@ -6805,3 +6805,6 @@ a.nbb-sma:hover { transform: translateY(-3px); }
   .non-kontakt { grid-column: 1 / -1; grid-row: auto; min-height: 0; }
   .non.n2 .non-c:not(.non-forst) { grid-column: 3 / 5; }
 }
+
+/* Slideshow: only the first picture takes up room, the others lie on top of it (the rule above made them all stack) */
+.hero .bildspel > .bild-slide:not(:first-child) { position: absolute; inset: 0; }
