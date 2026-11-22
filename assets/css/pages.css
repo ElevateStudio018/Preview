@@ -30,7 +30,7 @@ body.subpage main { padding-top: var(--header-h); }
 .page-hero__title span { font-family: var(--serif); font-style: italic; letter-spacing: 0; font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0; }
 .page-hero__title--article { font-size: 56px; }
 .page-hero__lead { max-width: 760px; margin: 0; font-size: 22px; line-height: 1.5; }
-.page-hero__terms { margin-bottom: 24px; }
+.page-hero__terms { margin-bottom: 20px; }
 .page-hero__icon { display: block; width: 96px; height: 96px; margin-bottom: 32px; }
 @media (max-width: 768px) {
   .page-hero { padding: 48px 0; }
@@ -129,7 +129,7 @@ main > .page-hero + .section--cream { margin-top: 0; }
 
 /* Article */
 .article { display: grid; gap: 56px; justify-items: center; }
-.article__image { max-width: 860px; }
+.article__image { max-width: 860px; width: 100%; height: auto; aspect-ratio: 840 / 594; object-fit: cover; }
 .prose { max-width: 760px; width: 100%; }
 .prose h2 { margin: 48px 0 16px; font-size: 32px; line-height: 1.2; }
 .prose p, .prose li { font-size: 20px; line-height: 1.6; }
