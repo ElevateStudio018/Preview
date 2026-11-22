@@ -1181,7 +1181,7 @@ h2, h3 { margin: 0; font-weight: 400; }
 .tryit { scroll-margin-top: var(--header-h, 120px); }
 /* "Prova själv" sits right above the green projects section: no white gap, a thin line between them */
 .block.tryit { margin-bottom: 0; }
-.tryit + .hp-proj { border-top: 1px solid rgba(253, 251, 245, .12); }
+.tryit + .hp-proj, .hp-proj + .tryit { border-top: 1px solid rgba(253, 251, 245, .12); }
 /* Coloured bands that follow each other meet directly, without white strips between them */
 .block.hp-proj, .block.dpk { margin-bottom: 0; }
 /* News on phones and tablets: the smaller articles in a row you swipe sideways, so scrolling down the page goes
