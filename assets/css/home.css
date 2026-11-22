@@ -1179,3 +1179,6 @@ h2, h3 { margin: 0; font-weight: 400; }
 }
 
 .tryit { scroll-margin-top: var(--header-h, 120px); }
+/* "Prova själv" sits right above the green projects section: no white gap, a thin line between them */
+.block.tryit { margin-bottom: 0; }
+.tryit + .hp-proj { border-top: 1px solid rgba(253, 251, 245, .12); }
