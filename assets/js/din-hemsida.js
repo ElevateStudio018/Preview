@@ -706,7 +706,29 @@
       });
     });
   }
-  function load() { secState = null; navState = {}; openRow = -1; $('dh-navs').__key = ''; frame.src = base + 'exempel/' + current() + '/' + (pendingPage && /^[a-z0-9-]+\.html$/.test(pendingPage) ? pendingPage : 'index.html'); pendingPage = ''; watch(); }
+  // example texts in the fields, by kind of business (the building texts in the page are the default)
+  var PH_GROUP = { 'sushi-saba-ris': 'mat', 'kafe-kvarnbacken': 'kafe', 'salong-sidbena': 'salong' };
+  var PH = {
+    mat: { namn: 'Till exempel Saba Sushi', bransch: 'Restaurang', rubrik: 'Färsk sushi, rullad när du beställer', ingress: 'Lunch, take-away och middag mitt i Uppsala. Boka bord eller beställ online.',
+      slogan: 'Sushi i Uppsala sedan 2015', tider: 'Mån–fre 11–21', knapptext: 'Boka bord', tjanst1: 'Lunch', tjanst2: 'Take-away', tjanst3: 'Catering',
+      loggtext: 'Saba Sushi', banner: 'Ny lunchmeny varje vecka' },
+    kafe: { namn: 'Till exempel Lilla Fiket', bransch: 'Kafé och bageri', rubrik: 'Bullarna är varma när vi låser upp', ingress: 'Surdegsbröd, bullar och kaffe som bryggs hela dagen. Välkommen in eller beställ tårta.',
+      slogan: 'Bakat på plats varje morgon', tider: 'Mån–lör 7–18', knapptext: 'Beställ tårta', tjanst1: 'Fika', tjanst2: 'Bröd', tjanst3: 'Tårtor',
+      loggtext: 'Lilla Fiket', banner: 'Semlor från och med fettisdagen' },
+    salong: { namn: 'Till exempel Klipp & Form', bransch: 'Frisör', rubrik: 'Vi pratar om håret innan saxen kommer fram', ingress: 'Klippning, färg och styling för alla. Boka tid online, det tar en minut.',
+      slogan: 'Frisör i Linköping', tider: 'Mån–fre 9–18', knapptext: 'Boka tid', tjanst1: 'Klippning', tjanst2: 'Färgning', tjanst3: 'Styling',
+      loggtext: 'Klipp & Form', banner: 'Nya kunder: 15 % på första besöket' }
+  };
+  var phBase = {};
+  function setPlaceholders() {
+    var set = PH[PH_GROUP[current()]] || {};
+    $$('#dh-form [name]').forEach(function (el) {
+      if (!(el.name in phBase)) phBase[el.name] = el.getAttribute('placeholder');
+      var v = set[el.name] || phBase[el.name];
+      if (v != null) el.setAttribute('placeholder', v);
+    });
+  }
+  function load() { setPlaceholders(); secState = null; navState = {}; openRow = -1; $('dh-navs').__key = ''; frame.src = base + 'exempel/' + current() + '/' + (pendingPage && /^[a-z0-9-]+\.html$/.test(pendingPage) ? pendingPage : 'index.html'); pendingPage = ''; watch(); }
   frame.addEventListener('load', function () {
     var doc = frameDoc(); if (!doc) return;
     init(doc); // if it was not caught earlier
@@ -976,7 +998,30 @@
     var name = val('namn');
     if (name) guide.querySelector('[data-g-hello]').textContent = 'Hej ' + name + '! Svara så bygger vi ihop ett första förslag. Ni kan ändra allt efteråt.';
     $$('[data-g-input]', guide).forEach(function (inp) { var v = val(inp.dataset.gInput); if (v) inp.value = v; });
+    // which templates fit the business: from the chosen chip, or words in what they typed
+    var ORDER = { mat: ['sushi-saba-ris', 'kafe-kvarnbacken'], kafe: ['kafe-kvarnbacken', 'sushi-saba-ris'], salong: ['salong-sidbena'],
+      hantverk: ['vamo-bygg', 'myrviken-timmerhus', 'viskan-solel', 'repslaget'] };
+    function group() {
+      if (ans.group) return ans.group;
+      var t = ((guide.querySelector('[data-g-input="bransch"]') || {}).value || '').toLowerCase();
+      if (/kaf[eé]|caf[eé]|bageri|konditori|fik|bakery/.test(t)) return 'kafe';
+      if (/sushi|restaurang|krog|pizz|bistro|thai|burger|hamburg|kebab|sallad|lunch|catering|ramen|asiatisk|indisk|grill|bar\b|mat\b/.test(t)) return 'mat';
+      if (/fris[oö]r|salong|sk[oö]nhet|hud|nagel|naglar|barber|spa\b|makeup|massage|fransar|brynen/.test(t)) return 'salong';
+      if (/bygg|snick|el\b|elektr|vvs|r[oö]r|m[aå]l|tak|st[aä]d|tr[aä]dg|mark|sn[oö]|f[oö]nster|golv|plattor|kakel/.test(t)) return 'hantverk';
+      return '';
+    }
+    function fitLooks() {
+      var g = group(), keys = ORDER[g] || [], box = guide.querySelector('[data-g-pick="mall"]'), more = guide.querySelector('[data-g-more]');
+      var all = $$('.dhg__look', box);
+      all.forEach(function (b) { b.hidden = keys.length ? keys.indexOf(b.dataset.v) < 0 : false; b.style.order = keys.length ? (keys.indexOf(b.dataset.v) + 1 || 99) : ''; });
+      if (more) more.hidden = !keys.length;
+    }
+    guide.addEventListener('click', function (e) {
+      var m = e.target.closest('[data-g-more]'); if (!m) return;
+      $$('.dhg__look', guide).forEach(function (b) { b.hidden = false; }); m.hidden = true;
+    });
     function show() {
+      if (step === 3) fitLooks();
       steps.forEach(function (s) { s.hidden = +s.dataset.gStep !== step; });
       dots.forEach(function (d, i) { d.classList.toggle('is-on', i < step); });
       back.hidden = step === 1;
@@ -989,11 +1034,16 @@
         var key = b.closest('[data-g-pick]').dataset.gPick;
         $$('[data-v]', b.closest('[data-g-pick]')).forEach(function (x) { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
         ans[key] = b.dataset.v;
-        if (key === 'bransch') { var t = guide.querySelector('[data-g-input="bransch"]'); if (t) t.value = ''; }
+        if (key === 'bransch') { ans.group = b.dataset.group || ''; var t = guide.querySelector('[data-g-input="bransch"]'); if (t) t.value = ''; }
         if (key !== 'bransch' && step < N) setTimeout(function () { step++; show(); }, 220);
       }
     });
     guide.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.matches('input')) { e.preventDefault(); next.click(); } });
+    guide.addEventListener('input', function (e) {
+      if (e.target.dataset.gInput !== 'bransch') return;
+      ans.group = ''; delete ans.bransch;
+      $$('.dhg__chip', guide).forEach(function (x) { x.classList.remove('is-on'); x.setAttribute('aria-pressed', 'false'); });
+    });
     back.addEventListener('click', function () { if (step > 1) { step--; show(); } });
     next.addEventListener('click', function () { if (step < N) { step++; show(); } else build(); });
     guide.querySelector('[data-g-skip]').addEventListener('click', function () { build(true); });
@@ -1002,6 +1052,8 @@
       $$('[data-g-input]', guide).forEach(function (inp) { if (inp.value.trim()) ans[inp.dataset.gInput] = inp.value.trim(); });
       ['bransch', 'ort', 'telefon'].forEach(function (k) { if (ans[k]) set(k, ans[k]); });
       if (ans.farg !== undefined) set('farg', ans.farg);
+      // no style chosen: the first template that fits the business (a sushi bar never gets a building firm's site)
+      if (!ans.mall) { var fits = ORDER[group()]; if (fits) ans.mall = fits[0]; }
       var newMall = ans.mall && ans.mall !== current();
       if (ans.mall) set('mall', ans.mall);
       marks();

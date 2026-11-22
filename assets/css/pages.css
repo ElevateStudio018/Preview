@@ -1625,3 +1625,6 @@ html.dhg-open { overflow: hidden; }
 @keyframes dhg-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .dhg__mark path { animation: none; stroke-dashoffset: 0; fill: #fdfbf5; } .dhg__list li { animation: none; } }
 @media (max-width: 560px) { .dhg__card { padding: 22px 18px 20px; } .dhg__title { font-size: 24px; } .dhg__colors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.dhg__looks .dhg__look[hidden] { display: none; }
+.dhg__more { grid-column: 1 / -1; justify-self: start; order: 100; padding: 6px 0; border: 0; background: none; color: var(--accent, #1d3b2a); font: 600 15px var(--sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.dhg__more[hidden] { display: none; }
