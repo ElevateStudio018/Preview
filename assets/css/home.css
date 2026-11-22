@@ -1178,8 +1178,4 @@ h2, h3 { margin: 0; font-weight: 400; }
   .tryit__styles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Hero: a small link down to "Prova själv" */
-.hero__try { margin: 22px 0 0; font-size: 16px; }
-.hero__try a { color: var(--cream, #fdfbf5); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(253, 251, 245, .5); }
-.hero__try a:hover { text-decoration-color: currentColor; }
 .tryit { scroll-margin-top: var(--header-h, 120px); }

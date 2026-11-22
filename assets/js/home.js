@@ -139,7 +139,7 @@
   var base = form.getAttribute('action');
   var domain = function (n) {
     var s = n.replace(/\s+(AB|HB|KB|Aktiebolag|Handelsbolag)$/i, '').toLowerCase().replace(/[åä]/g, 'a').replace(/ö/g, 'o').replace(/é/g, 'e').replace(/[^a-z0-9]+/g, '');
-    return (s || 'ertforetag') + '.se';
+    return (s || 'anderssonsbygg') + '.se';
   };
   input.addEventListener('input', function () { url.textContent = domain(input.value.trim()); });
   form.addEventListener('submit', function (e) {

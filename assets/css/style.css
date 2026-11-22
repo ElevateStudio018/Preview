@@ -553,3 +553,4 @@ button.arrow-link { padding: 0; border: 0; background: none; font: inherit; curs
 /* Chat: the logo is a triangle whose weight sits low, so centred by its box it looks low in the circle;
    lifted to its visual centre */
 .chat__avatar svg { transform: translate(-.2px, -1.1px); }
+
