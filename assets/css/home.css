@@ -1182,3 +1182,22 @@ h2, h3 { margin: 0; font-weight: 400; }
 /* "Prova själv" sits right above the green projects section: no white gap, a thin line between them */
 .block.tryit { margin-bottom: 0; }
 .tryit + .hp-proj { border-top: 1px solid rgba(253, 251, 245, .12); }
+/* Coloured bands that follow each other meet directly, without white strips between them */
+.block.hp-proj, .block.dpk { margin-bottom: 0; }
+/* News on phones and tablets: the smaller articles in a row you swipe sideways, so scrolling down the page goes
+   straight past them instead of getting caught in a scrolling box */
+@media (max-width: 992px) {
+  .insights__rail::after { display: none; }
+  .insights__side { display: flex; gap: 14px; max-height: none; margin: 0 -15px; padding: 14px 15px 18px; overflow-x: auto; overflow-y: hidden;
+    overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding: 0 15px; scrollbar-width: none; }
+  .insights__side::-webkit-scrollbar { display: none; }
+  .insights__side > .insights__small { flex: 0 0 min(84%, 440px); scroll-snap-align: start; }
+  .insights__side > .insights__small:hover { transform: none; }
+}
+@media (max-width: 992px) {
+  .insights__side > .insights__small { grid-template-columns: 1fr; grid-template-rows: auto 1fr; align-items: start; gap: 0; padding: 0; flex-basis: min(78%, 360px); }
+  .insights__side > .insights__small img { height: 170px; border-radius: 0; }
+  .insights__side > .insights__small > div { padding: 16px 18px 20px; }
+  .insights__side > .insights__small .insights__small-title { font-size: 20px; }
+  .insights__grid { gap: 18px; }
+}

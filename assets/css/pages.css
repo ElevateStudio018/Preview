@@ -1628,3 +1628,6 @@ html.dhg-open { overflow: hidden; }
 .dhg__looks .dhg__look[hidden] { display: none; }
 .dhg__more { grid-column: 1 / -1; justify-self: start; order: 100; padding: 6px 0; border: 0; background: none; color: var(--accent, #1d3b2a); font: 600 15px var(--sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .dhg__more[hidden] { display: none; }
+/* Dark hero without a card laid over its bottom edge (domains, email, checkout): no extra empty space below */
+.sitetest-hero--flat { padding-bottom: 96px; }
+@media (max-width: 760px) { .sitetest-hero--flat { padding-bottom: 56px; } }
