@@ -18,15 +18,15 @@
 
   function fail(why) {
     var text = why === 'link' ? 'Den här länken har gått ut eller fungerar inte längre.' : 'Vi kunde inte hämta tiderna just nu.';
-    pick.innerHTML = '<div class="done"><h2>Hoppsan</h2><p class="done__sub">' + text + ' Hör av dig till <a href="mailto:info@elevatestudio.nu">info@elevatestudio.nu</a> eller ring 076-022 83 61, så hittar vi en tid tillsammans.</p></div>';
+    pick.innerHTML = '<div class="done"><h2>Hoppsan</h2><p class="done__sub">' + text + ' Hör av er till <a href="mailto:info@elevatestudio.nu">info@elevatestudio.nu</a> eller ring 076-022 83 61, så hittar vi en tid tillsammans.</p></div>';
   }
 
   function fillHero(d) {
     var who = d.host ? d.host.first : null;
-    document.getElementById('title').textContent = 'När passar det dig' + (d.first ? ', ' + d.first : '') + '?';
-    document.getElementById('lead').textContent = d.demo ? 'Förhandsvisning av bokningssidan: tiderna är de som är lediga i kalendern just nu, men inget bokas när du trycker.'
-      : d.public && plan ? 'Välj en tid som passar dig, så går vi igenom ' + plan + '-paketet och svarar på era frågor. Det kostar ingenting och du behöver inte förbereda något.'
-      : d.public ? 'Välj en tid som passar dig, så tar vi ett kort möte om er hemsida. Det kostar ingenting och du behöver inte förbereda något.'
+    document.getElementById('title').textContent = 'När passar det er' + (d.first ? ', ' + d.first : '') + '?';
+    document.getElementById('lead').textContent = d.demo ? 'Förhandsvisning av bokningssidan: tiderna är de som är lediga i kalendern just nu, men inget bokas när ni trycker.'
+      : d.public && plan ? 'Välj en tid som passar er, så går vi igenom ' + plan + '-paketet och svarar på era frågor. Det kostar ingenting och ni behöver inte förbereda något.'
+      : d.public ? 'Välj en tid som passar er, så tar vi ett kort möte om er hemsida. Det kostar ingenting och ni behöver inte förbereda något.'
       : (who ? who + ' har föreslagit' : 'Vi har föreslagit') + ' ett kort möte om er hemsida. Tryck på en ledig tid så är det bokat.';
     document.getElementById('pills').innerHTML = '<span class="pill">' + d.minutes + ' min</span><span class="pill">' + esc(d.type) + '</span>' + (plan && d.public ? '<span class="pill">Paket ' + plan + '</span>' : '');
     document.title = 'Välj en tid' + (who ? ' med ' + who : '') + ' – Elevate Studio';
@@ -36,7 +36,7 @@
       if (!picker) { picker = document.createElement('div'); picker.id = 'hostpick'; picker.className = 'hostpick'; document.getElementById('pills').after(picker); }
       var MK = '<svg class="hp__logo" viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0 1353.9 1218.7 0v329.1L479.7 1136.4 786.7 1132.4 1215.5 687.4 1884.3 1349.9H1590.1L1218.6 994.7 865.4 1349.9Z" fill="currentColor"/></svg>';
       var phone = function (x) { return String(x || '').replace('+46 ', '0').replace(/^\+46/, '0'); };
-      picker.innerHTML = '<p class="hostpick__k">Vem vill du träffa?</p><div class="hostpick__opts" role="radiogroup" aria-label="Vem vill du träffa?">' + d.hosts.map(function (h) {
+      picker.innerHTML = '<p class="hostpick__k">Vem vill ni träffa?</p><div class="hostpick__opts" role="radiogroup" aria-label="Vem vill ni träffa?">' + d.hosts.map(function (h) {
         var on = h.key === d.hostKey;
         return '<button type="button" role="radio" aria-checked="' + on + '" class="hp' + (on ? ' is-on' : '') + '" data-h="' + esc(h.key) + '">' +
           '<span class="hp__top"><span><b class="hp__name">' + esc(h.name) + '</b><span class="hp__role">' + esc(h.role) + '</span></span>' + MK + '</span>' +
@@ -50,10 +50,10 @@
       var ph = '<svg class="host__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>';
       var ml = '<svg class="host__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.2V17h16V7.2l-8 5.3z M4.6 7l7.4 4.9L19.4 7z" fill="currentColor"/></svg>';
       var mk = '<svg class="host__logo" viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>';
-      host.innerHTML = '<div class="host__top"><div><p class="host__kicker">Du träffar</p><h2 class="host__name">' + esc(d.host.name) + '</h2><p class="host__role">' + esc(d.host.role) + '</p></div>' + mk + '</div>' +
+      host.innerHTML = '<div class="host__top"><div><p class="host__kicker">Ni träffar</p><h2 class="host__name">' + esc(d.host.name) + '</h2><p class="host__role">' + esc(d.host.role) + '</p></div>' + mk + '</div>' +
         '<ul class="host__links">' + (d.host.phone ? '<li><a href="tel:' + esc(d.host.phone.replace(/\s/g, '')) + '">' + ph + '<span>' + esc(d.host.phone.replace('+46 ', '0').replace(/^\+46/, '0').replace(/^(\d{3}) /, '$1-')) + '</span></a></li>' : '') +
         (d.host.email ? '<li><a href="mailto:' + esc(d.host.email) + '">' + ml + '<span>' + esc(d.host.email) + '</span></a></li>' : '') + '</ul><p class="host__company">Elevate Studio · Uppsala</p>';
-      document.getElementById('about-text').textContent = d.host.first + ' går igenom ert företag, vad hemsidan ska ge er och hur ett upplägg kan se ut. Det kostar ingenting, och du behöver inte förbereda något.';
+      document.getElementById('about-text').textContent = d.host.first + ' går igenom ert företag, vad hemsidan ska ge er och hur ett upplägg kan se ut. Det kostar ingenting, och ni behöver inte förbereda något.';
       document.getElementById('about').hidden = false;
     } else { document.getElementById('about').hidden = true; }
   }
@@ -120,7 +120,7 @@
       return;
     }
     var when = cap(new Date(b.at).toLocaleString('sv-SE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long' })) + ', ' + time(b.at) + '–' + time(b.at + b.minutes * 6e4);
-    pick.innerHTML = '<div class="done"><div class="done__check">' + CHECK + '</div><h2>' + (b.already ? 'Du har redan bokat' : b.rebooked ? 'Mötet är ombokat' : 'Klart, mötet är bokat!') + '</h2>' +
+    pick.innerHTML = '<div class="done"><div class="done__check">' + CHECK + '</div><h2>' + (b.already ? 'Ni har redan bokat' : b.rebooked ? 'Mötet är ombokat' : 'Klart, mötet är bokat!') + '</h2>' +
       '<p class="done__sub">' + (b.already ? 'Det här mötet är inlagt i vår kalender.' : b.mailed === false ? 'Mötet ligger i vår kalender.' : 'En bekräftelse' + (b.link ? ' med länken' : '') + ' är på väg till ' + esc(b.email || d.email) + '.') + '</p>' +
       '<div class="done__card"><b>' + when + '</b><span>' + esc(b.type || d.type) + (d.host ? ' med ' + esc(d.host.name) : ' med Elevate Studio') + '</span></div>' +
       '<div class="done__row">' + (b.link ? '<a class="ghost" href="' + esc(b.link) + '" target="_blank" rel="noopener">Öppna möteslänken</a>' : '') + '<button class="ghost" id="rebook">Välj en annan tid</button></div>' +
@@ -141,7 +141,7 @@
       // A time clicked in the mail is booked right away, no extra step
       if (preset && st.at === preset && !d.public && !(d.booked && !st.rebook)) {
         preset = 0;
-        pick.innerHTML = '<div class="done"><h2>Bokar din tid …</h2><p class="done__sub">Ett ögonblick.</p></div>';
+        pick.innerHTML = '<div class="done"><h2>Bokar er tid …</h2><p class="done__sub">Ett ögonblick.</p></div>';
         return book();
       }
       preset = 0; render();

@@ -355,7 +355,7 @@
       .map(function (c) { return c.label + ' ' + (typeof cats[c.id].score === 'number' ? Math.round(cats[c.id].score * 100) : '–'); })
       .concat(secScan ? ['Säkerhet ' + secScan.grade] : []).join(', ') : '';
     var notice = psiProblem ? '<div class="sitetest__notice"><b>Snabbhetstestet kunde inte köras just nu.</b> ' + psiProblem +
-      ' Säkerhetstestet nedan är komplett. Vill du ha hela testet? Lämna din e-post så kör vi det åt dig och mejlar resultatet.' +
+      ' Säkerhetstestet nedan är komplett. Vill ni ha hela testet? Lämna er e-post så kör vi det åt er och mejlar resultatet.' +
       leadForm(url) + '</div>' : '';
 
     results.innerHTML = notice +
@@ -367,7 +367,7 @@
       (metrics ? '<h2 class="sitetest__h2">Så snabbt laddar sidan</h2><div class="metrics">' + metrics + '</div>' : '') + realHtml + safeHtml +
       '<h2 class="sitetest__h2">Det här kan förbättras <span>(' + issues.length + ')</span></h2>' +
       '<ol class="issues">' + issueHtml + '</ol>' +
-      '<div class="sitetest__cta"><div><h2>Vill du att vi fixar det här?</h2><p>Vi går igenom resultatet med dig och ger ett förslag med fast pris.</p></div>' +
+      '<div class="sitetest__cta"><div><h2>Vill ni att vi fixar det här?</h2><p>Vi går igenom resultatet med er och ger ett förslag med fast pris.</p></div>' +
       '<div class="sitetest__actions"><a class="btn btn--light" id="sitetest-send" href="' + prefix + 'kontakt.html?fran=test#formular"><span>Låt oss ta hand om det</span></a>' +
       '<button type="button" class="btn btn--outline-light" id="sitetest-pdf"><span>Ladda ner PDF</span></button></div></div>' +
       '<p class="sitetest__source">Mätningen görs med ' + (lr ? 'Google PageSpeed Insights (Lighthouse) och ' : '') +
@@ -532,8 +532,8 @@
   // When Google's quota is used up the visitor can leave an e-mail; we run the test and reply.
   var FORM_ENDPOINT = form.dataset.formEndpoint;
   function leadForm(url) {
-    return '<form class="sitetest__lead" data-url="' + esc(url) + '"><label><span class="sr-only">Din e-post</span>' +
-      '<input type="email" name="email" placeholder="Din e-post" required></label>' +
+    return '<form class="sitetest__lead" data-url="' + esc(url) + '"><label><span class="sr-only">Er e-post</span>' +
+      '<input type="email" name="email" placeholder="Er e-post" required></label>' +
       '<button type="submit" class="btn btn--primary"><span>Kör testet åt mig</span></button><p class="form-status" role="status" hidden></p></form>';
   }
   function bindLeadForm() {
@@ -547,8 +547,8 @@
         status.textContent = 'Skickar …';
         fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({ _subject: 'Testa min sajt: ' + lead.dataset.url, _template: 'table', email: email, sajt: lead.dataset.url }) })
-          .then(function (res) { if (!res.ok) throw new Error(); status.textContent = 'Tack! Vi kör testet och mejlar dig resultatet.'; lead.querySelector('button').disabled = true; })
-          .catch(function () { status.textContent = 'Något gick fel. Mejla info@elevatestudio.nu så hjälper vi dig.'; });
+          .then(function (res) { if (!res.ok) throw new Error(); status.textContent = 'Tack! Vi kör testet och mejlar er resultatet.'; lead.querySelector('button').disabled = true; })
+          .catch(function () { status.textContent = 'Något gick fel. Mejla info@elevatestudio.nu så hjälper vi er.'; });
       });
     });
   }
@@ -598,7 +598,7 @@
       var p = out[0], sec = out[1], extra = { crux: out[2][0], safe: out[2][1] };
       if (!p.data && !sec.data) {
         showError(p.fatal ? 'Vi kunde inte ladda ' + esc(url) + '. Kontrollera att adressen stämmer och att sidan är öppen för besökare.'
-          : 'Testtjänsterna svarar inte just nu. Lämna din e-post så kör vi testet åt dig och mejlar resultatet.' + leadForm(url));
+          : 'Testtjänsterna svarar inte just nu. Lämna er e-post så kör vi testet åt er och mejlar resultatet.' + leadForm(url));
         bindLeadForm();
       } else {
         render(p.data || null, sec.data || null, url, strategy, p.data ? '' : p.problem, extra);

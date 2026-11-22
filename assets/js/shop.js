@@ -130,7 +130,7 @@
     var view = document.getElementById('cart-view'); if (!view) return;
     var form = document.getElementById('checkout');
     function render() {
-      if (!cart.length) { view.innerHTML = '<p class="shop-lead">Varukorgen är tom. <a href="domaner.html">Sök domän</a> eller <a href="foretagsmejl.html">välj företagsmejl</a>.</p>'; form.hidden = true; return; }
+      if (!cart.length) { view.innerHTML = '<div class="shop-empty"><p class="shop-empty__h">Varukorgen är tom</p><p class="shop-lead">Lägg till en domän eller företagsmejl, så hamnar det här.</p><p class="shop-empty__acts"><a class="btn btn--primary" href="domaner.html"><span>Sök domän</span></a><a class="btn btn--outline" href="foretagsmejl.html"><span>Välj företagsmejl</span></a></p></div>'; form.hidden = true; return; }
       form.hidden = false;
       var s = sums(), vat = cat.vat || 0.25;
       view.innerHTML = '<div class="shop-list">' + cart.map(function (it, i) {

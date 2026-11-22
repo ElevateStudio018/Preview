@@ -38,7 +38,9 @@
   // Process: on desktop the five steps become a timeline that follows the scroll – the section
   // stays in place, the next step lights up and its picture and text fade in. Same on mobile, scaled down.
   var flow = document.querySelector('.process .flow');
-  if (flow) {
+  // The scroll story is built only when the visitor gets near it: building it at load costs the phone close to a
+  // second of work before the page answers, and the section sits far down the page anyway
+  var buildFlow = function () {
     var steps = Array.prototype.slice.call(flow.querySelectorAll('.flow__step'));
     var wrap = document.createElement('div');
     wrap.className = 'pscroll';
@@ -91,6 +93,17 @@
     // Start state without measuring anything (step 1 lit); the first scroll takes over from there
     navItems[0].classList.add('is-on'); panels[0].classList.add('is-on'); current = 0;
     for (var k0 = 1; k0 < steps.length; k0++) panels[k0].setAttribute('aria-hidden', 'true');
+    update();
+  };
+  if (flow) {
+    var built = false;
+    var buildOnce = function () { if (built) return; built = true; buildFlow(); };
+    if ('IntersectionObserver' in window) {
+      var flowObs = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { flowObs.disconnect(); buildOnce(); } }, { rootMargin: '1200px 0px' });
+      flowObs.observe(flow);
+    } else buildOnce();
+    // links straight to #process build it at once
+    if (location.hash === '#process') buildOnce();
   }
 
   // Fade-up reveal for cards

@@ -6,7 +6,7 @@
   // Built from the site's own content on every build (assets/js/chat-kb.js), so new pages and articles are known at once
   var KB = (window.ELEVATE_KB || []).concat([
     { k: ['kost', 'pris', 'billig', 'dyr', 'kronor', 'betala', 'avgift', 'cost', 'price', 'cheap', 'expensive', 'pay', 'fee', 'sek'],
-      a: 'Starter kostar 5 000 kr och Pro 9 000 kr i startavgift, plus en månadsavgift (99–199 kr/mån för Starter, 199–499 kr/mån för Pro). Större projekt får ett fast pris i en offert. Alla priser är exkl. moms.',
+      a: 'Starter kostar 3 000 kr och Pro 6 000 kr i startavgift, plus en månadsavgift (99–199 kr/mån för Starter, 199–499 kr/mån för Pro). Större projekt får ett fast pris i en offert. Alla priser är exkl. moms.',
       link: ['Se priser', 'priser.html'] },
     { k: ['tid', 'lång', 'snabb', 'färdig', 'vecka', 'månad', 'leverans', 'när', 'time', 'long', 'fast', 'quick', 'ready', 'week', 'month', 'deliver', 'when'],
       a: 'Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi tillsammans tills ni är nöjda. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.' },
@@ -26,13 +26,13 @@
       a: 'Grundläggande SEO och AI-optimering ingår i alla hemsidor vi bygger, så att ni går att hitta både på Google och i AI-tjänster.',
       link: ['Om SEO och AI-optimering', 'tjanster/seo-och-ai-optimering.html'] },
     { k: ['support', 'ändr', 'uppdater', 'underhåll', 'efter', 'change', 'update', 'maint', 'after'],
-      a: 'Under första året ingår upp till 10 timmars support och redigering per månad – till exempel text- och bildändringar eller nya funktioner.' },
+      a: 'Under första året ingår upp till 3 timmars support och redigering per månad – till exempel text- och bildändringar eller layoutjusteringar.' },
     { k: ['domän', 'äger', 'hosting', 'webbhotell', 'domain', 'own'],
       a: 'Domänen är och förblir er. Hosting och eventuella externa avgifter står specificerade i offerten.' },
     { k: ['var finns', 'var ligger', 'uppsala', 'stockholm', 'ort', 'distans', 'sverige', 'where', 'located', 'remote', 'sweden'],
       a: 'Vi finns i Uppsala och jobbar med företag i hela Sverige – möten går lika bra på distans.' },
     { k: ['kontakt', 'ring', 'telefon', 'mejl', 'mail', 'prata', 'möte', 'contact', 'call', 'phone', 'email', 'talk', 'meet'],
-      a: 'Ring Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu. Du kan också fylla i formuläret, så hör vi av oss så fort vi kan.',
+      a: 'Ring Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu. Ni kan också fylla i formuläret, så hör vi av oss så fort vi kan.',
       link: ['Kontakta oss', 'kontakt.html'] }
   ]);
   var CHIPS = ['Vad kostar det?', 'Hur lång tid tar det?', 'Vad gör ni?', 'Prata med någon'];
@@ -48,7 +48,7 @@
       '<button type="button" class="chat__close" aria-label="Stäng">×</button></header>' +
       '<div class="chat__log" aria-live="polite"></div>' +
       '<div class="chat__chips"></div>' +
-      '<form class="chat__form"><label class="sr-only" for="chat-input">Din fråga</label>' +
+      '<form class="chat__form"><label class="sr-only" for="chat-input">Er fråga</label>' +
       '<input id="chat-input" type="text" autocomplete="off" placeholder="Skriv en fråga …"><button type="submit" aria-label="Skicka">' +
       '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></form>' +
     '</section>';
@@ -97,7 +97,7 @@
       .then(function (r) {
         if (!r.ok) throw new Error();
         leadsSent++;
-        var thanks = more ? 'Tack, jag har lagt till ' + to + ' på din förfrågan.' : 'Tack! Vi hör av oss på ' + to + ' så snart vi kan, oftast samma dag. Vill du lägga till något kan du skriva det här.';
+        var thanks = more ? 'Tack, jag har lagt till ' + to + ' på er förfrågan.' : 'Tack! Vi hör av oss på ' + to + ' så snart vi kan, oftast samma dag. Vill ni lägga till något kan ni skriva det här.';
         say(thanks, 'bot'); logTurn(q, thanks, 'kontakt', Date.now() - t0, true, 'kontakt', true);
         if (window.elevateTrack) window.elevateTrack('chat', 'lämnade kontaktuppgift');
       })
@@ -155,7 +155,7 @@
     root.classList.toggle('chat--open', state);
     if (state && !greeted) {
       greeted = true;
-      say('Hej! Vad undrar du? Välj en fråga nedan eller skriv själv.', 'bot');
+      say('Hej! Vad undrar ni? Välj en fråga nedan eller skriv själva.', 'bot');
       CHIPS.forEach(function (c) {
         var b = document.createElement('button');
         b.type = 'button'; b.textContent = c;
@@ -187,7 +187,7 @@
     }
     waitingForEmail = null; // a new question instead of an address: answer it as usual
     if (CONTACT_RE.test(q)) {
-      var how = 'Absolut! Skriv din e-postadress eller ditt telefonnummer här i chatten, så hör vi av oss så snart vi kan. Du kan också ringa Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu.';
+      var how = 'Absolut! Skriv er e-postadress eller ert telefonnummer här i chatten, så hör vi av oss så snart vi kan. Ni kan också ringa Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu.';
       say(how, 'bot'); logTurn(q, how, 'kontakt', 0, true, 'kontakt', false);
       waitingForEmail = q; lastQuestion = q;
       return;
@@ -223,7 +223,7 @@
   }
   function reply(q, hit, src, t0) {
     // every question goes to Chatten in the admin, answered or not, with the answer it got
-    var unknown = 'Det vet jag inte säkert – men vi svarar gärna själva. Skriv din e-postadress eller ditt telefonnummer här, så hör vi av oss.';
+    var unknown = 'Det vet jag inte säkert – men vi svarar gärna själva. Skriv er e-postadress eller ert telefonnummer här, så hör vi av oss.';
     logTurn(q, hit ? hit.a : unknown, src || (hit ? 'faq' : 'obesvarad'), Date.now() - (t0 || Date.now()), !!hit, hit ? (hit.link ? hit.link[0] : hit.k[0]) : null, false);
     if (window.elevateTrack) window.elevateTrack('chat', hit ? 'besvarad' : 'obesvarad');
     if (hit) { say(hit.a, 'bot', hit.link); return; }

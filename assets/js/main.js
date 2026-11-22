@@ -5,6 +5,21 @@ document.querySelectorAll('link[data-defer]').forEach(function (l) {
   l.media = 'all';
 });
 if (!document.querySelector('link[data-defer]')) document.documentElement.classList.add('css-ready');
+// The chat loads once the page has shown and settled: it isn't needed for the first screen, and loading it with the
+// page made phones wait longer before the page answered (the page's own script tag carries prefix and endpoint)
+(function () {
+  var me = document.currentScript; if (!me || !me.hasAttribute('data-chat-endpoint')) return;
+  var src = me.src, go = function () {
+    ['chat-kb', 'chat'].forEach(function (name) {
+      var s = document.createElement('script');
+      s.src = src.replace(/main(\.min)?\.js/, name + '$1.js'); s.async = false;
+      if (name === 'chat') { s.dataset.prefix = me.dataset.chatPrefix || ''; s.dataset.endpoint = me.dataset.chatEndpoint; }
+      document.body.appendChild(s);
+    });
+  };
+  var later = function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(go, { timeout: 2500 }); };
+  if (document.readyState === 'complete') later(); else addEventListener('load', later);
+})();
 (function () {
   var body = document.body;
   var header = document.getElementById('topbar');
@@ -117,7 +132,7 @@ if (!document.querySelector('link[data-defer]')) document.documentElement.classL
       button.disabled = true;
       show('Skickar …', true);
       var news = form.classList.contains('foot__newsletter');
-      var done = news ? 'Tack för att du gick med i vårt nyhetsbrev! Du får tips om hemsidor, synlighet på Google och nyheter från oss ungefär en gång i månaden. Du kan avsluta när du vill via länken i varje mejl.' : 'Tack! Vi återkommer så fort vi kan.';
+      var done = news ? 'Tack för att ni gick med i vårt nyhetsbrev! Ni får tips om hemsidor, synlighet på Google och nyheter från oss ungefär en gång i månaden. Ni kan avsluta när ni vill via länken i varje mejl.' : 'Tack! Vi återkommer så fort vi kan.';
       if (isBot) { form.reset(); show(done, true); button.disabled = false; return; }
       var isLead = 'lead' in form.dataset && data.email;
       var lead = isLead && { name: cut(data.namn, 100) || cut(data.email, 100), email: cut(data.email, 255), phone: cut(data.telefon, 40), company: cut(data.foretag, 150), service_type: cut(data.tjanst, 100), message: cut(data.meddelande, 2000) };
@@ -199,8 +214,15 @@ if (!document.querySelector('link[data-defer]')) document.documentElement.classL
       next.disabled = track.scrollLeft > track.scrollWidth - track.clientWidth - 10;
       if (counter) counter.textContent = Math.round(track.scrollLeft / track.clientWidth) + 1;
     };
-    prev.addEventListener('click', function () { track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }); });
-    next.addEventListener('click', function () { track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }); });
+    // the arrows switch review at once and fade the new text in, so two half cards never show side by side
+    var step = function (d) {
+      var i = Math.round(track.scrollLeft / track.clientWidth) + d, card = track.children[i];
+      if (!card) return;
+      track.scrollTo({ left: i * track.clientWidth, behavior: 'auto' });
+      card.classList.remove('is-enter'); void card.offsetWidth; card.classList.add('is-enter');
+    };
+    prev.addEventListener('click', function () { step(-1); });
+    next.addEventListener('click', function () { step(1); });
     track.addEventListener('scroll', sync, { passive: true });
     prev.disabled = true; if (counter) counter.textContent = 1; // start state without reading the layout
   });
@@ -322,7 +344,15 @@ document.querySelectorAll('form textarea').forEach(function (t) {
 // Design examples carousel: the arrow buttons scroll the row (was an inline script, which the security policy blocks)
 document.querySelectorAll('.exs').forEach(function (w) {
   var t = w.querySelector('.exs__track');
-  if (t) w.querySelectorAll('[data-dir]').forEach(function (b) { b.addEventListener('click', function () { t.scrollBy({ left: +b.dataset.dir * t.clientWidth * .8, behavior: 'smooth' }); }); });
+  if (!t) return;
+  var btns = w.querySelectorAll('[data-dir]');
+  btns.forEach(function (b) { b.addEventListener('click', function () { t.scrollBy({ left: +b.dataset.dir * t.clientWidth * .8, behavior: 'smooth' }); }); });
+  // lazy images inside a sideways row don't always start loading when the row scrolls: load them all once the row is near
+  function wake() { t.querySelectorAll('img[loading="lazy"]').forEach(function (i) { i.loading = 'eager'; }); }
+  function ends() { btns.forEach(function (b) { b.disabled = +b.dataset.dir < 0 ? t.scrollLeft < 4 : t.scrollLeft + t.clientWidth >= t.scrollWidth - 4; }); }
+  t.addEventListener('scroll', function () { wake(); ends(); }, { passive: true });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { wake(); o.disconnect(); } }, { rootMargin: '400px' }).observe(t);
+  ends();
 });
 
 // Prefill the contact form from the address (used by "Se hur din hemsida kan se ut", which sends the design link along)

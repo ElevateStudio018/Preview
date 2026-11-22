@@ -1634,3 +1634,80 @@ html.dhg-open { overflow: hidden; }
 /* "Så kan det se ut" on the dark project heroes: a thin line and small letters instead of a pill */
 .ex-tag--demo { display: flex; align-items: center; gap: 14px; width: max-content; padding: 0; margin-bottom: 22px; border-radius: 0; background: none; color: rgba(253, 251, 245, .72); font-size: 13px; letter-spacing: .18em; }
 .ex-tag--demo::before { content: ""; width: 36px; height: 1px; background: currentColor; }
+
+/* ---------- Site review fixes (Nov 2026) ---------- */
+/* skip link and a clear keyboard focus everywhere */
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 100001; padding: 12px 18px; border-radius: 12px; background: var(--accent, #1d3b2a); color: #fff; font-weight: 600; text-decoration: none; transition: top .15s; }
+.skip-link:focus { top: 16px; }
+:focus-visible { outline: 3px solid var(--accent, #1d3b2a); outline-offset: 3px; }
+:where(.hp-proj, .tryit, .section--accent, .cta-band, .finale, footer, .info-card--accent, .sitetest-hero, .insights) :focus-visible { outline-color: #fdfbf5; }
+/* headings without a lonely last word, paragraphs without orphans */
+h1, h2, h3, .page-hero__title, .block__header { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+/* the chat button is a round icon on phones, so it covers less */
+@media (max-width: 576px) {
+  .chat__toggle { width: 56px; height: 56px; padding: 0; justify-content: center; border-radius: 50%; }
+  .chat__toggle span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .chat__toggle svg { width: 24px; height: 24px; }
+  .foot { padding-bottom: 72px; }
+}
+/* domain check on the mail page: the button drops below the field on phones */
+@media (max-width: 480px) {
+  .shop-diag { flex-wrap: wrap; }
+  .shop-diag input { flex: 1 1 100%; }
+  .shop-diag .btn { width: 100%; }
+}
+/* 404: the number clears the header on phones */
+@media (max-width: 768px) { .lost { padding-top: 170px; } }
+/* phones: the breadcrumb row scrolls away with the page, so the header stays small */
+@media (max-width: 768px) {
+  .topbar--scrolled { height: 84px; }
+  .topbar--scrolled .crumbs { display: none; }
+  .crumbs__list { min-width: 0; }
+  .crumbs__item.active { flex: 1 1 auto; min-width: 0; }
+  .crumbs__item.active span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+/* site test: room for the address next to the buttons */
+@media (min-width: 1000px) { .sitetest-hero .sitetest__form { max-width: 980px; } .sitetest-hero .sitetest__field { min-width: 280px; } }
+/* empty cart */
+.shop-empty { max-width: 560px; margin: 0 auto; padding: 24px 0 8px; text-align: center; }
+.shop-empty__h { margin: 0 0 8px; font-size: 28px; font-weight: 500; color: var(--accent, #1d3b2a); }
+.shop-empty__acts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 22px 0 0; }
+.shop-empty .btn--outline { border: 1.5px solid var(--accent, #1d3b2a); background: transparent; color: var(--accent, #1d3b2a); }
+.shop-empty .btn--outline:hover { background: var(--accent, #1d3b2a); color: #fff; }
+/* project page: the laptop, caption and button sit centred */
+@media (min-width: 993px) {
+  .case-devs { margin-left: auto; margin-right: auto; }
+  .case-devs + .devs-cap { margin: 40px auto 0; padding-left: 90px; }
+  .case-visit { max-width: 900px; margin-left: auto; margin-right: auto; padding-left: 90px; }
+}
+/* space after bullet lists on the landing pages */
+.land__list { margin-bottom: 20px; }
+/* design package pages keep their shape */
+.dpk__pages img { object-fit: cover; }
+/* bigger tap targets in the footer and menu */
+.foot__links a, .foot__legal a { display: inline-block; padding: 6px 0; }
+.drawer__minor a { display: inline-block; padding: 8px 0; }
+/* small text a little bigger on phones */
+@media (max-width: 760px) { .hero__eyebrow { font-size: 12.5px; } .pscroll__no { font-size: 12.5px; } }
+/* design tool: hints readable */
+.dh-f small, .dh-fs legend small, .dh-link--mut { color: #5f6963; }
+.dh-fs legend small { font-size: 13px; }
+/* form fields show an error state once the visitor has typed something wrong */
+form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !important; box-shadow: 0 0 0 1px #b3261e; }
+/* design concepts row: arrows look off when there's nowhere to go */
+.exs__nav button:disabled { opacity: .35; cursor: default; }
+/* a section nested inside another (projects list) adds no extra band of its own */
+.section .section { padding-top: 32px; padding-bottom: 0; }
+.plan__old { opacity: .78; }
+/* project cards: the two links under each card are easy to tap */
+.site-card__links a { position: relative; z-index: 2; display: inline-block; padding: 8px 0; }
+/* reviews: the new review's text fades in when you step with the arrows */
+@media (prefers-reduced-motion: no-preference) {
+  .review__card.is-enter > * { animation: rev-in .45s ease both; }
+  @keyframes rev-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+}
+/* "Så jobbar vi" on phones: the step buttons are easy to tap (the extra space is padding, so the dots stay on the line) */
+@media (max-width: 992px) {
+  .pscroll__nav button { min-height: 44px; margin: -14px 0; padding: 14px 0; font-size: clamp(13px, 3.4vw, 20px); }
+}

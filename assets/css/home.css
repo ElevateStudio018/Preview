@@ -918,7 +918,8 @@ h2, h3 { margin: 0; font-weight: 400; }
   @keyframes faq-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
   /* 4. Reviews: the card rises in, and each review slides in when you step to it */
   .reviews--anim .review__card { transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .2, 1); }
-  .reviews--anim:not(.is-shown) .review__card, .reviews--anim .review__card:not(.is-in) { opacity: 0; transform: translate3d(0, 26px, 0) scale(.98); }
+  /* only the first rise-in on scroll; stepping between reviews is a plain slide, so no half-faded card shows at the edge */
+  .reviews--anim:not(.is-shown) .review__card { opacity: 0; transform: translate3d(0, 26px, 0) scale(.98); }
   /* 5. Buttons lift slightly on hover */
   .btn { transition: transform .2s ease, background-color .2s, color .2s; }
   .btn:hover { transform: translateY(-2px); }

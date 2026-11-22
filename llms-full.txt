@@ -11,23 +11,22 @@
 - [Support och underhåll](https://elevatestudio.nu/tjanster/support-och-underhall): Vi tar hand om ändringar, uppdateringar och uppföljning så att ni kan fokusera på ert jobb.
 
 ## Priser (exkl. moms)
-- Starter: 5 000 kr i startavgift + 99–199 kr/mån. Webbdesign och mobilanpassning, kontaktfunktion, grundläggande SEO och AI-optimering, två korrekturvändor, upp till 10 timmars support per månad första året.
+- Starter: 5 000 kr i startavgift + 99–199 kr/mån. Webbdesign och mobilanpassning, kontaktfunktion, grundläggande SEO och AI-optimering, två korrekturvändor, upp till 3 timmars support per månad första året.
 - Pro: 9 000 kr i startavgift + 199–499 kr/mån. Allt i Starter plus offertflöde eller bokning, AI-chatt, notiser via e-post och SMS samt förfrågningar med status och historik.
 - Business: 14 000 kr i startavgift + 499–999 kr/mån. Allt i Pro plus både offertflöde och bokning, en egen sida för varje tjänst och ort, nyheter eller blogg och månadsrapport.
 - Premium: 20 000 kr i startavgift + 1 000–2 000 kr/mån. Allt i Business plus skräddarsydd design, integrationer med era system (till exempel CRM eller bokföring), löpande SEO och nytt innehåll varje månad och prioriterad support.
 - Limiterad rabatt just nu på startavgiften: Starter 3 000 kr (ord. 5 000 kr), Pro 6 000 kr (ord. 9 000 kr), Business 9 000 kr (ord. 14 000 kr). Rabatten gäller under en begränsad tid.
-- Elite: större projekt med egna system, pris i en offert.
-- Elite: pris efter offert för större sajter, integrationer och egna funktioner.
+- Elite: större projekt med egna system, integrationer och funktioner efter behov, pris i en offert.
 - Leverans: ett första utkast efter ungefär en dag; lansering när texter, bilder och åtkomst är på plats. Kunden äger sin domän.
 - [Priser](https://elevatestudio.nu/priser) · [Exempel på webbavtal](https://elevatestudio.nu/avtal)
 
 ## Vanliga frågor
-- **Vad kostar en hemsida?** Ni får ett fast pris innan vi börjar. Starter kostar 5 000 kr, Pro 9 000 kr, Business 14 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt: Starter 3 000 kr, Pro 6 000 kr och Business 9 000 kr. Större projekt får ett fast pris i en offert. Se våra priser eller ett exempel på hur ett avtal ser ut.
-- **Hur lång tid tar det?** Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi tillsammans tills ni är nöjda. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.
+- **Vad kostar en hemsida?** Ni får ett fast pris innan vi börjar. Starter kostar 3 000 kr, Pro 6 000 kr, Business 9 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt – ordinarie pris är 5 000, 9 000 och 14 000 kr. Större projekt får ett fast pris i en offert. Se våra priser eller ett exempel på hur ett avtal ser ut.
+- **Hur lång tid tar det?** Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi den tillsammans i två korrekturvändor. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.
 - **Bygger ni hemsidor för alla typer av företag?** Ja. Vi bygger hemsidor för företag i alla storlekar – från enmansföretag till större bolag med flera avdelningar och system som ska kopplas ihop. Större projekt får ett fast pris i en offert.
 - **Jobbar ni bara i Uppsala?** Nej. Vi finns i Uppsala men bygger hemsidor åt företag i hela Sverige. Möten går lika bra på distans.
 - **Vad behöver vi bidra med?** Kunskapen om ert företag: vad ni gör, vilka kunder ni vill ha och de bilder och texter ni redan har. Ni får två korrekturvändor innan sidan lanseras, så att allt blir rätt.
-- **Ingår support efter lansering?** Ja. Under första året ingår upp till 10 timmars support och redigering per månad – till exempel text- och bildändringar, layoutjusteringar eller nya funktioner.
+- **Ingår support efter lansering?** Ja. Under första året ingår upp till 3 timmars support och redigering per månad – till exempel text- och bildändringar eller layoutjusteringar.
 - **Syns hemsidan på Google?** Grundläggande sökmotoroptimering (SEO) och AI-optimering ingår, så att sidan går att hitta både på Google och i AI-tjänster som svarar på frågor.
 - **Kan ni koppla på bokning, offertformulär eller AI-chatt?** Ja. Vi bygger bokningssystem, offertsystem, AI-chatt och notiser via e-post och SMS – och testar allt innan lansering.
 - **Vem äger domänen?** Ni. Domänen är och förblir er. Hosting och eventuella externa avgifter står specificerade i offerten.
@@ -42,21 +41,21 @@
 
 ## Artiklar
 - [Vi testade 116 bygg- och fastighetsbolags hemsidor – så snabba är de på mobilen](https://elevatestudio.nu/insikter/vi-testade-116-bygg-och-fastighetsbolags-hemsidor)
-- [Spårar de dig innan du hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag](https://elevatestudio.nu/insikter/sparar-de-dig-innan-du-valt-vi-kollade-kakorna)
+- [Spårar de er innan ni hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag](https://elevatestudio.nu/insikter/sparar-de-dig-innan-du-valt-vi-kollade-kakorna)
 - [Hur lätt är det att ringa? Vi kollade kontaktvägarna på 105 bygg- och fastighetsbolags startsidor](https://elevatestudio.nu/insikter/hur-latt-ar-det-att-ringa-vi-kollade-kontaktvagarna)
-- [Hemsida fast pris: nu väljer du paket direkt](https://elevatestudio.nu/insikter/hemsida-fast-pris-valj-paket-direkt)
-- [Visste du att dina kakor kan bryta mot lagen?](https://elevatestudio.nu/insikter/kan-dina-kakor-bryta-mot-lagen)
+- [Hemsida fast pris: nu väljer ni paket direkt](https://elevatestudio.nu/insikter/hemsida-fast-pris-valj-paket-direkt)
+- [Visste ni att era kakor kan bryta mot lagen?](https://elevatestudio.nu/insikter/kan-dina-kakor-bryta-mot-lagen)
 - [Räcker det med en Facebooksida – eller behöver företaget en hemsida?](https://elevatestudio.nu/insikter/hemsida-eller-facebooksida)
 - [Så mycket kostar en långsam hemsida](https://elevatestudio.nu/insikter/langsam-hemsida-kostar-kunder)
 - [Checklista: det här ska finnas på en elektrikers hemsida](https://elevatestudio.nu/insikter/hemsida-for-elektriker-checklista)
-- [Webbyrå i Uppsala – så väljer du rätt](https://elevatestudio.nu/insikter/webbyra-uppsala-sa-valjer-du)
+- [Webbyrå i Uppsala – så väljer ni rätt](https://elevatestudio.nu/insikter/webbyra-uppsala-sa-valjer-du)
 - [Billig hemsida till fast pris – vad ska ingå?](https://elevatestudio.nu/insikter/billig-hemsida-fast-pris)
 - [Checklista: sju saker som ger hantverkare fler jobb via hemsidan](https://elevatestudio.nu/insikter/hemsida-for-hantverkare)
-- [Testa din hemsida gratis – så läser du resultatet](https://elevatestudio.nu/insikter/testa-din-hemsida-gratis)
+- [Testa er hemsida gratis – så läser ni resultatet](https://elevatestudio.nu/insikter/testa-din-hemsida-gratis)
 - [Bygga hemsida själv eller anlita en webbyrå?](https://elevatestudio.nu/insikter/bygga-hemsida-sjalv-eller-webbyra)
-- [Vad kostar en hemsida – och vad betalar du egentligen för?](https://elevatestudio.nu/insikter/vad-kostar-en-hemsida)
+- [Vad kostar en hemsida – och vad betalar ni egentligen för?](https://elevatestudio.nu/insikter/vad-kostar-en-hemsida)
 - [Fem saker som får besökare att höra av sig](https://elevatestudio.nu/insikter/fa-besokare-att-hora-av-sig)
-- [Så syns ditt företag när kunder frågar AI](https://elevatestudio.nu/insikter/synas-nar-kunder-fragar-ai)
+- [Så syns ert företag när kunder frågar AI](https://elevatestudio.nu/insikter/synas-nar-kunder-fragar-ai)
 - [Vad händer med hemsidan efter lansering?](https://elevatestudio.nu/insikter/vad-hander-efter-lansering)
 - [Snabb hemsida slår snygg hemsida](https://elevatestudio.nu/insikter/darfor-ar-en-snabb-hemsida-viktigare-an-en-snygg)
 - [Så får byggfirman rätt sorts jobb via hemsidan](https://elevatestudio.nu/insikter/hemsida-for-byggfirma)
@@ -73,7 +72,7 @@
 - [Vad är AI-optimering, och varför pratar alla om det?](https://elevatestudio.nu/insikter/vad-ar-ai-optimering)
 - [Därför ska hemsidan ha en sida med vanliga frågor](https://elevatestudio.nu/insikter/darfor-ska-hemsidan-ha-vanliga-fragor)
 - [Google-företagsprofil: det viktigaste ni kan göra gratis](https://elevatestudio.nu/insikter/google-foretagsprofil-for-sma-foretag)
-- [Äg din domän och din e-post själv](https://elevatestudio.nu/insikter/aga-din-doman-och-e-post)
+- [Äg er domän och er e-post själva](https://elevatestudio.nu/insikter/aga-din-doman-och-e-post)
 - [Fem saker att fixa på hemsidan i januari](https://elevatestudio.nu/insikter/fem-saker-att-fixa-pa-hemsidan-2026)
 
 # Tjänster i detalj
@@ -82,10 +81,10 @@
 En hemsida ska inte bara se bra ut – den ska ge er nya kunder. Vi bygger sidor med tydliga tjänstesidor, en väg till kontakt på varje sida och en struktur som Google förstår. Ni får ett fast pris innan vi börjar och ser ett första utkast redan efter ungefär en dag.
 - Design efter er verksamhet: En design som passar ert företag och era kunder – inte en mall som ser ut som alla andras.
 - Mobilanpassning: De flesta besökare kommer från telefonen. Sidan fungerar lika bra på mobil som på dator.
-- Tjänstesidor: En egen sida för varje tjänst gör det lättare för både kunder och Google att hitta rätt.
+- Tjänstesidor: Från Business får varje tjänst en egen sida, vilket gör det lättare för både kunder och Google att hitta rätt.
 - Kontakt på varje sida: Telefon, mejl och formulär är alltid ett klick bort.
-- **Vad kostar en hemsida hos er?** Starter kostar 5 000 kr, Pro 9 000 kr, Business 14 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt: Starter 3 000 kr, Pro 6 000 kr och Business 9 000 kr. Större projekt får ett fast pris i en offert.
-- **Hur lång tid tar det att bygga en hemsida?** Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi tillsammans tills ni är nöjda. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.
+- **Vad kostar en hemsida hos er?** Starter kostar 3 000 kr, Pro 6 000 kr, Business 9 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt – ordinarie pris är 5 000, 9 000 och 14 000 kr. Större projekt får ett fast pris i en offert.
+- **Hur lång tid tar det att bygga en hemsida?** Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi den tillsammans i två korrekturvändor. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.
 - **Kan ni göra om vår gamla hemsida?** Ja. Vi kan bygga en ny sida från grunden och flytta över det innehåll som fungerar från den gamla.
 
 ## AI-chatt
@@ -96,7 +95,7 @@ Många kunder har samma frågor: vad kostar det, när kan ni komma, gör ni det 
 - Testad före lansering: Vi testar chatten med riktiga frågor innan den går live.
 - **Vad svarar AI-chatten på?** Chatten svarar på vanliga frågor utifrån informationen om ert företag – till exempel tjänster, priser, villkor och hur man bokar.
 - **Vad händer om chatten inte kan svara?** Då skickas frågan vidare till er via e-post eller SMS, så att ni kan svara kunden själva.
-- **Ingår AI-chatt i paketen?** AI-chatt ingår i Pro och Elite.
+- **Ingår AI-chatt i paketen?** AI-chatt ingår i Pro, Business och Premium.
 
 ## Bokningssystem
 Varje gång en kund måste ringa eller mejla fram och tillbaka för att hitta en tid finns en risk att de ger upp. Med bokning direkt på sidan kan kunden boka på en gång, även när ni inte svarar i telefon.
@@ -105,7 +104,7 @@ Varje gång en kund måste ringa eller mejla fram och tillbaka för att hitta en
 - Bekräftelse till kunden: Kunden får en bekräftelse så att ingen missar tiden.
 - Status och historik: Håll koll på alla bokningar på ett ställe.
 - **Kan kunderna boka utan att ringa?** Ja. Kunden väljer en ledig tid direkt på hemsidan och ni får en notis via e-post eller SMS.
-- **Ingår bokning i paketen?** Bokning eller offertflöde ingår i Pro och Elite.
+- **Ingår bokning i paketen?** Bokning eller offertflöde ingår i Pro. I Business och Premium ingår både bokning och offertflöde.
 
 ## Offertsystem
 En vag förfrågan betyder ofta flera mejl fram och tillbaka innan ni kan räkna på jobbet. Med ett offertflöde får kunden svara på rätt frågor från början – och ni får en komplett förfrågan som går att svara på samma dag.
@@ -126,19 +125,19 @@ Det spelar ingen roll hur bra hemsidan är om ingen hittar den. Vi bygger sidan 
 - **Vad är AI-optimering?** Att bygga sidan så att AI-tjänster som ChatGPT kan förstå och beskriva ert företag rätt – med tydliga fakta, vanliga frågor och strukturerad data.
 
 ## Support och underhåll
-En hemsida är aldrig helt färdig. Under första året ingår upp till 10 timmars support och redigering per månad – för text- och bildändringar, layoutjusteringar eller nya funktioner. Vi följer också upp vad som ger kunder och föreslår förbättringar.
-- 10 timmar i månaden: Under första året ingår upp till 10 timmars support och redigering varje månad.
+En hemsida är aldrig helt färdig. Under första året ingår upp till 3 timmars support och redigering per månad – för text- och bildändringar eller layoutjusteringar. Vi följer också upp vad som ger kunder och föreslår förbättringar.
+- 3 timmar i månaden: Under första året ingår upp till 3 timmars support och redigering varje månad.
 - Ändringar: Nya texter, bilder, priser eller tjänster – säg till så fixar vi det.
 - Uppföljning: Vi tittar på vad som ger förfrågningar och justerar det som kan bli bättre.
 - Samma kontaktperson: Ni pratar med samma person hela vägen, utan mellanhänder.
-- **Vad ingår i supporten?** Under första året ingår upp till 10 timmars support och redigering per månad, till exempel text- och bildändringar, layoutjusteringar eller nya funktioner.
+- **Vad ingår i supporten?** Under första året ingår upp till 3 timmars support och redigering per månad, till exempel text- och bildändringar eller layoutjusteringar.
 - **Vad händer efter första året?** Den inkluderade timsupporten upphör och månadsavgiften fortsätter. Fortsatt support och utveckling kan avtalas separat.
 
 ## Webbyrå i Uppsala
 Vi är en liten webbyrå i Uppsala som bygger hemsidor som ger förfrågningar – för företag i Uppsala, i hela Uppsala län och i resten av Sverige.
 
 ### Lokal webbyrå – samma kontaktperson hela vägen
-- Som företag i Uppsala kan ni träffa oss på plats, men det går lika bra att ses på distans. Ni pratar med samma person från första mötet till uppföljningen varje månad – inga mellanhänder och inga långa mejltrådar.
+- Som företag i Uppsala kan ni träffa oss på plats, men det går lika bra att ses på distans. Ni pratar med samma person från första mötet till supporten efter lansering – inga mellanhänder och inga långa mejltrådar.
 
 ### Det här gör en webbyrå åt er
 - Snabba, mobilanpassade hemsidor med tydliga tjänstesidor och kontakt på varje sida.
@@ -154,7 +153,7 @@ Vi är en liten webbyrå i Uppsala som bygger hemsidor som ger förfrågningar �
 - Lansering: sidan går live, indexeras av Google och börjar ta emot förfrågningar.
 
 ### Fast pris och tydligt avtal
-- Starter kostar 5 000 kr, Pro 9 000 kr, Business 14 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt: Starter 3 000 kr, Pro 6 000 kr och Business 9 000 kr. Större projekt får ett fast pris i en offert. Ni får allt på två sidor och godkänner genom att svara på mejlet.
+- Starter kostar 3 000 kr, Pro 6 000 kr, Business 9 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt – ordinarie pris är 5 000, 9 000 och 14 000 kr. Större projekt får ett fast pris i en offert. Ni får allt på två sidor och godkänner genom att svara på mejlet.
 
 ### Webbdesign och webbutveckling i Uppsala
 - Behöver ni en ny hemsida i Uppsala, eller vill ni bygga om den ni har? Vi står för både webbdesign och webbutveckling – från första skissen till en färdig sida som fungerar på mobilen, syns på Google och tar emot förfrågningar. Vill ni synas bättre lokalt hjälper vi också till med SEO i Uppsala med omnejd.
@@ -169,7 +168,7 @@ Vi är en liten webbyrå i Uppsala som bygger hemsidor som ger förfrågningar �
 Vi är en liten webbyrå i Uppsala som bygger hemsidor som ger förfrågningar – för företag i Stockholm, i hela Stockholms län och i resten av Sverige.
 
 ### Webbyrå för Stockholm – med bas i Uppsala
-- Vi finns i Uppsala, fyrtio minuter från Stockholm, och bygger hemsidor åt företag i hela Stockholmsområdet. De flesta möten sker på distans, men vi kommer gärna till er när det behövs. Ni pratar med samma person från första mötet till uppföljningen varje månad – inga mellanhänder och inga långa mejltrådar.
+- Vi finns i Uppsala, fyrtio minuter från Stockholm, och bygger hemsidor åt företag i hela Stockholmsområdet. De flesta möten sker på distans, men vi kommer gärna till er när det behövs. Ni pratar med samma person från första mötet till supporten efter lansering – inga mellanhänder och inga långa mejltrådar.
 
 ### Det här gör vi åt er
 - Snabba, mobilanpassade hemsidor med tydliga tjänstesidor och kontakt på varje sida.
@@ -185,7 +184,7 @@ Vi är en liten webbyrå i Uppsala som bygger hemsidor som ger förfrågningar �
 - Lansering: sidan går live, indexeras av Google och börjar ta emot förfrågningar.
 
 ### Fast pris och tydligt avtal
-- Starter kostar 5 000 kr, Pro 9 000 kr, Business 14 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt: Starter 3 000 kr, Pro 6 000 kr och Business 9 000 kr. Större projekt får ett fast pris i en offert. Ni får allt på två sidor och godkänner genom att svara på mejlet.
+- Starter kostar 3 000 kr, Pro 6 000 kr, Business 9 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt – ordinarie pris är 5 000, 9 000 och 14 000 kr. Större projekt får ett fast pris i en offert. Ni får allt på två sidor och godkänner genom att svara på mejlet.
 
 ### Syns när kunder i Stockholm söker
 - Stockholm är den tuffaste marknaden i Sverige att synas på. Därför bygger vi sidan så att Google förstår exakt vilka tjänster ni erbjuder och i vilka områden – och så att AI-tjänster som ChatGPT kan beskriva er rätt när någon frågar efter ett företag som ert i Stockholm.
@@ -210,20 +209,20 @@ För snickare, elektriker, rörmokare, målare och byggföretag: en hemsida som 
 - Vi bygger sidan så att Google förstår vilka tjänster ni erbjuder och på vilka orter – och så att AI-tjänster kan beskriva er rätt när någon frågar efter en hantverkare i närheten.
 
 ## Prisvärd hemsida till fast pris
-En hemsida behöver inte kosta tiotusentals kronor. Hos oss får ni en snabb, mobilanpassad hemsida till fast pris från 5 000 kr.
+En hemsida behöver inte kosta tiotusentals kronor. Hos oss får ni en snabb, mobilanpassad hemsida till fast pris från 3 000 kr.
 
 ### Det här ingår i Starter
 - Webbdesign och mobilanpassning utifrån er verksamhet.
 - Kontaktfunktion och presentation av verksamhet och projekt.
 - Grundläggande SEO och AI-optimering.
 - Två korrekturvändor före leverans.
-- Upp till 10 timmars support och redigering per månad första året.
+- Upp till 3 timmars support och redigering per månad första året.
 
 ### Vad kostar det efteråt?
-- Startavgiften är 5 000 kr. Därefter betalar ni en månadsavgift på 99–199 kr. Hosting och eventuella externa avgifter står specificerade i offerten, så att ni vet exakt vad som gäller.
+- Startavgiften är just nu 3 000 kr (ordinarie 5 000 kr). Därefter betalar ni en månadsavgift på 99–199 kr. Hosting och eventuella externa avgifter står specificerade i offerten, så att ni vet exakt vad som gäller.
 
 ### Behöver ni mer?
-- Pro för 9 000 kr lägger till bokning eller offertflöde, AI-chatt och notiser via e-post och SMS. Större projekt får ett fast pris i en offert.
+- Pro för 6 000 kr lägger till bokning eller offertflöde, AI-chatt och notiser via e-post och SMS. Större projekt får ett fast pris i en offert.
 
 ## Hemsida för elektriker
 Vi bygger snabba, mobilanpassade hemsidor för elektriker som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -245,10 +244,10 @@ Elarbete får bara göras av den som har rätt auktorisation från Elsäkerhetsv
 - Bilder på faktiska installationer, inte bildbanksbilder
 
 ### Sidor som brukar saknas
-Många elektrikersajter har en enda sida om "elinstallationer". Kunder söker däremot på det konkreta jobbet: byte av elcentral, jordfelsbrytare, belysning i trädgården, solceller eller elbilsladdning. En egen sida per vanligt jobb gör att du kan hittas på just den sökningen.
-- Laddbox: skriv om grön teknik-avdraget separat från ROT
+Många elektrikersajter har en enda sida om "elinstallationer". Kunder söker däremot på det konkreta jobbet: byte av elcentral, jordfelsbrytare, belysning i trädgården, solceller eller elbilsladdning. En egen sida per vanligt jobb gör att ni kan hittas på just den sökningen.
+- Laddbox: skriv om skattereduktionen för grön teknik separat från ROT
 - Felsökning och akuta ärenden: hur snabbt kunden kan räkna med svar
-- Vanligt misstag: ingen information om vilka orter du faktiskt kör till
+- Vanligt misstag: ingen information om vilka orter ni faktiskt kör till
 
 ### Det här ska en hemsida för elektriker innehålla
 Det här är den grundläggande listan vi utgår från, och som vi sedan anpassar efter just er verksamhet:
@@ -284,16 +283,16 @@ För elektriker bygger vi sidorna kring de sökningar kunderna faktiskt gör. De
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Första mötet: vi går igenom vad ni gör, vilka ni vill nå och vilka frågor kunderna brukar ställa.
 - Utkast på ungefär en dag: ni får se en riktig hemsida och inte bara en skiss.
-- Två korrekturvändor: ni ändrar text, bilder och detaljer tills det känns rätt.
+- Två korrekturvändor: ni ändrar text, bilder och detaljer så att allt blir rätt.
 - Lansering: hemsidan går live och Google får veta att den finns.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För elektriker räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för rörmokare
 Vi bygger snabba, mobilanpassade hemsidor för rörmokare och VVS-firmor som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -354,16 +353,16 @@ För rörmokare och VVS-firmor bygger vi sidorna kring de sökningar kunderna fa
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Vi börjar med ett kort samtal om verksamheten, tjänsterna och målgruppen.
 - Därefter bygger vi ett första utkast, oftast klart på ungefär en dag.
 - Ni får granska och komma med ändringar i två omgångar.
 - När ni är nöjda publicerar vi sidan och ser till att den kan hittas.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För rörmokare och VVS-firmor räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för målare
 Vi bygger snabba, mobilanpassade hemsidor för målare och målerifirmor som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -379,7 +378,7 @@ Det som kunderna skriver i Google är ofta enkla, konkreta sökningar. Några ex
 En hemsida som svarar på de frågorna, med rätt rubriker och en egen sida per tjänst, har mycket större chans att dyka upp än en som bara har en startsida.
 
 ### Vad folk vill veta om måleri
-Den som söker målare undrar oftast tre saker: hur lång tid det tar, om ni skyddar möbler och golv, och vad som händer med gammal färg som flagnar. Svara på det direkt på sidan så slipper du samma frågor i telefon.
+Den som söker målare undrar oftast tre saker: hur lång tid det tar, om ni skyddar möbler och golv, och vad som händer med gammal färg som flagnar. Svara på det direkt på sidan så slipper ni samma frågor i telefon.
 - Inomhus och utomhus på separata sidor
 - Fasadmålning: vilken säsong ni jobbar ute
 - Tapetsering och spackling om ni gör det
@@ -424,16 +423,16 @@ För målare och målerifirmor bygger vi sidorna kring de sökningar kunderna fa
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Steg ett är ett möte där vi lär känna er och er målgrupp.
 - Steg två är ett utkast som ni kan klicka runt i, ofta redan nästa dag.
 - Steg tre är två rundor av ändringar enligt era önskemål.
 - Steg fyra är lansering, och därefter finns vi kvar för support.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För målare och målerifirmor räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för snickare
 Vi bygger snabba, mobilanpassade hemsidor för snickare och byggfirmor som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -449,13 +448,13 @@ Det som kunderna skriver i Google är ofta enkla, konkreta sökningar. Några ex
 En hemsida som svarar på de frågorna, med rätt rubriker och en egen sida per tjänst, har mycket större chans att dyka upp än en som bara har en startsida.
 
 ### Snickare gör många olika jobb
-"Snickare" kan betyda allt från att byta en tröskel till att bygga en tillbyggnad. Kunden vet inte om du tar små jobb eller bara stora projekt. Skriv det rakt ut, så slipper båda parter samtal som inte leder någonstans.
+"Snickare" kan betyda allt från att byta en tröskel till att bygga en tillbyggnad. Kunden vet inte om ni tar små jobb eller bara stora projekt. Skriv det rakt ut, så slipper båda parter samtal som inte leder någonstans.
 - Kök, altaner, fönsterbyten och inredning som egna sidor
-- Minsta uppdrag, om du har ett
-- Om du har F-skatt och ansvarsförsäkring
+- Minsta uppdrag, om ni har ett
+- Om ni har F-skatt och ansvarsförsäkring
 
 ### Det kunden oroar sig för
-Den vanligaste oron är att jobbet drar ut på tiden eller blir dyrare än tänkt. Beskriv hur du lämnar offert, hur ändringar under jobbet hanteras och hur kunden får besked om något oväntat dyker upp bakom en vägg.
+Den vanligaste oron är att jobbet drar ut på tiden eller blir dyrare än tänkt. Beskriv hur ni lämnar offert, hur ändringar under jobbet hanteras och hur kunden får besked om något oväntat dyker upp bakom en vägg.
 - En kort beskrivning av arbetsgången från besök till slutbesiktning
 - Bilder på detaljer: hörn, lister, skarvar
 - Vanligt misstag: referensbilder utan text om vad som gjordes
@@ -481,7 +480,7 @@ Vi ser ofta samma problem när vi tittar på hemsidor för företag i er bransch
 Allt det går att undvika om hemsidan byggs utifrån vad kunden vill veta, och inte utifrån vad företaget vill säga.
 
 ### Funktioner som sparar tid för er
-Ett offertflöde där kunden kan ladda upp skisser och mått, gör första samtalet mycket mer konkret. Med bokning kan kunden boka ett platsbesök direkt, och en AI-chatt svarar på det som ofta kommer först: hur lång leveranstid, vad kostar en altan och behövs bygglov.
+Ett offertflöde där kunden kan ladda upp skisser och mått gör första samtalet mycket mer konkret. Med bokning kan kunden boka ett platsbesök direkt, och en AI-chatt svarar på det som ofta kommer först: hur lång är leveranstiden, vad kostar en altan och behövs bygglov.
 Allt detta är funktioner vi bygger in i Pro-paketet: offertflöde, bokning, AI-chatt och notiser via e-post och SMS. Ni får status och historik på alla förfrågningar, så ingenting försvinner.
 
 ### Så syns ni på Google
@@ -494,16 +493,16 @@ För snickare och byggfirmor bygger vi sidorna kring de sökningar kunderna fakt
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Första mötet: vi går igenom vad ni gör, vilka ni vill nå och vilka frågor kunderna brukar ställa.
 - Utkast på ungefär en dag: ni får se en riktig hemsida och inte bara en skiss.
-- Två korrekturvändor: ni ändrar text, bilder och detaljer tills det känns rätt.
+- Två korrekturvändor: ni ändrar text, bilder och detaljer så att allt blir rätt.
 - Lansering: hemsidan går live och Google får veta att den finns.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För snickare och byggfirmor räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för städfirma
 Vi bygger snabba, mobilanpassade hemsidor för städfirmor som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -564,16 +563,16 @@ För städfirmor bygger vi sidorna kring de sökningar kunderna faktiskt gör. D
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Vi börjar med ett kort samtal om verksamheten, tjänsterna och målgruppen.
 - Därefter bygger vi ett första utkast, oftast klart på ungefär en dag.
 - Ni får granska och komma med ändringar i två omgångar.
 - När ni är nöjda publicerar vi sidan och ser till att den kan hittas.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För städfirmor räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för takläggare
 Vi bygger snabba, mobilanpassade hemsidor för takläggare som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -634,16 +633,16 @@ För takläggare bygger vi sidorna kring de sökningar kunderna faktiskt gör. D
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Steg ett är ett möte där vi lär känna er och er målgrupp.
 - Steg två är ett utkast som ni kan klicka runt i, ofta redan nästa dag.
 - Steg tre är två rundor av ändringar enligt era önskemål.
 - Steg fyra är lansering, och därefter finns vi kvar för support.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För takläggare räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för markentreprenad
 Vi bygger snabba, mobilanpassade hemsidor för markentreprenörer och grundläggare som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -704,16 +703,16 @@ För markentreprenörer och grundläggare bygger vi sidorna kring de sökningar 
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Första mötet: vi går igenom vad ni gör, vilka ni vill nå och vilka frågor kunderna brukar ställa.
 - Utkast på ungefär en dag: ni får se en riktig hemsida och inte bara en skiss.
-- Två korrekturvändor: ni ändrar text, bilder och detaljer tills det känns rätt.
+- Två korrekturvändor: ni ändrar text, bilder och detaljer så att allt blir rätt.
 - Lansering: hemsidan går live och Google får veta att den finns.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För markentreprenörer och grundläggare räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för bilverkstad
 Vi bygger snabba, mobilanpassade hemsidor för bilverkstäder som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -739,7 +738,7 @@ Den största oron är att räkningen blir högre än väntat. Förklara att ni r
 - Öppettider och hur länge bilen brukar stå
 - Vilka betalsätt som fungerar
 - Vanligt misstag: Google-profilen visar andra öppettider än hemsidan
-- Skriv om ni tar emot bilar för besiktningsförberedelse
+- Tar ni emot bilar för besiktningsförberedelse? Skriv det på sidan.
 
 ### Det här ska en hemsida för bilverkstad innehålla
 Det här är den grundläggande listan vi utgår från, och som vi sedan anpassar efter just er verksamhet:
@@ -775,16 +774,16 @@ För bilverkstäder bygger vi sidorna kring de sökningar kunderna faktiskt gör
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Steg ett är ett möte där vi lär känna er och er målgrupp.
 - Steg två är ett utkast som ni kan klicka runt i, ofta redan nästa dag.
 - Steg tre är två rundor av ändringar enligt era önskemål.
 - Steg fyra är lansering, och därefter finns vi kvar för support.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För bilverkstäder räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för frisör
 Vi bygger snabba, mobilanpassade hemsidor för frisörer och salonger som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -845,16 +844,16 @@ För frisörer och salonger bygger vi sidorna kring de sökningar kunderna fakti
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Första mötet: vi går igenom vad ni gör, vilka ni vill nå och vilka frågor kunderna brukar ställa.
 - Utkast på ungefär en dag: ni får se en riktig hemsida och inte bara en skiss.
-- Två korrekturvändor: ni ändrar text, bilder och detaljer tills det känns rätt.
+- Två korrekturvändor: ni ändrar text, bilder och detaljer så att allt blir rätt.
 - Lansering: hemsidan går live och Google får veta att den finns.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För frisörer och salonger räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för restaurang
 Vi bygger snabba, mobilanpassade hemsidor för restauranger och caféer som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -915,16 +914,16 @@ För restauranger och caféer bygger vi sidorna kring de sökningar kunderna fak
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Steg ett är ett möte där vi lär känna er och er målgrupp.
 - Steg två är ett utkast som ni kan klicka runt i, ofta redan nästa dag.
 - Steg tre är två rundor av ändringar enligt era önskemål.
 - Steg fyra är lansering, och därefter finns vi kvar för support.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För restauranger och caféer räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för redovisningsbyrå
 Vi bygger snabba, mobilanpassade hemsidor för redovisningsbyråer och ekonomikonsulter som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -985,16 +984,16 @@ För redovisningsbyråer och ekonomikonsulter bygger vi sidorna kring de söknin
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Första mötet: vi går igenom vad ni gör, vilka ni vill nå och vilka frågor kunderna brukar ställa.
 - Utkast på ungefär en dag: ni får se en riktig hemsida och inte bara en skiss.
-- Två korrekturvändor: ni ändrar text, bilder och detaljer tills det känns rätt.
+- Två korrekturvändor: ni ändrar text, bilder och detaljer så att allt blir rätt.
 - Lansering: hemsidan går live och Google får veta att den finns.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För redovisningsbyråer och ekonomikonsulter räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för fastighetsmäklare
 Vi bygger snabba, mobilanpassade hemsidor för fastighetsmäklare som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -1009,7 +1008,7 @@ Det som kunderna skriver i Google är ofta enkla, konkreta sökningar. Några ex
 - bostadsrätt eller villa
 En hemsida som svarar på de frågorna, med rätt rubriker och en egen sida per tjänst, har mycket större chans att dyka upp än en som bara har en startsida.
 
-### Säljaren är kunden du vill nå
+### Säljaren är kunden ni vill nå
 Bostadsportalerna visar objekten, men den som funderar på att sälja jämför mäklare på deras egna sidor. Det som säljer en mäklare är kännedom om området och ett tydligt upplägg för hur försäljningen går till.
 - Värdering: hur det går till och vad som krävs av säljaren
 - Områdessidor med sådant bara en lokal mäklare vet
@@ -1031,7 +1030,7 @@ Det här är den grundläggande listan vi utgår från, och som vi sedan anpassa
 - Ett sätt att boka ett samtal eller en värdering
 
 ### Det som får kunden att höra av sig
-Säljare väljer en person. Visa vem du är, hur du arbetar och vad kunden kan vänta sig av processen. Konkreta förklaringar av hur du prissätter, marknadsför och förhandlar väger tyngre än allmänna löften.
+Säljare väljer en person. Visa vem ni är, hur ni arbetar och vad kunden kan vänta sig av processen. Konkreta förklaringar av hur ni prissätter, marknadsför och förhandlar väger tyngre än allmänna löften.
 
 ### Vanliga misstag på hemsidor i branschen
 Vi ser ofta samma problem när vi tittar på hemsidor för företag i er bransch:
@@ -1055,16 +1054,16 @@ För fastighetsmäklare bygger vi sidorna kring de sökningar kunderna faktiskt 
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Steg ett är ett möte där vi lär känna er och er målgrupp.
 - Steg två är ett utkast som ni kan klicka runt i, ofta redan nästa dag.
 - Steg tre är två rundor av ändringar enligt era önskemål.
 - Steg fyra är lansering, och därefter finns vi kvar för support.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För fastighetsmäklare räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för flyttfirma
 Vi bygger snabba, mobilanpassade hemsidor för flyttfirmor som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -1080,10 +1079,10 @@ Det som kunderna skriver i Google är ofta enkla, konkreta sökningar. Några ex
 En hemsida som svarar på de frågorna, med rätt rubriker och en egen sida per tjänst, har mycket större chans att dyka upp än en som bara har en startsida.
 
 ### Det kunden behöver för att få ett pris
-Flyttfirmor får många förfrågningar som saknar det viktigaste. Ett formulär som frågar efter boyta, våningsplan, om det finns hiss och datum ger dig ett underlag du kan räkna på direkt.
+Flyttfirmor får många förfrågningar som saknar det viktigaste. Ett formulär som frågar efter boyta, våningsplan, om det finns hiss och datum ger er ett underlag ni kan räkna på direkt.
 - Privatflytt, kontorsflytt och magasinering som egna sidor
 - Flyttstädning om ni erbjuder det
-- RUT för flytttjänster förklarat kort
+- RUT för flyttjänster förklarat kort
 
 ### Oron för att något går sönder
 Kunden lämnar över allt de äger till främlingar för en dag. Berätta vilken försäkring som gäller, hur ömtåliga saker packas och vad som händer om något skadas. Det väger tyngre än en låg prisuppgift.
@@ -1126,16 +1125,16 @@ För flyttfirmor bygger vi sidorna kring de sökningar kunderna faktiskt gör. D
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Steg ett är ett möte där vi lär känna er och er målgrupp.
 - Steg två är ett utkast som ni kan klicka runt i, ofta redan nästa dag.
 - Steg tre är två rundor av ändringar enligt era önskemål.
 - Steg fyra är lansering, och därefter finns vi kvar för support.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För flyttfirmor räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Hemsida för byggfirma
 Vi bygger snabba, mobilanpassade hemsidor för byggfirmor och entreprenörer som får kunder att höra av sig, till fast pris och med samma kontaktperson hela vägen.
@@ -1197,19 +1196,19 @@ För byggfirmor och entreprenörer bygger vi sidorna kring de sökningar kundern
 Vi kan inte lova en viss placering. Ingen seriös byrå kan det. Det vi kan lova är att grunden är rätt gjord, att sidan är snabb och att innehållet svarar på det folk frågar. Hur ni syns kan ni sedan följa i vårt gratis test, Testa din sajt, och i Google Search Console.
 
 ### Så går det till
-Ni pratar med samma person från första mötet till lansering. Det är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
+Ni pratar med samma person från första mötet till lansering. Vi är en liten webbyrå där ingen behöver förklara sin verksamhet två gånger.
 - Första mötet: vi går igenom vad ni gör, vilka ni vill nå och vilka frågor kunderna brukar ställa.
 - Utkast på ungefär en dag: ni får se en riktig hemsida och inte bara en skiss.
-- Två korrekturvändor: ni ändrar text, bilder och detaljer tills det känns rätt.
+- Två korrekturvändor: ni ändrar text, bilder och detaljer så att allt blir rätt.
 - Lansering: hemsidan går live och Google får veta att den finns.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För byggfirmor och entreprenörer räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Webbyrå för företag i Knivsta
-Vi bygger hemsidor åt företag i Knivsta och Knivsta kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Knivsta och Knivsta kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Knivsta
 Knivsta ligger bara en kort bit söder om Uppsala och är en av de kommuner som växer snabbast i regionen, med många småföretag, hantverkare och egenföretagare. Många av dem jobbar mot kunder i både Uppsala och Stockholm.
@@ -1218,22 +1217,22 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 
 ### Knivsta mellan två städer
 Knivsta ligger längs Ostkustbanan mellan Uppsala och Stockholm, och många pendlar med pendeltåg eller regionaltåg åt båda håll. Arlanda är nära. Det gör att lokala företag ofta har kunder både i kommunen och längre bort längs stråket.
-- Ange om du tar uppdrag i Uppsala och norra Stockholm också
-- Nämn orter som Alsike och Vassunda om du jobbar där
+- Ange om ni tar uppdrag i Uppsala och norra Stockholm också
+- Jobbar ni i Alsike eller Vassunda? Skriv ut ortnamnen på sidan, så att kunder där hittar er
 
 ### En kommun som växer
 Knivsta har vuxit snabbt med nya bostadsområden, inte minst i Alsike. Nyinflyttade letar efter hantverkare, frisörer och annan service på nätet och har sällan några gamla kontakter att fråga. Där gör en tydlig hemsida stor skillnad.
 - Lokal sökning: skriv ut orten i text, inte bara i adressen
 - Google-profil med rätt verksamhetsområde
-- Skriv vilka tider du kan ta jobb, många pendlare vill ha hjälp kvällar och helger
+- Skriv vilka tider ni kan ta jobb, många pendlare vill ha hjälp kvällar och helger
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1248,18 +1247,18 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Knivsta räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Enköping
-Vi bygger hemsidor åt företag i Enköping och Enköpings kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Enköping och Enköpings kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Enköping
 Enköping är en stad med ett brett näringsliv: hantverkare, handel, tjänsteföretag och lantbruksnära verksamheter. Många av kunderna söker lokalt först, vilket gör en tydlig lokal hemsida extra värdefull.
@@ -1268,22 +1267,22 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 
 ### Enköping och Mälardalen
 Enköping ligger vid E18 mellan Stockholm och Västerås, och är känd för sina många parker. Läget gör att många företag här har kunder åt både öster och väster.
-- Skriv vilka orter du täcker, till exempel Västerås eller Bålsta
-- Nämn landsbygden runt Enköping om du åker ut dit
+- Skriv vilka orter ni täcker, till exempel Västerås eller Bålsta
+- Åker ni ut på landsbygden runt Enköping? Skriv det på sidan, så att kunder där vet att ni kommer
 
 ### Hantverk, handel och logistik
 Många företag i Enköping är bygg- och hantverksföretag eller verksamheter som drar nytta av läget vid E18. För sådana företag är hemsidan ofta det första en ny kund ser efter att ha sökt på tjänsten och orten.
 - En sida per tjänst med orten nämnd naturligt
 - Bilder från jobb i närområdet
-- Om du har kunder både i Uppsala och Västmanlands län, skriv det
+- Om ni har kunder både i Uppsala och Västmanlands län, skriv det
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1298,18 +1297,18 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Enköping räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Märsta
-Vi bygger hemsidor åt företag i Märsta och Sigtuna kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Märsta och Sigtuna kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Märsta
 Märsta och Sigtuna ligger vid Arlanda och Mälaren, med både logistik, hantverk, handel och turism. Företag här når kunder från Stockholm och Uppsala, och en hemsida som är snabb och lätt att hitta är en tydlig fördel.
@@ -1318,22 +1317,22 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 
 ### Märsta och Arlanda
 Märsta är centralort i Sigtuna kommun, med Arlanda flygplats nästan granne. Pendeltåget går till Stockholm och E4 passerar strax intill. Flygplatsen och logistiken runt den präglar mycket av näringslivet.
-- Nämn Sigtuna, Rosersberg och Arlandastad om du jobbar där
+- Jobbar ni i Sigtuna, Rosersberg eller Arlandastad? Skriv ut ortnamnen på sidan
 - Tänk på att kunder kan komma från hela norra Stockholmsregionen
 
 ### Många kunder är på väg någonstans
 Den som söker en tjänst i Märsta kan vara en lokal villaägare, men också någon som jobbar på Arlanda och vill få något gjort nära jobbet. Därför lönar det sig med tydliga öppettider, adress och hur man tar sig dit.
 - Karta och parkering på kontaktsidan
-- Skriv på engelska också om dina kunder behöver det
-- Nämn Steninge eller Valsta om du har kunder där
+- Skriv på engelska också om era kunder behöver det
+- Har ni kunder i Steninge eller Valsta? Skriv det, så att de hittar er när de söker
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1348,18 +1347,18 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Märsta räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Tierp
-Vi bygger hemsidor åt företag i Tierp och Tierps kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Tierp och Tierps kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Tierp
 Tierp ligger norr om Uppsala med ett företagsliv som präglas av hantverk, lantbruk, tjänster och mindre industri. Många företagare är ensamma eller har få anställda, och för dem är en hemsida som sköter sig själv värdefull.
@@ -1368,20 +1367,20 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 
 ### Tierp i norra Uppland
 Tierp ligger längs E4 och Ostkustbanan ungefär mitt mellan Uppsala och Gävle. Kommunen är stor till ytan och har flera mindre orter, som Söderfors, Örbyhus, Skärplinge och Karlholmsbruk.
-- Skriv ut vilka orter i kommunen du åker till
+- Skriv ut vilka orter i kommunen ni åker till
 - Pendling med tåg till Uppsala är vanlig, så många jämför priser där
 
 ### Landsbygd och långa avstånd
-Med långa avstånd vill kunden veta direkt om du kommer ut till dem. En enkel lista över orter du täcker och hur du tar betalt för resor sparar tid för båda.
+Med långa avstånd vill kunden veta direkt om ni kommer ut till dem. En enkel lista över orter ni täcker och hur ni tar betalt för resor sparar tid för båda.
 - Tydligt telefonnummer för den som vill ringa i stället för att fylla i formulär
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1396,18 +1395,18 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Tierp räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Östhammar
-Vi bygger hemsidor åt företag i Östhammar och Östhammars kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Östhammar och Östhammars kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Östhammar
 Östhammars kommun har en lång kust, en levande besöksnäring och många hantverkare och småföretag. Här bor många deltidsboende och turister som söker lokalt, och en hemsida som visar öppettider, tjänster och hur man bokar gör skillnad under säsong.
@@ -1417,21 +1416,21 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 ### Kust och skärgård
 Östhammars kommun ligger vid Upplandskusten och rymmer orter som Öregrund, Gimo, Alunda och Östhammar. Många har fritidshus här, och kommunen har Forsmarks kärnkraftverk inom sina gränser.
 - Säsong: sommargäster söker tjänster på våren och sommaren
-- Nämn orterna i kommunen som egna ord på sidan
+- Skriv ut orterna i kommunen, som Öregrund, Gimo och Alunda, i texten på sidan
 
 ### Företag som jobbar med fritidshusägare
 Den som har sommarstuga i Öregrund bor kanske i Stockholm eller Uppsala resten av året. De söker hantverkare på distans och vill kunna ta kontakt utan att vara på plats. Bilder, tydliga kontaktuppgifter och ett formulär där man kan bifoga foton hjälper.
-- Skriv om du kan ta jobb när ägaren inte är på plats
+- Kan ni ta jobb när ägaren inte är på plats? Skriv det tydligt
 - Uppdatera sidan inför säsongen
-- Skriv om du kan skicka offert efter bilder, utan hembesök först
+- Kan ni lämna offert efter bilder, utan hembesök först? Skriv det på sidan
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1446,18 +1445,18 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Östhammar räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Heby
-Vi bygger hemsidor åt företag i Heby och Heby kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Heby och Heby kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Heby
 Heby kommun ligger nära Uppsala med företag inom lantbruk, hantverk, handel och tjänster. Många av dem når kunder i både Heby, Uppsala och Västerås, och en hemsida som syns på orten och i närliggande städer är en fördel.
@@ -1466,22 +1465,22 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 
 ### Heby kommun i västra Uppland
 Heby kommun ligger väster om Uppsala mot gränsen till Västmanland, med orter som Heby, Östervåla, Morgongåva och Vittinge. Det är en landsbygdskommun med mycket jordbruk och skog, och väg 72 går genom kommunen mot Sala.
-- Skriv vilka orter du tar uppdrag i
-- Nämn om du även jobbar i Sala eller Uppsala
+- Skriv vilka orter ni tar uppdrag i
+- Tar ni även jobb i Sala eller Uppsala? Skriv det på sidan
 
 ### Rekommendationer räcker inte alltid
 På mindre orter får många företag jobb via mun till mun. Men även den som fått ett tips googlar namnet innan de ringer. Då behöver det finnas en sida som bekräftar att företaget finns, vad det gör och hur man når det.
 - Rätt uppgifter i Google-profilen
 - Kontaktuppgifter som fungerar
-- Ange hur långt du kör och om resor kostar extra
+- Ange hur långt ni kör och om resor kostar extra
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1496,18 +1495,18 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Heby räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Älvkarleby
-Vi bygger hemsidor åt företag i Älvkarleby och Älvkarleby kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Älvkarleby och Älvkarleby kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Älvkarleby
 Älvkarleby kommun ligger vid Dalälven, med både industri, hantverk, handel och besöksverksamhet. Många företag arbetar mot kunder i Gävle, Uppsala och närområdet, och en tydlig, snabb hemsida hjälper dem att nå rätt kunder.
@@ -1517,21 +1516,21 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 ### Älvkarleby vid Dalälvens mynning
 Älvkarleby ligger längst norr i Uppsala län, där Dalälven rinner ut mot Gävlebukten. Huvudorterna är Skutskär och Älvkarleby, och Gävle ligger nära. Älvkarlebyfallen och fisket i älven lockar besökare.
 - Många har närmare till Gävle än till Uppsala
-- Nämn Skutskär och Marma om du jobbar där
+- Jobbar ni i Skutskär eller Marma? Skriv ut ortnamnen på sidan
 
 ### Två håll att söka kunder åt
-För ett företag i Älvkarleby kan kunderna komma både från Gävleområdet och från norra Uppland. Skriv på sidan att du tar uppdrag åt båda hållen, så att du dyker upp på sökningar från båda.
-- Turism: om du har besökare som kunder, skriv öppettider för säsong
+För ett företag i Älvkarleby kan kunderna komma både från Gävleområdet och från norra Uppland. Skriv på sidan att ni tar uppdrag åt båda hållen, så att ni dyker upp på sökningar från båda.
+- Turism: om ni har besökare som kunder, skriv öppettider för säsong
 - Industrin i Skutskär betyder att en del jobb är för företag
 - Skriv adress och vägbeskrivning, många kommer via E4
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1546,18 +1545,18 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Älvkarleby räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Sala
-Vi bygger hemsidor åt företag i Sala och Sala kommun: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Sala och Sala kommun: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Sala
 Sala är en stad med ett varierat företagsliv: hantverk, handel, tjänster och en stark besöksnäring kring silvergruvan. Företag här har ofta kunder både i Sala och i Västerås och Uppsala, och en hemsida som är lätt att hitta på alla orter är värdefull.
@@ -1567,21 +1566,21 @@ De flesta av våra möten sker på distans, men om ni vill träffas på plats ko
 ### Sala i Västmanland
 Sala ligger i Västmanlands län, nära gränsen till Uppland, och är känt för Sala silvergruva. Staden har tågförbindelse mot både Uppsala och Västerås, och många pendlar åt något av hållen.
 - Kunder i Sala söker ofta också på Västerås eller Heby
-- Nämn landsbygden runt Sala om du åker ut
+- Åker ni ut på landsbygden runt Sala? Skriv det på sidan, så att kunder där vet att ni kommer
 
 ### Inte Uppsala, men nära
 Vi sitter i Uppsala och jobbar på distans med kunder i andra orter. För ett företag i Sala spelar det ingen större roll var webbyrån sitter, så länge texten på sidan handlar om Sala och kundens område och inte är kopierad från en annan stad.
 - Lokala ortnamn skrivna i texten
 - Google-profil med Sala som utgångspunkt
-- Nämn om du har kunder i Heby eller Västerås också
+- Har ni kunder i Heby eller Västerås också? Skriv det, så syns ni även där
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut. Vi bygger efter den här listan:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1596,42 +1595,42 @@ Det går inte att lova en viss placering, men grunden blir rätt gjord från sta
 
 ### Hur samarbetet fungerar på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+Det går också bra att ringa. Vi svarar oftast samma dag, och i Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Sala räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad är det första ni ska göra?
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er nuvarande sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Sollentuna
-Vi bygger hemsidor åt företag i Sollentuna och Stockholm län: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Sollentuna och Stockholms län: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Sollentuna
 Som en del av Stockholmsområdet har Sollentuna ett företagsliv med allt från hantverkare och konsulter till butiker och tjänsteföretag. Kunderna jämför snabbt, och en välbyggd hemsida är ofta det som avgör vem de ringer.
-Vi är en liten webbyrå i Uppsala, ungefär 51 km fågelvägen från Sollentuna, och bygger hemsidor som får kunder att höra av sig. Vi arbetar med företag i Sollentuna, Upplands Väsby, Järfälla, Täby och i resten av Stockholm län, och i hela Sverige.
+Vi är en liten webbyrå i Uppsala, ungefär 51 km fågelvägen från Sollentuna, och bygger hemsidor som får kunder att höra av sig. Vi arbetar med företag i Sollentuna, Upplands Väsby, Järfälla, Täby och i resten av Stockholms län, och i hela Sverige.
 De flesta av våra möten sker på distans, men det går också bra att ses på plats när det passar. Ni pratar med samma person från första samtalet till lansering.
 
 ### Sollentuna norr om Stockholm
 Sollentuna ligger i norra Stockholmsområdet längs E4 och pendeltågslinjen, med stationer som Häggvik, Sollentuna och Helenelund. Kommunen har många villaområden och närhet till både Kista och Arlanda.
 - Konkurrensen om sökorden är högre än i mindre orter
-- Nämn områden som Rotebro, Edsberg eller Tureberg om du jobbar där
+- Jobbar ni i Rotebro, Edsberg eller Tureberg? Skriv ut områdena på sidan
 
 ### Konkurrens kräver fokus
 I Stockholmsområdet finns många företag i varje bransch. Den som försöker synas på alla sökningar syns sällan på någon. Det är oftare bättre att vara tydlig med en specialitet och ett område än att räkna upp allt.
 - Sidor för de tjänster som faktiskt ger mest jobb
 - Recensioner i Google-profilen betyder mycket
-- Skriv ut vilka grannkommuner du tar uppdrag i, till exempel Täby eller Järfälla
+- Skriv ut vilka grannkommuner ni tar uppdrag i, till exempel Täby eller Järfälla
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1647,42 +1646,42 @@ Vi kan inte lova en viss placering, men grunden blir rätt gjord. Efteråt följ
 
 ### Så fungerar samarbetet på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Sollentuna räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Det första steget
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
 
 ## Webbyrå för företag i Upplands Väsby
-Vi bygger hemsidor åt företag i Upplands Väsby och Stockholm län: snabba, mobilanpassade och med fast pris från 5 000 kr. Ni pratar med samma person hela vägen.
+Vi bygger hemsidor åt företag i Upplands Väsby och Stockholms län: snabba, mobilanpassade och med fast pris från 3 000 kr. Ni pratar med samma person hela vägen.
 
 ### Webbyrå för företag i Upplands Väsby
 Upplands Väsby ligger i Stockholmsregionen, där konkurrensen om kunderna är hård och många företag syns på samma sökningar. En hemsida som är snabb och tydlig, och som nämner orten, hjälper er att sticka ut.
-Vi är en liten webbyrå i Uppsala, ungefär 41 km fågelvägen från Upplands Väsby, och bygger hemsidor som får kunder att höra av sig. Vi arbetar med företag i Upplands Väsby, Sollentuna, Vallentuna, Sigtuna och i resten av Stockholm län, och i hela Sverige.
+Vi är en liten webbyrå i Uppsala, ungefär 41 km fågelvägen från Upplands Väsby, och bygger hemsidor som får kunder att höra av sig. Vi arbetar med företag i Upplands Väsby, Sollentuna, Vallentuna, Sigtuna och i resten av Stockholms län, och i hela Sverige.
 De flesta av våra möten sker på distans, men det går också bra att ses på plats när det passar. Ni pratar med samma person från första samtalet till lansering.
 
 ### Upplands Väsby mellan Stockholm och Arlanda
 Upplands Väsby ligger längs E4 och pendeltåget mellan Stockholm och Arlanda, med Märsta en bit norrut och Sollentuna söderut. Många pendlar in mot Stockholm, och kommunen har både bostadsområden och verksamhetsområden för företag.
-- Skriv om du tar jobb i grannkommunerna också
-- Nämn Runby, Bollstanäs eller Infra City om du jobbar där
+- Tar ni jobb i grannkommunerna också? Skriv det på sidan
+- Jobbar ni i Runby, Bollstanäs eller Infra City? Skriv ut områdena på sidan
 
 ### Synas lokalt bland storstadens företag
-Kunder i Väsby kan lika gärna välja ett företag i Stockholm. Ett sätt att stå ut är att visa att du finns nära: adress, karta, korta körtider och att ortnamnet finns med i texten på ett naturligt sätt.
+Kunder i Väsby kan lika gärna välja ett företag i Stockholm. Ett sätt att stå ut är att visa att ni finns nära: adress, karta, korta körtider och att ortnamnet finns med i texten på ett naturligt sätt.
 - Kontaktsida med karta och parkering
 - Google-profil med rätt kategori och bilder
-- Skriv tydligt vilka tjänster du är bäst på i stället för att räkna upp allt
+- Skriv tydligt vilka tjänster ni är bäst på i stället för att räkna upp allt
 
 ### Det här får ni
 En hemsida som ska göra ett jobb för er, inte bara se bra ut:
 - Snabb, mobilanpassad design som laddar direkt, även på svag mobiltäckning
-- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör
-- Kontaktväg på varje sida: telefon, formulär och, om ni vill, bokning direkt
-- Offertflöde som frågar rätt saker, så ni får bra förfrågningar
-- AI-chatt som svarar på vanliga frågor medan ni jobbar
+- En egen sida för varje tjänst, så att ni syns på sökningar som matchar det ni gör (från Business)
+- Kontaktväg på varje sida: telefon och formulär, och från Pro även bokning direkt
+- Offertflöde som frågar rätt saker, så ni får bra förfrågningar (från Pro)
+- AI-chatt som svarar på vanliga frågor medan ni jobbar (från Pro)
 - Grundläggande SEO och AI-optimering, så Google och AI-assistenter förstår vad ni gör
 - Support och underhåll efter lansering
 
@@ -1698,12 +1697,12 @@ Vi kan inte lova en viss placering, men grunden blir rätt gjord. Efteråt följ
 
 ### Så fungerar samarbetet på distans
 Det är enklare än många tror. Vi ses på video, ni berättar om företaget, och vi bygger ett första utkast som ni kan klicka runt i direkt. Ändringar tar vi i två omgångar via mejl eller samtal.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Priser och upplägg
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För företag i Upplands Väsby räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ### Det första steget
 Boka ett kort möte, gratis och utan krav. Vi går igenom vad ni vill få ut av hemsidan, tittar på er nuvarande sida om ni har en och säger ärligt vad vi rekommenderar. Ni kan också börja med att testa er sajt i Testa din sajt, ett gratis test som visar hastighet, tillgänglighet och SEO.
@@ -1738,9 +1737,9 @@ Bra innehåll är det som skiljer en hemsida som syns från en som inte gör det
 Vi publicerar själva två artiklar i månaden på vår egen sajt, och kan hjälpa er att planera vilka ämnen som passar er bransch.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För SEO räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## AI-optimering – syns i ChatGPT och Gemini
 Allt fler frågar en AI-assistent i stället för att googla. Vi bygger hemsidor som är lätta för både sökmotorer och AI-assistenter att förstå.
@@ -1770,9 +1769,9 @@ Var försiktig med den som säljer garanterad synlighet i AI. Det är ett områd
 AI-optimering ingår i alla våra hemsidor, även Starter. Har ni redan en hemsida kan vi göra en genomgång och föreslå vad som bör ändras. Börja gärna med att testa er sajt i Testa din sajt, som visar SEO, tillgänglighet och mer.
 
 ### Vad kostar det?
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För AI-optimering räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 ## Redesign av hemsida
 Många har en hemsida som fungerar men inte ger några kunder. Ska ni laga den eller bygga en ny? Här går vi igenom hur ni avgör det.
@@ -1807,9 +1806,9 @@ Har ni redan en hemsida som syns på Google är det viktigt att inte tappa det v
 Ett första utkast brukar vara klart på ungefär en dag. Sedan går vi igenom två rundor av ändringar innan lansering. Hur lång tid det tar totalt beror främst på hur snabbt vi får text och bilder.
 
 ### Så mycket kostar det
-Hos oss kostar en Starter-hemsida 5 000 kr i startavgift plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar 9 000 kr plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
+Hos oss kostar en Starter-hemsida just nu 3 000 kr i startavgift (ordinarie 5 000 kr) plus 99–199 kr i månaden. Pro, där hemsidan också tar emot offertförfrågningar, bokningar och frågor åt er, kostar just nu 6 000 kr (ordinarie 9 000 kr) plus 199–499 kr i månaden. Större projekt med egna system får ett fast pris i en offert innan vi börjar. Alla priser anges exklusive moms.
 För en redesign räcker oftast Starter om ni vill ha en tydlig företagspresentation, och Pro om hemsidan också ska ta emot förfrågningar eller bokningar. Vi hjälper er att välja rätt nivå på första mötet, och ni vet alltid kostnaden innan vi sätter igång.
-I Starter ingår upp till 10 timmars support och redigering per månad under det första året. Se hela avtalet på sidan Exempel på webbavtal.
+I Starter ingår upp till 3 timmars support och redigering per månad under det första året.
 
 # Artiklar
 
@@ -1840,7 +1839,7 @@ Om stora bolag med egna webbavdelningar har långsamma sidor är det en möjligh
 - Lägg inte en tung film överst, eller låt den laddas först när resten av sidan syns.
 - Ta bara med de skript ni faktiskt använder. Varje statistik-, annons- eller chattverktyg kostar laddtid.
 - Testa alltid på mobil, inte bara på datorn på kontoret.
-Vill du se hur din egen hemsida ligger till kan du <a href="testa">testa din sajt gratis</a>. Det är samma mätning som i den här undersökningen.
+Vill ni se hur er egen hemsida ligger till kan ni <a href="testa">testa er sajt gratis</a>. Det är samma mätning som i den här undersökningen.
 - L
 - i
 - s
@@ -2220,7 +2219,7 @@ Vill du se hur din egen hemsida ligger till kan du <a href="testa">testa din saj
 - g
 - .
 
-## Spårar de dig innan du hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag (21 november 2026)
+## Spårar de er innan ni hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag (21 november 2026)
 Vi öppnade startsidan hos 105 stora svenska bygg- och fastighetsbolag som en ny besökare på mobilen och rörde ingenting i åtta sekunder. Hos 29 av dem hade spårningskakor från till exempel Google, Meta, LinkedIn eller Microsoft redan sparats – innan besökaren hunnit välja något i cookie-rutan.
 - ['29 av 105', 'satte spårningskakor innan besökaren valt något']
 - ['86 %', 'visade en cookie-ruta']
@@ -2241,9 +2240,9 @@ Europeiska dataskyddsmyndigheter har vid flera tillfällen sagt att det ska vara
 ### Vad ska ett mindre företag göra?
 - Låt statistik- och annonsverktyg vänta tills besökaren har tryckt Godkänn.
 - Ha en Neka-knapp lika synlig som Godkänn-knappen.
-- Kontrollera själv: öppna sajten i ett privat fönster och se vilka kakor som finns innan du klickar.
+- Kontrollera själva: öppna sajten i ett privat fönster och se vilka kakor som finns innan ni klickar.
 - Ta bort verktyg ni inte längre använder – de sätter ofta kakor i onödan.
-Med vårt verktyg <a href="testa-kakor">Testa dina kakor</a> ser du vilka kakor din egen sajt sätter innan besökaren har valt.
+Med vårt verktyg <a href="testa-kakor">Testa dina kakor</a> ser ni vilka kakor er egen sajt sätter innan besökaren har valt.
 - L
 - i
 - s
@@ -2607,8 +2606,8 @@ Varje extra steg – öppna menyn, hitta kontaktsidan, leta efter numret – är
 - Skriv numret som text också, så att det syns även för den som sitter vid datorn.
 - Ha ett kort formulär på startsidan, med bara namn, telefon och vad det gäller.
 - Skriv när ni svarar, till exempel samma dag eller inom en timme på vardagar.
-- Testa själv: hur många tryck behöver du från startsidan tills telefonen ringer?
-Det här är saker vi bygger in från start i <a href="priser">alla våra paket</a>. Vill du ha hjälp att se över din egen sajt kan du <a href="kontakt">kontakta oss</a>.
+- Testa själva: hur många tryck behöver ni från startsidan tills telefonen ringer?
+Det här är saker vi bygger in från start i <a href="priser">alla våra paket</a>. Vill ni ha hjälp att se över er egen sajt kan ni <a href="kontakt">kontakta oss</a>.
 - L
 - i
 - s
@@ -2913,8 +2912,8 @@ Det här är saker vi bygger in från start i <a href="priser">alla våra paket<
 - t
 - .
 
-## Hemsida fast pris: nu väljer du paket direkt (20 november 2026)
-Vill du ha en hemsida till fast pris ska du veta vad den kostar innan något händer. Därför har vi gjort om våra paket och lagt till en beställningssida där du själv väljer paket och hur du vill gå vidare. Just nu gäller dessutom en limiterad rabatt på de tre första paketen.
+## Hemsida fast pris: nu väljer ni paket direkt (20 november 2026)
+Vill ni ha en hemsida till fast pris ska ni veta vad den kostar innan något händer. Därför har vi gjort om våra paket och lagt till en beställningssida där ni själva väljer paket och hur ni vill gå vidare. Just nu gäller dessutom en limiterad rabatt på de tre första paketen.
 ### Hemsida fast pris – de fyra paketen
 Alla paket har en startavgift och en månadsavgift. Priserna är exklusive moms och står även på sidan med <a href="priser">våra priser</a>.
 - Starter – 3 000 kr (ordinarie 5 000 kr) + 99–199 kr/mån. En enkel grundsida som visar vad ni gör och hur man når er.
@@ -2922,23 +2921,23 @@ Alla paket har en startavgift och en månadsavgift. Priserna är exklusive moms 
 - Business – 9 000 kr (ordinarie 14 000 kr) + 499–999 kr/mån. Fler sidor, både offert och bokning och en egen sida för varje tjänst och ort.
 - Premium – 20 000 kr + 1 000–2 000 kr/mån. Integrationer med era system och löpande arbete med SEO och nytt innehåll varje månad.
 Behöver ni något större än så tar vi fram ett fast pris i en offert.
-### Så väljer du rätt paket
+### Så väljer ni rätt paket
 Det enklaste sättet att välja är att utgå från vad hemsidan ska göra åt er, inte hur många sidor den ska ha.
 - Ni vill finnas på nätet och kunna visas upp för kunder: Starter räcker långt.
 - Ni vill att kunderna ska begära offert eller boka direkt på sidan: välj Pro.
 - Ni har flera tjänster eller orter och vill synas på varje: Business ger en sida per tjänst och ort.
 - Hemsidan är ert viktigaste säljverktyg och ska kopplas till era system: Premium.
-Är du osäker kan du välja det paket som ligger närmast. Ingenting är bindande förrän du har godkänt offerten, och du kan byta paket när vi har pratat.
+Är ni osäkra kan ni välja det paket som ligger närmast. Ingenting är bindande förrän ni har godkänt offerten, och ni kan byta paket när vi har pratat.
 ### Välj paket och gå vidare på två minuter
-På <a href="bestall">beställningssidan</a> väljer du paket och ser direkt vad det kostar, vad rabatten är värd och vad som ingår. Sedan väljer du hur du vill gå vidare:
-- Boka ett möte – 30 minuter via Google Meet där vi går igenom paketet. Du väljer tid själv, och paketet följer med så vi vet vad mötet gäller.
+På <a href="bestall">beställningssidan</a> väljer ni paket och ser direkt vad det kostar, vad rabatten är värd och vad som ingår. Sedan väljer ni hur ni vill gå vidare:
+- Boka ett möte – 30 minuter via Google Meet där vi går igenom paketet. Ni väljer tid själva, och paketet följer med så vi vet vad mötet gäller.
 - Skicka en förfrågan – fyll i några rader om företaget, så skickar vi en offert på mejl. Vi svarar oftast samma dag.
-Inget betalas på sidan. Du får ett fast pris i en offert på två sidor och godkänner genom att svara på mejlet.
+Inget betalas på sidan. Ni får ett fast pris i en offert på två sidor och godkänner genom att svara på mejlet.
 ### Så kan vi hjälpa till
-Vi är en liten webbyrå i Uppsala som bygger hemsidor som ger förfrågningar, för företag i hela Sverige. Du ser ett första utkast efter ungefär en dag, och samma kontaktperson följer med hela vägen. Vill du först se hur din nuvarande sajt står sig kan du <a href="testa">testa din hemsida</a> gratis.
+Vi är en liten webbyrå i Uppsala som bygger hemsidor som ger förfrågningar, för företag i hela Sverige. Ni ser ett första utkast efter ungefär en dag, och samma kontaktperson följer med hela vägen. Vill ni först se hur er nuvarande sajt står sig kan ni <a href="testa">testa er hemsida</a> gratis.
 
-## Visste du att dina kakor kan bryta mot lagen? (17 november 2026)
-Många företag har Google Analytics eller Meta-pixeln på hemsidan utan att tänka på det. Men laddas de innan besökaren har sagt ja, bryter sajten troligen mot lagen om elektronisk kommunikation – och mot GDPR om personuppgifter samlas in. Det är inte brottsbalken, men Integritetsskyddsmyndigheten (IMY) kan utfärda sanktionsavgifter, och myndigheten har redan granskat svenska företags cookie-rutor.
+## Visste ni att era kakor kan bryta mot lagen? (17 november 2026)
+Många företag har Google Analytics eller Meta-pixeln på hemsidan utan att tänka på det. Men laddas de innan besökaren har sagt ja, bryter sajten troligen mot lagen om elektronisk kommunikation – och mot GDPR om personuppgifter samlas in. Det är inte brottsbalken, men Post- och telestyrelsen (PTS) har tillsyn över reglerna för cookies och Integritetsskyddsmyndigheten (IMY) över GDPR. IMY kan utfärda sanktionsavgifter och har redan granskat svenska företags cookie-rutor.
 ### Det här säger reglerna
 - Cookies och spårare som inte behövs för att sidan ska fungera får bara användas efter att besökaren aktivt har godkänt.
 - Det ska vara lika enkelt att neka som att godkänna.
@@ -2949,8 +2948,8 @@ Många företag har Google Analytics eller Meta-pixeln på hemsidan utan att tä
 - Cookie-rutan har bara en knapp: ”OK” eller ”Jag förstår”.
 - Texten ”Genom att använda sidan godkänner du cookies”.
 - Neka-knappen är gömd bakom flera klick medan Godkänn är stor och färgad.
-### Så kollar du din egen hemsida
-Med vårt gratis <a href="testa-kakor">cookietest</a> ser du på några sekunder om spårare laddas innan besökaren har godkänt, om du har en cookie-ruta och om Google Consent Mode är inställt.
+### Så kollar ni er egen hemsida
+Med vårt gratis <a href="testa-kakor">cookietest</a> ser ni på några sekunder om spårare laddas innan besökaren har godkänt, om ni har en cookie-ruta och om Google Consent Mode är inställt.
 ### Så kan vi hjälpa till
 Vi lägger in en cookie-ruta i er design, kopplar spårarna så att de bara körs efter samtycke och skriver en cookiepolicy som stämmer med vad sajten faktiskt gör. Det här är vägledning, inte juridisk rådgivning – vid osäkerhet, fråga en jurist.
 
@@ -2965,7 +2964,7 @@ Många småföretag börjar med en Facebook- eller Instagramsida. Det är gratis
 ### Använd båda
 Sociala medier är bra för att visa vardagen och nå befintliga kunder. Hemsidan är platsen dit ni skickar dem när de vill veta mer eller ta kontakt. Länka mellan dem.
 ### Så gör vi
-Vi bygger hemsidor till fast pris från 5 000 kr, med kontakt eller offert på varje sida. Domänen är alltid er.
+Vi bygger hemsidor till fast pris från 3 000 kr, med kontakt eller offert på varje sida. Domänen är alltid er.
 
 ## Så mycket kostar en långsam hemsida (11 november 2026)
 En hemsida som tar lång tid att ladda i mobilen tappar besökare innan de ens sett vad ni erbjuder. Google tar dessutom hänsyn till hastighet och användarupplevelse när sidor rankas.
@@ -2980,7 +2979,7 @@ En hemsida som tar lång tid att ladda i mobilen tappar besökare innan de ens s
 - Ta bort tillägg som inte används.
 - Låt bilder längre ner på sidan laddas först när besökaren scrollar dit.
 ### Testa er hemsida
-Med vårt gratistest på elevatestudio.nu/testa ser ni hastighet, mobilvy och SEO på någon minut. Hemsidor vi bygger görs snabba från start.
+Med vårt gratistest på elevatestudio.nu/testa ser ni hastighet, mobilvy och SEO på cirka 30 sekunder. Hemsidor vi bygger görs snabba från start.
 
 ## Checklista: det här ska finnas på en elektrikers hemsida (10 november 2026)
 När någon behöver en elektriker vill de snabbt se att företaget gör rätt sorts jobb, finns i närheten och går att lita på. Hemsidan ska svara på det inom några sekunder.
@@ -2997,23 +2996,23 @@ Ett formulär där kunden beskriver jobbet och kan bifoga bilder sparar tid för
 ### Så gör vi
 Vi bygger hemsidor för elektriker och andra hantverkare med tjänstesidor, offertformulär och omdömen – till fast pris.
 
-## Webbyrå i Uppsala – så väljer du rätt (10 november 2026)
-Det finns många webbyråer i Uppsala, och på ytan ser de ofta likadana ut. Skillnaden märks först när hemsidan är klar: får du förfrågningar, kan du ändra själv och vet du vad det kostar nästa år?
-### Det här ska du titta på
+## Webbyrå i Uppsala – så väljer ni rätt (10 november 2026)
+Det finns många webbyråer i Uppsala, och på ytan ser de ofta likadana ut. Skillnaden märks först när hemsidan är klar: får ni förfrågningar, kan ni ändra själva och vet ni vad det kostar nästa år?
+### Det här ska ni titta på
 - Fast pris i en skriftlig offert innan arbetet börjar.
-- Att domänen registreras i ditt namn.
-- Exempel på riktiga hemsidor de har byggt – gärna i din bransch.
+- Att domänen registreras i ert namn.
+- Exempel på riktiga hemsidor de har byggt – gärna i er bransch.
 - Vad support och ändringar kostar efter lansering.
-- Hur snabbt du får se ett första utkast.
+- Hur snabbt ni får se ett första utkast.
 ### Varningstecken
 - Löpande timdebitering utan tak.
 - Långa bindningstider.
 - Ingen tydlig plan för hur sidan ska synas på Google.
 ### Så gör vi
-Vi är en webbyrå i Uppsala som bygger hemsidor till fast pris. Du ser ett första utkast efter ungefär en dag, domänen är alltid din och under första året ingår upp till 10 timmars support och ändringar per månad.
+Vi är en webbyrå i Uppsala som bygger hemsidor till fast pris. Ni ser ett första utkast efter ungefär en dag, domänen är alltid er och under första året ingår upp till 3 timmars support och ändringar per månad.
 
 ## Billig hemsida till fast pris – vad ska ingå? (9 november 2026)
-En billig hemsida behöver inte vara en dålig hemsida. Men ett lågt startpris kan bli dyrt om månadsavgifter, ändringar och domän tillkommer. Jämför därför vad du betalar totalt de första två åren.
+En billig hemsida behöver inte vara en dålig hemsida. Men ett lågt startpris kan bli dyrt om månadsavgifter, ändringar och domän tillkommer. Jämför därför vad ni betalar totalt de första två åren.
 ### Det här bör ingå även i ett billigt paket
 - Mobilanpassad design som laddar snabbt.
 - En sida per tjänst och tydliga kontaktvägar.
@@ -3021,9 +3020,9 @@ En billig hemsida behöver inte vara en dålig hemsida. Men ett lågt startpris 
 - SSL-certifikat och drift.
 - Möjlighet att få ändringar gjorda utan att betala per timme.
 ### Räkna på totalkostnaden
-Lägg ihop startavgift, årskostnad, domän och vad ändringar kostar. Då ser du vilket erbjudande som faktiskt är billigast.
+Lägg ihop startavgift, årskostnad, domän och vad ändringar kostar. Då ser ni vilket erbjudande som faktiskt är billigast.
 ### Så gör vi
-Starter kostar 5 000 kr i startavgift och därefter 99–199 kr per månad. Priset står i offerten innan vi börjar, och det finns ingen bindningstid.
+Starter kostar just nu 3 000 kr i startavgift (ordinarie 5 000 kr) och därefter 99–199 kr per månad. Priset står i offerten innan vi börjar, och det finns ingen bindningstid.
 
 ## Checklista: sju saker som ger hantverkare fler jobb via hemsidan (8 november 2026)
 För snickare, elektriker, målare och andra hantverkare är hemsidan ofta det första en kund ser efter en rekommendation eller en sökning. Den behöver inte vara avancerad – men den behöver göra rätt saker.
@@ -3036,55 +3035,55 @@ För snickare, elektriker, målare och andra hantverkare är hemsidan ofta det f
 - En sida per tjänst och per område ni arbetar i.
 - Snabb laddning i mobilen, där de flesta söker.
 ### Glöm inte Google-profilen
-En uppdaterad Google-företagsprofil med bilder och recensioner hjälper dig att synas på kartan när någon söker i närheten.
+En uppdaterad Google-företagsprofil med bilder och recensioner hjälper er att synas på kartan när någon söker i närheten.
 ### Så gör vi
 Vi bygger hemsidor för hantverkare med offertformulär, recensioner och tjänstesidor från start – till fast pris.
 
-## Testa din hemsida gratis – så läser du resultatet (7 november 2026)
-Ett test av hemsidan visar snabbt var den tappar besökare. Med vårt gratistest får du en översikt över hastighet, mobilvy och sökmotoroptimering på någon minut.
+## Testa er hemsida gratis – så läser ni resultatet (7 november 2026)
+Ett test av hemsidan visar snabbt var den tappar besökare. Med vårt gratistest får ni en översikt över hastighet, mobilvy och sökmotoroptimering på cirka 30 sekunder.
 ### Det här betyder siffrorna
 - Hastighet: hur snabbt sidan blir användbar i mobilen. Långsamma sidor tappar besökare.
 - SEO: om titlar, beskrivningar och rubriker finns och är tydliga.
 - Tillgänglighet: om texter går att läsa och knappar går att använda för alla.
 - Bästa praxis: säkerhet och tekniska grunder, som HTTPS.
-### Vad gör du sen?
+### Vad gör ni sen?
 Börja med det som påverkar kunden mest: långsam laddning och otydliga kontaktvägar. Många förbättringar är små och går snabbt att åtgärda.
 ### Testa nu
-Gå till elevatestudio.nu/testa och skriv in din adress. Testet är gratis – du fyller i webbadress och e-post och får resultatet direkt.
+Gå till elevatestudio.nu/testa och skriv in er adress. Testet är gratis – ni fyller i webbadressen och får resultatet direkt.
 
 ## Bygga hemsida själv eller anlita en webbyrå? (28 oktober 2026)
-Det har aldrig varit enklare att skapa en hemsida själv. Med verktyg som Wix, Squarespace och WordPress kan vem som helst få upp en sida på en kväll. Frågan är snarare vad hemsidan ska göra för ditt företag – och vad din tid är värd.
+Det har aldrig varit enklare att skapa en hemsida själv. Med verktyg som Wix, Squarespace och WordPress kan vem som helst få upp en sida på en kväll. Frågan är snarare vad hemsidan ska göra för ert företag – och vad er tid är värd.
 ### När det räcker att bygga hemsidan själv
-- Du behöver bara ett enkelt visitkort på nätet med kontaktuppgifter.
-- Du har tid och tycker att det är roligt att lära dig verktyget.
+- Ni behöver bara ett enkelt visitkort på nätet med kontaktuppgifter.
+- Ni har tid och tycker att det är roligt att lära er verktyget.
 - Det är inte så viktigt att synas högt på Google.
 ### När en webbyrå lönar sig
 - Hemsidan ska ge förfrågningar, inte bara finnas.
-- Du vill synas när kunder söker på din tjänst på din ort.
-- Du behöver bokning, offertformulär eller en chatt som svarar kunderna.
-- Du vill slippa tekniken och lägga tiden på ditt eget jobb.
+- Ni vill synas när kunder söker på er tjänst på er ort.
+- Ni behöver bokning, offertformulär eller en chatt som svarar kunderna.
+- Ni vill slippa tekniken och lägga tiden på ert eget jobb.
 ### Det många glömmer när de skapar hemsidan själva
 - Tiden: att bygga, skriva texter och hålla sidan uppdaterad tar ofta mycket längre tid än man tror.
-- Löpande kostnader: byggverktygen tar ofta en månadsavgift så länge sidan finns.
+- Löpande kostnader: byggverktygen har en månadsavgift så länge sidan finns, och då gör ni ändå allt jobb själva.
 - Synligheten: en snygg mall syns inte automatiskt på Google – det kräver tydliga tjänstesidor, rätt rubriker och snabba sidor.
 ### Så gör vi
-Som webbyrå i Uppsala bygger vi hemsidor till fast pris: Starter kostar 5 000 kr i startavgift och därefter 99–199 kr per månad. Du ser ett första utkast efter ungefär en dag, domänen är alltid din och under första året ingår upp till 10 timmars support och ändringar per månad.
+Som webbyrå i Uppsala bygger vi hemsidor till fast pris: Starter kostar just nu 3 000 kr i startavgift (ordinarie 5 000 kr) och därefter 99–199 kr per månad. Ni ser ett första utkast efter ungefär en dag, domänen är alltid er och under första året ingår upp till 3 timmars support och ändringar per månad.
 
-## Vad kostar en hemsida – och vad betalar du egentligen för? (27 oktober 2026)
+## Vad kostar en hemsida – och vad betalar ni egentligen för? (27 oktober 2026)
 Frågan om vad en hemsida kostar får svar som spretar från några hundralappar till hundratusentals kronor. Skillnaden ligger sällan i själva sidan, utan i vad som ingår – och i vad som tillkommer efteråt.
 ### Det här brukar priset bestå av
 - En startkostnad för design och bygge av sidan.
 - En löpande kostnad för domän, drift och hosting.
-- Support och ändringar efter lansering – ingår de, eller betalar du per timme?
+- Support och ändringar efter lansering – ingår de, eller betalar ni per timme?
 - Funktioner som bokning, offertformulär eller chatt, som ofta prissätts separat.
-### Fem frågor att ställa innan du väljer leverantör
+### Fem frågor att ställa innan ni väljer leverantör
 - Är priset fast, eller kan det bli dyrare under arbetets gång?
-- Vem äger domänen – du eller leverantören?
+- Vem äger domänen – ni eller leverantören?
 - Vad ingår i supporten, och hur länge?
 - Vad kostar det efter första året?
 - Finns det någon bindningstid?
 ### Så gör vi
-Hos oss får du ett fast pris i en offert innan vi börjar. Starter kostar 5 000 kr i startavgift och därefter 99–199 kr per månad, och under första året ingår upp till 10 timmars support och ändringar per månad. Domänen är alltid din. På vår prissida ser du vad som ingår i varje paket, och du kan ladda ner ett exempel på hur vårt avtal ser ut.
+Hos oss får ni ett fast pris i en offert innan vi börjar. Starter kostar just nu 3 000 kr i startavgift (ordinarie 5 000 kr) och därefter 99–199 kr per månad, och under första året ingår upp till 3 timmars support och ändringar per månad. Domänen är alltid er. På vår prissida ser ni vad som ingår i varje paket, och ni kan ladda ner ett exempel på hur vårt avtal ser ut.
 
 ## Fem saker som får besökare att höra av sig (20 oktober 2026)
 En hemsida kan vara snygg och ändå inte ge en enda förfrågan. Oftast beror det inte på designen, utan på att besökaren inte förstår vad ni gör, inte litar på er eller inte hittar hur man tar kontakt. Här är fem saker som gör störst skillnad.
@@ -3097,17 +3096,17 @@ En egen sida för varje tjänst gör det enklare för besökaren att hitta rätt
 ### 4. Visa att ni är på riktigt
 Bilder på riktiga jobb, recensioner från kunder och namnen på dem som jobbar hos er bygger förtroende snabbare än allmänna löften.
 ### 5. Snabb på mobilen
-De flesta besökare kommer från telefonen. En sida som laddar långsamt eller är svår att använda på liten skärm tappar dem innan de ens läst rubriken. Du kan testa din egen sida gratis med vårt djuptest.
+De flesta besökare kommer från telefonen. En sida som laddar långsamt eller är svår att använda på liten skärm tappar dem innan de ens läst rubriken. Ni kan testa er egen sida gratis med vårt djuptest.
 
-## Så syns ditt företag när kunder frågar AI (13 oktober 2026)
-Allt fler söker inte längre bara på Google, utan ställer frågan direkt till en AI-assistent: ”Vilken snickare i Haninge kan bygga om mitt kök?” Svaret bygger på det som finns att läsa om ditt företag på nätet – och då behöver din hemsida säga rätt saker, på rätt sätt.
+## Så syns ert företag när kunder frågar AI (13 oktober 2026)
+Allt fler söker inte längre bara på Google, utan ställer frågan direkt till en AI-assistent: ”Vilken snickare i Uppsala kan bygga om mitt kök?” Svaret bygger på det som finns att läsa om ert företag på nätet – och då behöver er hemsida säga rätt saker, på rätt sätt.
 ### Från placering till omnämnande
-I vanlig sökning handlar det om att hamna högt i en lista. I ett AI-svar finns ingen lista – antingen nämns ditt företag, eller så gör det inte det. Och när det nämns måste informationen stämma.
+I vanlig sökning handlar det om att hamna högt i en lista. I ett AI-svar finns ingen lista – antingen nämns ert företag, eller så gör det inte det. Och när det nämns måste informationen stämma.
 ### Tre saker att börja med
 - Beskriv tydligt vad ni gör, för vem och var – med samma ord på alla sidor.
 - Svara på de frågor kunderna faktiskt ställer, till exempel i en sektion med vanliga frågor.
 - Håll kontaktuppgifter, öppettider och tjänster uppdaterade, både på sajten och i Googles företagsprofil.
-Det mesta som gör dig synlig för AI gör dig också bättre på Google. Därför ingår både sökmotoroptimering (SEO) och AI-optimering i alla hemsidor vi bygger.
+Det mesta som gör er synliga för AI gör er också bättre på Google. Därför ingår både sökmotoroptimering (SEO) och AI-optimering i alla hemsidor vi bygger.
 
 ## Vad händer med hemsidan efter lansering? (29 september 2026)
 Många hemsidor är som bäst dagen de lanseras och sedan händer ingenting på tre år. Priserna är gamla, personalen har bytts ut och den senaste nyheten är från lanseringen. Så här håller ni sidan levande utan att det tar tid.
@@ -3122,7 +3121,7 @@ Många hemsidor är som bäst dagen de lanseras och sedan händer ingenting på 
 ### Det ni inte ska behöva tänka på
 Säkerhetsuppdateringar, certifikat, säkerhetskopior och att servern är uppe. Det ska någon annan sköta. En sida byggd utan tunga tillägg har dessutom väldigt lite som kan gå sönder.
 ### Så funkar det hos oss
-Drift och en låg månadsavgift ingår, och ändringar gör vi åt er. Läs mer om <a href="tjanster/support-och-underhall">support och underhåll</a> och vad som ingår i <a href="priser">priserna</a>.
+Efter lanseringen betalar ni en månadsavgift. Hosting och drift specificeras separat i avtalet. Läs mer om <a href="tjanster/support-och-underhall">support och underhåll</a> och vad som ingår i <a href="priser">priserna</a>.
 
 ## Snabb hemsida slår snygg hemsida (15 september 2026)
 En hemsida som laddar långsamt tappar besökare innan de sett en enda bild, hur vacker den än är. Hastighet är dessutom en av de saker Google väger in när resultaten rankas. Här är vad som brukar göra sidor långsamma, och vad som går att göra.
@@ -3149,8 +3148,6 @@ Ett galleri med färdiga projekt, gärna filtrerat på kök, badrum, totalrenove
 - Genomgång när jobbet är klart.
 ### Offert på varje sida
 Knappen ”Få gratis offert” ska finnas i toppen, i varje tjänstesektion och längst ner. Den som bestämt sig ska aldrig behöva leta.
-### Ett riktigt exempel
-<a href="byggda-hemsidor">Haninge Byggteam AB</a> i Stockholm fick en hemsida byggd runt just det: offertknapp i varje del av sidan, ett projektgalleri med filter, ”Så arbetar vi” i fyra steg och deras 5,0 i Google-betyg redan i toppen.
 
 ## Offertflöde: få in rätt förfrågningar, inte bara fler (11 augusti 2026)
 Fler förfrågningar låter bra tills hälften av dem gäller jobb ni inte gör, i områden ni inte åker till. Ett bra offertformulär sorterar innan ni lyfter luren, och ger er det underlag ni behöver för att svara snabbt.
@@ -3173,9 +3170,9 @@ Hemstädning, storstädning, flyttstädning och kontorsstädning är fyra olika 
 Skriv timpriset efter RUT-avdrag, och vad det blir för en vanlig lägenhet. En kalkyl där kunden fyller i kvadratmeter och ser priset direkt tar bort det vanligaste skälet att inte höra av sig.
 ### Förtroende
 - Samma städare varje gång, om ni erbjuder det.
-- Försäkring och nöjd kund-garanti, i klartext.
+- Försäkring och nöjd-kund-garanti, i klartext.
 - Recensioner från Google, och riktiga bilder på teamet.
-### Ett riktigt exempel
+### Ett exempel
 Så bygger vi en hemsida för en städfirma: film i toppen, en sida per städtjänst med pris, en kalkyl som räknar av RUT direkt och bokning av uppstartsmöte från varje sida.
 
 ## Texter som kunder faktiskt läser (14 juli 2026)
@@ -3193,7 +3190,7 @@ De flesta läser inte, de skummar. Rubrikerna ska därför berätta hela histori
 Varje sida ska sluta med en sak att göra: ring, boka, skicka en förfrågan. En knapp, inte tre. Vi skriver texterna till de hemsidor vi bygger tillsammans med kunden, utifrån hur de själva pratar om jobbet. Läs mer om <a href="tjanster/hemsidor">hur vi bygger hemsidor</a>.
 
 ## Vad ska stå på kontaktsidan? (23 juni 2026)
-Kontaktsidan är ofta den näst mest besökta sidan efter startsidan, och den som flest lämnar utan att göra något. Oftast för att den gör det svårt. Så här gör ni den enkel.
+Kontaktsidan är ofta en av de mest besökta sidorna, och den som flest lämnar utan att göra något. Oftast för att den gör det svårt. Så här gör ni den enkel.
 ### Tre sätt att höra av sig, synliga direkt
 - Telefonnummer som går att trycka på, med namnet på den som svarar.
 - E-postadress på er egen domän.
@@ -3225,7 +3222,7 @@ Samma dag eller dagen efter, när kunden fortfarande är glad över resultatet. 
 ### Gör det lätt
 - En länk, ett klick. Ingen inloggning utöver det Google-konto de redan har.
 - Föreslå vad de kan skriva om: vad som gjordes, hur kontakten var, om det blev som de tänkt.
-- Be inte alla samma vecka. Google tycker bättre om en jämn ström än en klump.
+- Be inte alla samma vecka. En jämn ström av recensioner ser mer trovärdig ut än en klump.
 ### Svara på varje recension
 Ett ”Tack Anna, kul att altanen blev som ni ville!” visar nästa kund att ni bryr er. Får ni en dålig recension, svara lugnt och sakligt och erbjud att lösa det. Den som läser bedömer svaret mer än klagomålet.
 I det <a href="tjanster/offertsystem">offertsystem</a> vi bygger finns ett färdigt recensionsmejl som skickas med ett klick när jobbet är klart.
@@ -3318,16 +3315,16 @@ När någon söker på en tjänst och en ort visar Google först kartan med tre 
 - Länk till hemsidan, helst till startsidan.
 - Egna bilder: verkstaden, bilarna, teamet, färdiga jobb.
 ### Recensioner väger tyngst
-Antalet recensioner och hur nya de är påverkar placeringen mer än något annat ni kan styra själva. Be varje nöjd kund om en recension, direkt efter avslutat jobb, med en länk som går rakt till rutan där de skriver. Svara på alla recensioner, även de korta.
+Antalet recensioner och hur nya de är hör till de saker som påverkar placeringen och som ni själva kan påverka. Be varje nöjd kund om en recension, direkt efter avslutat jobb, med en länk som går rakt till rutan där de skriver. Svara på alla recensioner, även de korta.
 ### Håll profilen levande
 Lägg upp ett inlägg då och då: ett nytt jobb, en ny tjänst, ett tips. Det behöver inte vara långt. Google ser att profilen sköts, och kunder ser att ni finns.
 ### Hemsidan och profilen ska säga samma sak
 Samma företagsnamn, samma adress, samma telefonnummer. Och hemsidan ska ha tydliga sidor för de tjänster ni angett i profilen. Det är så Google kopplar ihop dem. Läs mer om hur vi jobbar med <a href="tjanster/seo-och-ai-optimering">SEO och AI-optimering</a>.
 
-## Äg din domän och din e-post själv (26 januari 2026)
+## Äg er domän och er e-post själva (26 januari 2026)
 Domänen är företagets adress på nätet. Står den på byrån som byggde sidan, eller på en anställd som slutat, kan ni en dag stå utan både hemsida och e-post. Så här ser ni till att den är er.
 ### Kolla vem som står som ägare
-Logga in hos den där domänen köptes, ofta Loopia, One.com eller Binero. Står företaget som ägare med en e-postadress ni läser? Om ni inte vet var den är köpt, fråga den som byggde sidan. Svaret ska komma snabbt och utan förbehåll.
+Logga in hos leverantören där domänen köptes, ofta Loopia, One.com eller Binero. Står företaget som ägare med en e-postadress ni läser? Om ni inte vet var den är köpt, fråga den som byggde sidan. Svaret ska komma snabbt och utan förbehåll.
 ### E-posten ska följa domänen
 - Använd adresser på er egen domän, som info@ertforetag.se, inte en gratisadress.
 - Ha minst två personer som kan logga in på domänen och e-posten.
@@ -3351,4 +3348,4 @@ En långsam sida tappar besökare innan den ens har laddat. Stora bilder är den
 ### 5. Be om en recension
 Nöjda kunder från hösten har inte glömt er än. Ett kort mejl med länk till er Google-profil räcker. Recensionerna syns både på Google och, om ni lägger in dem, på hemsidan.
 ### Vill ni ha hjälp?
-Vi går igenom hemsidan gratis och säger vad som är värt att ändra. Och behöver ni en ny: <a href="priser">våra priser</a> är fasta, från 5 000 kr.
+Vi går igenom hemsidan gratis och säger vad som är värt att ändra. Och behöver ni en ny: <a href="priser">våra priser</a> är fasta, från 3 000 kr.

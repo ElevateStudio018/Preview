@@ -11,23 +11,22 @@
 - [Support och underhåll](https://elevatestudio.nu/tjanster/support-och-underhall): Vi tar hand om ändringar, uppdateringar och uppföljning så att ni kan fokusera på ert jobb.
 
 ## Priser (exkl. moms)
-- Starter: 5 000 kr i startavgift + 99–199 kr/mån. Webbdesign och mobilanpassning, kontaktfunktion, grundläggande SEO och AI-optimering, två korrekturvändor, upp till 10 timmars support per månad första året.
+- Starter: 5 000 kr i startavgift + 99–199 kr/mån. Webbdesign och mobilanpassning, kontaktfunktion, grundläggande SEO och AI-optimering, två korrekturvändor, upp till 3 timmars support per månad första året.
 - Pro: 9 000 kr i startavgift + 199–499 kr/mån. Allt i Starter plus offertflöde eller bokning, AI-chatt, notiser via e-post och SMS samt förfrågningar med status och historik.
 - Business: 14 000 kr i startavgift + 499–999 kr/mån. Allt i Pro plus både offertflöde och bokning, en egen sida för varje tjänst och ort, nyheter eller blogg och månadsrapport.
 - Premium: 20 000 kr i startavgift + 1 000–2 000 kr/mån. Allt i Business plus skräddarsydd design, integrationer med era system (till exempel CRM eller bokföring), löpande SEO och nytt innehåll varje månad och prioriterad support.
 - Limiterad rabatt just nu på startavgiften: Starter 3 000 kr (ord. 5 000 kr), Pro 6 000 kr (ord. 9 000 kr), Business 9 000 kr (ord. 14 000 kr). Rabatten gäller under en begränsad tid.
-- Elite: större projekt med egna system, pris i en offert.
-- Elite: pris efter offert för större sajter, integrationer och egna funktioner.
+- Elite: större projekt med egna system, integrationer och funktioner efter behov, pris i en offert.
 - Leverans: ett första utkast efter ungefär en dag; lansering när texter, bilder och åtkomst är på plats. Kunden äger sin domän.
 - [Priser](https://elevatestudio.nu/priser) · [Exempel på webbavtal](https://elevatestudio.nu/avtal)
 
 ## Vanliga frågor
-- **Vad kostar en hemsida?** Ni får ett fast pris innan vi börjar. Starter kostar 5 000 kr, Pro 9 000 kr, Business 14 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt: Starter 3 000 kr, Pro 6 000 kr och Business 9 000 kr. Större projekt får ett fast pris i en offert. Se våra priser eller ett exempel på hur ett avtal ser ut.
-- **Hur lång tid tar det?** Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi tillsammans tills ni är nöjda. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.
+- **Vad kostar en hemsida?** Ni får ett fast pris innan vi börjar. Starter kostar 3 000 kr, Pro 6 000 kr, Business 9 000 kr och Premium 20 000 kr i startavgift, plus en månadsavgift. Just nu är det limiterad rabatt – ordinarie pris är 5 000, 9 000 och 14 000 kr. Större projekt får ett fast pris i en offert. Se våra priser eller ett exempel på hur ett avtal ser ut.
+- **Hur lång tid tar det?** Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi den tillsammans i två korrekturvändor. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.
 - **Bygger ni hemsidor för alla typer av företag?** Ja. Vi bygger hemsidor för företag i alla storlekar – från enmansföretag till större bolag med flera avdelningar och system som ska kopplas ihop. Större projekt får ett fast pris i en offert.
 - **Jobbar ni bara i Uppsala?** Nej. Vi finns i Uppsala men bygger hemsidor åt företag i hela Sverige. Möten går lika bra på distans.
 - **Vad behöver vi bidra med?** Kunskapen om ert företag: vad ni gör, vilka kunder ni vill ha och de bilder och texter ni redan har. Ni får två korrekturvändor innan sidan lanseras, så att allt blir rätt.
-- **Ingår support efter lansering?** Ja. Under första året ingår upp till 10 timmars support och redigering per månad – till exempel text- och bildändringar, layoutjusteringar eller nya funktioner.
+- **Ingår support efter lansering?** Ja. Under första året ingår upp till 3 timmars support och redigering per månad – till exempel text- och bildändringar eller layoutjusteringar.
 - **Syns hemsidan på Google?** Grundläggande sökmotoroptimering (SEO) och AI-optimering ingår, så att sidan går att hitta både på Google och i AI-tjänster som svarar på frågor.
 - **Kan ni koppla på bokning, offertformulär eller AI-chatt?** Ja. Vi bygger bokningssystem, offertsystem, AI-chatt och notiser via e-post och SMS – och testar allt innan lansering.
 - **Vem äger domänen?** Ni. Domänen är och förblir er. Hosting och eventuella externa avgifter står specificerade i offerten.
@@ -42,21 +41,21 @@
 
 ## Artiklar
 - [Vi testade 116 bygg- och fastighetsbolags hemsidor – så snabba är de på mobilen](https://elevatestudio.nu/insikter/vi-testade-116-bygg-och-fastighetsbolags-hemsidor)
-- [Spårar de dig innan du hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag](https://elevatestudio.nu/insikter/sparar-de-dig-innan-du-valt-vi-kollade-kakorna)
+- [Spårar de er innan ni hunnit välja? Vi kollade kakorna hos 105 bygg- och fastighetsbolag](https://elevatestudio.nu/insikter/sparar-de-dig-innan-du-valt-vi-kollade-kakorna)
 - [Hur lätt är det att ringa? Vi kollade kontaktvägarna på 105 bygg- och fastighetsbolags startsidor](https://elevatestudio.nu/insikter/hur-latt-ar-det-att-ringa-vi-kollade-kontaktvagarna)
-- [Hemsida fast pris: nu väljer du paket direkt](https://elevatestudio.nu/insikter/hemsida-fast-pris-valj-paket-direkt)
-- [Visste du att dina kakor kan bryta mot lagen?](https://elevatestudio.nu/insikter/kan-dina-kakor-bryta-mot-lagen)
+- [Hemsida fast pris: nu väljer ni paket direkt](https://elevatestudio.nu/insikter/hemsida-fast-pris-valj-paket-direkt)
+- [Visste ni att era kakor kan bryta mot lagen?](https://elevatestudio.nu/insikter/kan-dina-kakor-bryta-mot-lagen)
 - [Räcker det med en Facebooksida – eller behöver företaget en hemsida?](https://elevatestudio.nu/insikter/hemsida-eller-facebooksida)
 - [Så mycket kostar en långsam hemsida](https://elevatestudio.nu/insikter/langsam-hemsida-kostar-kunder)
 - [Checklista: det här ska finnas på en elektrikers hemsida](https://elevatestudio.nu/insikter/hemsida-for-elektriker-checklista)
-- [Webbyrå i Uppsala – så väljer du rätt](https://elevatestudio.nu/insikter/webbyra-uppsala-sa-valjer-du)
+- [Webbyrå i Uppsala – så väljer ni rätt](https://elevatestudio.nu/insikter/webbyra-uppsala-sa-valjer-du)
 - [Billig hemsida till fast pris – vad ska ingå?](https://elevatestudio.nu/insikter/billig-hemsida-fast-pris)
 - [Checklista: sju saker som ger hantverkare fler jobb via hemsidan](https://elevatestudio.nu/insikter/hemsida-for-hantverkare)
-- [Testa din hemsida gratis – så läser du resultatet](https://elevatestudio.nu/insikter/testa-din-hemsida-gratis)
+- [Testa er hemsida gratis – så läser ni resultatet](https://elevatestudio.nu/insikter/testa-din-hemsida-gratis)
 - [Bygga hemsida själv eller anlita en webbyrå?](https://elevatestudio.nu/insikter/bygga-hemsida-sjalv-eller-webbyra)
-- [Vad kostar en hemsida – och vad betalar du egentligen för?](https://elevatestudio.nu/insikter/vad-kostar-en-hemsida)
+- [Vad kostar en hemsida – och vad betalar ni egentligen för?](https://elevatestudio.nu/insikter/vad-kostar-en-hemsida)
 - [Fem saker som får besökare att höra av sig](https://elevatestudio.nu/insikter/fa-besokare-att-hora-av-sig)
-- [Så syns ditt företag när kunder frågar AI](https://elevatestudio.nu/insikter/synas-nar-kunder-fragar-ai)
+- [Så syns ert företag när kunder frågar AI](https://elevatestudio.nu/insikter/synas-nar-kunder-fragar-ai)
 - [Vad händer med hemsidan efter lansering?](https://elevatestudio.nu/insikter/vad-hander-efter-lansering)
 - [Snabb hemsida slår snygg hemsida](https://elevatestudio.nu/insikter/darfor-ar-en-snabb-hemsida-viktigare-an-en-snygg)
 - [Så får byggfirman rätt sorts jobb via hemsidan](https://elevatestudio.nu/insikter/hemsida-for-byggfirma)
@@ -73,5 +72,5 @@
 - [Vad är AI-optimering, och varför pratar alla om det?](https://elevatestudio.nu/insikter/vad-ar-ai-optimering)
 - [Därför ska hemsidan ha en sida med vanliga frågor](https://elevatestudio.nu/insikter/darfor-ska-hemsidan-ha-vanliga-fragor)
 - [Google-företagsprofil: det viktigaste ni kan göra gratis](https://elevatestudio.nu/insikter/google-foretagsprofil-for-sma-foretag)
-- [Äg din domän och din e-post själv](https://elevatestudio.nu/insikter/aga-din-doman-och-e-post)
+- [Äg er domän och er e-post själva](https://elevatestudio.nu/insikter/aga-din-doman-och-e-post)
 - [Fem saker att fixa på hemsidan i januari](https://elevatestudio.nu/insikter/fem-saker-att-fixa-pa-hemsidan-2026)

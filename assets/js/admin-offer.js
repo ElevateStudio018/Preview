@@ -6,7 +6,7 @@ const DEFAULT_SCOPE = [
   "Kontaktfunktion, presentation av verksamhet och projekt samt bildmaterial som kunden tillhandahåller.",
   "Grundläggande sökmotoroptimering (SEO) och AI-optimering (AIO).",
   "Två korrekturvändor före leverans.",
-  "Upp till 10 timmars support och webbplatsredigering per månad under det första året."
+  "Upp till 3 timmars support och webbplatsredigering per månad under det första året."
 ];
 const PACKAGE_FEES = {
   starter: { start: 3000, yearly: 99 },
@@ -205,11 +205,11 @@ async function buildQuotePdf(input) {
   row("Post", "Pris (exkl. moms)", "head");
   row("Webbutveckling – fast startavgift", kr(input.startFee), "body");
   row("Årsavgift", `${kr(input.yearlyFee)}/år`, "body");
-  row("Webbredigering och support, upp till 10 tim/mån första året", "Ingår", "body");
+  row("Webbredigering och support, upp till 3 tim/mån första året", "Ingår", "body");
   row("Totalt första året", kr(input.startFee + input.yearlyFee), "foot");
   y = top + 3.4 * U + body;
-  para("Under de första 12 månaderna från leverans ingår upp till 10 timmars redigeringssupport per månad. Supporten kan användas för text- och bildändringar, layoutjusteringar, nya funktioner eller större ombyggnationer av webbplatsen.");
-  para("Nya funktioner och större ombyggnationer utförs inom den tillgängliga månadstiden. Arbete utöver 10 timmar under en månad förutsätter separat överenskommelse. Outnyttjade timmar förs inte över till nästa månad.");
+  para("Under de första 12 månaderna från leverans ingår upp till 3 timmars redigeringssupport per månad. Supporten kan användas för text- och bildändringar och layoutjusteringar.");
+  para("Nya funktioner och större ombyggnationer offereras separat. Arbete utöver 3 timmar under en månad förutsätter separat överenskommelse. Outnyttjade timmar förs inte över till nästa månad.");
   para(`Efter första året upphör den inkluderade timsupporten. Fortsatt support och utveckling kan avtalas separat. Årsavgiften på ${kr(input.yearlyFee)} fortsätter årsvis om inte avtalet sägs upp.`);
   para("Startavgift och första årsavgift faktureras vid driftsättning. Betalningsvillkor: 30 dagar. Samtliga priser anges exklusive moms.");
   h2("6. Godkännande av offert");

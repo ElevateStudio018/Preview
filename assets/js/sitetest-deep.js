@@ -62,7 +62,7 @@
     'practice|doctype': 'Vi lägger till doctype (<!doctype html>) så att webbläsare visar sidan som den är tänkt.',
     'practice|charset': 'Vi anger teckenuppsättningen (utf-8) så att å, ä och ö visas rätt.',
     'practice|mixed': 'Vi byter alla http-adresser mot https, så att webbläsare inte varnar för osäkert innehåll.',
-    'practice|blank': 'Vi lägger till rel="noopener" på länkar som öppnar ny flik, så att den nya sidan inte kan styra din.',
+    'practice|blank': 'Vi lägger till rel="noopener" på länkar som öppnar ny flik, så att den nya sidan inte kan styra er sida.',
     'practice|deprecated': 'Vi byter ut föråldrade taggar mot modern HTML och CSS.',
     'practice|hdr-content-security-policy': 'Vi inför en säkerhetspolicy (CSP) som hindrar skadliga skript från att köras på sajten.',
     'practice|hdr-strict-transport-security': 'Vi slår på HSTS, så att webbläsare alltid använder krypterad anslutning.',
@@ -407,7 +407,7 @@
         report.issues.push({ cat: c[1], title: h.title, value: 'Googles test: ' + h.pages.length + ' av ' + C.psiOk.length + ' sidor', fix: String(h.desc || '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/`/g, '').split('. ')[0] + '.' });
       });
     });
-    html += '<div class="sitetest__cta"><div><h2>Vill du att vi fixar det här?</h2><p>Vi går igenom resultatet med dig och ger ett förslag med fast pris.</p></div>' +
+    html += '<div class="sitetest__cta"><div><h2>Vill ni att vi fixar det här?</h2><p>Vi går igenom resultatet med er och ger ett förslag med fast pris.</p></div>' +
       '<div class="sitetest__actions"><a class="btn btn--light" id="deep-send" href="kontakt.html?fran=test#formular"><span>Låt oss ta hand om det</span></a>' +
       '<button type="button" class="btn btn--outline-light" id="deep-pdf"><span>Ladda ner PDF</span></button></div></div>';
     if (window.ElevateLive) window.ElevateLive.stop();
