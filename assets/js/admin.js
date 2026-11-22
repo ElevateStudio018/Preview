@@ -581,7 +581,7 @@
       b.addEventListener('click', function () { var p = profile(b.dataset.profile); if (p === profile(st.user.email)) go('konto'); else createLogin(p); });
     });
     fetch('/api/status').then(function (r) { return r.json(); }).then(function (s) {
-      if (!s.accounts && $('#acc-note')) $('#acc-note').innerHTML = info('Kontona öppnas med ett bekräftelsemejl just nu', 'Lägg in Supabase-projektets service_role-nyckel som Secret med namnet SUPABASE_SERVICE_KEY i Cloudflare (Workers → elevate-studio-pre → Settings → Variables and Secrets). Då öppnas kontona direkt, utan mejl. Hittas i Supabase under Project Settings → API.');
+      if (!s.accounts && $('#acc-note')) $('#acc-note').innerHTML = info('Kontona öppnas med ett bekräftelsemejl', 'Databasen ligger i Lovable Cloud, som inte lämnar ut den nyckel som krävs för att öppna konton direkt. Den nya personen får därför ett mejl och bekräftar själv.');
     }).catch(function () {});
   }
 
@@ -785,7 +785,7 @@
   function bars(title, pairs, total) {
     var max = Math.max.apply(null, pairs.map(function (p) { return p[1]; }).concat([1]));
     return '<section class="panel"><h3>' + title + '</h3>' + (pairs.length ? pairs.map(function (p) {
-      return '<div class="barrow" title="' + esc(p[0]) + ': ' + p[1] + (total ? ' (' + Math.round(p[1] / total * 100) + ' %)' : '') + '"><span>' + esc(p[0]) + '</span><i style="--w:' + Math.round(p[1] / max * 100) + '%"></i><b>' + p[1] + (total ? ' <em>' + Math.round(p[1] / total * 100) + ' %</em>' : '') + '</b></div>';
+      return '<div class="barrow"><span title="' + esc(p[0]) + '">' + esc(p[0]) + '</span><i style="--w:' + Math.round(p[1] / max * 100) + '%"></i><b>' + p[1] + (total ? ' <em>' + Math.round(p[1] / total * 100) + ' %</em>' : '') + '</b></div>';
     }).join('') : '<p class="empty">Ingen data.</p>') + '</section>';
   }
   function countBy(rows, fn, limit) {
@@ -1377,11 +1377,11 @@
       var pages = countBy(views, function (x) { return x.path; }, 15).map(function (p) { var ts = timeOn[p[0]] || []; return [p[0], p[1], ts.length ? Math.round(ts.reduce(function (a, b) { return a + b; }, 0) / ts.length) : null]; });
       var entries = countBy(sessions, function (s) { return s.views[0] ? s.views[0].path : ''; }, 10);
       var exits = countBy(sessions, function (s) { return s.views.length ? s.views[s.views.length - 1].path : ''; }, 10);
-      var chart = function (title, pairs, max, cls) { return '<section class="panel"><h3>' + title + '</h3><div class="cols ' + (cls || '') + '">' + pairs.map(function (p) { return '<div title="' + p[0] + ': ' + p[1] + '"><i style="--h:' + Math.round(p[1] / max * 100) + '%"></i><span>' + p[0] + '</span></div>'; }).join('') + '</div></section>'; };
+      var chart = function (title, pairs, max, cls) { return '<section class="panel"><h3>' + title + '</h3><div class="cols ' + (cls || '') + '">' + pairs.map(function (p) { return '<div tabindex="0"><i data-tip="' + p[0] + ': ' + p[1] + ' st" style="--h:' + Math.round(p[1] / max * 100) + '%"></i><span>' + p[0] + '</span></div>'; }).join('') + '</div></section>'; };
       main().insertAdjacentHTML('beforeend',
         kpis([['Besök', sessions.length], ['Sidvisningar', views.length], ['Just nu', Object.keys(live).length], ['Snitt tid per besök', fmtSecs(avgSecs)], ['Sidor per besök', sessions.length ? (views.length / sessions.length).toFixed(1) : '–'],
           ['Avvisningar', sessions.length ? Math.round(bounce / sessions.length * 100) + ' %' : '–'], ['Konverteringar', conv.length], ['Konverteringsgrad', sessions.length ? (conv.length / sessions.length * 100).toFixed(1) + ' %' : '–']]) +
-        (rows.length ? '' : info('Inget att visa än', 'Statistiken fylls på så fort hemsidan börjar skicka in besök. Det kräver att SUPABASE_SERVICE_KEY finns som hemlighet i Cloudflare.')) +
+        (rows.length ? '' : info('Inga besök sparade än', 'Därför står allt på 0. Databasen ligger i Lovable Cloud, och den behöver ett tillstånd för att hemsidan ska få spara besök. Öppna projektet i Lovable → More → Database → Manage → SQL editor, klistra in filen <b>supabase/sql/2026-11-22_lovable-cloud.sql</b> och tryck Run. Efter det fylls statistiken på av sig själv.')) +
         chart('Besök per dag', perDay, maxDay) + chart('Sidvisningar per timme på dygnet', perHour, maxHour, 'cols--24') +
         '<div class="split">' +
         '<section class="panel"><h3>Mest lästa sidor</h3>' + (pages.length ? '<div class="tbl"><table><thead><tr><th>Sida</th><th>Visningar</th><th>Snitt tid</th></tr></thead><tbody>' + pages.map(function (p) { return '<tr><td>' + esc(p[0]) + '</td><td>' + p[1] + '</td><td>' + (p[2] == null ? '–' : fmtSecs(p[2])) + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<p class="empty">Ingen data.</p>') + '</section>' +
@@ -1449,7 +1449,7 @@
           '</tbody></table></div>' : '<p class="empty">Ingen data än. Google behöver några dagar efter att sajten lagts till.</p>') + '</section>';
       };
       box.insertAdjacentHTML('beforeend', kpis([['Klick', t.clicks], ['Visningar', t.impressions], ['Klickfrekvens', pct(t.ctr || 0)], ['Snittposition', pos(t.position)]]) +
-        '<section class="panel"><h3>Visningar per dag <small>' + d.start + ' – ' + d.end + '</small></h3><div class="cols">' + d.days.map(function (x) { return '<div title="' + x.keys[0] + ': ' + x.impressions + ' visningar, ' + x.clicks + ' klick"><i style="--h:' + Math.round(x.impressions / max * 100) + '%"></i><span>' + x.keys[0].slice(5) + '</span></div>'; }).join('') + '</div></section>' +
+        '<section class="panel"><h3>Visningar per dag <small>' + d.start + ' – ' + d.end + '</small></h3><div class="cols">' + d.days.map(function (x) { return '<div tabindex="0"><i data-tip="' + x.keys[0] + ': ' + x.impressions + ' visningar, ' + x.clicks + ' klick" style="--h:' + Math.round(x.impressions / max * 100) + '%"></i><span>' + x.keys[0].slice(5) + '</span></div>'; }).join('') + '</div></section>' +
         table('Sökord', d.queries, 'Sökord') + table('Sidor', d.pages, 'Sida') + '<p class="muted">Källa: Google Search Console (' + esc(d.site) + '). Siffrorna släpar två dagar.</p>');
     });
   }
@@ -1541,7 +1541,7 @@
   }
 
   /* ---------- Sajttester: everyone who used Testa din sajt ---------- */
-  var MISSING = '<p class="empty">Tabellen finns inte än. Kör supabase/sql/2026-11-02_site_tests_newsletter.sql i Supabase och lägg in SUPABASE_SERVICE_KEY i Cloudflare.</p>';
+  var MISSING = '<p class="empty">Tabellen finns inte än. Öppna projektet i Lovable → More → Database → Manage → SQL editor, klistra in supabase/sql/2026-11-22_lovable-cloud.sql och tryck Run.</p>';
   function scoreCell(v) { return v == null ? '–' : '<b style="color:' + (v >= 90 ? '#2f7d4f' : v >= 50 ? '#a26c07' : '#b42318') + '">' + v + '</b>'; }
   function renderSiteTests() {
     main().innerHTML = head('Sajttester', 'Alla som har testat sin sajt på Testa din sajt – senaste 90 dagarna.');
@@ -1641,7 +1641,7 @@
     var funnel = STATUS.map(function (s) { return [s[1], L.filter(function (l) { return (l.status || 'new') === s[0]; }).length]; }).filter(function (p) { return p[1]; });
     main().innerHTML = head('Insikter', 'Räknat direkt från era leads.') +
       kpis([['Leads totalt', L.length], ['Sålda', sold.length], ['Konvertering', L.length ? (sold.length / L.length * 100).toFixed(1).replace('.', ',') + ' %' : '–'], ['Snittaffär', sold.length ? kr(total / sold.length) : '–']]) +
-      '<section class="panel"><h3>Nya leads per månad</h3><div class="cols">' + perMonth.map(function (p) { return '<div title="' + p[1] + '"><i style="--h:' + Math.round(p[1] / max * 100) + '%"></i><b>' + p[1] + '</b><span>' + p[0] + '</span></div>'; }).join('') + '</div></section>' +
+      '<section class="panel"><h3>Nya leads per månad</h3><div class="cols">' + perMonth.map(function (p) { return '<div tabindex="0"><i data-tip="' + p[0] + ': ' + p[1] + '" style="--h:' + Math.round(p[1] / max * 100) + '%"></i><b>' + p[1] + '</b><span>' + p[0] + '</span></div>'; }).join('') + '</div></section>' +
       '<div class="split">' + bars('Status just nu', funnel, L.length) + bars('Branscher', countBy(L, function (l) { return l.service_type; }), L.length) +
       bars('Typ av förfrågan', countBy(L, function (l) { return MEETING[l.meeting_type] || l.meeting_type; }), L.length) + bars('Paket', countBy(L, function (l) { return l.selected_package; }), L.length) + '</div>';
   }
@@ -1787,7 +1787,7 @@
             return sb.from('user_roles').insert({ user_id: u.id, role: 'admin' }).then(function (x) { return x.error ? 'norole' : 'ok'; });
           }).then(function (how) {
             f.pw.value = f.pw2.value = '';
-            if (how === 'exists') { btn.disabled = false; btn.textContent = 'Öppna kontot'; m.textContent = 'Den e-posten har redan en inloggning. Lägg in SUPABASE_SERVICE_KEY i Cloudflare för att sätta nytt lösenord härifrån, eller använd Glömt lösenord på inloggningssidan.'; return; }
+            if (how === 'exists') { btn.disabled = false; btn.textContent = 'Öppna kontot'; m.textContent = 'Den e-posten har redan en inloggning. Personen kan sätta ett nytt lösenord med Glömt lösenord på inloggningssidan.'; return; }
             d.remove();
             toast(how === 'ok' ? 'Inloggningen är skapad. ' + first + ' får ett mejl att bekräfta, sedan går det att logga in.' : 'Kontot är skapat, men behörigheten kunde inte läggas in. Säg till, så läggs den in.');
           }).catch(function (err) { btn.disabled = false; btn.textContent = 'Öppna kontot'; m.textContent = err.message; });
