@@ -391,7 +391,8 @@
     bindLeadForm();
     var report = { url: url, device: strategy === 'mobile' ? 'mobil' : 'dator', summary: summary, date: new Date().toLocaleDateString('sv-SE'),
       metrics: METRICS.filter(function (m) { return audits[m.id]; }).map(function (m) { return [m.label, audits[m.id].displayValue || '–']; }),
-      issues: issues, shot: shot || '', real: real.map(function (m) { return [m[0], m[1]]; }), safe: safe ? safe.safe : null };
+      issues: issues, shot: shot || '', real: real.map(function (m) { return [m[0], m[1]]; }), safe: safe ? safe.safe : null,
+      pages: tour && tour.length > 1 ? tour.map(function (t) { return [t.label + '  ' + (String(t.url || '').replace(/^https?:\/\/[^/]+/, '') || '/'), t.ms ? (Math.max(t.ms, 100) / 1000).toFixed(1).replace('.', ',') + ' s' : '–']; }) : [] };
     if (window.elevateTrack) window.elevateTrack('sitetest', url, (summary || 'Inget resultat') + ' · ' + report.device);
     document.getElementById('sitetest-pdf').addEventListener('click', function () { downloadPdf(report, this); });
     // the test goes to Sajttester in the admin
@@ -507,6 +508,16 @@
         need(lh + 4);
         if (i % 2 === 0) { doc.setFillColor.apply(doc, SOFT); doc.rect(X, y - body * 1.15, RIGHT - X, lh + 2, 'F'); }
         set(body, 'normal', INK); doc.text(m[0], X + 1.2 * U, y); set(body, 'bold', INK); doc.text(String(m[1]), RIGHT - 1.2 * U, y, { align: 'right' });
+        y += lh + 2;
+      });
+      y += gap;
+    }
+    if (r.pages && r.pages.length) {
+      h2('Sidorna testroboten gick igenom (' + r.pages.length + ')');
+      r.pages.forEach(function (m, i) {
+        need(lh + 4);
+        if (i % 2 === 0) { doc.setFillColor.apply(doc, SOFT); doc.rect(X, y - body * 1.15, RIGHT - X, lh + 2, 'F'); }
+        set(body, 'normal', INK); doc.text(doc.splitTextToSize(m[0], RIGHT - X - 12 * U)[0], X + 1.2 * U, y); set(body, 'bold', INK); doc.text(String(m[1]), RIGHT - 1.2 * U, y, { align: 'right' });
         y += lh + 2;
       });
       y += gap;

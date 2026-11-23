@@ -413,7 +413,7 @@
     setAddr(v.url); busy(true);
     if (!(await openPage(v.url, v.frame, id, phone, v))) return;
     step('open', 'ok', 'Startsidan svarade på ' + sec(v.ms));
-    talk('Startsidan är öppen. Testroboten går igenom den och resten av sajten, sida för sida.');
+    talk(pages.length ? 'Startsidan är öppen. Testroboten går igenom den och resten av sajten, sida för sida.' : 'Startsidan är öppen. Sajten verkar ha en enda sida – testroboten går igenom den.');
     if (!(await sleep(2200, id))) return;
 
     var thin = !!f.thin, unread = 'Sidan visar sitt innehåll med JavaScript – kunde inte läsas här';
@@ -447,6 +447,7 @@
     }
 
     step('form', 'now');
+    var one = !pages.length, seen = one ? 'på sidan' : 'på de besökta sidorna';
     var real = function (x) { return x && x.facts && x.facts.form && !newsletter(x.facts.form) ? x : null; };
     var withForm = real(pages.filter(function (x) { return x.contact; })[0]) || pages.filter(real)[0] || (real(v) ? v : null);
     if (withForm) {
@@ -454,23 +455,23 @@
       talk('Hittade ett kontaktformulär med ' + ff.fields + ' fält på ' + where + (ff.first ? ' – det första är ' + q(ff.first) : '') + '.');
       step('form', 'ok', 'Formulär med ' + ff.fields + ' fält på ' + where);
     } else if ((f.form && newsletter(f.form)) || pages.some(function (x) { return x.facts && newsletter(x.facts.form); })) {
-      talk('Hittar bara ett fält för att prenumerera på nyhetsbrev, inget formulär för förfrågningar i sidornas kod.');
-      step('form', 'info', 'Hittade bara anmälan till nyhetsbrev på de besökta sidorna');
+      talk('Hittar bara ett fält för att prenumerera på nyhetsbrev, inget formulär för förfrågningar i ' + (one ? 'sidans' : 'sidornas') + ' kod.');
+      step('form', 'info', 'Hittade bara anmälan till nyhetsbrev ' + seen);
     } else if (thin || pages.some(function (x) { return x.facts && x.facts.thin; })) {
-      talk('Hittar inget formulär i sidornas kod – det kan visas med JavaScript, så det går inte att säga säkert här.');
-      step('form', 'info', 'Kunde inte avgöras – sidorna visar innehåll med JavaScript');
+      talk('Hittar inget formulär i ' + (one ? 'sidans' : 'sidornas') + ' kod – det kan visas med JavaScript, så det går inte att säga säkert här.');
+      step('form', 'info', 'Kunde inte avgöras – ' + (one ? 'sidan visar' : 'sidorna visar') + ' innehåll med JavaScript');
     } else {
-      talk('Letar efter ett kontaktformulär på sidorna … hittar inget i sidornas kod.');
-      step('form', 'info', 'Hittade inget kontaktformulär på de besökta sidorna');
+      talk('Letar efter ett kontaktformulär ' + (one ? 'på sidan … hittar inget i sidans kod.' : 'på sidorna … hittar inget i sidornas kod.'));
+      step('form', 'info', 'Hittade inget kontaktformulär ' + seen);
     }
     if (!(await sleep(3000, id))) return;
     touring = false;
     if (measured) { talk('Genomgången är klar – här kommer resultatet!'); return; }
-    talk('Genomgången av ' + (pages.length + 1) + ' sidor är klar. Nu väntar vi bara på Googles mätning av hur snabbt sidan laddar …');
+    talk((one ? 'Genomgången av sidan är klar.' : 'Genomgången av ' + (pages.length + 1) + ' sidor är klar.') + ' Nu väntar vi bara på Googles mätning av hur snabbt sidan laddar …');
   }
 
   // the pages the robot went through, for the report: start page first, as the visit read them
-  var tour = null;
+  var tour = null, hold = 0;
   function list(v, key) {
     return [{ label: 'Startsidan', url: v.url, ms: v[key], h1: (v.facts || {}).h1 || '' }].concat((v.pages || []).slice(0, 5).map(function (p) {
       return { label: p.label, url: p.url, ms: p[key], h1: (p.facts || {}).h1 || '' };
@@ -480,7 +481,7 @@
     tour: function () { return tour; },
     // into: another progress panel to show the window in (the deep analysis); default is the quick test's
     start: function (url, into) {
-      clear(); run++; var id = run; page = null; tour = null; scrollPx = 0; deep = !!into; started = Date.now(); touring = false; measured = false; pending = true;
+      clear(); run++; var id = run; page = null; tour = null; hold = 0; scrollPx = 0; deep = !!into; started = Date.now(); touring = false; measured = false; pending = true;
       if (into) into.insertBefore(box, into.querySelector('.sitetest__note')); else if (box.parentNode !== home) home.insertBefore(box, homeNext);
       dropFrame(); dropRead(); box.hidden = false; box.classList.remove('has-shot', 'no-cursor'); pageEl.style.transform = ''; pageEl.classList.remove('is-away'); img.removeAttribute('src'); frameOff(); hint.classList.remove('is-on');
       host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '');
@@ -503,6 +504,7 @@
           decided = true; pending = false; clear(); run++;
           busy(false); step('open', 'info', 'Testroboten släpptes inte in på sidan');
           talk('Sajten släpper inte in vår testrobot, så vi kan inte visa sidorna här. Testet fortsätter i bakgrunden – resultatet kommer strax.');
+          hold = Date.now() + 4500; // long enough to read why there is no tour before the results replace the window
         }
       };
       timers.push(setTimeout(decide, 11000));
@@ -527,11 +529,12 @@
     // the test's own results are in: let the robot finish its walk-through first (up to 80 s after the start),
     // so the visitor sees what it did, then show the results
     finish: function (cb) {
-      if (box.hidden || (!touring && !pending)) { cb(); return; }
+      var free = function () { return !touring && !pending && Date.now() >= hold; };
+      if (box.hidden || free()) { cb(); return; }
       measured = true; step('speed', 'ok', 'Klar – resultatet visas strax');
       var until = Math.max(started + 80000, Date.now() + 4000), id = run;
       (function wait() {
-        if (box.hidden || (!touring && !pending) || Date.now() >= until) { cb(); return; }
+        if (box.hidden || free() || Date.now() >= until) { cb(); return; }
         setTimeout(wait, 300);
       })();
     },
