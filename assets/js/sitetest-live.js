@@ -359,15 +359,52 @@
     reader.appendChild(el('p', 'stlive__read-eye', 'Sidan får inte visas i ramen – så här läser testroboten den'));
     var path = url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
     reader.appendChild(el('p', 'stlive__read-url', path + (ms ? ' · svarade på ' + sec(ms) : '')));
-    if (f.menu && f.menu.length) { var m = el('ul', 'stlive__read-menu'); f.menu.slice(0, 6).forEach(function (t) { m.appendChild(el('li', '', t)); }); reader.appendChild(m); }
-    reader.appendChild(el('p', 'stlive__read-h1' + (f.h1 ? '' : ' is-none'), f.h1 || (f.thin ? 'Innehållet visas med JavaScript och kunde inte läsas här' : 'Ingen huvudrubrik (h1) i sidans kod')));
+    if (f.menu && f.menu.length) { var m = el('ul', 'stlive__read-menu'); m.dataset.k = 'menu'; f.menu.slice(0, 6).forEach(function (t) { m.appendChild(el('li', '', t)); }); reader.appendChild(m); }
+    var h = el('p', 'stlive__read-h1' + (f.h1 ? '' : ' is-none'), f.h1 || (f.thin ? 'Innehållet visas med JavaScript och kunde inte läsas här' : 'Ingen huvudrubrik (h1) i sidans kod'));
+    h.dataset.k = 'h1'; reader.appendChild(h);
     if (f.title && f.title !== f.h1) reader.appendChild(el('p', 'stlive__read-title', 'Sidans titel i Google: ' + f.title));
-    var facts = [f.phone && 'Telefon: ' + f.phone, f.email && 'E-post: ' + f.email, f.images && f.images + ' bilder' + (f.imagesNoAlt ? ', ' + f.imagesNoAlt + ' utan bildtext' : ''),
-      f.form && (newsletter(f.form) ? 'Nyhetsbrevsruta' : 'Formulär med ' + f.form.fields + ' fält')].filter(Boolean);
-    if (facts.length) { var l = el('ul', 'stlive__read-facts'); facts.forEach(function (t) { l.appendChild(el('li', '', t)); }); reader.appendChild(l); }
-    box.classList.add('has-read'); reader.classList.remove('is-in', 'is-wait'); void reader.offsetWidth; reader.classList.add('is-in');
+    var facts = [f.phone && ['phone', 'Telefon: ' + f.phone], f.email && ['email', 'E-post: ' + f.email], f.images && ['img', f.images + ' bilder' + (f.imagesNoAlt ? ', ' + f.imagesNoAlt + ' utan bildtext' : '')],
+      f.form && ['form', newsletter(f.form) ? 'Nyhetsbrevsruta' : 'Formulär med ' + f.form.fields + ' fält']].filter(Boolean);
+    if (facts.length) { var l = el('ul', 'stlive__read-facts'); facts.forEach(function (t) { var li = el('li', '', t[1]); li.dataset.k = t[0]; l.appendChild(li); }); reader.appendChild(l); }
+    // the robot's pointer is back: it points only at what the reading view shows
+    box.classList.add('has-read'); box.classList.remove('no-cursor'); reader.classList.remove('is-in', 'is-wait'); void reader.offsetWidth; reader.classList.add('is-in');
   }
-  function dropRead() { box.classList.remove('has-read'); }
+  function dropRead() { box.classList.remove('has-read'); box.classList.add('no-cursor'); frameOff(); }
+  // pointing in the reading view: the frame, the pointer and the note go to a line that is really there
+  function rEl(k) { return reader && box.classList.contains('has-read') ? reader.querySelector('[data-k="' + k + '"]') : null; }
+  function menuItem(label) {
+    var m = rEl('menu'); if (!m) return null;
+    return [].filter.call(m.children, function (li) { return li.textContent.trim().toLowerCase() === String(label).trim().toLowerCase(); })[0] || null;
+  }
+  function rel(e) { var r = e.getBoundingClientRect(), s = screen.getBoundingClientRect(); return { l: r.left - s.left, t: r.top - s.top, w: r.width, h: r.height }; }
+  function noteAt(text, warn, r) {
+    badge.textContent = text; badge.classList.toggle('is-warn', !!warn);
+    var bwid = Math.min(W() - 16, text.length * 8.4 + 30), x = r.l + Math.min(r.w, 260) / 2 - bwid / 2, y = r.t + r.h + 14;
+    if (y > H() - 44) y = r.t - 52;
+    badge.style.left = Math.max(8, Math.min(W() - bwid - 8, x)) + 'px'; badge.style.top = Math.max(8, Math.min(H() - 40, y)) + 'px';
+    badge.classList.add('is-on');
+    timers.push(setTimeout(function () { badge.classList.remove('is-on'); }, 2600));
+  }
+  async function aim(e, label, note, warn, click, id) {
+    if (!e) return id === run;
+    var r = rel(e), pad = 6, l = Math.max(2, r.l - pad), tp = Math.max(2, r.t - pad);
+    hl.style.left = l + 'px'; hl.style.top = tp + 'px';
+    hl.style.width = Math.max(24, Math.min(W() - l - 2, r.w + pad * 2)) + 'px'; hl.style.height = Math.max(20, Math.min(H() - tp - 2, r.h + pad * 2)) + 'px';
+    hl.classList.toggle('is-top', tp < 34); hl.classList.toggle('is-right', l > W() * 0.62);
+    chip.textContent = label; hl.classList.add('is-on');
+    moveTo(r.l + Math.min(r.w * 0.55, r.w - 6), r.t + r.h * 0.62);
+    timers.push(setTimeout(function () { cur.classList.toggle('is-hand', !!click); }, 700));
+    if (!(await sleep(950, id))) return false;
+    if (note) noteAt(note, warn, r);
+    if (click) press();
+    return true;
+  }
+  // point at a line (when it is there) and stay on it for the step's time
+  async function look(e, label, note, warn, total, id) {
+    if (!e) return sleep(total, id);
+    if (!(await aim(e, label, note, warn, false, id))) return false;
+    return sleep(Math.max(300, total - 950), id);
+  }
   function dropFrame() { if (frame) { frame.remove(); frame = null; } pageEl.style.height = ''; box.classList.remove('has-frame'); }
   // a page live in the window: the real page in a frame when the site allows it, otherwise an empty page and a note
   function openPage(url, canFrame, id, phone, read) {
@@ -376,6 +413,7 @@
       if (!canFrame) {
         dropFrame(); box.classList.remove('has-shot');
         if (reader) reader.classList.add('is-wait'); // the last page fades while the next one is fetched
+        frameOff(); badge.classList.remove('is-on');
         timers.push(setTimeout(function () {
           done();
           if (read) showRead(url, read.facts, read.ms);
@@ -406,7 +444,7 @@
     try { await crawlInner(v, id, phone); } finally { if (id === run) touring = false; }
   }
   async function crawlInner(v, id, phone) {
-    var f = v.facts || {}, pages = (v.pages || []).slice(0, 5);
+    var f = v.facts || {}, pages = (v.pages || []).slice(0, 5), shownPage = v.frame ? null : v;
     box.classList.add('no-cursor');
     steps(['open', 'h1', 'menu', 'contact'].concat(pages.map(function (p, i) { return ['p' + (i + 1), 'Sida ' + (i + 2) + ': ' + q(p.label)]; }), ['form', 'speed']));
     speedStep(); step('open', 'now');
@@ -420,30 +458,33 @@
     if (thin) { talk('Startsidan visar sitt innehåll med JavaScript, så testroboten kan inte läsa rubrik och meny här. Google-testet mäter den ändå.'); if (!(await sleep(3200, id))) return; }
     step('h1', 'now');
     if (!thin) talk(f.h1 ? 'Rubriken på startsidan: ' + q(f.h1) + '. Förstår man direkt vad ni gör?' : 'Letar efter startsidans huvudrubrik i sidans kod … hittar ingen.');
-    if (!thin && !(await sleep(2800, id))) return;
+    if (!thin && !(await look(rEl('h1'), 'Huvudrubrik', f.h1 ? '' : 'Saknas i sidans kod', !f.h1, 2800, id))) return;
     step('h1', f.h1 ? 'ok' : thin ? 'info' : 'warn', f.h1 ? q(f.h1) : thin ? unread : 'Ingen huvudrubrik (h1) i sidans kod');
 
     step('menu', 'now');
     var title = (f.title || '').toLowerCase();
     var menu = (f.menu || []).filter(function (m) { return (m.length < 12 || title.indexOf(m.toLowerCase()) < 0) && !/^(hem|home|start)$/i.test(m); });
-    if (menu.length || !thin) { talk(menu.length ? 'Menyn har ' + menu.length + ' val: ' + menu.slice(0, 5).join(', ') + (menu.length > 5 ? ' …' : '.') : 'Letar efter en meny i sidans kod … hittar ingen.'); if (!(await sleep(2600, id))) return; }
+    if (menu.length || !thin) { talk(menu.length ? 'Menyn har ' + menu.length + ' val: ' + menu.slice(0, 5).join(', ') + (menu.length > 5 ? ' …' : '.') : 'Letar efter en meny i sidans kod … hittar ingen.'); if (!(await look(menu.length ? rEl('menu') : null, 'Menyn', menu.length + ' val', false, 2600, id))) return; }
     step('menu', menu.length ? 'ok' : thin ? 'info' : 'warn', menu.length ? menu.slice(0, 6).join(', ') : thin ? unread : 'Ingen meny i sidans kod');
 
     step('contact', 'now');
-    if (f.phone || f.email || !thin) { talk(f.phone || f.email ? 'Hittade ' + [f.phone && 'telefonnumret ' + f.phone, f.email && 'e-postadressen ' + f.email].filter(Boolean).join(' och ') + ' på startsidan.' : 'Letar efter telefonnummer och e-post på startsidan … hittar inga.'); if (!(await sleep(2800, id))) return; }
+    if (f.phone || f.email || !thin) { talk(f.phone || f.email ? 'Hittade ' + [f.phone && 'telefonnumret ' + f.phone, f.email && 'e-postadressen ' + f.email].filter(Boolean).join(' och ') + ' på startsidan.' : 'Letar efter telefonnummer och e-post på startsidan … hittar inga.'); if (!(await look(rEl('phone') || rEl('email'), f.phone ? 'Telefon' : 'E-post', 'Kunden kan nå er direkt', false, 2800, id))) return; }
     step('contact', f.phone || f.email ? 'ok' : thin ? 'info' : 'warn', [f.phone && 'Telefon: ' + f.phone, f.email && 'E-post: ' + f.email].filter(Boolean).join(' · ') || (thin ? unread : 'Varken telefon eller e-post på startsidan'));
 
     for (var i = 0; i < pages.length; i++) {
       var p = pages[i], k = 'p' + (i + 1), pf = p.facts || {};
       step(k, 'now', 'Öppnar sidan …');
       talk('Går vidare till ' + q(p.label) + (p.contact ? ' – där kunden tar kontakt.' : ' …'));
+      var mi = menuItem(p.label); // the robot clicks the menu choice when the page it reads has it
+      if (mi) { if (!(await aim(mi, 'Klickar på ' + q(p.label), '', false, true, id))) return; if (!(await sleep(450, id))) return; }
       busy(true); typeAddr(p.url);
-      if (!(await sleep(900, id))) return;
-      if (!(await openPage(p.url, p.frame, id, phone, p))) return;
+      if (!(await sleep(mi ? 500 : 900, id))) return;
+      if (!(await openPage(p.url, p.frame, id, phone, p))) return; shownPage = p.frame ? null : p;
       if (p.frame) { hint.textContent = 'Testroboten läser sidan …'; hint.classList.add('is-on'); timers.push(setTimeout(function () { hint.classList.remove('is-on'); }, 2200)); }
       step(k, 'ok', 'Svarade på ' + sec(p.ms) + (pf.h1 ? ' · rubrik: ' + q(pf.h1) : pf.thin ? '' : ' · ingen huvudrubrik (h1)'));
       talk('Sidan ' + q(pf.h1 || p.label) + ' svarade på ' + sec(p.ms) + '.' + (pf.images ? ' ' + pf.images + ' bilder' + (pf.imagesNoAlt ? ', varav ' + pf.imagesNoAlt + ' utan bildtext.' : ', alla med bildtext.') : ''));
-      if (!(await sleep(2800, id))) return;
+      if (!(await look(rEl('h1'), 'Rubrik', pf.h1 ? 'Svarade på ' + sec(p.ms) : pf.thin ? '' : 'Ingen huvudrubrik (h1)', !pf.h1 && !pf.thin, 1600, id))) return;
+      if (!(await look(pf.imagesNoAlt ? rEl('img') : null, 'Bilder', pf.imagesNoAlt + ' utan bildtext', true, 1200, id))) return;
     }
 
     step('form', 'now');
@@ -464,8 +505,9 @@
       talk('Letar efter ett kontaktformulär ' + (one ? 'på sidan … hittar inget i sidans kod.' : 'på sidorna … hittar inget i sidornas kod.'));
       step('form', 'info', 'Hittade inget kontaktformulär ' + seen);
     }
-    if (!(await sleep(3000, id))) return;
-    touring = false;
+    var fl = withForm && withForm === shownPage ? rEl('form') : null;
+    if (!(await look(fl, 'Formulär', fl ? withForm.facts.form.fields + ' fält' : '', false, 3000, id))) return;
+    frameOff(); touring = false;
     if (measured) { talk('Genomgången är klar – här kommer resultatet!'); return; }
     talk((one ? 'Genomgången av sidan är klar.' : 'Genomgången av ' + (pages.length + 1) + ' sidor är klar.') + ' Nu väntar vi bara på Googles mätning av hur snabbt sidan laddar …');
   }

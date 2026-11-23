@@ -356,9 +356,14 @@ document.querySelectorAll('.exs').forEach(function (w) {
 });
 
 // Prefill the contact form from the address (used by "Se hur din hemsida kan se ut", which sends the design link along)
+// The details come after # (kontakt.html#formular&meddelande=…), which the browser never sends to a server;
+// the older ?meddelande=… links still work.
 (function () {
-  var f = document.getElementById('formular'); if (!f || !location.search) return;
-  var q = new URLSearchParams(location.search);
+  var f = document.getElementById('formular'); if (!f) return;
+  var h = /^#formular&/.test(location.hash) ? location.hash.slice('#formular&'.length) : '';
+  if (!h && !location.search) return;
+  var q = new URLSearchParams(h || location.search);
+  if (h) { try { history.replaceState(null, '', location.pathname + location.search + '#formular'); } catch (e) { /* old browser */ } addEventListener('load', function () { f.scrollIntoView(); }); }
   ['namn', 'foretag', 'email', 'telefon', 'meddelande'].forEach(function (k) {
     var el = f.elements[k], v = q.get(k);
     if (el && v && !el.value) el.value = v.slice(0, 1500);

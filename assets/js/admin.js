@@ -97,6 +97,61 @@
   };
 
   /* ---------- Login ---------- */
+  // Passwords: at least 12 characters with both letters and digits (the same rule everywhere a password is chosen)
+  var PW_RULE = 'minst 12 tecken, både bokstäver och siffror';
+  function weakPw(pw, email) {
+    pw = String(pw || '');
+    if (pw.length < 12) return 'Lösenordet måste ha minst 12 tecken.';
+    if (!/\p{L}/u.test(pw) || !/\d/.test(pw)) return 'Lösenordet måste innehålla både bokstäver och siffror.';
+    if (email && pw.toLowerCase().indexOf(String(email).split('@')[0].toLowerCase()) >= 0) return 'Lösenordet får inte innehålla e-postadressen.';
+    return '';
+  }
+  // Repeated wrong passwords: this browser waits longer and longer (1 min after 5 tries, then doubling, at most 15 min).
+  // The database's own login limit applies on top of this, on the server.
+  var LOCK = 'elevate-admin-login';
+  function lockInfo() { try { return JSON.parse(localStorage.getItem(LOCK) || '{}'); } catch (e) { return {}; } }
+  function lockSave(x) { try { localStorage.setItem(LOCK, JSON.stringify(x)); } catch (e) { /* private mode */ } }
+  function lockedFor() { var x = lockInfo(); return Math.max(0, Math.ceil(((x.until || 0) - Date.now()) / 1000)); }
+  function failed() {
+    var x = lockInfo(); x.n = (x.n || 0) + 1;
+    if (x.n >= 5) x.until = Date.now() + Math.min(15 * 60, 60 * Math.pow(2, x.n - 5)) * 1000;
+    lockSave(x);
+  }
+  function lockText(sec) { return 'För många misslyckade försök. Vänta ' + (sec >= 60 ? Math.ceil(sec / 60) + ' min' : sec + ' sekunder') + ' och försök igen.'; }
+  // After the password: a second step when the account has two-step verification turned on
+  function gate(user) {
+    if (!sb.auth.mfa) return start(user);
+    return sb.auth.mfa.getAuthenticatorAssuranceLevel().then(function (r) {
+      var a = (r && r.data) || {};
+      if (a.nextLevel === 'aal2' && a.currentLevel !== 'aal2') return renderMfa(user);
+      return start(user);
+    }, function () { return start(user); });
+  }
+  function renderMfa(user, message) {
+    root.innerHTML = '<div class="login"><aside class="login__side"><span class="brand">' + MARK + 'Elevate Studio</span>' +
+      '<div><h1>Ett steg <span class="serif">till.</span></h1><p>Kontot har tvåstegsverifiering.</p></div><p>elevatestudio.nu</p><span class="login__big">' + MARK + '</span></aside>' +
+      '<div class="login__form"><form class="login__card" id="mfa"><h2>Kod från appen</h2><p style="color:var(--muted);margin:0 0 22px">Öppna autentiseringsappen och skriv koden för Elevate Studio.</p>' +
+      '<label class="field">Kod (6 siffror)<input class="input" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required></label>' +
+      '<button class="btn btn--block" type="submit">Logga in</button><p class="msg" id="mfa-msg">' + esc(message || '') + '</p>' +
+      '<button type="button" class="link" id="mfa-out">Logga ut</button></form></div></div>';
+    $('#mfa-out').addEventListener('click', function () { sb.auth.signOut().then(function () { renderLogin(); }); });
+    $('#mfa').code.focus();
+    $('#mfa').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var wait = lockedFor(); if (wait) { $('#mfa-msg').textContent = lockText(wait); return; }
+      var code = e.target.code.value.trim(), btn = $('button[type=submit]', e.target);
+      btn.disabled = true;
+      sb.auth.mfa.listFactors().then(function (f) {
+        var t = ((f.data && f.data.totp) || []).filter(function (x) { return x.status === 'verified'; })[0];
+        if (!t) throw new Error('none');
+        return sb.auth.mfa.challengeAndVerify({ factorId: t.id, code: code });
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        lockSave({});
+        return sb.auth.getUser().then(function (u) { return start((u.data && u.data.user) || user); });
+      }).catch(function () { failed(); var w = lockedFor(); renderMfa(user, w ? lockText(w) : 'Koden stämmer inte. Försök igen med koden som visas nu.'); });
+    });
+  }
   function renderLogin(message) {
     root.innerHTML = '<div class="login"><aside class="login__side"><a class="brand" href="../index.html">' + MARK + 'Elevate Studio</a>' +
       '<div><h1>Välkommen <span class="serif">tillbaka.</span></h1><p>Leads, möten och offerter – samlat på ett ställe.</p></div><p>elevatestudio.nu</p>' +
@@ -109,19 +164,23 @@
     $('#forgot').addEventListener('click', function () {
       var email = $('#login').email.value.trim();
       if (!email) { $('#login-msg').textContent = 'Fyll i din e-post först, tryck sedan på Glömt lösenord.'; return; }
-      sb.auth.resetPasswordForEmail(email, { redirectTo: location.href.split('#')[0] }).then(function (r) {
-        $('#login-msg').textContent = r.error ? r.error.message : 'Om e-posten finns skickas en länk dit. Klicka på den för att välja ett nytt lösenord.';
-      });
+      // the same answer whether the address has a login or not (and whatever the server says), so nobody can test addresses
+      var same = function () { $('#login-msg').textContent = 'Om adressen har en inloggning skickas en länk dit inom några minuter. Klicka på den för att välja ett nytt lösenord.'; };
+      sb.auth.resetPasswordForEmail(email, { redirectTo: location.href.split('#')[0] }).then(same, same);
     });
     $('#login').addEventListener('submit', function (e) {
       e.preventDefault();
       var f = e.target, btn = $('button', f);
+      var wait = lockedFor(); if (wait) { $('#login-msg').textContent = lockText(wait); return; }
       btn.disabled = true; btn.textContent = 'Loggar in …';
       sb.auth.signInWithPassword({ email: f.email.value.trim(), password: f.password.value }).then(function (r) {
         if (r.error) throw r.error;
-        return start(r.data.user);
+        lockSave({});
+        return gate(r.data.user);
       }).catch(function (err) {
         var m = err.message || '';
+        if (err.status === 429 || /rate limit|too many/i.test(m)) return renderLogin('För många försök just nu. Vänta en stund och försök igen.');
+        if (/invalid/i.test(m)) { failed(); var w = lockedFor(); if (w) return renderLogin(lockText(w)); }
         renderLogin(/not confirmed/i.test(m) ? 'E-posten är inte bekräftad än. Klicka först på länken i bekräftelsemejlet som skickades när inloggningen skapades.'
           : /invalid/i.test(m) ? 'Fel e-post eller lösenord – eller så finns ingen inloggning för den adressen än (den skapas under Konto → Profiler).' : m);
       });
@@ -1743,10 +1802,12 @@
       '<button class="btn" type="submit">Byt e-post</button><p class="msg ok" id="em-msg"></p></form>' +
       '<p class="muted small">En bekräftelselänk skickas till den nya adressen. Bytet gäller först när ni klickat på den.</p></section>' +
       '<section class="panel"><h3>Lösenord</h3><form id="pw">' +
-      '<label class="field">Nytt lösenord (minst 8 tecken)<input class="input" type="password" name="pw" minlength="8" autocomplete="new-password" required></label>' +
-      '<label class="field">Upprepa lösenordet<input class="input" type="password" name="pw2" minlength="8" autocomplete="new-password" required></label>' +
+      '<label class="field">Nytt lösenord (' + PW_RULE + ')<input class="input" type="password" name="pw" minlength="12" autocomplete="new-password" required></label>' +
+      '<label class="field">Upprepa lösenordet<input class="input" type="password" name="pw2" minlength="12" autocomplete="new-password" required></label>' +
       '<button class="btn" type="submit">Byt lösenord</button><p class="msg ok" id="pw-msg"></p></form>' +
-      '<p class="muted small">Tips: tre vanliga ord ihop med en siffra är lätt att komma ihåg och svårt att gissa.</p></section></div>';
+      '<p class="muted small">Tips: tre vanliga ord ihop med en siffra är lätt att komma ihåg och svårt att gissa.</p></section>' +
+      '<section class="panel"><h3>Tvåstegsverifiering</h3><div id="mfa-box"><p class="panel__sub">Kollar …</p></div></section></div>';
+    renderTwoStep();
     $('#em').addEventListener('submit', function (e) {
       e.preventDefault(); var m = $('#em-msg');
       sb.auth.updateUser({ email: e.target.email.value.trim() }, { emailRedirectTo: location.href.split('#')[0] }).then(function (r) {
@@ -1756,11 +1817,54 @@
     $('#pw').addEventListener('submit', function (e) {
       e.preventDefault(); var f = e.target, m = $('#pw-msg');
       if (f.pw.value !== f.pw2.value) { m.textContent = 'Lösenorden är inte likadana.'; return; }
+      var bad = weakPw(f.pw.value, st.user.email); if (bad) { m.textContent = bad; return; }
       sb.auth.updateUser({ password: f.pw.value }).then(function (r) {
         if (r.error) { m.textContent = r.error.message; return; }
         f.reset(); m.textContent = 'Lösenordet är bytt. Använd det nya nästa gång du loggar in.';
       });
     });
+  }
+
+  // Two-step verification with an authenticator app (Google Authenticator, Microsoft Authenticator, 1Password …).
+  // Once it is on, the database lets this account read nothing until the code has been given (supabase/sql/2026-11-23_sakerhet.sql).
+  function renderTwoStep(message) {
+    var box = $('#mfa-box'); if (!box) return;
+    if (!sb.auth.mfa) { box.innerHTML = '<p class="panel__sub">Finns inte i den här versionen.</p>'; return; }
+    sb.auth.mfa.listFactors().then(function (r) {
+      var all = (r.data && r.data.all) || [], on = all.filter(function (x) { return x.factor_type === 'totp' && x.status === 'verified'; })[0];
+      if (on) {
+        box.innerHTML = '<p class="panel__sub"><span class="pill pill--on">På</span> Inloggningen kräver en kod från appen.</p>' +
+          '<button class="btn btn--ghost" type="button" id="mfa-off">Stäng av</button><p class="msg ok" id="mfa-msg">' + esc(message || '') + '</p>';
+        $('#mfa-off').addEventListener('click', function () {
+          if (!confirm('Stänga av tvåstegsverifieringen? Då räcker lösenordet för att logga in.')) return;
+          sb.auth.mfa.unenroll({ factorId: on.id }).then(function (x) { if (x.error) { $('#mfa-msg').textContent = x.error.message; return; } return sb.auth.refreshSession().then(function () { renderTwoStep('Avstängd.'); }); });
+        });
+        return;
+      }
+      box.innerHTML = '<p class="panel__sub">Av. Slå på så krävs en kod från en autentiseringsapp i mobilen varje gång du loggar in, även om någon får tag i lösenordet.</p>' +
+        '<button class="btn" type="button" id="mfa-on">Slå på</button><p class="msg ok" id="mfa-msg">' + esc(message || '') + '</p>';
+      $('#mfa-on').addEventListener('click', function () {
+        // half-finished set-ups are removed first, so a new QR code can be made
+        var old = all.filter(function (x) { return x.status !== 'verified'; });
+        Promise.all(old.map(function (x) { return sb.auth.mfa.unenroll({ factorId: x.id }); })).then(function () {
+          return sb.auth.mfa.enroll({ factorType: 'totp', friendlyName: 'Elevate admin ' + new Date().toISOString().slice(0, 16) });
+        }).then(function (x) {
+          if (x.error) { $('#mfa-msg').textContent = 'Det gick inte att slå på: ' + x.error.message; return; }
+          var d = x.data;
+          box.innerHTML = '<p class="panel__sub">1. Skanna koden med autentiseringsappen.</p><img src="' + esc(d.totp.qr_code) + '" alt="QR-kod för autentiseringsappen" width="180" height="180" style="background:#fff;border-radius:12px;padding:8px">' +
+            '<p class="muted small">Går det inte att skanna: skriv in nyckeln <code>' + esc(d.totp.secret) + '</code> i appen.</p>' +
+            '<form id="mfa-verify"><label class="field">2. Skriv koden som visas i appen<input class="input" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required></label>' +
+            '<button class="btn" type="submit">Bekräfta och slå på</button><p class="msg" id="mfa-msg"></p></form>';
+          $('#mfa-verify').addEventListener('submit', function (e) {
+            e.preventDefault();
+            sb.auth.mfa.challengeAndVerify({ factorId: d.id, code: e.target.code.value.trim() }).then(function (v) {
+              if (v.error) { $('#mfa-msg').textContent = 'Koden stämmer inte. Försök igen med koden som visas nu.'; return; }
+              renderTwoStep('Klart. Nästa gång du loggar in frågar sidan efter en kod från appen.');
+            });
+          });
+        });
+      });
+    }, function () { box.innerHTML = '<p class="panel__sub">Kunde inte läsas just nu.</p>'; });
   }
 
   /* A login for a team member: the server opens it right away when the Supabase key is in Cloudflare,
@@ -1769,12 +1873,13 @@
     var first = p[1].split(' ')[0];
     dialog('<form id="cl"><h2>Öppna konto för ' + esc(first) + '</h2><p>Skriv lösenordet ' + esc(first) + ' ska logga in med. Det går att byta sedan under Mitt konto.</p>' +
       form([{ name: 'email', label: 'E-post', type: 'email', value: p[2], required: true }]) +
-      '<label class="field">Lösenord (minst 8 tecken)<input class="input" type="password" name="pw" minlength="8" autocomplete="new-password" required></label>' +
-      '<label class="field">Upprepa lösenordet<input class="input" type="password" name="pw2" minlength="8" autocomplete="new-password" required></label>' +
+      '<label class="field">Lösenord (' + PW_RULE + ')<input class="input" type="password" name="pw" minlength="12" autocomplete="new-password" required></label>' +
+      '<label class="field">Upprepa lösenordet<input class="input" type="password" name="pw2" minlength="12" autocomplete="new-password" required></label>' +
       '<p class="msg" id="cl-msg"></p><div class="dlg__row"><button type="button" class="btn btn--ghost" data-close>Avbryt</button><button class="btn" type="submit">Öppna kontot</button></div></form>', function (d) {
       $('#cl', d).addEventListener('submit', function (e) {
         e.preventDefault(); var f = e.target, m = $('#cl-msg', d), btn = $('button[type=submit]', d);
         if (f.pw.value !== f.pw2.value) { m.textContent = 'Lösenorden är inte likadana.'; return; }
+        var bad = weakPw(f.pw.value, f.email.value); if (bad) { m.textContent = bad; return; }
         btn.disabled = true; btn.textContent = 'Öppnar …';
         var email = f.email.value.trim(), pw = f.pw.value;
         var fallback = function () {
@@ -1815,14 +1920,15 @@
   // After clicking the reset link in the e-mail: choose a new password
   function renderNewPassword() {
     root.innerHTML = '<div class="login"><aside class="login__side"><span class="brand">' + MARK + 'Elevate Studio</span><div><h1>Nytt <span class="serif">lösenord.</span></h1></div><p>elevatestudio.nu</p><span class="login__big">' + MARK + '</span></aside>' +
-      '<div class="login__form"><form class="login__card" id="newpw"><h2>Välj nytt lösenord</h2><label class="field">Nytt lösenord (minst 8 tecken)<input class="input" type="password" name="pw" minlength="8" autocomplete="new-password" required></label>' +
+      '<div class="login__form"><form class="login__card" id="newpw"><h2>Välj nytt lösenord</h2><label class="field">Nytt lösenord (' + PW_RULE + ')<input class="input" type="password" name="pw" minlength="12" autocomplete="new-password" required></label>' +
       '<button class="btn btn--block" type="submit">Spara lösenord</button><p class="msg" id="pw-msg"></p></form></div></div>';
     $('#newpw').addEventListener('submit', function (e) {
       e.preventDefault();
+      var bad = weakPw(e.target.pw.value); if (bad) { $('#pw-msg').textContent = bad; return; }
       sb.auth.updateUser({ password: e.target.pw.value }).then(function (r) {
         if (r.error) { $('#pw-msg').textContent = r.error.message; return; }
         history.replaceState(null, '', location.pathname);
-        start(r.data.user);
+        gate(r.data.user);
       });
     });
   }
@@ -1833,6 +1939,6 @@
   sb.auth.getSession().then(function (r) {
     var u = r.data && r.data.session && r.data.session.user;
     if (recovering) return renderNewPassword();
-    if (u) start(u); else renderLogin();
+    if (u) gate(u); else renderLogin();
   });
 })();

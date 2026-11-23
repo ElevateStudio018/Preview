@@ -763,7 +763,8 @@
     if (val('namn')) o.set('foretag', val('namn'));
     if (val('telefon')) o.set('telefon', val('telefon'));
     if (val('epost')) o.set('email', val('epost'));
-    $('dh-offert').href = base + 'kontakt.html?' + o.toString() + '#formular';
+    // after the # the details never reach any server: they only fill in the form, which the visitor sends themselves
+    $('dh-offert').href = base + 'kontakt.html#formular&' + o.toString();
   }
   // the whole design, pictures too, is kept in this browser so it is still there next time
   var STORE = 'dh-design-v1';

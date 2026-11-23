@@ -142,12 +142,27 @@
     panel = box.querySelector('#deep-progress');
     startedAt = Date.now();
     clearInterval(timer);
-    timer = setInterval(function () { var t = panel && panel.querySelector('#deep-time'); if (t) t.textContent = Math.round((Date.now() - startedAt) / 1000) + ' s'; }, 500);
+    cur = { i: 0, frac: 0, t: Date.now() }; shown = 0;
+    timer = setInterval(function () { var t = panel && panel.querySelector('#deep-time'); if (t) t.textContent = Math.round((Date.now() - startedAt) / 1000) + ' s'; paint(); }, 500);
   }
-  function setStep(i, detail) {
+  // The line follows the real work: each step has the share of the time it usually takes (Google's test of up to
+  // 12 pages is most of it), steps that count (pages, Google's pages) move with the count, and within a step the line
+  // creeps slowly towards the step's end without reaching it. It never goes backwards.
+  var WEIGHT = [4, 10, 1, 9, 1, 5, 68, 2], EXPECT = [3, 8, 1, 10, 1, 6, 25, 1]; // share of the line, seconds per step (Google: per finished page)
+  var cur = { i: 0, frac: 0, t: 0 }, shown = 0;
+  function paint() {
     if (!panel) return;
-    var pct = Math.max(8, Math.round(i / STEPS.length * 100)); // never an empty line, like the quick test
-    panel.querySelector('#deep-line').style.width = pct + '%';
+    var i = Math.min(cur.i, WEIGHT.length - 1), start = 0;
+    for (var k = 0; k < i; k++) start += WEIGHT[k];
+    var creep = 1 - Math.exp(-(Date.now() - cur.t) / 1000 / EXPECT[i]);
+    var f = cur.i >= STEPS.length ? 1 : Math.min(0.95, cur.frac + (1 - cur.frac) * 0.85 * creep);
+    shown = Math.max(shown, start + WEIGHT[i] * f, 2);
+    panel.querySelector('#deep-line').style.width = Math.min(100, shown).toFixed(1) + '%';
+  }
+  function setStep(i, detail, frac) {
+    if (!panel) return;
+    if (i !== cur.i || (frac || 0) !== cur.frac) cur = { i: i, frac: frac || 0, t: Date.now() };
+    paint();
     panel.querySelector('#deep-title').textContent = (i < STEPS.length ? STEPS[i] : 'Klart') + ' (' + Math.min(i + 1, STEPS.length) + ' av ' + STEPS.length + ')';
     panel.querySelector('#deep-now').textContent = 'Djupanalys av hela sajten.' + (detail ? ' ' + detail + '.' : '');
     if (near) near.textContent = STEPS[i] + (detail ? ' (' + detail + ')' : '') + ' …';
@@ -162,8 +177,9 @@
       R.urls = list.urls || [];
       return post('headers', {}, base).then(function (h) { R.headers = h; });
     }).then(function () {
-      setStep(1, R.urls.length + ' sidor');
-      return pool(chunks(R.urls, 12), 4, function (c) { return post('pages', { urls: c }, base).then(function (r) { return r.pages || []; }); })
+      setStep(1, R.urls.length + ' sidor', 0);
+      var parts = chunks(R.urls, 12), read = 0;
+      return pool(parts, 4, function (c) { return post('pages', { urls: c }, base).then(function (r) { read++; setStep(1, R.urls.length + ' sidor', read / parts.length); return r.pages || []; }); })
         .then(function (g) {
           R.pages = [].concat.apply([], g).filter(Boolean);
           R.ok = R.pages.filter(function (p) { return p.ok; });
@@ -207,10 +223,10 @@
           R.ok.forEach(function (p) { add(p.url); });
           R.psiPages = pick; R.psi = {};
           var done = 0;
-          setStep(6, '0 av ' + pick.length + ' sidor');
+          setStep(6, '0 av ' + pick.length + ' sidor', 0);
           return pool(pick, 3, function (u) {
             return psi(u).then(function (lr) { R.psi[u] = lr; }).catch(function (e) { R.psi[u] = { error: e.message }; })
-              .then(function () { done++; setStep(6, done + ' av ' + pick.length + ' sidor'); });
+              .then(function () { done++; setStep(6, done + ' av ' + pick.length + ' sidor', done / pick.length); });
           });
         });
     }).then(function () {

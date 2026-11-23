@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /boka/
 
 Sitemap: https://elevatestudio.nu/sitemap.xml

@@ -228,8 +228,9 @@
     errorBox.hidden = true;
     timer = setInterval(function () {
       var s = (Date.now() - start) / 1000;
-      // Ease towards 95 % over roughly 30 seconds; the real result finishes the bar.
-      var pct = Math.min(95, 100 * (1 - Math.exp(-s / 12)));
+      // Ease towards 95 % over the usual length of the test with the robot's walk-through (about a minute);
+      // the real result finishes the bar.
+      var pct = Math.min(95, 100 * (1 - Math.exp(-s / 24)));
       bar.style.width = pct.toFixed(1) + '%';
       stepText.textContent = STEPS[Math.min(STEPS.length - 1, Math.floor(s / 4.5))];
       timeText.textContent = Math.floor(s) + ' s';
