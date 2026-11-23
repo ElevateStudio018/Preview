@@ -594,6 +594,9 @@
     var extras = Promise.all([getJson('/api/crux'), getJson('/api/safe')]);
 
     Promise.all([psi, security, extras]).then(function (out) {
+      // the live window gets to finish its walk-through first (it says that the measurement is done)
+      return new Promise(function (ok) { if (window.ElevateLive && window.ElevateLive.finish) window.ElevateLive.finish(function () { ok(out); }); else ok(out); });
+    }).then(function (out) {
       stopProgress();
       var p = out[0], sec = out[1], extra = { crux: out[2][0], safe: out[2][1] };
       if (!p.data && !sec.data) {

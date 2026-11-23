@@ -1697,11 +1697,11 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .stlive__btns svg{width:24px;height:24px;padding:3px;fill:none;stroke:#6d766f;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;border-radius:6px;transition:background-color .15s}
 .stlive__btns svg.is-press{background:#d3d8d0}
 .stlive__url{flex:1;display:flex;align-items:center;gap:8px;min-width:0;padding:7px 14px;border-radius:99px;background:#fff;border:1px solid #dfe2dc;font-size:15px;color:#59625b}
-.stlive__url svg{flex:none;width:14px;height:14px;fill:none;stroke:#2f7d4f;stroke-width:2.4}
+.stlive__url svg{flex:none;width:14px;height:14px;fill:none;stroke:#59625b;stroke-width:2.4}
 .stlive__addr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stlive__addr b{font-weight:600;color:#111}
 .stlive__load{height:3px;overflow:hidden;background:#eceee9}
-.stlive__load i{display:block;height:100%;width:0;background:#2f7d4f;opacity:0}
+.stlive__load i{display:block;height:100%;width:0;background:var(--accent,#1d3b2a);opacity:0}
 .stlive__load.is-busy i{opacity:1;animation:stlive-busy 1.3s ease-in-out infinite}
 .stlive__load.is-done i{opacity:1;width:100%;transition:width .35s ease}
 @keyframes stlive-busy{0%{width:0;margin-left:0}50%{width:55%;margin-left:22%}100%{width:0;margin-left:100%}}
@@ -1744,8 +1744,6 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .stlive__hint.is-on{opacity:1}
 /* what it does right now, in plain words */
 .stlive__now{display:flex;align-items:flex-start;gap:12px;margin:18px 2px 0}
-.stlive__live{flex:none;width:12px;height:12px;margin-top:8px;border-radius:50%;background:#7ee08a;animation:stlive-live 1.6s infinite}
-@keyframes stlive-live{0%{box-shadow:0 0 0 0 rgba(126,224,138,.55)}70%{box-shadow:0 0 0 10px rgba(126,224,138,0)}100%{box-shadow:0 0 0 0 rgba(126,224,138,0)}}
 .stlive__say{margin:0;min-height:2.8em;font-size:20px;font-weight:500;line-height:1.4;color:#fff;transition:opacity .2s}
 .stlive__say.is-out{opacity:0}
 /* the steps, ticked off with what was found */
@@ -1754,16 +1752,6 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .stlive__steps li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;padding:11px 2px;border-bottom:1px solid rgba(253,251,245,.1);color:rgba(253,251,245,.5);font-size:16px;line-height:1.35;transition:color .3s}
 .stlive__steps b{font-weight:600}
 .stlive__steps small{display:block;margin-top:3px;font-size:15px;color:rgba(253,251,245,.85);overflow-wrap:anywhere}
-.stlive__ico{position:relative;width:26px;height:26px;border-radius:50%;border:2px solid rgba(253,251,245,.3);font:800 14px/22px var(--sans);text-align:center}
-.stlive__steps li.is-now,.stlive__steps li.is-ok,.stlive__steps li.is-warn,.stlive__steps li.is-info{color:#fff}
-.stlive__steps li.is-now .stlive__ico{border-color:#7ee08a;border-right-color:transparent;animation:stlive-spin .9s linear infinite}
-.stlive__steps li.is-ok .stlive__ico{background:#7ee08a;border-color:#7ee08a;color:#12261a}
-.stlive__steps li.is-ok .stlive__ico::after{content:"✓"}
-.stlive__steps li.is-warn .stlive__ico{background:#f2b21b;border-color:#f2b21b;color:#1b1b1b}
-.stlive__steps li.is-warn .stlive__ico::after{content:"!"}
-.stlive__steps li.is-info .stlive__ico{border-color:rgba(253,251,245,.6)}
-.stlive__steps li.is-info .stlive__ico::after{content:"–"}
-@keyframes stlive-spin{to{transform:rotate(360deg)}}
 @media (max-width:640px){
   .stlive__say{font-size:17px}
   .stlive__url{font-size:13px;padding:6px 11px}
@@ -1787,3 +1775,15 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
   .stlive--narrow .stlive__steps{grid-template-columns:1fr}
   .stlive--narrow .stlive__steps li{padding:9px 2px}
 }
+
+/* the step list in the site's own look: numbered, cream on green, no icons */
+.stlive__tag{background:var(--cream,#fdfbf5)!important;color:var(--accent,#1d3b2a)!important}
+.stlive__badge{background:var(--cream,#fdfbf5)!important;color:var(--accent,#1d3b2a)!important}
+.stlive__badge.is-warn{background:var(--accent,#1d3b2a)!important;color:var(--cream,#fdfbf5)!important;box-shadow:0 0 0 2px #f2b21b,0 8px 20px -8px rgba(0,0,0,.55)!important}
+.stlive__now{margin-left:0}
+.stlive__no{font-size:13px;font-weight:600;letter-spacing:.14em;line-height:22px;color:rgba(253,251,245,.4);font-variant-numeric:tabular-nums}
+.stlive__steps li{grid-template-columns:34px 1fr}
+.stlive__steps li.is-now,.stlive__steps li.is-ok,.stlive__steps li.is-warn,.stlive__steps li.is-info{color:var(--cream,#fdfbf5)}
+.stlive__steps li.is-now .stlive__no,.stlive__steps li.is-ok .stlive__no,.stlive__steps li.is-warn .stlive__no,.stlive__steps li.is-info .stlive__no{color:var(--cream,#fdfbf5)}
+.stlive__steps li.is-now b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px}
+.stlive__steps li.is-warn small::before{content:"Att åtgärda: ";font-weight:600}
