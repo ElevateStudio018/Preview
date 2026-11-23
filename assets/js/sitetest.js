@@ -339,6 +339,14 @@
     var realHtml = real.length ? '<h2 class="sitetest__h2">Riktiga besökare <span>(senaste 28 dagarna' + (cx.scope === 'origin' ? ', hela sajten' : '') + ')</span></h2><div class="metrics">' +
       real.map(function (m) { return '<div class="metric metric--' + m[2] + '"><span>' + m[0] + '</span><b>' + esc(m[1]) + '</b>' + (m[3] != null ? '<small>' + Math.round(m[3] * 100) + ' % fick en snabb upplevelse</small>' : '') + '</div>'; }).join('') + '</div>'
       : (cx && cx.none ? '<p class="sitetest__real-none">Sajten har för få besökare för Googles statistik över riktiga besökare. Siffrorna ovan kommer från ett labbtest.</p>' : '');
+    // the pages the robot went through in the live window (only those it really opened)
+    var tour = window.ElevateLive && window.ElevateLive.tour ? window.ElevateLive.tour() : null;
+    var tourHtml = tour && tour.length > 1 ? '<h2 class="sitetest__h2">Sidorna testroboten gick igenom <span>(' + tour.length + ')</span></h2><ol class="sitetest__pages">' +
+      tour.map(function (t) {
+        var path = String(t.url || '').replace(/^https?:\/\/[^/]+/, '') || '/';
+        return '<li><b>' + esc(t.label) + '</b><span>' + esc(path) + '</span><span>' + (t.h1 ? 'Rubrik: ”' + esc(t.h1.replace(/\.+$/, '')) + '”' : 'Ingen huvudrubrik (h1) hittades') + '</span>' +
+          (t.ms ? '<em>' + (Math.max(t.ms, 100) / 1000).toFixed(1).replace('.', ',') + ' s</em>' : '') + '</li>';
+      }).join('') + '</ol>' : '';
     var safeHtml = safe && safe.safe ? '<p class="sitetest__safe">Google Safe Browsing: inga varningar för skadlig kod eller bedrägeri.</p>' : '';
 
     var issueHtml = issues.length ? issues.map(function (i) {
@@ -364,7 +372,7 @@
         '<div><p class="sitetest__tested">Testad sida' + (lr ? ' (' + (strategy === 'mobile' ? 'mobil' : 'dator') + ')' : '') + '</p>' +
         '<p class="sitetest__url">' + esc(url) + '</p>' + verdict(cats, secScan) + '<div class="scores">' + rings.join('') + '</div></div>' +
       '</div>' +
-      (metrics ? '<h2 class="sitetest__h2">Så snabbt laddar sidan</h2><div class="metrics">' + metrics + '</div>' : '') + realHtml + safeHtml +
+      (metrics ? '<h2 class="sitetest__h2">Så snabbt laddar sidan</h2><div class="metrics">' + metrics + '</div>' : '') + realHtml + safeHtml + tourHtml +
       '<h2 class="sitetest__h2">Det här kan förbättras <span>(' + issues.length + ')</span></h2>' +
       '<ol class="issues">' + issueHtml + '</ol>' +
       '<div class="sitetest__cta"><div><h2>Vill ni att vi fixar det här?</h2><p>Vi går igenom resultatet med er och ger ett förslag med fast pris.</p></div>' +

@@ -14,13 +14,13 @@
   var badge = $('.stlive__badge'), sb = $('.stlive__sb i'), hint = $('.stlive__hint'), load = $('.stlive__load');
   var say = $('.stlive__say'), addr = $('.stlive__addr'), stepsEl = $('.stlive__steps'), backBtn = box.querySelector('.stlive__btns svg');
   var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var measured = false, started = 0, touring = false, deep = false, run = 0, timers = [], page = null, scale = 1, scrollPx = 0, curX = 0, curY = 0, frame = null, host = '';
+  var pending = false, measured = false, started = 0, touring = false, deep = false, run = 0, timers = [], page = null, scale = 1, scrollPx = 0, curX = 0, curY = 0, frame = null, host = '';
   var home = box.parentNode, homeNext = box.nextSibling; // the quick test's progress box; the deep test borrows the window
 
   /* ---------- small helpers ---------- */
   function sleep(ms, id) { return new Promise(function (ok) { timers.push(setTimeout(function () { ok(id === run); }, reduced ? Math.min(ms, 300) : ms)); }); }
   function clear() { timers.forEach(clearTimeout); timers = []; }
-  function q(s) { return '”' + s + '”'; }
+  function q(s) { return '”' + String(s).replace(/\.+$/, '') + '”'; } // a heading's own full stop is left out, so the sentence does not get two
   function sec(ms) { return (Math.max(ms, 100) / 1000).toFixed(1).replace('.', ',') + ' sekunder'; }
   function W() { return screen.clientWidth; }
   function H() { return screen.clientHeight; }
@@ -50,10 +50,11 @@
   };
   function steps(list) {
     stepsEl.innerHTML = '';
-    list.forEach(function (k, i) {
+    list.forEach(function (item, i) {
+      var k = typeof item === 'string' ? item : item[0], title = typeof item === 'string' ? STEPS[item] : item[1];
       var li = document.createElement('li'); li.dataset.k = k;
       li.innerHTML = '<span class="stlive__no">' + (i < 9 ? '0' : '') + (i + 1) + '</span><span><b></b><small></small></span>';
-      li.querySelector('b').textContent = k === 'speed' && deep ? 'Djupanalys av hela sajten' : STEPS[k]; stepsEl.appendChild(li);
+      li.querySelector('b').textContent = k === 'speed' && deep ? 'Djupanalys av hela sajten' : title; stepsEl.appendChild(li);
     });
   }
   function step(k, state, detail) {
@@ -136,7 +137,7 @@
 
   /* ---------- the replay of the robot's visit ---------- */
   // a single e-mail field is a newsletter sign-up, not a way to send an enquiry
-  function newsletter(ff) { return !!ff && ff.fields <= 1 && /mail|e-post|epost|nyhetsbrev|newsletter|prenumer/i.test(ff.first || ''); }
+  function newsletter(ff) { return !!ff && ff.fields <= 2 && /mail|e-post|epost|nyhetsbrev|newsletter|prenumer/i.test(ff.first || ''); }
   function first(list, kind, test) { for (var i = 0; i < list.length; i++) if (list[i].kind === kind && (!test || test(list[i]))) return list[i]; return null; }
   var CHIP = { cookie: 'Cookie-ruta', nav: 'Meny', button: 'Knapp', heading: 'Rubrik', img: 'Bild', form: 'Formulär', contact: 'Kontakt' };
 
@@ -147,14 +148,15 @@
   async function replayInner(d, id) {
     var f = d.facts || {}, ts = d.targets || [], next = d.pages && d.pages[0];
     var ck = first(ts, 'cookie');
-    steps(['open'].concat(ck ? ['cookie'] : [], ['h1', 'menu', 'contact', 'scroll', 'click', 'form', 'speed']));
-    step('speed', 'now', deep ? 'Djupanalysen pågår i bakgrunden – tar några minuter' : 'Pågår i bakgrunden – tar oftast 20–40 sekunder');
+    var pageRows = (d.pages || []).slice(0, 5).map(function (p, i) { return ['p' + (i + 1), 'Sida ' + (i + 2) + ': ' + q((p.via && p.via.label) || p.label || 'nästa sida')]; });
+    steps(['open'].concat(ck ? ['cookie'] : [], ['h1', 'menu', 'contact', 'scroll'], pageRows.length ? pageRows : ['click'], ['form', 'speed']));
+    if (measured) step('speed', 'ok', 'Klar – resultatet visas efter genomgången'); else step('speed', 'now', deep ? 'Djupanalysen pågår i bakgrunden – tar några minuter' : 'Pågår i bakgrunden – tar oftast 20–40 sekunder');
     step('open', 'now');
     if (!(await show(d, id))) return;
     step('open', 'ok', d.shownMs ? 'Sidan visades efter ' + sec(d.shownMs) + ' i testrobotens webbläsare' : 'Sidan är öppnad');
     moveTo(W() * 0.5, H() * 0.55);
     talk('Startsidan är öppen. Nu går testroboten igenom den precis som en besökare skulle göra.');
-    if (!(await sleep(2400, id))) return;
+    if (!(await sleep(1800, id))) return;
 
     // 0. a cookie banner on top of the page: can the visitor say no as easily as yes?
     if (ck) {
@@ -176,7 +178,7 @@
     if (h) {
       if (!(await into(h, id)) || !(await point(h, id))) return;
       frameOn(h, 'Rubrik'); talk('Läser den stora rubriken: ' + q(f.h1 || h.label) + '. Förstår man direkt vad ni gör?');
-      if (!(await sleep(3300, id))) return;
+      if (!(await sleep(2600, id))) return;
       frameOff(); step('h1', 'ok', q(f.h1 || h.label));
     } else {
       talk('Letar efter en tydlig rubrik högst upp … hittar ingen.'); step('h1', 'warn', 'Ingen tydlig huvudrubrik på startsidan');
@@ -185,13 +187,13 @@
 
     // 2. the menu
     step('menu', 'now');
-    var navs = ts.filter(function (t) { return t.kind === 'nav' && !/startsidan|^hem$|^home$/i.test(t.label); }).slice(0, 3);
+    var navs = ts.filter(function (t) { return t.kind === 'nav' && !/startsidan|^hem$|^home$/i.test(t.label); }).slice(0, 2);
     if (navs.length) {
       if (!(await scrollTo(0, id))) return;
       for (var i = 0; i < navs.length; i++) {
         if (!(await point(navs[i], id))) return;
         frameOn(navs[i], 'Meny'); talk('Pekar på menyvalet ' + q(navs[i].label) + ' – är det lätt att hitta rätt?');
-        if (!(await sleep(1800, id))) return;
+        if (!(await sleep(1500, id))) return;
       }
       frameOff();
     }
@@ -229,13 +231,13 @@
 
     // 4. scroll down the page, past the buttons and pictures
     step('scroll', 'now');
-    var stops = ts.filter(function (t) { return (t.kind === 'button' || t.kind === 'img' || t.kind === 'heading') && t !== h && t.y * scale > H() * 0.6; }).slice(0, 3);
+    var stops = ts.filter(function (t) { return (t.kind === 'button' || t.kind === 'img' || t.kind === 'heading') && t !== h && t.y * scale > H() * 0.6; }).slice(0, 2);
     for (var s = 0; s < stops.length; s++) {
       var t = stops[s];
       if (!(await into(t, id)) || !(await point(t, id))) return;
       frameOn(t, CHIP[t.kind]);
       talk(t.kind === 'button' ? 'Hittar knappen ' + q(t.label) + ' – syns den tydligt?' : t.kind === 'img' ? 'Tittar på bilden' + (t.label ? ' ' + q(t.label) : '') + ' – laddar den snabbt?' : 'Läser rubriken ' + q(t.label) + '.');
-      if (!(await sleep(2400, id))) return;
+      if (!(await sleep(1900, id))) return;
     }
     frameOff();
     talk('Scrollar ända ner till slutet av sidan …');
@@ -246,9 +248,9 @@
     // 5. click around the site, page by page, the way a customer would (up to five more pages, contact last)
     var pages = (d.pages || []).slice(0, 5), visited = [];
     if (pages.length) {
-      step('click', 'now', 'Sida 1 av ' + (pages.length + 1) + ': startsidan');
       for (var pi = 0; pi < pages.length; pi++) {
         var pg = pages[pi], v = pg.via, label = (v && v.label) || pg.label || 'nästa sida';
+        step('p' + (pi + 1), 'now', 'Klickar sig dit …');
         if (v) {
           talk((pi ? 'Vidare: testroboten letar upp ' : 'Nu letar testroboten upp ') + q(label) + ' för att klicka vidare …');
           if (!(await into(v, id)) || !(await point(v, id))) return;
@@ -263,20 +265,18 @@
         if (!(await show(pg, id))) return;
         var name = pg.facts && pg.facts.h1 ? pg.facts.h1 : label;
         visited.push(label);
-        step('click', 'now', 'Sida ' + (pi + 2) + ' av ' + (pages.length + 1) + ': ' + q(name) + (pg.shownMs ? ' (' + sec(pg.shownMs) + ')' : ''));
+        step('p' + (pi + 1), 'ok', 'Öppnades' + (pg.shownMs ? ' på ' + sec(pg.shownMs) : '') + (pg.facts && pg.facts.h1 ? ' · rubrik: ' + q(pg.facts.h1) : ' · ingen huvudrubrik'));
         // a short look at each page: the heading, then a little way down
         var ph = first(pg.targets || [], 'heading');
         if (ph) { if (!(await into(ph, id)) || !(await point(ph, id))) return; frameOn(ph, 'Rubrik'); } else moveTo(W() * 0.5, H() * 0.4);
         talk('Nu är vi på sidan ' + q(name) + (pg.shownMs ? ' – den öppnades på ' + sec(pg.shownMs) : '') + '.');
-        if (!(await sleep(2300, id))) return; frameOff();
+        if (!(await sleep(1900, id))) return; frameOff();
         if (pi < pages.length - 1 && maxScroll() > H() * 0.3) {
           talk('Scrollar ner och tittar på sidan …');
           if (!(await scrollTo(Math.min(maxScroll(), H() * 0.9), id))) return;
           if (!(await sleep(700, id))) return;
         }
       }
-      var slow = pages.reduce(function (a, b) { return (b.shownMs || 0) > (a.shownMs || 0) ? b : a; }, pages[0]);
-      step('click', 'ok', 'Besökte ' + (pages.length + 1) + ' sidor: startsidan, ' + visited.join(', ') + (slow && slow.shownMs > 1500 ? ' · långsammast: ' + q(slow.label || '') + ' ' + sec(slow.shownMs) : ''));
       next = pages[pages.length - 1];
     } else { step('click', 'info', 'Hittade ingen länk att klicka vidare till'); next = null; }
 
@@ -339,46 +339,150 @@
   /* ---------- before the robot is back, and when it cannot open the site ---------- */
   async function waiting(id) {
     steps(['open', 'speed']);
-    step('open', 'now', 'Startar en riktig webbläsare …'); step('speed', 'now', deep ? 'Djupanalysen pågår i bakgrunden – tar några minuter' : 'Pågår i bakgrunden – tar oftast 20–40 sekunder');
-    busy(true); moveTo(W() * 0.5, H() * 0.5);
-    talk('Startar en riktig webbläsare och öppnar ' + (box.classList.contains('stlive--phone') ? 'mobilversionen av ' : '') + host + ' … det tar några sekunder.');
-    if (!(await sleep(9000, id))) return;
-    talk('Testroboten öppnar sidan och klickar runt – strax visas allt den gör här …');
-    if (!(await sleep(9000, id))) return;
-    talk('Sidan tar lite tid att öppna. Vi väntar en stund till …');
+    step('open', 'now', 'Startar testroboten …'); speedStep();
+    busy(true); box.classList.add('no-cursor');
+    talk('Testroboten öppnar ' + (box.classList.contains('stlive--phone') ? 'mobilversionen av ' : '') + host + ' … det tar några sekunder.');
+    if (!(await sleep(10000, id))) return;
+    if (!box.classList.contains('has-shot')) talk('Sidan tar lite tid att öppna. Vi väntar en stund till …');
   }
-  var GUESS = { // where menus, headings and buttons usually are on a first screen (only for the live frame)
-    d: [[0.68, 0.07, 'Tittar på menyn högst upp …'], [0.32, 0.42, 'Läser rubriken och texten …'], [0.3, 0.75, 'Letar efter knappar att klicka på …']],
-    m: [[0.88, 0.05, 'Tittar på menyn högst upp …'], [0.5, 0.4, 'Läser rubriken och texten …'], [0.5, 0.7, 'Letar efter knappar att klicka på …']]
-  };
+  function speedStep() {
+    if (measured) step('speed', 'ok', 'Klar – resultatet visas efter genomgången');
+    else step('speed', 'now', deep ? 'Djupanalysen pågår i bakgrunden – tar några minuter' : 'Pågår i bakgrunden – tar oftast 20–40 sekunder');
+  }
+  // The reading view: when a site may not be shown in a frame, the window shows what the robot read on the page
+  // (its address, heading, menu, phone, pictures, form) instead of an empty placeholder. Only what was read.
+  var reader = null;
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function showRead(url, f, ms) {
+    if (!reader) { reader = el('div', 'stlive__read'); reader.setAttribute('aria-hidden', 'true'); screen.appendChild(reader); }
+    f = f || {}; reader.textContent = '';
+    reader.appendChild(el('p', 'stlive__read-eye', 'Sidan får inte visas i ramen – så här läser testroboten den'));
+    var path = url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+    reader.appendChild(el('p', 'stlive__read-url', path + (ms ? ' · svarade på ' + sec(ms) : '')));
+    if (f.menu && f.menu.length) { var m = el('ul', 'stlive__read-menu'); f.menu.slice(0, 6).forEach(function (t) { m.appendChild(el('li', '', t)); }); reader.appendChild(m); }
+    reader.appendChild(el('p', 'stlive__read-h1' + (f.h1 ? '' : ' is-none'), f.h1 || (f.thin ? 'Innehållet visas med JavaScript och kunde inte läsas här' : 'Ingen huvudrubrik (h1) i sidans kod')));
+    if (f.title && f.title !== f.h1) reader.appendChild(el('p', 'stlive__read-title', 'Sidans titel i Google: ' + f.title));
+    var facts = [f.phone && 'Telefon: ' + f.phone, f.email && 'E-post: ' + f.email, f.images && f.images + ' bilder' + (f.imagesNoAlt ? ', ' + f.imagesNoAlt + ' utan bildtext' : ''),
+      f.form && (newsletter(f.form) ? 'Nyhetsbrevsruta' : 'Formulär med ' + f.form.fields + ' fält')].filter(Boolean);
+    if (facts.length) { var l = el('ul', 'stlive__read-facts'); facts.forEach(function (t) { l.appendChild(el('li', '', t)); }); reader.appendChild(l); }
+    box.classList.add('has-read'); reader.classList.remove('is-in', 'is-wait'); void reader.offsetWidth; reader.classList.add('is-in');
+  }
+  function dropRead() { box.classList.remove('has-read'); }
   function dropFrame() { if (frame) { frame.remove(); frame = null; } pageEl.style.height = ''; box.classList.remove('has-frame'); }
-  function showFrame(id, url, phone) {
-    var w = phone ? 390 : 1280, s = W() / w, FH = Math.round(H() / s);
-    frame = document.createElement('iframe');
-    frame.className = 'stlive__frame'; frame.title = 'Den testade sidan'; frame.tabIndex = -1;
-    frame.setAttribute('sandbox', 'allow-scripts'); frame.setAttribute('referrerpolicy', 'no-referrer');
-    frame.style.width = w + 'px'; frame.style.height = FH + 'px'; frame.style.transform = 'scale(' + s + ')';
-    frame.onload = async function () {
-      if (id !== run || page) return;
-      box.classList.add('has-shot', 'has-frame'); done(); setAddr(url);
-      step('open', 'ok', 'Sidan visas live här');
-      talk('Sidan är öppen. Testroboten går igenom detaljerna i bakgrunden …');
-      var g = GUESS[phone ? 'm' : 'd'], i = 0;
-      while (id === run && !page) {
-        if (!(await sleep(2800, id)) || page) return;
-        var p = g[i++ % g.length]; moveTo(p[0] * W(), p[1] * H()); talk(p[2]);
+  // a page live in the window: the real page in a frame when the site allows it, otherwise an empty page and a note
+  function openPage(url, canFrame, id, phone, read) {
+    return new Promise(function (ok) {
+      hint.classList.remove('is-on');
+      if (!canFrame) {
+        dropFrame(); box.classList.remove('has-shot');
+        if (reader) reader.classList.add('is-wait'); // the last page fades while the next one is fetched
+        timers.push(setTimeout(function () {
+          done();
+          if (read) showRead(url, read.facts, read.ms);
+          else { hint.textContent = 'Sidan kan inte visas här – testroboten läser den i bakgrunden'; hint.classList.add('is-on'); }
+          ok(id === run);
+        }, 700));
+        return;
       }
-    };
-    pageEl.style.height = Math.round(FH * s) + 'px';
-    pageEl.appendChild(frame); frame.src = url;
+      dropRead();
+      if (frame && frame.dataset.u === url) { box.classList.add('has-shot', 'has-frame'); done(); ok(id === run); return; }
+      var w = phone ? 390 : 1280, s = W() / w, FH = Math.round(H() / s), fin = false;
+      if (!frame) {
+        frame = document.createElement('iframe');
+        frame.className = 'stlive__frame'; frame.title = 'Den testade sidan'; frame.tabIndex = -1;
+        frame.setAttribute('sandbox', 'allow-scripts'); frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin'); // only our address goes along: some sites refuse their pictures without it
+        frame.style.width = w + 'px'; frame.style.height = FH + 'px'; frame.style.transform = 'scale(' + s + ')';
+        pageEl.style.height = Math.round(FH * s) + 'px'; pageEl.appendChild(frame);
+      }
+      var end = function () { if (fin) return; fin = true; box.classList.add('has-shot', 'has-frame'); done(); ok(id === run); };
+      frame.onload = end; timers.push(setTimeout(end, 7000));
+      frame.dataset.u = url; frame.src = url;
+    });
   }
 
+  /* ---------- the visit read straight from the pages (when the real browser is not available) ---------- */
+  async function crawl(v, id, phone) {
+    touring = true;
+    try { await crawlInner(v, id, phone); } finally { if (id === run) touring = false; }
+  }
+  async function crawlInner(v, id, phone) {
+    var f = v.facts || {}, pages = (v.pages || []).slice(0, 5);
+    box.classList.add('no-cursor');
+    steps(['open', 'h1', 'menu', 'contact'].concat(pages.map(function (p, i) { return ['p' + (i + 1), 'Sida ' + (i + 2) + ': ' + q(p.label)]; }), ['form', 'speed']));
+    speedStep(); step('open', 'now');
+    setAddr(v.url); busy(true);
+    if (!(await openPage(v.url, v.frame, id, phone, v))) return;
+    step('open', 'ok', 'Startsidan svarade på ' + sec(v.ms));
+    talk('Startsidan är öppen. Testroboten går igenom den och resten av sajten, sida för sida.');
+    if (!(await sleep(2200, id))) return;
+
+    var thin = !!f.thin, unread = 'Sidan visar sitt innehåll med JavaScript – kunde inte läsas här';
+    if (thin) { talk('Startsidan visar sitt innehåll med JavaScript, så testroboten kan inte läsa rubrik och meny här. Google-testet mäter den ändå.'); if (!(await sleep(3200, id))) return; }
+    step('h1', 'now');
+    if (!thin) talk(f.h1 ? 'Rubriken på startsidan: ' + q(f.h1) + '. Förstår man direkt vad ni gör?' : 'Letar efter startsidans huvudrubrik i sidans kod … hittar ingen.');
+    if (!thin && !(await sleep(2800, id))) return;
+    step('h1', f.h1 ? 'ok' : thin ? 'info' : 'warn', f.h1 ? q(f.h1) : thin ? unread : 'Ingen huvudrubrik (h1) i sidans kod');
+
+    step('menu', 'now');
+    var title = (f.title || '').toLowerCase();
+    var menu = (f.menu || []).filter(function (m) { return (m.length < 12 || title.indexOf(m.toLowerCase()) < 0) && !/^(hem|home|start)$/i.test(m); });
+    if (menu.length || !thin) { talk(menu.length ? 'Menyn har ' + menu.length + ' val: ' + menu.slice(0, 5).join(', ') + (menu.length > 5 ? ' …' : '.') : 'Letar efter en meny i sidans kod … hittar ingen.'); if (!(await sleep(2600, id))) return; }
+    step('menu', menu.length ? 'ok' : thin ? 'info' : 'warn', menu.length ? menu.slice(0, 6).join(', ') : thin ? unread : 'Ingen meny i sidans kod');
+
+    step('contact', 'now');
+    if (f.phone || f.email || !thin) { talk(f.phone || f.email ? 'Hittade ' + [f.phone && 'telefonnumret ' + f.phone, f.email && 'e-postadressen ' + f.email].filter(Boolean).join(' och ') + ' på startsidan.' : 'Letar efter telefonnummer och e-post på startsidan … hittar inga.'); if (!(await sleep(2800, id))) return; }
+    step('contact', f.phone || f.email ? 'ok' : thin ? 'info' : 'warn', [f.phone && 'Telefon: ' + f.phone, f.email && 'E-post: ' + f.email].filter(Boolean).join(' · ') || (thin ? unread : 'Varken telefon eller e-post på startsidan'));
+
+    for (var i = 0; i < pages.length; i++) {
+      var p = pages[i], k = 'p' + (i + 1), pf = p.facts || {};
+      step(k, 'now', 'Öppnar sidan …');
+      talk('Går vidare till ' + q(p.label) + (p.contact ? ' – där kunden tar kontakt.' : ' …'));
+      busy(true); typeAddr(p.url);
+      if (!(await sleep(900, id))) return;
+      if (!(await openPage(p.url, p.frame, id, phone, p))) return;
+      if (p.frame) { hint.textContent = 'Testroboten läser sidan …'; hint.classList.add('is-on'); timers.push(setTimeout(function () { hint.classList.remove('is-on'); }, 2200)); }
+      step(k, 'ok', 'Svarade på ' + sec(p.ms) + (pf.h1 ? ' · rubrik: ' + q(pf.h1) : pf.thin ? '' : ' · ingen huvudrubrik (h1)'));
+      talk('Sidan ' + q(pf.h1 || p.label) + ' svarade på ' + sec(p.ms) + '.' + (pf.images ? ' ' + pf.images + ' bilder' + (pf.imagesNoAlt ? ', varav ' + pf.imagesNoAlt + ' utan bildtext.' : ', alla med bildtext.') : ''));
+      if (!(await sleep(2800, id))) return;
+    }
+
+    step('form', 'now');
+    var real = function (x) { return x && x.facts && x.facts.form && !newsletter(x.facts.form) ? x : null; };
+    var withForm = real(pages.filter(function (x) { return x.contact; })[0]) || pages.filter(real)[0] || (real(v) ? v : null);
+    if (withForm) {
+      var ff = withForm.facts.form, where = withForm === v ? 'startsidan' : 'sidan ' + q(withForm.facts.h1 || withForm.label);
+      talk('Hittade ett kontaktformulär med ' + ff.fields + ' fält på ' + where + (ff.first ? ' – det första är ' + q(ff.first) : '') + '.');
+      step('form', 'ok', 'Formulär med ' + ff.fields + ' fält på ' + where);
+    } else if ((f.form && newsletter(f.form)) || pages.some(function (x) { return x.facts && newsletter(x.facts.form); })) {
+      talk('Hittar bara ett fält för att prenumerera på nyhetsbrev, inget formulär för förfrågningar i sidornas kod.');
+      step('form', 'info', 'Hittade bara anmälan till nyhetsbrev på de besökta sidorna');
+    } else if (thin || pages.some(function (x) { return x.facts && x.facts.thin; })) {
+      talk('Hittar inget formulär i sidornas kod – det kan visas med JavaScript, så det går inte att säga säkert här.');
+      step('form', 'info', 'Kunde inte avgöras – sidorna visar innehåll med JavaScript');
+    } else {
+      talk('Letar efter ett kontaktformulär på sidorna … hittar inget i sidornas kod.');
+      step('form', 'info', 'Hittade inget kontaktformulär på de besökta sidorna');
+    }
+    if (!(await sleep(3000, id))) return;
+    touring = false;
+    if (measured) { talk('Genomgången är klar – här kommer resultatet!'); return; }
+    talk('Genomgången av ' + (pages.length + 1) + ' sidor är klar. Nu väntar vi bara på Googles mätning av hur snabbt sidan laddar …');
+  }
+
+  // the pages the robot went through, for the report: start page first, as the visit read them
+  var tour = null;
+  function list(v, key) {
+    return [{ label: 'Startsidan', url: v.url, ms: v[key], h1: (v.facts || {}).h1 || '' }].concat((v.pages || []).slice(0, 5).map(function (p) {
+      return { label: p.label, url: p.url, ms: p[key], h1: (p.facts || {}).h1 || '' };
+    }));
+  }
   window.ElevateLive = {
+    tour: function () { return tour; },
     // into: another progress panel to show the window in (the deep analysis); default is the quick test's
     start: function (url, into) {
-      clear(); run++; var id = run; page = null; scrollPx = 0; deep = !!into; started = Date.now(); touring = false; measured = false;
+      clear(); run++; var id = run; page = null; tour = null; scrollPx = 0; deep = !!into; started = Date.now(); touring = false; measured = false; pending = true;
       if (into) into.insertBefore(box, into.querySelector('.sitetest__note')); else if (box.parentNode !== home) home.insertBefore(box, homeNext);
-      dropFrame(); box.hidden = false; box.classList.remove('has-shot'); pageEl.style.transform = ''; pageEl.classList.remove('is-away'); img.removeAttribute('src'); frameOff();
+      dropFrame(); dropRead(); box.hidden = false; box.classList.remove('has-shot', 'no-cursor'); pageEl.style.transform = ''; pageEl.classList.remove('is-away'); img.removeAttribute('src'); frameOff(); hint.classList.remove('is-on');
       host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '');
       setAddr(/^https?:/.test(url) ? url : 'https://' + url);
       // the same device as the test measures: the Mobil/Dator choice in the form (the deep analysis follows the screen)
@@ -386,32 +490,48 @@
       var phone = pick ? pick.value === 'mobile' : window.innerWidth < 700;
       box.classList.toggle('stlive--phone', phone); box.classList.toggle('stlive--narrow', phone && window.innerWidth >= 700);
       waiting(id);
-      var gotShot = false;
-      // the live frame first (fast, when the site allows it); the robot's own visit replaces it when it is back
-      fetch('/api/frameable?url=' + encodeURIComponent(url)).then(function (r) { return r.ok ? r.json() : null; }).then(function (f) {
-        if (id === run && f && f.ok && !gotShot) showFrame(id, f.url || url, phone);
-      }).catch(function () {});
-      fetch('/api/preview?url=' + encodeURIComponent(url) + (phone ? '&m=1' : '')).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-        if (id !== run) return;
-        if (!d || !d.img) { // the robot could not open the site: say so plainly; the test itself goes on
-          if (frame) return;
-          clear(); run++; // stop the waiting texts: they would promise a replay that will not come
-          busy(false); step('open', 'info', 'Vår testwebbläsare kunde inte visa sidan här');
-          talk('Vi kunde inte visa sidan här, men testet fortsätter i bakgrunden. Resultatet kommer strax.');
-          return;
+      // Two ways to the robot's visit, started together: the real browser (screenshots, clicks on the real buttons)
+      // and the pages read straight from the server. The browser's visit is used when it is back within 11 seconds;
+      // otherwise the tour goes through the pages that were read, live in the window. Nothing is shown that the
+      // visit did not find.
+      var shot = null, visit = null, shotFailed = false, visitFailed = false, decided = false;
+      var decide = function () {
+        if (decided || id !== run) return;
+        if (shot) { tour = list(shot, 'shownMs'); decided = true; pending = false; clear(); dropFrame(); dropRead(); box.classList.remove('no-cursor'); run++; replay(shot, run); return; }
+        if (visit && (shotFailed || Date.now() - started >= 11000)) { tour = list(visit, 'ms'); decided = true; pending = false; clear(); run++; crawl(visit, run, phone); return; }
+        if (shotFailed && visitFailed) {
+          decided = true; pending = false; clear(); run++;
+          busy(false); step('open', 'info', 'Testroboten släpptes inte in på sidan');
+          talk('Sajten släpper inte in vår testrobot, så vi kan inte visa sidorna här. Testet fortsätter i bakgrunden – resultatet kommer strax.');
         }
-        gotShot = true; clear(); dropFrame(); run++;
-        replay(d, run);
-      }).catch(function () {});
+      };
+      timers.push(setTimeout(decide, 11000));
+      fetch('/api/visit?url=' + encodeURIComponent(url)).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }).then(function (v) {
+        if (id !== run) return; if (v && v.facts) visit = v; else visitFailed = true;
+        if (visit && !decided && visit.frame) {
+          openPage(visit.url, true, id, phone).then(function (ok) {
+            if (!ok || decided) return;
+            step('open', 'ok', 'Startsidan svarade på ' + sec(visit.ms));
+            talk('Startsidan är öppen. Testroboten går nu igenom sajten i sin webbläsare – strax visas varje sida den besöker …');
+          });
+        }
+        decide();
+      });
+      // the real browser; asked once more after a short pause if the first try fails (it can be busy)
+      var getShot = function () { return fetch('/api/preview?url=' + encodeURIComponent(url) + (phone ? '&m=1' : '')).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }); };
+      // (asked again only when there is nothing else to show: with the pages already read, the tour starts at once)
+      getShot().then(function (d) { return d || (id === run && !decided && !visit ? new Promise(function (ok) { setTimeout(ok, 3000); }).then(getShot) : null); }).then(function (d) {
+        if (id !== run) return; if (d && d.img) shot = d; else shotFailed = true; decide();
+      });
     },
-    // the test's own results are in: let the robot finish its walk-through first (up to 60 s after the start),
+    // the test's own results are in: let the robot finish its walk-through first (up to 80 s after the start),
     // so the visitor sees what it did, then show the results
     finish: function (cb) {
-      if (box.hidden || !touring) { cb(); return; }
+      if (box.hidden || (!touring && !pending)) { cb(); return; }
       measured = true; step('speed', 'ok', 'Klar – resultatet visas strax');
-      var until = Math.max(started + 60000, Date.now() + 4000), id = run;
+      var until = Math.max(started + 80000, Date.now() + 4000), id = run;
       (function wait() {
-        if (id !== run || !touring || Date.now() >= until) { cb(); return; }
+        if (box.hidden || (!touring && !pending) || Date.now() >= until) { cb(); return; }
         setTimeout(wait, 300);
       })();
     },

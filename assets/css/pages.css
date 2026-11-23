@@ -1711,6 +1711,24 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .stlive.has-shot .stlive__page{opacity:1}
 .stlive.has-shot .stlive__page.is-away{opacity:0}
 .stlive.has-shot .stlive__skel{opacity:0}
+/* the reading view: what the robot read on a page that may not be shown in a frame */
+.stlive.has-read .stlive__skel{opacity:0}
+.stlive__read{position:absolute;inset:0;z-index:2;padding:6% 7%;overflow:hidden;background:#f7f5ef;color:#12261a;display:none;flex-direction:column;align-items:flex-start;gap:14px}
+.stlive.has-read .stlive__read{display:flex}
+.stlive__read.is-wait{opacity:.35;transition:opacity .3s}
+@media (prefers-reduced-motion: reduce){.stlive__read.is-in{animation:none}}
+.stlive__read.is-in{animation:stlive-read .45s ease both}
+@keyframes stlive-read{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stlive__read-eye{margin:0;font:600 13px/1.3 var(--sans);letter-spacing:.02em;color:#5b6b60}
+.stlive__read-url{margin:0;padding:7px 12px;border-radius:99px;background:#ebe8df;font:500 14px/1.2 var(--sans);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stlive__read-menu{list-style:none;margin:0;padding:0 0 12px;display:flex;flex-wrap:wrap;gap:6px 18px;border-bottom:1px solid #e1ddd2;width:100%;font:600 14px/1.3 var(--sans)}
+.stlive__read-h1{margin:6px 0 0;font:400 clamp(24px,3.2vw,40px)/1.1 var(--serif);max-width:22ch;text-wrap:balance}
+.stlive__read-h1.is-none{font-style:italic;font-size:clamp(18px,2.2vw,26px);color:#7a5a2a}
+.stlive__read-title{margin:0;font:400 14px/1.4 var(--sans);color:#5b6b60;max-width:60ch}
+.stlive__read-facts{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.stlive__read-facts li{padding:7px 12px;border-radius:10px;background:#fff;border:1px solid #e1ddd2;font:500 14px/1.2 var(--sans)}
+@media (max-width:699px){.stlive__read{gap:10px;padding:6%}.stlive__read-menu,.stlive__read-url,.stlive__read-facts li,.stlive__read-title{font-size:12.5px}.stlive__read-facts{gap:6px}}
+.stlive--phone .stlive__read{gap:10px}.stlive--phone .stlive__read-h1{font-size:clamp(20px,5.4vw,28px)}
 .stlive__page img{display:block;width:100%;height:auto}
 .stlive__frame{display:block;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
 .stlive.has-frame .stlive__page img{display:none}
@@ -1786,4 +1804,15 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .stlive__steps li.is-now,.stlive__steps li.is-ok,.stlive__steps li.is-warn,.stlive__steps li.is-info{color:var(--cream,#fdfbf5)}
 .stlive__steps li.is-now .stlive__no,.stlive__steps li.is-ok .stlive__no,.stlive__steps li.is-warn .stlive__no,.stlive__steps li.is-info .stlive__no{color:var(--cream,#fdfbf5)}
 .stlive__steps li.is-now b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px}
-.stlive__steps li.is-warn small::before{content:"Att åtgärda: ";font-weight:600}
+.stlive__steps li.is-warn small::before{content:"Att åtgärda:\00a0";font-weight:600}
+/* the tour from the pages read on the server: no cursor (it would only be guessing where things are) */
+.stlive.no-cursor .stlive__cursor{display:none}
+.stlive.no-cursor .stlive__hint{top:auto;bottom:14px;left:14px;right:14px;transform:none;padding:11px 14px;border-radius:14px;white-space:normal;text-align:center;line-height:1.35}
+
+/* the report: the pages the robot went through */
+.sitetest__pages{list-style:none;margin:0 0 8px;padding:0;border-top:1px solid var(--line,#e1ddd2);counter-reset:pg}
+.sitetest__pages li{counter-increment:pg;display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--line,#e1ddd2);font-size:15px;line-height:1.4}
+.sitetest__pages li::before{content:counter(pg,decimal-leading-zero);grid-row:span 3;font:600 12px/1.9 var(--sans);opacity:.6}
+.sitetest__pages b{font-weight:600}
+.sitetest__pages span{grid-column:2;opacity:.75;overflow-wrap:anywhere}
+.sitetest__pages em{grid-column:3;grid-row:1;font-style:normal;font-variant-numeric:tabular-nums;opacity:.8}
