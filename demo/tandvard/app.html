@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="sv"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=block">
+<style>
+/* The clinic's app in the same plain style as its website: flat, white, one blue, light blue tiles, list rows */
+:root{--blue:#0b4f6c;--blue-d:#083b51;--blue-l:#e7f1f5;--line:#d6e3e9;--ink:#1d2a30;--mut:#55666d;--amber:#f2a93b;--green:#1e7a3c;--f:"Source Sans 3",Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--f);color:var(--ink);padding:30px;display:flex;gap:30px;flex-wrap:wrap}
+.s{width:390px;height:844px;background:#fff;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.sb{height:47px;background:var(--blue);color:#fff;display:flex;justify-content:space-between;align-items:flex-end;padding:0 26px 6px;font:600 15px var(--f)}
+.bar{background:var(--blue);color:#fff;padding:8px 18px 14px;display:flex;align-items:center;gap:10px}
+.bar h1{font-size:19px;font-weight:700;flex:1}
+.bar svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2}
+.logo{width:30px;height:30px}
+.c{flex:1;overflow:hidden;padding:18px 18px 0;display:flex;flex-direction:column;gap:14px}
+.hi{font-size:26px;font-weight:700;color:var(--blue-d)}
+.mut{color:var(--mut);font-size:15.5px}
+.next{border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:6px;padding:14px 16px}
+.next .k{font-size:13.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+.next b{display:block;font-size:20px;color:var(--blue-d);margin:4px 0 2px}
+.row{display:flex;gap:10px}
+.btn{flex:1;height:46px;border-radius:6px;display:grid;place-items:center;font-weight:700;font-size:16px}
+.btn--amber{background:var(--amber);color:#1d1d1d}.btn--line{border:2px solid var(--blue);color:var(--blue)}.btn--blue{background:var(--blue);color:#fff}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:var(--blue-l);border-radius:6px;padding:14px;font-weight:700;font-size:17px;color:var(--blue-d);display:flex;flex-direction:column;gap:8px;min-height:92px;position:relative}
+.tile svg{width:28px;height:28px;stroke:var(--blue);fill:none;stroke-width:1.7}
+.badge{position:absolute;top:12px;right:12px;background:#b4232f;color:#fff;font-size:13px;border-radius:99px;min-width:22px;height:22px;display:grid;place-items:center;padding:0 6px}
+.list{border-top:1px solid var(--line)}
+.li{display:flex;align-items:center;justify-content:space-between;padding:14px 2px;border-bottom:1px solid var(--line);font-size:17px}
+.li small{display:block;color:var(--mut);font-size:15px}
+.li::after{content:"›";font-size:28px;color:var(--blue);line-height:1}
+.li.nochev::after{content:none}
+.tabs{height:80px;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding-top:10px;font-size:12.5px;color:var(--mut);font-weight:600}
+.tabs span{display:flex;flex-direction:column;align-items:center;gap:4px}.tabs svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:1.8}
+.tabs .on{color:var(--blue)}
+.h2{font-size:21px;font-weight:700;color:var(--blue-d)}
+.opt{border:2px solid var(--line);border-radius:6px;padding:12px 14px;font-weight:600;font-size:17px;display:flex;justify-content:space-between;align-items:center}
+.opt.on{border-color:var(--blue);background:var(--blue-l)}
+.opt i{width:22px;height:22px;border-radius:50%;border:2px solid #9fb4bd}.opt.on i{border:7px solid var(--blue)}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center}
+.days div{border:1px solid var(--line);border-radius:6px;padding:7px 0;font-size:14px;color:var(--mut)}.days b{display:block;font-size:19px;color:var(--ink)}
+.days .on{background:var(--blue);border-color:var(--blue);color:#cfe3ec}.days .on b{color:#fff}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slots span{height:44px;border:2px solid var(--line);border-radius:6px;display:grid;place-items:center;font-weight:700}
+.slots .on{border-color:var(--blue);background:var(--blue-l);color:var(--blue-d)}.slots .x{color:#a9b6bb;border-style:dashed}
+.step{display:flex;gap:6px}.step i{flex:1;height:5px;background:var(--line)}.step i.on{background:var(--blue)}
+.q{border-bottom:1px solid var(--line);padding:12px 0}.q p{font-weight:600;margin-bottom:8px;font-size:17px}
+.yn{display:flex;gap:8px}.yn span{flex:1;height:42px;border:2px solid var(--line);border-radius:6px;display:grid;place-items:center;font-weight:700}
+.yn .on{border-color:var(--blue);background:var(--blue);color:#fff}
+.field{border:2px solid var(--line);border-radius:6px;height:46px;display:flex;align-items:center;padding:0 12px;font-size:17px}
+.paid{color:var(--green);font-weight:700;font-size:15px}
+.due{background:#fdf2e1;border-left:5px solid var(--amber);border-radius:0 6px 6px 0;padding:14px 16px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="mark" viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#fff"/><g fill="#0b4f6c"><path d="M24 8c3.6 3.8 4 9 0 13-4-4-3.6-9.2 0-13z"/><path d="M39 19c-1.3 5-5.5 8.2-11.2 7.3 1.6-5.5 6.2-8.2 11.2-7.3z"/><path d="M9 19c5-.9 9.6 1.8 11.2 7.3C14.5 27.2 10.3 24 9 19z"/><path d="M31.5 38.5c-5 .6-9-2.6-8.7-8.7 5.6.5 8.8 4 8.7 8.7z"/><path d="M16.5 38.5c-.1-4.7 3.1-8.2 8.7-8.7.3 6.1-3.7 9.3-8.7 8.7z"/></g><circle cx="24" cy="26" r="3" fill="#f2a93b"/></symbol></defs></svg>
+<!-- tab icons -->
+<template id="t"></template>
+
+<div class="s" id="a-hem"><div class="sb"><span>09:41</span><span>●●●</span></div>
+  <div class="bar"><svg class="logo"><use href="#mark"/></svg><h1>Mina sidor</h1><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+  <div class="c">
+    <p class="hi">Hej Sara</p>
+    <div class="next"><p class="k">Nästa besök</p><b>Tandhygienist</b><p class="mut">Tisdag 3 december kl. 10.15<br>Fjällsippa Centrum, Storgatan 1</p>
+      <div class="row" style="margin-top:12px"><span class="btn btn--line">Boka om</span><span class="btn btn--line">Avboka</span></div></div>
+    <div class="tiles">
+      <div class="tile"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Boka tid</div>
+      <div class="tile"><span class="badge">1</span><svg viewBox="0 0 24 24"><path d="M9 3h6v3H9zM6 5H5v16h14V5h-1"/><path d="M9 12l2 2 4-4"/></svg>Hälso&shy;deklaration</div>
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M9 13h6M9 17h4"/></svg>Kvitton och fakturor</div>
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Meddelanden</div>
+    </div>
+    <div class="list"><div class="li"><div>Kallelse: undersökning<small>Välj en tid före 31 januari</small></div></div><div class="li"><div>Barnens besök<small>Elsa och Noah</small></div></div></div>
+  </div>
+  <div class="tabs"><span class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Boka</span><span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Meddelanden</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profil</span></div>
+</div>
+
+<div class="s" id="a-boka"><div class="sb"><span>09:41</span><span>●●●</span></div>
+  <div class="bar"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><h1>Boka tid</h1></div>
+  <div class="c">
+    <p class="h2">Vad vill du boka?</p>
+    <div class="opt"><span>Undersökning</span><i></i></div>
+    <div class="opt on"><span>Tandhygienist</span><i></i></div>
+    <div class="opt"><span>Akut tandvärk</span><i></i></div>
+    <p class="h2" style="margin-top:4px">Välj tid · Fjällsippa Centrum</p>
+    <div class="days"><div>Mån<b>2</b></div><div class="on">Tis<b>3</b></div><div>Ons<b>4</b></div><div>Tor<b>5</b></div><div>Fre<b>6</b></div></div>
+    <div class="slots"><span class="x">08.00</span><span>09.00</span><span class="on">10.15</span><span class="x">11.00</span><span>13.30</span><span>14.45</span></div>
+    <span class="btn btn--amber" style="flex:none;margin-top:auto;margin-bottom:18px">Boka tisdag kl. 10.15</span>
+  </div>
+</div>
+
+<div class="s" id="a-form"><div class="sb"><span>09:41</span><span>●●●</span></div>
+  <div class="bar"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><h1>Hälsodeklaration</h1></div>
+  <div class="c">
+    <p class="mut">Steg 2 av 4</p><div class="step"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <p class="h2">Läkemedel och allergier</p>
+    <div class="q"><p>Tar du några läkemedel?</p><div class="yn"><span>Ja</span><span class="on">Nej</span></div></div>
+    <div class="q"><p>Är du allergisk mot något?</p><div class="yn"><span class="on">Ja</span><span>Nej</span></div></div>
+    <div class="q" style="border:0"><p>Vilken allergi?</p><div class="field">Penicillin</div></div>
+    <div class="row" style="margin-top:auto;margin-bottom:18px"><span class="btn btn--line">Tillbaka</span><span class="btn btn--blue">Nästa</span></div>
+  </div>
+</div>
+
+<div class="s" id="a-kvitto"><div class="sb"><span>09:41</span><span>●●●</span></div>
+  <div class="bar"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><h1>Kvitton och fakturor</h1></div>
+  <div class="c">
+    <div class="due"><b style="font-size:18px">Faktura att betala</b><p class="mut">Akutbesök 21 november · 850 kr<br>Förfaller 21 december</p><span class="btn btn--amber" style="margin-top:10px">Betala</span></div>
+    <p class="h2" style="margin-top:6px">Tidigare besök</p>
+    <div class="list">
+      <div class="li"><div>Tandhygienist<small>12 juni · Centrum</small></div></div>
+      <div class="li"><div>Undersökning och röntgen<small>3 februari · Centrum</small></div></div>
+      <div class="li"><div>Lagning, en yta<small>18 oktober · Centrum</small></div></div>
+    </div>
+  </div>
+  <div class="tabs"><span><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Boka</span><span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Meddelanden</span><span class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profil</span></div>
+</div>
+</body></html>
