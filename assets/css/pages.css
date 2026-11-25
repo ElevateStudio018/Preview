@@ -1817,3 +1817,41 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .sitetest__pages b{font-weight:600}
 .sitetest__pages span{grid-column:2;opacity:.75;overflow-wrap:anywhere}
 .sitetest__pages em{grid-column:3;grid-row:1;font-style:normal;font-variant-numeric:tabular-nums;opacity:.8}
+
+/* ---------- Cases: tall picture cards (start page and Projekt) ---------- */
+.ctiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 28px; }
+.ctile { position: relative; display: block; aspect-ratio: 3 / 4; border-radius: 24px; overflow: hidden; color: #fff; text-decoration: none; background: #12271b; isolation: isolate; }
+.ctile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); z-index: -2; }
+.ctile::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 20, 14, .28) 0%, rgba(10, 20, 14, 0) 26%, rgba(10, 20, 14, .12) 46%, rgba(10, 20, 14, .82) 100%); }
+.ctile:hover img, .ctile:focus-visible img { transform: scale(1.04); }
+.ctile__tag { position: absolute; top: 24px; left: 24px; padding: 6px 13px; border-radius: 9px; background: #fff; color: #12271b; font: 500 14px/1.2 var(--sans); }
+.ctile__go { position: absolute; top: 22px; right: 22px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 255, 255, .78); display: grid; place-items: center; transition: background .2s; }
+.ctile__go svg { width: 16px; height: 16px; stroke: #12271b; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ctile:hover .ctile__go { background: #fff; }
+.ctile__body { position: absolute; left: 24px; right: 24px; bottom: 26px; display: flex; flex-direction: column; gap: 10px; }
+.ctile__title { font: 500 clamp(24px, 2.1vw, 30px)/1.12 var(--sans); letter-spacing: -.01em; }
+.ctile__text { font: 400 16px/1.55 var(--sans); color: rgba(255, 255, 255, .88); }
+@media (max-width: 1100px) { .ctiles { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .ctiles { grid-template-columns: 1fr; gap: 16px; } .ctile { aspect-ratio: 4 / 5; } }
+
+/* ---------- The longer case: story, facts and pictures from the project ---------- */
+.case-story { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(32px, 6vw, 80px); align-items: start; }
+.case-story__part + .case-story__part { margin-top: 40px; }
+.case-story__part h2 { margin: 0 0 14px; }
+.case-story__part p { font-size: 18px; line-height: 1.7; max-width: 64ch; }
+.case-story__part p + p { margin-top: 14px; }
+.case-facts { position: sticky; top: 120px; border-radius: 22px; background: var(--cream-dark, #f6f1e4); padding: 26px; }
+.case-facts__title { font: 600 13px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: #5f6b63; margin: 0 0 14px; }
+.case-facts dl { margin: 0 0 18px; }
+.case-facts dl div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid #e3dccb; font-size: 15.5px; }
+.case-facts dt { color: #5f6b63; }
+.case-facts dd { margin: 0; font-weight: 600; text-align: right; }
+.case-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+.case-gallery figure { margin: 0; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; background: #e8e2d4; }
+.case-gallery img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 900px) { .case-story { grid-template-columns: 1fr; } .case-facts { position: static; } .case-gallery { grid-template-columns: 1fr 1fr; gap: 10px; } .case-gallery figure { border-radius: 14px; } }
+
+.case-features { grid-column: 1 / -1; }
+.case-features .check-list { columns: 2; column-gap: 40px; }
+@media (max-width: 760px) { .case-features .check-list { columns: 1; } }
+.case-story .check-list li { font-size: 18px; }
