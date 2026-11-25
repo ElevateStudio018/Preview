@@ -1833,8 +1833,13 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .ctile__go svg { width: 28px; height: 28px; stroke: #fff; fill: none; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .4)); }
 .ctile:hover .ctile__go { transform: translate(3px, -3px); }
 .ctile__logo--raw { filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .45)); }
-@media (max-width: 1100px) { .ctiles { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .ctiles { grid-template-columns: 1fr; } .ctile { aspect-ratio: 4 / 4.2; } .ctile__logo { height: 80px; } }
+/* Smaller screens: the cards sit side by side in a row you swipe, instead of stacking into one long column */
+@media (max-width: 1100px) {
+  .ctiles { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 40%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -15px; padding-inline: 15px; scroll-padding-inline: 15px; }
+  .ctiles::-webkit-scrollbar { display: none; }
+  .ctile { scroll-snap-align: start; }
+}
+@media (max-width: 560px) { .ctiles { grid-auto-columns: 78%; gap: 12px; } .ctile__logo { height: 76px; } }
 
 /* ---------- The longer case: story, facts and pictures from the project ---------- */
 .case-story { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(32px, 6vw, 80px); align-items: start; }
