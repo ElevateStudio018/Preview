@@ -1833,13 +1833,30 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .ctile__go svg { width: 28px; height: 28px; stroke: #fff; fill: none; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .4)); }
 .ctile:hover .ctile__go { transform: translate(3px, -3px); }
 .ctile__logo--raw { filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .45)); }
-/* Smaller screens: the cards sit side by side in a row you swipe, instead of stacking into one long column */
+/* The cards glide in one after another when the row comes into view (main.js adds the classes) */
+.ctiles--reveal .ctile { opacity: 0; translate: 0 28px; transition: opacity .7s cubic-bezier(.22, 1, .36, 1) var(--d, 0ms), translate .7s cubic-bezier(.22, 1, .36, 1) var(--d, 0ms); }
+.ctiles--reveal.is-in .ctile { opacity: 1; translate: 0 0; }
+.ctiles-wrap { position: relative; }
+.ctiles-dots { display: none; }
+/* Smaller screens: a row you swipe with dots underneath, like the projects on markmontage.se */
 @media (max-width: 1100px) {
-  .ctiles { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 40%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -15px; padding-inline: 15px; scroll-padding-inline: 15px; }
+  .ctiles { display: flex; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -15px; padding-inline: 15px; scroll-padding-inline: 15px; }
   .ctiles::-webkit-scrollbar { display: none; }
-  .ctile { scroll-snap-align: start; }
+  .cslot { flex: 0 0 calc((100% - 14px) / 2); scroll-snap-align: start; transition: transform .3s ease-out, opacity .3s ease-out; }
+  .ctiles-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+  .ctiles-dots button { width: 9px; height: 9px; padding: 0; border: 0; color: inherit; border-radius: 99px; background: currentColor; opacity: .28; cursor: pointer; transition: width .3s ease-out, opacity .3s ease-out; }
+  .ctiles-dots button.is-on { width: 30px; opacity: 1; }
+  .hp-proj .ctiles-dots { color: #f6f1e4; }
 }
-@media (max-width: 560px) { .ctiles { grid-auto-columns: 78%; gap: 12px; } .ctile__logo { height: 76px; } }
+/* Phones: one card at a time in the middle, with the next ones peeking in at the sides */
+@media (max-width: 640px) {
+  .ctiles { gap: 12px; padding-inline: 0; scroll-padding-inline: 0; }
+  .ctiles::before, .ctiles::after { content: ""; flex: 0 0 calc(8% - 12px); }
+  .cslot { flex-basis: 84%; scroll-snap-align: center; }
+  .ctile { aspect-ratio: 4 / 5; }
+  .ctile__logo { height: 76px; }
+}
+@media (prefers-reduced-motion: reduce) { .ctiles--reveal .ctile, .cslot, .ctiles-dots button { transition: none; } }
 
 /* ---------- The longer case: story, facts and pictures from the project ---------- */
 .case-story { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(32px, 6vw, 80px); align-items: start; }

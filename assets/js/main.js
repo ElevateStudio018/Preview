@@ -372,3 +372,67 @@ document.querySelectorAll('.exs').forEach(function (w) {
   var m = f.querySelector('textarea[name="meddelande"]');
   if (m && m.value) { fit(m); addEventListener('load', function () { fit(m); }); }
 })();
+
+/* Case cards: a swipe row with dots underneath on smaller screens, like the projects on markmontage.se.
+   The dot for the card in view is drawn as a longer bar. */
+(function () {
+  var rows = document.querySelectorAll('.ctiles');
+  if (!rows.length) return;
+  var phone = window.matchMedia('(max-width: 640px)');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  rows.forEach(function (row) {
+    var slots = Array.prototype.slice.call(row.children);
+    if (!slots.length) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'ctiles-wrap';
+    row.parentNode.insertBefore(wrap, row);
+    wrap.appendChild(row);
+    var dots = document.createElement('div');
+    dots.className = 'ctiles-dots';
+    slots.forEach(function (s, i) {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Visa case ' + (i + 1) + ' av ' + slots.length);
+      d.addEventListener('click', function () { go(i); });
+      dots.appendChild(d);
+    });
+    wrap.parentNode.insertBefore(dots, wrap.nextSibling);
+    // the card that is "current": the one nearest the middle on phones, the first one fully in view otherwise
+    function current() {
+      var r = row.getBoundingClientRect(), pad = parseFloat(getComputedStyle(row).paddingLeft) || 0;
+      var mark = phone.matches ? r.left + r.width / 2 : r.left + pad, best = 0, bestD = Infinity;
+      slots.forEach(function (s, i) {
+        var b = s.getBoundingClientRect(), x = phone.matches ? b.left + b.width / 2 : b.left, d = Math.abs(x - mark);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      return best;
+    }
+    function go(i) {
+      i = Math.max(0, Math.min(slots.length - 1, i));
+      var r = row.getBoundingClientRect(), b = slots[i].getBoundingClientRect(), pad = parseFloat(getComputedStyle(row).paddingLeft) || 0;
+      var left = phone.matches ? row.scrollLeft + (b.left + b.width / 2) - (r.left + r.width / 2) : row.scrollLeft + b.left - r.left - pad;
+      row.scrollTo({ left: left, behavior: still.matches ? 'auto' : 'smooth' });
+    }
+    function update() {
+      var a = current();
+      Array.prototype.forEach.call(dots.children, function (d, i) {
+        d.classList.toggle('is-on', i === a);
+        if (i === a) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+    }
+    var raf = 0;
+    function soon() { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }
+    row.addEventListener('scroll', soon, { passive: true });
+    window.addEventListener('resize', soon);
+    update();
+    // glide in one after another when the row comes into view
+    if (!still.matches && 'IntersectionObserver' in window) {
+      slots.forEach(function (s, i) { s.style.setProperty('--d', i * 90 + 'ms'); });
+      row.classList.add('ctiles--reveal');
+      var io = new IntersectionObserver(function (es) {
+        if (es.some(function (e) { return e.isIntersecting; })) { row.classList.add('is-in'); io.disconnect(); }
+      }, { threshold: 0.15 });
+      io.observe(row);
+    }
+  });
+})();
