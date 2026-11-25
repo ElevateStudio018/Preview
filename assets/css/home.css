@@ -1220,8 +1220,8 @@ h2, h3 { margin: 0; font-weight: 400; }
 .svx__card { position: relative; display: block; aspect-ratio: 1; overflow: hidden; isolation: isolate; border-radius: 22px; color: #fff; text-decoration: none; background: #2c4529; box-shadow: 0 22px 40px -26px rgba(0, 0, 0, .45); container-type: inline-size; transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s cubic-bezier(.2, .7, .2, 1); }
 .svx__card > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1) brightness(1.15); transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
 .svx__card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #34502f; mix-blend-mode: multiply; opacity: .92; }
-.svx__card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22, 36, 20, 0), rgba(22, 36, 20, .18) 45%, rgba(22, 36, 20, .75)); }
-.svx__icon { position: absolute; left: 0; right: 0; top: 44%; display: grid; place-items: center; transform: translateY(-50%); transition: top .45s cubic-bezier(.2, .7, .2, 1); }
+.svx__card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22, 36, 20, 0), rgba(22, 36, 20, .18) 45%, rgba(22, 36, 20, .75)); transition: opacity .45s; }
+.svx__icon { position: absolute; left: 0; right: 0; top: 42%; display: grid; place-items: center; transform: translateY(-50%); }
 .svx__icon svg { width: 28cqw; height: 28cqw; max-width: 92px; max-height: 92px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
 .svx__foot { position: absolute; left: 8cqw; right: 8cqw; bottom: 7cqw; }
 .svx__row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
@@ -1232,13 +1232,12 @@ h2, h3 { margin: 0; font-weight: 400; }
 .svx__desc span { display: block; padding-top: 8px; }
 .svx__card:hover, .svx__card:focus-visible { transform: scale(1.05); z-index: 3; box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .5); }
 .svx__card:hover > img, .svx__card:focus-visible > img { transform: scale(1.06); }
-.svx__card:hover .svx__icon, .svx__card:focus-visible .svx__icon { top: 36%; }
-.svx__card:hover .svx__icon svg, .svx__card:focus-visible .svx__icon svg { transform: scale(1.4); }
+.svx__card:hover .svx__icon svg, .svx__card:focus-visible .svx__icon svg { transform: scale(1.5); }
 .svx__card:hover .svx__more, .svx__card:focus-visible .svx__more { grid-template-rows: 1fr; }
 .svx__card:hover .svx__desc, .svx__card:focus-visible .svx__desc { opacity: .92; }
 .svx__card:hover .svx__go, .svx__card:focus-visible .svx__go { transform: translate(3px, -3px); }
 /* touch screens have no hover: the line about the service is always shown */
-@media (hover: none) { .svx__icon { top: 36%; } .svx__more { display: block; } .svx__desc { overflow: visible; opacity: .92; } }
+@media (hover: none) { .svx__more { display: block; } .svx__desc { overflow: visible; opacity: .92; } }
 @media (max-width: 1100px) {
   .svx__panel { padding: 48px 40px 150px; }
   .svx__mark { width: 420px; right: 20px; top: 40px; opacity: .8; }
@@ -1255,6 +1254,10 @@ h2, h3 { margin: 0; font-weight: 400; }
   .svx__name { font-size: 19px; }
   .svx__desc { font-size: 14.5px; overflow: visible; opacity: .92; }
   .svx__more { display: block; }
-  .svx__icon { top: 36%; }
 }
 @media (prefers-reduced-motion: reduce) { .svx__card, .svx__card > img, .svx__icon, .svx__icon svg, .svx__more, .svx__go { transition: none; } }
+
+/* The services page uses the same cards, in a plain grid */
+.svx__cards--all { grid-template-columns: repeat(3, 1fr); margin: 0; gap: 26px; }
+@media (max-width: 1100px) { .svx__cards--all { grid-template-columns: 1fr 1fr; margin: 0; } }
+@media (max-width: 640px) { .svx__cards--all { grid-template-columns: 1fr; margin: 0; } }

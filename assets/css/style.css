@@ -554,3 +554,8 @@ button.arrow-link { padding: 0; border: 0; background: none; font: inherit; curs
    lifted to its visual centre */
 .chat__avatar svg { transform: translate(-.2px, -1.1px); }
 
+
+/* The small label above a section heading: the same look everywhere */
+.kicker { display: block; margin: 0 0 14px; font: 600 12.5px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: #4d7a5a; }
+.kicker--light { color: #9fc1a6; }
+.kicker--center { text-align: center; }
