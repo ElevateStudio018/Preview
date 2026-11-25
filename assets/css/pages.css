@@ -1926,3 +1926,9 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
   .svx__cards--more::-webkit-scrollbar { display: none; }
   .svx__cards--more .svx__card { flex: 0 0 78%; aspect-ratio: 4 / 3.6; scroll-snap-align: start; }
 }
+
+/* Case card: what the customer does, a thin divider, then what we did in a soft green */
+.ctile__tags { display: flex; align-items: center; flex-wrap: wrap; gap: 0 10px; }
+.ctile__ind { color: rgba(255, 255, 255, .92); }
+.ctile__sep { width: 1px; height: 12px; background: rgba(255, 255, 255, .45); }
+.ctile__did { color: #fff; font-weight: 700; }
