@@ -1818,21 +1818,23 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
 .sitetest__pages span{grid-column:2;opacity:.75;overflow-wrap:anywhere}
 .sitetest__pages em{grid-column:3;grid-row:1;font-style:normal;font-variant-numeric:tabular-nums;opacity:.8}
 
-/* ---------- Cases: tall picture cards (start page and Projekt) ---------- */
-.ctiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 28px; }
-.ctile { position: relative; display: block; aspect-ratio: 3 / 4; border-radius: 24px; overflow: hidden; color: #fff; text-decoration: none; background: #12271b; isolation: isolate; }
-.ctile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); z-index: -2; }
-.ctile::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 20, 14, .28) 0%, rgba(10, 20, 14, 0) 26%, rgba(10, 20, 14, .12) 46%, rgba(10, 20, 14, .82) 100%); }
-.ctile:hover img, .ctile:focus-visible img { transform: scale(1.04); }
-.ctile__tag { position: absolute; top: 24px; left: 24px; padding: 6px 13px; border-radius: 9px; background: #fff; color: #12271b; font: 500 14px/1.2 var(--sans); }
-.ctile__go { position: absolute; top: 22px; right: 22px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 255, 255, .78); display: grid; place-items: center; transition: background .2s; }
-.ctile__go svg { width: 16px; height: 16px; stroke: #12271b; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.ctile:hover .ctile__go { background: #fff; }
-.ctile__body { position: absolute; left: 24px; right: 24px; bottom: 26px; display: flex; flex-direction: column; gap: 10px; }
-.ctile__title { font: 500 clamp(24px, 2.1vw, 30px)/1.12 var(--sans); letter-spacing: -.01em; }
-.ctile__text { font: 400 16px/1.55 var(--sans); color: rgba(255, 255, 255, .88); }
+/* ---------- Cases: picture cards that sit edge to edge, each with the customer's site on a computer ---------- */
+/* Case cards: black-and-white photo, the customer's logo in white, name and arrow at the bottom */
+.ctiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; }
+.ctile { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 20px; color: #fff; text-decoration: none; background: #111; isolation: isolate; }
+.ctile__photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05) brightness(.62); transition: transform .7s cubic-bezier(.2, .7, .2, 1), filter .6s ease; }
+.ctile::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, .55)); }
+.ctile:hover .ctile__photo, .ctile:focus-visible .ctile__photo { transform: scale(1.05); filter: grayscale(0) contrast(1) brightness(.72); }
+.ctile__logo { position: absolute; left: 50%; top: 44%; width: 62%; height: 96px; object-fit: contain; transform: translate(-50%, -50%); filter: brightness(0) invert(1); }
+.ctile__body { position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.ctile__title { display: block; font: 600 18px/1.2 var(--sans); }
+.ctile__tags { display: block; margin-top: 2px; font: 500 14px/1.3 var(--sans); color: rgba(255, 255, 255, .78); }
+.ctile__go { flex: none; display: grid; place-items: center; width: 30px; height: 30px; transition: transform .25s cubic-bezier(.2, .7, .2, 1); }
+.ctile__go svg { width: 28px; height: 28px; stroke: #fff; fill: none; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .4)); }
+.ctile:hover .ctile__go { transform: translate(3px, -3px); }
+.ctile__logo--raw { filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .45)); }
 @media (max-width: 1100px) { .ctiles { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .ctiles { grid-template-columns: 1fr; gap: 16px; } .ctile { aspect-ratio: 4 / 5; } }
+@media (max-width: 560px) { .ctiles { grid-template-columns: 1fr; } .ctile { aspect-ratio: 4 / 4.2; } .ctile__logo { height: 80px; } }
 
 /* ---------- The longer case: story, facts and pictures from the project ---------- */
 .case-story { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(32px, 6vw, 80px); align-items: start; }
