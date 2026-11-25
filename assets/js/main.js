@@ -436,3 +436,18 @@ document.querySelectorAll('.exs').forEach(function (w) {
     }
   });
 })();
+
+/* Tilt the laptop and phone a little after the mouse ("Så kan det se ut" on the start page) */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(hover: hover)').matches) return;
+  document.querySelectorAll('[data-tilt]').forEach(function (box) {
+    var pic = box.querySelector('picture');
+    if (!pic) return;
+    box.addEventListener('mousemove', function (e) {
+      var r = box.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      pic.style.setProperty('--ry', (x * 8).toFixed(2) + 'deg');
+      pic.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
+    });
+    box.addEventListener('mouseleave', function () { pic.style.setProperty('--ry', '0deg'); pic.style.setProperty('--rx', '0deg'); });
+  });
+})();

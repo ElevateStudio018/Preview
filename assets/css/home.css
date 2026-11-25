@@ -1218,9 +1218,9 @@ h2, h3 { margin: 0; font-weight: 400; }
 .svx__echo { position: absolute; left: 30px; top: 28px; fill: none; stroke: rgba(159, 193, 166, .45); stroke-width: 7; stroke-linejoin: round; }
 .svx__cards { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin: -110px 44px 0; }
 .svx__card { position: relative; display: block; aspect-ratio: 1; overflow: hidden; isolation: isolate; border-radius: 22px; color: #fff; text-decoration: none; background: #2c4529; box-shadow: 0 22px 40px -26px rgba(0, 0, 0, .45); container-type: inline-size; transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s cubic-bezier(.2, .7, .2, 1); }
-.svx__card > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1) brightness(1.15); transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-.svx__card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #34502f; mix-blend-mode: multiply; opacity: .92; }
-.svx__card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22, 36, 20, 0), rgba(22, 36, 20, .18) 45%, rgba(22, 36, 20, .75)); transition: opacity .45s; }
+.svx__card > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.02) brightness(1.4); transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.svx__card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #4d7a5a; mix-blend-mode: multiply; opacity: .82; }
+.svx__card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22, 36, 20, 0) 30%, rgba(22, 36, 20, .1) 55%, rgba(22, 36, 20, .62)); transition: opacity .45s; }
 .svx__icon { position: absolute; left: 0; right: 0; top: 42%; display: grid; place-items: center; transform: translateY(-50%); }
 .svx__icon svg { width: 28cqw; height: 28cqw; max-width: 92px; max-height: 92px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
 .svx__foot { position: absolute; left: 8cqw; right: 8cqw; bottom: 7cqw; }
@@ -1261,3 +1261,27 @@ h2, h3 { margin: 0; font-weight: 400; }
 .svx__cards--all { grid-template-columns: repeat(3, 1fr); margin: 0; gap: 26px; }
 @media (max-width: 1100px) { .svx__cards--all { grid-template-columns: 1fr 1fr; margin: 0; } }
 @media (max-width: 640px) { .svx__cards--all { grid-template-columns: 1fr; margin: 0; } }
+
+.svx__btns { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin: 0; }
+.svx__link { display: inline-flex; align-items: center; gap: 8px; font: 600 16px/1 var(--sans); color: #fff; text-decoration: none; white-space: nowrap; }
+.svx__link svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s; }
+.svx__link:hover svg { transform: translateX(3px); }
+
+/* "Så kan det se ut": a real photo of Lindvik Bygg on a laptop and a phone, and the site on three kinds of screen below */
+.hp-proj__mock { display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .55); }
+.hp-proj__screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 48px 0 8px; }
+.svx__card--screen > img { object-position: top; }
+.svx__card--screen:hover > img, .svx__card--screen:focus-visible > img { filter: none; }
+.svx__card--screen:hover::before, .svx__card--screen:focus-visible::before { opacity: 0; }
+.svx__card--screen::before { transition: opacity .6s; }
+.svx__card--screen > img { transition: transform .7s cubic-bezier(.2, .7, .2, 1), filter .6s; }
+@media (max-width: 900px) { .hp-proj__screens { grid-template-columns: 1fr 1fr 1fr; gap: 12px; } }
+@media (max-width: 640px) { .hp-proj__screens { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 12px; } .hp-proj__screens::-webkit-scrollbar { display: none; } .hp-proj__screens .svx__card { flex: 0 0 78%; scroll-snap-align: start; } }
+
+/* The laptop and phone as a cut-out PNG on the green: a soft shadow, a faint light behind, a slow float, and a slight tilt after the mouse */
+.hp-proj__float { position: relative; perspective: 1400px; }
+.hp-proj__glow { position: absolute; left: 8%; right: 8%; top: 12%; bottom: 6%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(159, 193, 166, .32), rgba(159, 193, 166, 0) 68%); filter: blur(10px); pointer-events: none; }
+.hp-proj__float picture { position: relative; display: block; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
+.hp-proj__cut { display: block; width: 100%; height: auto; filter: drop-shadow(0 34px 34px rgba(0, 0, 0, .38)) drop-shadow(0 8px 10px rgba(0, 0, 0, .22)); animation: hpFloat 7s ease-in-out infinite; }
+@keyframes hpFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@media (prefers-reduced-motion: reduce) { .hp-proj__cut { animation: none; } .hp-proj__float picture { transition: none; transform: none; } }
