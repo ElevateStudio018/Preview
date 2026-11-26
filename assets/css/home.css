@@ -1217,11 +1217,11 @@ h2, h3 { margin: 0; font-weight: 400; }
 .svx__fill { position: relative; }
 .svx__echo { position: absolute; left: 30px; top: 28px; fill: none; stroke: rgba(159, 193, 166, .45); stroke-width: 7; stroke-linejoin: round; }
 .svx__cards { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin: -110px 44px 0; }
-.svx__card { position: relative; display: block; aspect-ratio: 1; overflow: hidden; isolation: isolate; border-radius: 22px; color: #fff; text-decoration: none; background: #1b1d1f; box-shadow: 0 22px 40px -26px rgba(0, 0, 0, .45); container-type: inline-size; transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s cubic-bezier(.2, .7, .2, 1); }
-.svx__card > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05) brightness(.7); transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-.svx__card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #16181a; opacity: .25; }
-.svx__card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, .6)); transition: opacity .45s; }
-.svx__icon { position: absolute; left: 0; right: 0; top: 42%; color: #a6e8bd; display: grid; place-items: center; transform: translateY(-50%); }
+.svx__card { position: relative; display: block; aspect-ratio: 1; overflow: hidden; isolation: isolate; border-radius: 22px; color: #fff; text-decoration: none; background: #2c4529; box-shadow: 0 22px 40px -26px rgba(0, 0, 0, .45); container-type: inline-size; transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s cubic-bezier(.2, .7, .2, 1); }
+.svx__card > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1) brightness(1.15); transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.svx__card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #34502f; mix-blend-mode: multiply; opacity: .92; }
+.svx__card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22, 36, 20, 0), rgba(22, 36, 20, .18) 45%, rgba(22, 36, 20, .75)); transition: opacity .45s; }
+.svx__icon { position: absolute; left: 0; right: 0; top: 42%; display: grid; place-items: center; transform: translateY(-50%); }
 .svx__icon svg { width: 28cqw; height: 28cqw; max-width: 92px; max-height: 92px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
 .svx__foot { position: absolute; left: 8cqw; right: 8cqw; bottom: 7cqw; }
 .svx__row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
