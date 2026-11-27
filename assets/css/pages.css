@@ -2357,3 +2357,20 @@ form input:user-invalid, form textarea:user-invalid { border-color: #b3261e !imp
   .contact-hero__formcard { padding: 22px 18px; border-radius: 20px; }
   .contact-hero__formcard .finale__fields { grid-template-columns: 1fr; }
 }
+
+/* a quiet link to the free site test under the contact band's buttons */
+.cta-band p.cta-band__test { margin: 28px auto 0; font-size: 16px; }
+.cta-band__test a { display: inline-flex; align-items: center; gap: 8px; color: var(--cream, #fdfbf5); font-weight: 500; text-decoration: underline; text-decoration-color: rgba(253, 251, 245, .45); text-underline-offset: 5px; transition: text-decoration-color .2s; }
+.cta-band__test a:hover { text-decoration-color: currentColor; }
+.cta-band__test svg { width: 13px; height: 13px; transition: transform .2s; }
+.cta-band__test a:hover svg { transform: translateX(3px); }
+
+/* Testa din sajt: the readable guide and questions under the tool */
+.st-guide__text { max-width: 820px; }
+.st-guide__text p { margin: 0 0 16px; font-size: 18px; line-height: 1.6; }
+.st-guide__text h3 { margin: 32px 0 12px; font-size: 24px; font-weight: 500; }
+.st-guide__text a { color: var(--accent, #1d3b2a); text-decoration: underline; text-underline-offset: 3px; }
+.st-guide__list { display: grid; gap: 12px; margin: 0 0 24px; padding: 0; list-style: none; }
+.st-guide__list li { padding: 18px 22px; border: 1px solid #ece5d3; border-radius: 16px; font-size: 17px; line-height: 1.55; }
+.st-faq .faq__list { max-width: 900px; }
+@media (max-width: 640px) { .st-guide__text p { font-size: 17px; } .st-guide__list li { padding: 16px 18px; font-size: 16px; } }
