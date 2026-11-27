@@ -1,0 +1,245 @@
+// "Fråga oss": a small assistant in the corner. It answers from our own FAQ and prices,
+// and passes anything it cannot answer on to info@elevatestudio.nu.
+(function () {
+  var prefix = document.currentScript.dataset.prefix || '';
+  var endpoint = document.currentScript.dataset.endpoint;
+  // Built from the site's own content on every build (assets/js/chat-kb.js), so new pages and articles are known at once
+  var KB = (window.ELEVATE_KB || []).concat([
+    { k: ['kost', 'pris', 'billig', 'dyr', 'kronor', 'betala', 'avgift', 'cost', 'price', 'cheap', 'expensive', 'pay', 'fee', 'sek'],
+      a: 'Starter kostar 3 000 kr och Pro 6 000 kr i startavgift, plus en månadsavgift (99–199 kr/mån för Starter, 199–499 kr/mån för Pro). Större projekt får ett fast pris i en offert. Alla priser är exkl. moms.',
+      link: ['Se priser', 'priser.html'] },
+    { k: ['tid', 'lång', 'snabb', 'färdig', 'vecka', 'månad', 'leverans', 'när', 'time', 'long', 'fast', 'quick', 'ready', 'week', 'month', 'deliver', 'when'],
+      a: 'Ni ser ett första utkast av hemsidan redan efter ungefär en dag. Sedan finjusterar vi tillsammans tills ni är nöjda. Hur snabbt den går live beror mest på när vi har fått texter, bilder och åtkomst.' },
+    { k: ['tjänst', 'erbjud', 'gör ni', 'vad gör', 'hjälp med', 'service', 'offer', 'what do you', 'help with'],
+      a: 'Vi bygger hemsidor och kopplar på bokningssystem, offertsystem och AI-chatt. Vi jobbar också med SEO och AI-optimering, och tar hand om support och underhåll efteråt.',
+      link: ['Se alla tjänster', 'tjanster/index.html'] },
+    { k: ['boka', 'bokning', 'kalender', 'book', 'calendar', 'appointment'],
+      a: 'Ja, vi kan bygga in bokning så att kunderna väljer en tid direkt på hemsidan – med notiser till er via e-post och SMS.',
+      link: ['Om bokningssystem', 'tjanster/bokningssystem.html'] },
+    { k: ['offert', 'förfrågan', 'forfragan', 'quote', 'enquir', 'inquir'],
+      a: 'Med ett offertflöde beskriver kunden jobbet steg för steg, så att ni får en komplett förfrågan. Våra egna offerter är på två sidor med fast pris.',
+      link: ['Se ett exempel på avtal', 'avtal.html'] },
+    { k: ['ai', 'chatt', 'chatbot', 'bot'],
+      a: 'Vi bygger AI-chattar som svarar på kundernas vanliga frågor dygnet runt och skickar vidare förfrågningar till er.',
+      link: ['Om AI-chatt', 'tjanster/ai-chatt.html'] },
+    { k: ['google', 'seo', 'synas', 'hittar', 'sök', 'search', 'found', 'visib', 'rank'],
+      a: 'Grundläggande SEO och AI-optimering ingår i alla hemsidor vi bygger, så att ni går att hitta både på Google och i AI-tjänster.',
+      link: ['Om SEO och AI-optimering', 'tjanster/seo-och-ai-optimering.html'] },
+    { k: ['support', 'ändr', 'uppdater', 'underhåll', 'efter', 'change', 'update', 'maint', 'after'],
+      a: 'Under första året ingår upp till 3 timmars support och redigering per månad – till exempel text- och bildändringar eller layoutjusteringar.' },
+    { k: ['domän', 'äger', 'hosting', 'webbhotell', 'domain', 'own'],
+      a: 'Domänen är och förblir er. Hosting och eventuella externa avgifter står specificerade i offerten.' },
+    { k: ['var finns', 'var ligger', 'uppsala', 'stockholm', 'ort', 'distans', 'sverige', 'where', 'located', 'remote', 'sweden'],
+      a: 'Vi finns i Uppsala och jobbar med företag i hela Sverige – möten går lika bra på distans.' },
+    { k: ['kontakt', 'ring', 'telefon', 'mejl', 'mail', 'prata', 'möte', 'contact', 'call', 'phone', 'email', 'talk', 'meet'],
+      a: 'Ring Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu. Ni kan också fylla i formuläret, så hör vi av oss så fort vi kan.',
+      link: ['Kontakta oss', 'kontakt.html'] }
+  ]);
+  var CHIPS = ['Vad kostar det?', 'Hur lång tid tar det?', 'Vad gör ni?', 'Prata med någon'];
+
+  var root = document.createElement('div');
+  root.className = 'chat';
+  root.innerHTML =
+    '<button type="button" class="chat__toggle" aria-expanded="false" aria-controls="chat-panel">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="currentColor"/></svg>' +
+      '<span>Frågor?</span></button>' +
+    '<section class="chat__panel" id="chat-panel" aria-label="Fråga Elevate Studio" hidden>' +
+      '<header class="chat__head"><div><p class="chat__title">Fråga oss</p><p class="chat__sub">Snabba svar från vår FAQ – eller ett svar från oss via mejl.</p></div>' +
+      '<button type="button" class="chat__close" aria-label="Stäng">×</button></header>' +
+      '<div class="chat__log" aria-live="polite"></div>' +
+      '<div class="chat__chips"></div>' +
+      '<form class="chat__form"><label class="sr-only" for="chat-input">Er fråga</label>' +
+      '<input id="chat-input" type="text" autocomplete="off" placeholder="Skriv en fråga …"><button type="submit" aria-label="Skicka">' +
+      '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></form>' +
+    '</section>';
+  document.body.appendChild(root);
+
+  var toggle = root.querySelector('.chat__toggle'), panel = root.querySelector('.chat__panel');
+  // The button waves once after a few seconds so visitors notice it (skipped if already opened)
+  setTimeout(function () {
+    if (root.classList.contains('chat--open')) return;
+    toggle.classList.add('is-hello');
+    toggle.addEventListener('animationend', function () { toggle.classList.remove('is-hello'); });
+  }, 4500);
+  var log = root.querySelector('.chat__log'), chips = root.querySelector('.chat__chips');
+  var form = root.querySelector('.chat__form'), input = root.querySelector('#chat-input');
+  var waitingForEmail = null, greeted = false;
+  // the conversation, for the admin: an id that lives only in memory for this page view (nothing is stored on the device)
+  var sid = Date.now().toString(36) + Math.random().toString(36).slice(2, 10), turn = 0, convo = [], lastQuestion = '';
+  var utm = new URLSearchParams(location.search).get('utm_source') || '';
+  function logTurn(q, ans, source, ms, matched, topic, lead) {
+    turn++;
+    // questions from a device where the team has logged in to admin are not saved (Chatten and the statistics)
+    try { if (localStorage.getItem('es.team')) return; } catch (e) { /* storage blocked: saved as usual */ }
+    try {
+      fetch('/api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true, body: JSON.stringify({
+        kind: 'chat', question: q.slice(0, 500), answer: String(ans || '').slice(0, 4000), source: source, matched: !!matched, topic: topic || null,
+        page_path: location.pathname, sid: sid, turn: turn, ms: ms, lead: !!lead, ref: document.referrer || '', utm: utm }) });
+    } catch (e) { /* the log never blocks the chat */ }
+  }
+  var EMAIL_RE = /[^\s@<>()",;]+@[^\s@<>()",;]+\.[a-zåäö]{2,}/i;
+  var PHONE_RE = /(?:\+46|0)[\s-]?\d(?:[\s-]?\d){6,11}/;
+  var CONTACT_RE = /kontakt|nå er\b|nå dig\b|ringa? (mig|er|upp)|hör(a)? av|bli kontaktad|prata med (någon|en människa|er\b|en person)|människa|talk to (someone|a human)|contact/i;
+  function contactIn(q) {
+    var e = q.match(EMAIL_RE), p = q.match(PHONE_RE);
+    return { email: e ? e[0].replace(/[.,;:!?]+$/, '') : '', phone: p ? p[0].trim() : '' };
+  }
+  function transcript() {
+    return convo.slice(-24).map(function (m) { return (m.who === 'me' ? 'Besökare: ' : 'Chatten: ') + m.text; }).join('\n').slice(0, 3500);
+  }
+  // the visitor left an e-mail address or a phone number: an enquiry like the contact form, in the inbox and in the admin
+  var leadsSent = 0;
+  function sendLead(q, c, about) {
+    var t0 = Date.now(), to = c.email || c.phone, more = leadsSent > 0;
+    // _chat ties every detail from this conversation to the same enquiry in the admin
+    var body = { _subject: more ? 'Komplettering från chatten på hemsidan' : 'Fråga från chatten på hemsidan', _chat: sid, fraga: more ? 'Komplettering: ' + about : about, konversation: transcript(), sida: location.href };
+    if (c.email) body.email = c.email;
+    if (c.phone) body.telefon = c.phone;
+    fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        leadsSent++;
+        var thanks = more ? 'Tack, jag har lagt till ' + to + ' på er förfrågan.' : 'Tack! Vi hör av oss på ' + to + ' så snart vi kan, oftast samma dag. Vill ni lägga till något kan ni skriva det här.';
+        say(thanks, 'bot'); logTurn(q, thanks, 'kontakt', Date.now() - t0, true, 'kontakt', true);
+        if (window.elevateTrack) window.elevateTrack('chat_lead', 'lämnade kontaktuppgift');
+      })
+      .catch(function () {
+        var fail = 'Något gick fel när jag skulle skicka det. Mejla gärna info@elevatestudio.nu eller ring Carl på +46 76 022 83 61.';
+        say(fail, 'bot'); logTurn(q, fail, 'kontakt', Date.now() - t0, false, 'kontakt', false);
+      });
+  }
+
+  var LOGO = '<svg viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0.0 1353.9 L1218.7 0.0 L1218.7 329.1 L479.7 1136.4 L786.7 1132.4 L1215.5 687.4 L1884.3 1349.9 L1590.1 1349.9 L1218.6 994.7 L865.4 1349.9Z" fill="currentColor"/></svg>';
+  var queue = Promise.resolve();
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function row(who) {
+    var r = document.createElement('div');
+    r.className = 'chat__row chat__row--' + who;
+    if (who === 'bot') { var av = document.createElement('span'); av.className = 'chat__avatar'; av.innerHTML = LOGO; r.appendChild(av); }
+    log.appendChild(r);
+    return r;
+  }
+  // Bot messages wait their turn and show "skriver …" first, a little longer for longer answers
+  function say(text, who, link) {
+    if (who !== 'bot') return show(text, who, link);
+    queue = queue.then(function () {
+      var r = row('bot');
+      var dots = document.createElement('div');
+      dots.className = 'chat__msg chat__msg--bot chat__typing';
+      dots.setAttribute('aria-label', 'Skriver');
+      dots.innerHTML = '<i></i><i></i><i></i>';
+      r.appendChild(dots);
+      log.scrollTop = log.scrollHeight;
+      var wait = reduced ? 0 : Math.min(2200, 900 + text.length * 5); // the typing dots stay a little longer for longer answers
+      return new Promise(function (ok) { setTimeout(ok, wait); }).then(function () { r.remove(); show(text, 'bot', link); });
+    });
+    return queue;
+  }
+  function show(text, who, link) {
+    convo.push({ who: who, text: text });
+    var r = row(who);
+    var m = document.createElement('div');
+    m.className = 'chat__msg chat__msg--' + who;
+    m.textContent = text;
+    if (link) {
+      var a = document.createElement('a');
+      a.href = prefix + link[1];
+      a.textContent = link[0] + ' →';
+      m.appendChild(document.createElement('br'));
+      m.appendChild(a);
+    }
+    r.appendChild(m);
+    log.scrollTop = log.scrollHeight;
+  }
+  function open(state) {
+    panel.hidden = !state;
+    toggle.setAttribute('aria-expanded', String(state));
+    root.classList.toggle('chat--open', state);
+    if (state && !greeted) {
+      greeted = true;
+      say('Hej! Vad undrar ni? Välj en fråga nedan eller skriv själva.', 'bot');
+      CHIPS.forEach(function (c) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.textContent = c;
+        b.addEventListener('click', function () { ask(c, true); });
+        chips.appendChild(b);
+      });
+    }
+    if (state) input.focus();
+  }
+  function answer(q) {
+    var t = q.toLowerCase(), words = t.split(/[^a-z0-9åäöé]+/), best = null, score = 0;
+    var hits = function (k) {
+      if (k.indexOf(' ') !== -1) return t.indexOf(k) !== -1;
+      return words.some(function (w) { return w.indexOf(k) === 0; });
+    };
+    KB.forEach(function (e) {
+      var s = e.k.filter(hits).length;
+      if (s > score) { score = s; best = e; }
+    });
+    return best;
+  }
+  function ask(q, fromChip) {
+    say(q, 'me');
+    // an e-mail address or phone number anywhere in the message: that is an enquiry, never a question for the AI
+    var c = contactIn(q);
+    if (c.email || c.phone) {
+      var about = waitingForEmail || lastQuestion || 'Vill bli kontaktad';
+      waitingForEmail = null; sendLead(q, c, about); return;
+    }
+    waitingForEmail = null; // a new question instead of an address: answer it as usual
+    if (CONTACT_RE.test(q)) {
+      var how = 'Absolut! Skriv er e-postadress eller ert telefonnummer här i chatten, så hör vi av oss så snart vi kan. Ni kan också ringa Carl på +46 76 022 83 61 eller mejla info@elevatestudio.nu.';
+      say(how, 'bot'); logTurn(q, how, 'kontakt', 0, true, 'kontakt', false);
+      waitingForEmail = q; lastQuestion = q;
+      return;
+    }
+    lastQuestion = q;
+    var hit = answer(q);
+    // typed questions go to the AI (Workers AI); the keyword answers are the fallback and are used for the quick buttons
+    if (!fromChip) { askAi(q, hit); return; }
+    reply(q, hit, 'knapp', Date.now());
+  }
+  var history = [];
+  function askAi(q, hit) {
+    var t0 = Date.now(), wait = row('bot'), dots = document.createElement('div');
+    dots.className = 'chat__msg chat__msg--bot chat__typing'; dots.setAttribute('aria-label', 'Skriver'); dots.innerHTML = '<i></i><i></i><i></i>';
+    wait.appendChild(dots); log.scrollTop = log.scrollHeight;
+    fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ q: q, history: history.slice(-6) }) })
+      .then(function (r) { return r.ok ? r.json() : { error: r.status }; })
+      .catch(function () { return { error: 'net' }; })
+      .then(function (d) {
+        var showNow = function (t, l) {
+          var left = reduced ? 0 : Math.min(2200, 900 + t.length * 5) - (Date.now() - t0);
+          setTimeout(function () { if (wait && wait.parentNode) wait.parentNode.removeChild(wait); show(t, 'bot', l); }, Math.max(0, left));
+        };
+        if (!(d && d.answer) && wait && wait.parentNode) wait.parentNode.removeChild(wait);
+        if (d && d.answer) {
+          history.push({ role: 'user', content: q }, { role: 'assistant', content: d.answer });
+          logTurn(q, d.answer, 'ai', Date.now() - t0, true, 'ai', false);
+          showNow(d.answer, hit && hit.link ? hit.link : null);
+          return;
+        }
+        reply(q, d && d.unknown ? null : hit, null, t0);
+      });
+  }
+  function reply(q, hit, src, t0) {
+    // every question goes to Chatten in the admin, answered or not, with the answer it got
+    var unknown = 'Det vet jag inte säkert – men vi svarar gärna själva. Skriv er e-postadress eller ert telefonnummer här, så hör vi av oss.';
+    logTurn(q, hit ? hit.a : unknown, src || (hit ? 'faq' : 'obesvarad'), Date.now() - (t0 || Date.now()), !!hit, hit ? (hit.link ? hit.link[0] : hit.k[0]) : null, false);
+    if (window.elevateTrack) window.elevateTrack('chat', hit ? 'besvarad' : 'obesvarad');
+    if (hit) { say(hit.a, 'bot', hit.link); return; }
+    say(unknown, 'bot');
+    waitingForEmail = q;
+  }
+  toggle.addEventListener('click', function () { open(panel.hidden); });
+  root.querySelector('.chat__close').addEventListener('click', function () { open(false); toggle.focus(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { open(false); toggle.focus(); } });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = input.value.trim();
+    if (!q) return;
+    input.value = '';
+    ask(q);
+  });
+})();

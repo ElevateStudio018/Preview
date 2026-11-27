@@ -1,0 +1,24 @@
+# Cloudflare: old addresses from the previous site -> the new pages
+/om-oss                               /om                                     301
+/integritetspolicy                    /integritet                             301
+/sa-fungerar-det                      /tjanster/                              301
+/vara-hemsidor                        /projekt/                               301
+/tjanster/hemsida-for-hantverkare     /hemsida-for-hantverkare                301
+/tjanster/seo-for-hantverkare         /tjanster/seo-och-ai-optimering         301
+/tjanster/underhall-och-support       /tjanster/support-och-underhall         301
+/tjanster/start                       /tjanster/hemsidor                      301
+/auth                                 /admin/                                 301
+/kalender                             /admin/                                 301
+/kontakter                            /admin/                                 301
+/fakturor                             /admin/                                 301
+/utskick                              /admin/                                 301
+/segment                              /admin/                                 301
+/besokare                             /admin/                                 301
+/chatt-insikter                       /admin/                                 301
+/kundportal                           /portal                                 301
+/cfo                                  /admin/                                 301
+/minne                                /admin/                                 301
+/integrationer                        /admin/                                 301
+/ai                                   /admin/                                 301
+/ai/*                                 /admin/                                 301
+/portal/*                             /portal                                 301
