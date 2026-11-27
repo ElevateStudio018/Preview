@@ -561,3 +561,8 @@ main { width: 100%; max-width: 1560px; }
 .hl--ok .hl__chip { background: #e3f1e8; color: #2f7d4f; } .hl--warn .hl__chip { background: #fbf0d9; color: #8a5d05; } .hl--missing .hl__chip { background: #f8e4df; color: #a43c28; }
 .hl__x { margin: 0; color: #3d4a42; }
 .hl__fix { margin: 6px 0 0; padding: 10px 12px; border-radius: 10px; background: #f6f8f6; font-size: 14px; }
+.hl__set { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+.hl__set input { flex: 1; min-width: 200px; padding: 10px 12px; border: 1px solid var(--line, #dfe5e0); border-radius: 10px; font: inherit; }
+.hl__msg { width: 100%; font-size: 13px; font-weight: 600; color: #b2412c; }
+.hl__sql { margin-top: 10px; }
+.hl__sql pre { max-height: 220px; overflow: auto; margin: 0 0 8px; padding: 12px; border-radius: 10px; background: #12271b; color: #e7efe9; font: 12px/1.5 ui-monospace, Menlo, monospace; white-space: pre-wrap; }

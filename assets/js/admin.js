@@ -1818,9 +1818,10 @@
       var out = $('#bingb'); if (!out) return;
       if (!r.ok) {
         var e = r.d || {};
-        out.innerHTML = e.error === 'nokey' ? info('Lägg in Bing-nyckeln i Cloudflare', 'Sajten är verifierad i Bing Webmaster Tools. För att siffrorna ska synas här: öppna <b>bing.com/webmasters</b> → <b>Settings</b> (kugghjulet uppe till höger) → <b>API Access</b> → <b>API Key</b> och kopiera nyckeln. Lägg in den i Cloudflare (Workers → elevate-studio-pre → Settings → Variables and Secrets) som hemligheten <b>BING_API_KEY</b>.')
+        out.innerHTML = e.error === 'nokey' ? info('Lägg in Bing-nyckeln', 'Sajten är verifierad i Bing. För att siffrorna ska synas här: öppna <b>bing.com/webmasters</b> → kugghjulet (<b>Settings</b>) → <b>API Access</b> → <b>API Key</b>, kopiera nyckeln och klistra in den under <a href="#lage" data-go="lage">Läget</a> här i admin.')
           : e.error === 'badkey' ? info('Bing godtog inte nyckeln', 'Kontrollera att BING_API_KEY i Cloudflare är samma nyckel som under Settings → API Access i Bing Webmaster Tools.')
           : info('Kunde inte hämta från Bing', esc(e.message || ('Fel ' + r.status)));
+        var go = out.querySelector('[data-go]'); if (go) go.addEventListener('click', function (ev) { ev.preventDefault(); var n = document.querySelector('[data-view="' + go.dataset.go + '"]'); if (n) n.click(); });
         return;
       }
       var d = r.d, pos = function (p) { return p == null ? '–' : p.toFixed(1).replace('.', ','); };
@@ -1833,6 +1834,7 @@
     });
   }
 
+  var SETTINGS_SQL = "create table if not exists public.app_settings (\n  key text primary key,\n  value text not null,\n  updated_at timestamptz not null default now(),\n  updated_by text\n);\nalter table public.app_settings enable row level security;\nrevoke all on public.app_settings from anon;\ngrant select, insert, update, delete on public.app_settings to authenticated;\ndrop policy if exists \"Teamet hanterar inställningar\" on public.app_settings;\ncreate policy \"Teamet hanterar inställningar\" on public.app_settings for all to authenticated\n  using (public.is_team()) with check (public.is_team());\nselect 'klart' as status;";
   /* ---------- Läget: what is set up and what is missing, checked live by the server (worker/health.js) ---------- */
   function renderHealth() {
     main().innerHTML = head('Läget', 'Det som är klart och det som saknas – kontrolleras live varje gång sidan öppnas.', '<button class="btn btn--ghost btn--sm" id="hrefresh">Kontrollera igen</button>') + '<p class="empty">Kontrollerar …</p>';
@@ -1850,9 +1852,27 @@
         groups.map(function (g) {
           return '<section class="panel"><h3>' + esc(g) + '</h3><ul class="hl">' + list.filter(function (c) { return c.group === g; }).sort(function (a, b) { return ORDER[a.status] - ORDER[b.status]; }).map(function (c) {
             return '<li class="hl__row hl--' + c.status + '"><span class="hl__dot" aria-hidden="true"></span><div><p class="hl__t"><b>' + esc(c.title) + '</b><span class="hl__chip">' + LABEL[c.status] + '</span></p><p class="hl__x">' + esc(c.text) + '</p>' +
-              (c.fix ? '<p class="hl__fix"><b>Gör så här:</b> ' + esc(c.fix) + '</p>' : '') + '</div></li>';
+              (c.fix ? '<p class="hl__fix"><b>Gör så här:</b> ' + esc(c.fix) + '</p>' : '') +
+              (c.setting ? '<form class="hl__set" data-setting="' + esc(c.setting) + '"><input type="password" autocomplete="off" spellcheck="false" placeholder="Klistra in ' + esc(c.label || 'nyckeln') + '" aria-label="' + esc(c.label || 'Nyckel') + '"><button class="btn btn--sm">Spara</button><span class="hl__msg" role="status"></span></form>' : '') +
+              (c.sql ? '<div class="hl__sql"><pre>' + esc(SETTINGS_SQL) + '</pre><button class="btn btn--sm btn--ghost" type="button" data-copy-sql>Kopiera SQL</button></div>' : '') + '</div></li>';
           }).join('') + '</ul></section>';
         }).join('') + '<p class="muted">Kontrollerat ' + dt(r.d.checked) + '. Hemligheter visas aldrig här – sidan ser bara om de finns och fungerar.</p>');
+      // save a key straight from here (worker/settings.js tries it first, then keeps it where only the team can read it)
+      box.querySelectorAll('[data-setting]').forEach(function (f) {
+        f.addEventListener('submit', function (e) {
+          e.preventDefault(); var inp = f.querySelector('input'), msg = f.querySelector('.hl__msg'), btn = f.querySelector('button');
+          if (!inp.value.trim()) { inp.focus(); return; }
+          btn.disabled = true; msg.textContent = 'Kontrollerar nyckeln …';
+          sb.auth.getSession().then(function (r) { return fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + (r.data.session ? r.data.session.access_token : '') }, body: JSON.stringify({ key: f.dataset.setting, value: inp.value.trim() }) }); })
+            .then(function (r) { return r.json().catch(function () { return {}; }); }).then(function (d) {
+              btn.disabled = false;
+              if (d.ok) { toast('Nyckeln är sparad och fungerar'); renderHealth(); return; }
+              msg.textContent = d.error === 'badkey' ? 'Bing godtog inte nyckeln – kopiera den igen.' : d.error === 'nosql' ? 'Kör SQL:en ovan först.' : d.error === 'value' ? 'Nyckeln ser inte rätt ut.' : 'Det gick inte att spara.';
+            }, function () { btn.disabled = false; msg.textContent = 'Servern svarade inte.'; });
+        });
+      });
+      var cp = box.querySelector('[data-copy-sql]');
+      if (cp) cp.addEventListener('click', function () { (navigator.clipboard ? navigator.clipboard.writeText(SETTINGS_SQL) : Promise.reject()).then(function () { toast('SQL:en är kopierad – klistra in den i Lovables SQL editor och tryck Run'); }, function () { toast('Markera texten och kopiera den'); }); });
     });
   }
 

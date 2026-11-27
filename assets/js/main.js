@@ -427,12 +427,45 @@ document.querySelectorAll('.exs').forEach(function (w) {
       var left = phone.matches ? row.scrollLeft + (b.left + b.width / 2) - (r.left + r.width / 2) : row.scrollLeft + b.left - r.left - pad;
       row.scrollTo({ left: left, behavior: still.matches ? 'auto' : 'smooth' });
     }
+    // as many dots as there are places to scroll to: with four cards in view, five cards give two
+    function stops() { var w = slots[0].getBoundingClientRect().width || 1, n = Math.max(1, Math.round((row.clientWidth + 14) / (w + 14))); return phone.matches ? slots.length : Math.max(1, slots.length - n + 1); }
     function update() {
-      var a = current();
+      if (arrows) arrows();
+      var a = current(), n = stops();
+      a = Math.min(a, n - 1);
       Array.prototype.forEach.call(dots.children, function (d, i) {
+        d.hidden = i >= n;
         d.classList.toggle('is-on', i === a);
         if (i === a) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
       });
+    }
+    var arrows = null;
+    // computers: more than four cards scroll sideways too, and the row can be dragged with the mouse
+    if (slots.length > 4) {
+      row.classList.add('ctiles--scroll');
+      var down = null, moved = false;
+      row.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = { x: e.clientX, left: row.scrollLeft }; moved = false; });
+      window.addEventListener('pointermove', function (e) {
+        if (!down) return; var dx = e.clientX - down.x;
+        if (!moved && Math.abs(dx) > 6) { moved = true; row.classList.add('is-drag'); }
+        if (moved) row.scrollLeft = down.left - dx;
+      });
+      window.addEventListener('pointerup', function () {
+        if (!down) return; var was = moved; down = null; row.classList.remove('is-drag');
+        if (was) go(current());
+      });
+      row.addEventListener('dragstart', function (e) { e.preventDefault(); });
+      // a simple arrow on each side: one card further or back
+      var arrow = function (dir) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = dir > 0 ? 'ctiles-arrow ctiles-arrow--next' : 'ctiles-arrow ctiles-arrow--prev';
+        b.setAttribute('aria-label', dir > 0 ? 'Nästa case' : 'Föregående case');
+        b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + (dir > 0 ? 'M9 5l7 7-7 7' : 'M15 5l-7 7 7 7') + '"/></svg>';
+        b.addEventListener('click', function () { go(Math.min(current() + dir, stops() - 1)); });
+        wrap.appendChild(b); return b;
+      };
+      var prevBtn = arrow(-1), nextBtn = arrow(1);
+      arrows = function () { var max = row.scrollWidth - row.clientWidth - 2; prevBtn.hidden = row.scrollLeft <= 2; nextBtn.hidden = row.scrollLeft >= max; };
     }
     var raf = 0;
     function soon() { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }
